@@ -9,5 +9,6 @@ services:
     restart: always
     ports:
       - "80:8080"
+      - "8080:8080"
     env_file:
       - web-server.env
