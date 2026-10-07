@@ -100,15 +100,18 @@ jobs:
       - name: Run gosec
         uses: securego/gosec@master
         with:
-          args: '-fmt=sarif -out=gosec-results.sarif ./...'
-        working-directory: backend
+          # "working-directory" no es una clave valida en un step "uses:"
+          # (solo aplica a steps "run:"); en su lugar, se le dice a gosec
+          # que escanee ./backend/... desde la raiz del repo, que es
+          # donde corre el action por defecto.
+          args: '-fmt=sarif -out=gosec-results.sarif ./backend/...'
 
       - name: Upload gosec SARIF report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: gosec-sarif-report
-          path: backend/gosec-results.sarif
+          path: gosec-results.sarif
           retention-days: 30
 
   e2e:
