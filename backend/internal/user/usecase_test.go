@@ -198,7 +198,9 @@ func TestLastAdminProtection(t *testing.T) {
 		Status:          domain.StatusActive,
 		EmailVerifiedAt: &now,
 	}
-	repo.CreateUser(ctx, adminUser)
+	if err := repo.CreateUser(ctx, adminUser); err != nil {
+		t.Fatalf("setup: CreateUser falló: %v", err)
+	}
 	repo.activeAdmins = 1
 
 	// Intentar suspender al único administrador activo

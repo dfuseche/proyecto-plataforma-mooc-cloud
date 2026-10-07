@@ -47,7 +47,7 @@ func Idempotency(rdb *redis.Client) func(http.Handler) http.Handler {
 				w.Header().Set("Content-Type", "application/json")
 				w.Header().Set("X-Cache-Lookup", "HIT-IDEMPOTENT")
 				w.WriteHeader(http.StatusOK)
-				w.Write([]byte(cachedVal))
+				_, _ = w.Write([]byte(cachedVal))
 				return
 			}
 

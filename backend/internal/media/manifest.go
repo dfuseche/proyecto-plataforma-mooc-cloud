@@ -36,7 +36,7 @@ func (s *StorageService) RewriteHLSManifest(ctx context.Context, manifestKey str
 	if err != nil {
 		return nil, fmt.Errorf("failed to open HLS manifest %q: %w", manifestKey, err)
 	}
-	defer obj.Close()
+	defer func() { _ = obj.Close() }()
 
 	// Los segmentos y sub-playlists se guardan junto al manifiesto bajo el
 	// mismo prefijo (hls/<resourceID>/...), así que las rutas relativas del

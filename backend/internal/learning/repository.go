@@ -73,7 +73,7 @@ func (r *PostgresRepository) CreateQuiz(ctx context.Context, q *domain.Quiz) err
 	if err != nil {
 		return err
 	}
-	defer tx.Rollback()
+	defer func() { _ = tx.Rollback() }()
 
 	if q.ID == uuid.Nil {
 		q.ID = uuid.New()
@@ -143,7 +143,7 @@ func (r *PostgresRepository) GetQuizWithAnswers(ctx context.Context, quizID uuid
 	if err != nil {
 		return nil, err
 	}
-	defer qRows.Close()
+	defer func() { _ = qRows.Close() }()
 
 	questions := make([]domain.QuizQuestion, 0)
 	for qRows.Next() {
@@ -163,13 +163,13 @@ func (r *PostgresRepository) GetQuizWithAnswers(ctx context.Context, quizID uuid
 			var opt domain.QuizOption
 			var feedback sql.NullString
 			if err := oRows.Scan(&opt.ID, &opt.QuestionID, &opt.OptionText, &opt.IsCorrect, &feedback, &opt.Position); err != nil {
-				oRows.Close()
+				_ = oRows.Close()
 				return nil, err
 			}
 			opt.Feedback = feedback.String
 			options = append(options, opt)
 		}
-		oRows.Close()
+		_ = oRows.Close()
 		quest.Options = options
 		questions = append(questions, quest)
 	}
@@ -298,7 +298,7 @@ func (r *PostgresRepository) GetStudentCourseProgress(ctx context.Context, stude
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
+	defer func() { _ = rows.Close() }()
 
 	list := make([]*domain.ResourceProgress, 0)
 	for rows.Next() {

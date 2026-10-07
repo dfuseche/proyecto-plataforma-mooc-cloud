@@ -58,19 +58,19 @@ type APIResponse struct {
 func respondJSON(w http.ResponseWriter, status int, data any) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
-	json.NewEncoder(w).Encode(APIResponse{Success: true, Data: data})
+	_ = json.NewEncoder(w).Encode(APIResponse{Success: true, Data: data})
 }
 
 func respondError(w http.ResponseWriter, status int, message string) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
-	json.NewEncoder(w).Encode(APIResponse{Success: false, Error: message})
+	_ = json.NewEncoder(w).Encode(APIResponse{Success: false, Error: message})
 }
 
 func respondValidationError(w http.ResponseWriter, status int, message string, details []string) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
-	json.NewEncoder(w).Encode(APIResponse{Success: false, Error: message, Details: details})
+	_ = json.NewEncoder(w).Encode(APIResponse{Success: false, Error: message, Details: details})
 }
 
 func (h *HTTPHandler) ListCourses(w http.ResponseWriter, r *http.Request) {

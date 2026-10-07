@@ -71,7 +71,7 @@ func (m *AuthMiddleware) RequireRole(roles ...domain.Role) func(http.Handler) ht
 			if !allowed {
 				w.Header().Set("Content-Type", "application/json")
 				w.WriteHeader(http.StatusForbidden)
-				json.NewEncoder(w).Encode(map[string]any{
+				_ = json.NewEncoder(w).Encode(map[string]any{
 					"success": false,
 					"error":   "Acceso denegado: rol insuficiente",
 				})
@@ -108,7 +108,7 @@ func (m *AuthMiddleware) handleHeaderFallback(w http.ResponseWriter, r *http.Req
 func (m *AuthMiddleware) respondUnauthorized(w http.ResponseWriter, msg string) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusUnauthorized)
-	json.NewEncoder(w).Encode(map[string]any{
+	_ = json.NewEncoder(w).Encode(map[string]any{
 		"success": false,
 		"error":   msg,
 	})

@@ -24,7 +24,7 @@ func (r *PostgresRepository) CreateCourse(ctx context.Context, c *domain.Course,
 	if err != nil {
 		return err
 	}
-	defer tx.Rollback()
+	defer func() { _ = tx.Rollback() }()
 
 	now := time.Now()
 	if c.ID == uuid.Nil {
@@ -107,7 +107,7 @@ func (r *PostgresRepository) ListCourses(ctx context.Context, limit, offset int)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
+	defer func() { _ = rows.Close() }()
 
 	courses := make([]*domain.Course, 0)
 	for rows.Next() {
@@ -199,7 +199,7 @@ func (r *PostgresRepository) GetFullVersionHierarchy(ctx context.Context, versio
 	if err != nil {
 		return nil, err
 	}
-	defer mRows.Close()
+	defer func() { _ = mRows.Close() }()
 
 	modules := make([]domain.Module, 0)
 	for mRows.Next() {
@@ -221,7 +221,7 @@ func (r *PostgresRepository) GetFullVersionHierarchy(ctx context.Context, versio
 		for uRows.Next() {
 			var u domain.Unit
 			if err := uRows.Scan(&u.ID, &u.ModuleID, &u.StableID, &u.Title, &u.Position, &u.CreatedAt); err != nil {
-				uRows.Close()
+				_ = uRows.Close()
 				return nil, err
 			}
 
@@ -231,7 +231,7 @@ func (r *PostgresRepository) GetFullVersionHierarchy(ctx context.Context, versio
 			`
 			rRows, err := r.db.QueryContext(ctx, resourcesQuery, u.ID)
 			if err != nil {
-				uRows.Close()
+				_ = uRows.Close()
 				return nil, err
 			}
 
@@ -245,8 +245,8 @@ func (r *PostgresRepository) GetFullVersionHierarchy(ctx context.Context, versio
 					&res.ID, &res.UnitID, &res.StableID, &res.Title, &typeStr, &canonicalMarkdown, &mediaURL,
 					&res.IsVisible, &res.IsMandatory, &res.IsDownloadable, &res.Position, &procStr, &res.CreatedAt, &res.UpdatedAt, &lastAutosavedAt,
 				); err != nil {
-					rRows.Close()
-					uRows.Close()
+					_ = rRows.Close()
+					_ = uRows.Close()
 					return nil, err
 				}
 				res.Type = domain.ResourceType(typeStr)
@@ -258,11 +258,11 @@ func (r *PostgresRepository) GetFullVersionHierarchy(ctx context.Context, versio
 				}
 				resources = append(resources, res)
 			}
-			rRows.Close()
+			_ = rRows.Close()
 			u.Resources = resources
 			units = append(units, u)
 		}
-		uRows.Close()
+		_ = uRows.Close()
 		m.Units = units
 		modules = append(modules, m)
 	}
@@ -276,7 +276,7 @@ func (r *PostgresRepository) PublishVersion(ctx context.Context, courseID uuid.U
 	if err != nil {
 		return err
 	}
-	defer tx.Rollback()
+	defer func() { _ = tx.Rollback() }()
 
 	now := time.Now()
 	updateVersionQuery := `UPDATE course_versions SET status = 'published', published_at = $1 WHERE id = $2`
@@ -443,7 +443,7 @@ func (r *PostgresRepository) ReorderModules(ctx context.Context, versionID uuid.
 	if err != nil {
 		return err
 	}
-	defer tx.Rollback()
+	defer func() { _ = tx.Rollback() }()
 
 	query := `UPDATE course_modules SET position = $1 WHERE id = $2 AND version_id = $3`
 	for pos, id := range orderedIDs {
@@ -459,7 +459,7 @@ func (r *PostgresRepository) ReorderUnits(ctx context.Context, moduleID uuid.UUI
 	if err != nil {
 		return err
 	}
-	defer tx.Rollback()
+	defer func() { _ = tx.Rollback() }()
 
 	query := `UPDATE course_units SET position = $1 WHERE id = $2 AND module_id = $3`
 	for pos, id := range orderedIDs {
@@ -475,7 +475,7 @@ func (r *PostgresRepository) ReorderResources(ctx context.Context, unitID uuid.U
 	if err != nil {
 		return err
 	}
-	defer tx.Rollback()
+	defer func() { _ = tx.Rollback() }()
 
 	query := `UPDATE course_resources SET position = $1 WHERE id = $2 AND unit_id = $3`
 	for pos, id := range orderedIDs {

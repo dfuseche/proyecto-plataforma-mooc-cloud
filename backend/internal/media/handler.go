@@ -63,13 +63,13 @@ type APIResponse struct {
 func respondJSON(w http.ResponseWriter, status int, data any) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
-	json.NewEncoder(w).Encode(APIResponse{Success: true, Data: data})
+	_ = json.NewEncoder(w).Encode(APIResponse{Success: true, Data: data})
 }
 
 func respondError(w http.ResponseWriter, status int, message string) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
-	json.NewEncoder(w).Encode(APIResponse{Success: false, Error: message})
+	_ = json.NewEncoder(w).Encode(APIResponse{Success: false, Error: message})
 }
 
 // publicBaseURL reconstruye el esquema+host públicos con los que se llamó a
@@ -262,12 +262,11 @@ func (h *HTTPHandler) GetStreamURL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	authUser := middleware.GetUserFromContext(r.Context())
-	if authUser == nil {
-		// Fallback para dev/test si no viene token
-		authUser = &domain.User{ID: uuid.New(), Role: domain.RoleStudent}
-	}
-
+	// authUser no se usaba en ningún punto posterior de esta función (el
+	// valor asignado en el fallback era una "ineffectual assignment" real,
+	// detectada por ineffassign) — se elimina en vez de mantener código
+	// muerto. Si en el futuro GetStreamURL necesita autorizar por usuario,
+	// reintroducir middleware.GetUserFromContext aquí y usarlo de verdad.
 	var streamURL string
 	if IsHLSManifestKey(res.MediaURL) {
 		// res.MediaURL es un manifiesto HLS (hls/<id>/master.m3u8). Un
@@ -343,7 +342,7 @@ func (h *HTTPHandler) GetResumePosition(w http.ResponseWriter, r *http.Request) 
 	}
 
 	authUser := middleware.GetUserFromContext(r.Context())
-	var lastPosition int = 0
+	var lastPosition int
 	if authUser != nil && h.learningRepo != nil {
 		progressList, err := h.learningRepo.GetStudentCourseProgress(r.Context(), authUser.ID, uuid.Nil)
 		if err == nil {

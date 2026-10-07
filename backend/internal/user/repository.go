@@ -254,7 +254,7 @@ func (r *PostgresRepository) ListUsers(ctx context.Context, role *domain.Role, s
 	if err != nil {
 		return nil, 0, fmt.Errorf("failed to query users: %w", err)
 	}
-	defer rows.Close()
+	defer func() { _ = rows.Close() }()
 
 	var users []*domain.User
 	for rows.Next() {
@@ -294,7 +294,7 @@ func (r *PostgresRepository) ListAuditLogs(ctx context.Context, limit, offset in
 	if err != nil {
 		return nil, 0, fmt.Errorf("failed to query audit logs: %w", err)
 	}
-	defer rows.Close()
+	defer func() { _ = rows.Close() }()
 
 	var logs []*domain.AuditLog
 	for rows.Next() {

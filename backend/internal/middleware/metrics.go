@@ -143,26 +143,26 @@ func (m *Metrics) Handler() http.HandlerFunc {
 
 		w.Header().Set("Content-Type", "text/plain; version=0.0.4; charset=utf-8")
 
-		fmt.Fprintf(w, "# HELP process_uptime_seconds Tiempo transcurrido desde que el proceso empezó a servir tráfico.\n")
-		fmt.Fprintf(w, "# TYPE process_uptime_seconds gauge\n")
-		fmt.Fprintf(w, "process_uptime_seconds %.3f\n", time.Since(m.startedAt).Seconds())
+		_, _ = fmt.Fprintf(w, "# HELP process_uptime_seconds Tiempo transcurrido desde que el proceso empezó a servir tráfico.\n")
+		_, _ = fmt.Fprintf(w, "# TYPE process_uptime_seconds gauge\n")
+		_, _ = fmt.Fprintf(w, "process_uptime_seconds %.3f\n", time.Since(m.startedAt).Seconds())
 
-		fmt.Fprintf(w, "# HELP http_requests_total Número total de peticiones HTTP procesadas, por método, ruta y código de estado.\n")
-		fmt.Fprintf(w, "# TYPE http_requests_total counter\n")
+		_, _ = fmt.Fprintf(w, "# HELP http_requests_total Número total de peticiones HTTP procesadas, por método, ruta y código de estado.\n")
+		_, _ = fmt.Fprintf(w, "# TYPE http_requests_total counter\n")
 		for _, k := range keys {
-			fmt.Fprintf(w, "http_requests_total{method=%q,path=%q,status=%q} %d\n",
+			_, _ = fmt.Fprintf(w, "http_requests_total{method=%q,path=%q,status=%q} %d\n",
 				k.method, k.path, strconv.Itoa(k.status), m.requests[k])
 		}
 
-		fmt.Fprintf(w, "# HELP http_request_duration_seconds_sum Suma acumulada de la duración de las peticiones, en segundos, por método, ruta y código de estado.\n")
-		fmt.Fprintf(w, "# TYPE http_request_duration_seconds_sum counter\n")
+		_, _ = fmt.Fprintf(w, "# HELP http_request_duration_seconds_sum Suma acumulada de la duración de las peticiones, en segundos, por método, ruta y código de estado.\n")
+		_, _ = fmt.Fprintf(w, "# TYPE http_request_duration_seconds_sum counter\n")
 		for _, k := range keys {
-			fmt.Fprintf(w, "http_request_duration_seconds_sum{method=%q,path=%q,status=%q} %.6f\n",
+			_, _ = fmt.Fprintf(w, "http_request_duration_seconds_sum{method=%q,path=%q,status=%q} %.6f\n",
 				k.method, k.path, strconv.Itoa(k.status), m.durationSum[k])
 		}
 
-		fmt.Fprintf(w, "# HELP http_requests_errors_total Número total de peticiones HTTP con código de estado >= 500, por método y ruta.\n")
-		fmt.Fprintf(w, "# TYPE http_requests_errors_total counter\n")
+		_, _ = fmt.Fprintf(w, "# HELP http_requests_errors_total Número total de peticiones HTTP con código de estado >= 500, por método y ruta.\n")
+		_, _ = fmt.Fprintf(w, "# TYPE http_requests_errors_total counter\n")
 		errorTotals := make(map[string]int64)
 		errorOrder := make([]string, 0)
 		for _, k := range keys {
@@ -178,8 +178,8 @@ func (m *Metrics) Handler() http.HandlerFunc {
 		sort.Strings(errorOrder)
 		for _, ek := range errorOrder {
 			var method, path string
-			fmt.Sscanf(ek, "%s %s", &method, &path)
-			fmt.Fprintf(w, "http_requests_errors_total{method=%q,path=%q} %d\n", method, path, errorTotals[ek])
+			_, _ = fmt.Sscanf(ek, "%s %s", &method, &path)
+			_, _ = fmt.Fprintf(w, "http_requests_errors_total{method=%q,path=%q} %d\n", method, path, errorTotals[ek])
 		}
 	}
 }

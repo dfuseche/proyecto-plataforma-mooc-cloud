@@ -132,7 +132,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error al conectar con PostgreSQL: %v", err)
 	}
-	defer db.Close()
+	defer func() {
+		if cerr := db.Close(); cerr != nil {
+			log.Printf("[WARNING] Error al cerrar la conexión a PostgreSQL: %v", cerr)
+		}
+	}()
 
 	db.SetMaxOpenConns(25)
 	db.SetMaxIdleConns(5)
@@ -153,13 +157,21 @@ func main() {
 
 	// Cliente Asynq para encolar tareas asíncronas
 	asynqClient := asynq.NewClient(asynq.RedisClientOpt{Addr: cfg.RedisAddr})
-	defer asynqClient.Close()
+	defer func() {
+		if cerr := asynqClient.Close(); cerr != nil {
+			log.Printf("[WARNING] Error al cerrar el cliente Asynq: %v", cerr)
+		}
+	}()
 
 	// El Inspector le permite al handler de media revisar/limpiar tareas
 	// archivadas cuando un Enqueue choca por Task ID duplicado (ver
 	// media.HTTPHandler.enqueueTranscodeTask).
 	asynqInspector := asynq.NewInspector(asynq.RedisClientOpt{Addr: cfg.RedisAddr})
-	defer asynqInspector.Close()
+	defer func() {
+		if cerr := asynqInspector.Close(); cerr != nil {
+			log.Printf("[WARNING] Error al cerrar el inspector de Asynq: %v", cerr)
+		}
+	}()
 
 	// Inicializar Servicio de Almacenamiento MinIO/S3
 	storageService, err := media.NewStorageService(cfg)
@@ -228,7 +240,9 @@ func main() {
 	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"status":"ok", "timestamp":"` + time.Now().Format(time.RFC3339) + `"}`))
+		if _, werr := w.Write([]byte(`{"status":"ok", "timestamp":"` + time.Now().Format(time.RFC3339) + `"}`)); werr != nil {
+			log.Printf("[WARNING] Error al escribir la respuesta de /health: %v", werr)
+		}
 	})
 
 	// Métricas básicas en formato Prometheus (contadores de peticiones,

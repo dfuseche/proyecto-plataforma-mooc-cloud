@@ -23,7 +23,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error al conectar con DB en Worker: %v", err)
 	}
-	defer db.Close()
+	defer func() {
+		if cerr := db.Close(); cerr != nil {
+			log.Printf("[WARNING] Error al cerrar la conexión a PostgreSQL: %v", cerr)
+		}
+	}()
 
 	// Conexión a MinIO/S3
 	storage, err := media.NewStorageService(cfg)

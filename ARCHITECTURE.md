@@ -254,7 +254,20 @@ erDiagram
      ok      github.com/mooc-platform/backend/tests/e2e      0.287s
      ```
      Ver [`docs/OPERACIONES.md`](docs/OPERACIONES.md), sección "Observabilidad", para la evidencia de `/metrics` de esta misma corrida, incluyendo el bug real que la primera ejecución expuso (tipo de recurso inválido → 500 en vez de 400) y el hallazgo colateral de validación de entrada que quedó pendiente.
-   - _TODO: pegar aquí la salida real de los jobs `lint`/`security`/`postman` corriendo en GitHub Actions (o localmente), la primera vez que se ejecuten._
+   - Evidencia real adicional (local, vía `docker compose run --build --rm e2e-tests go build ./...` y `go test -v ./...`, 2026-10-07): build limpio, `golangci-lint` con 0 issues (tras corregir ~45 hallazgos reales de errcheck/ineffassign/staticcheck en código pre-existente del proyecto — no eran falsos positivos), y las 7 pruebas unitarias pasando:
+     ```
+     --- PASS: TestCoursePublicationValidation (0.00s)
+     --- PASS: TestAutosaveDoesNotResetVisibility (0.00s)
+     ok      github.com/mooc-platform/backend/internal/course        0.002s
+     --- PASS: TestServerSideQuizGrading (0.00s)
+     --- PASS: TestHeartbeatProgressAndBadgeIssuance (0.00s)
+     --- PASS: TestFullQuizLifecycle (0.00s)
+     ok      github.com/mooc-platform/backend/internal/learning      0.002s
+     --- PASS: TestRegisterAndVerifyStudent (0.12s)
+     --- PASS: TestLastAdminProtection (0.04s)
+     ok      github.com/mooc-platform/backend/internal/user  0.167s
+     ```
+   - _TODO: pegar aquí la salida real de los jobs `lint`/`security`/`postman`/`e2e` corriendo en GitHub Actions, la primera vez que se ejecuten allí (lo de arriba corrió localmente vía Docker, no en CI todavía)._
 
 ---
 

@@ -59,7 +59,11 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 	if err != nil {
 		return fmt.Errorf("failed to create temp dir: %w", err)
 	}
-	defer os.RemoveAll(tmpDir)
+	defer func() {
+		if rmErr := os.RemoveAll(tmpDir); rmErr != nil {
+			log.Printf("[WORKER] Error al limpiar directorio temporal %s: %v", tmpDir, rmErr)
+		}
+	}()
 
 	// Descargar archivo original desde S3 a local
 	localOriginalPath := filepath.Join(tmpDir, "original")

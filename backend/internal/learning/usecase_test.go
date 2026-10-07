@@ -248,7 +248,9 @@ func TestServerSideQuizGrading(t *testing.T) {
 			},
 		},
 	}
-	lRepo.CreateQuiz(ctx, quiz)
+	if err := lRepo.CreateQuiz(ctx, quiz); err != nil {
+		t.Fatalf("setup: CreateQuiz falló: %v", err)
+	}
 
 	studentID := uuid.New()
 
