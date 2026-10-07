@@ -30,3 +30,8 @@ Thumbs.db
 postgres_data/
 redis_data/
 minio_data/
+
+# Dumps de respaldo de PostgreSQL (evidencia de backup/restore se referencia
+# por tamaño/timestamp en docs/OPERACIONES.md, no se versiona el contenido)
+scripts/backup/dumps/
+scripts/backup/backup.log

@@ -7,6 +7,7 @@ Este repositorio contiene el código fuente, la configuración de infraestructur
 ## 📚 Documentación y Entregables Clave
 
 - 🏛️ **[Informe de Arquitectura Cloud (GCP)](docs/entrega2/ARCHITECTURE_CLOUD.md)**: Detalla la topología de red VPC, subredes, reglas de firewall, correspondencia de servicios (GCE, Cloud SQL, GCS, Redis) y guía de operación.
+- ⚙️ **[Operación: escalamiento y recuperación](docs/OPERACIONES.md)**: Cómo escalar `api`/`worker` a múltiples instancias con Compose y el procedimiento de backup/restauración de PostgreSQL (RPO/RTO) con evidencia de una restauración real.
 - 📊 **[Informe de Pruebas de Carga y Capacidad](capacity-planning/pruebas_de_carga_entrega2.md)**: Reporte con las mediciones, latencias (p50, p95, p99), throughput y cuellos de botella para el Escenario 1 (Actividad Académica) y Escenario 2 (Multimedia HLS).
 - 🧪 **[Scripts de Pruebas de Carga](capacity-planning/scripts/)**: Scripts en K6 para reproducir los escenarios de carga.
 - 🛠️ **[Plantillas de Entorno de Despliegue](deploy/)**: Plantillas `.env.example` y composiciones Docker desacopladas para `Web Server` y `Worker Server`.

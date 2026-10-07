@@ -214,6 +214,12 @@ erDiagram
 5. **Auditoría de Acciones (Audit Trail)**:
    - Cualquier acción administrativa (creación de profesores, cambio de estado de usuario, revocación de insignias) genera un registro inmutable en `audit_logs` con IP, user-agent, admin_id y payload.
 
+6. **Escalamiento horizontal sin estado local**:
+   - `api` y `worker` no guardan estado en el filesystem del contenedor (persistencia en PostgreSQL, archivos en MinIO, colas/locks en Redis), por lo que ambos escalan a múltiples instancias con `docker compose up --scale api=N --scale worker=M` sin coordinación adicional. `nginx` expone un único puerto de host y reparte el tráfico entre las réplicas de `api` vía el DNS interno de Docker. Detalle y comando exacto en [`docs/OPERACIONES.md`](docs/OPERACIONES.md).
+
+7. **Backup y recuperación de PostgreSQL (RPO ≤ 15 min, RTO ≤ 4 h)**:
+   - `scripts/backup/backup_postgres.sh` toma `pg_dump` periódicos (programado cada 10 min) y `scripts/backup/restore_postgres.sh` restaura desde cualquiera de esos dumps, verificando al final el conteo de filas. Procedimiento completo, objetivo de RPO/RTO y evidencia de una restauración real (con pérdida de datos simulada) en [`docs/OPERACIONES.md`](docs/OPERACIONES.md).
+
 ---
 
 ## 🚀 8. Verificación y Calidad de Código
