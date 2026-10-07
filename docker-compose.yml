@@ -32,7 +32,16 @@ services:
       retries: 5
 
   minio:
-    image: minio/minio:latest
+    # MinIO dejo de publicar imagenes gratuitas en Docker Hub a fines de
+    # 2025 (la ultima release comunitaria quedo en septiembre de 2025) y
+    # archivo el repo de GitHub en abril de 2026, empujando a un producto
+    # con licencia (AIStor). "minio/minio:latest" en Docker Hub ya
+    # devuelve "pull access denied" para quien no lo tenga cacheado.
+    # quay.io sirve un mirror con esa misma ultima release comunitaria.
+    # Si ese mirror tambien deja de servir imagenes, la alternativa
+    # documentada por la comunidad es migrar a un store S3-compatible
+    # como RustFS (rustfs/rustfs).
+    image: quay.io/minio/minio:latest
     container_name: mooc-minio
     restart: always
     entrypoint: sh
