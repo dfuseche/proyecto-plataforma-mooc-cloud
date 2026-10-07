@@ -71,12 +71,21 @@ graph TD
 
 ## 🛠️ 4. Guía de Operación y Recuperación
 
-### Despliegue Inicial
+### Despliegue Inicial (una sola vez, manual)
 1. Aprovisionar la red VPC, subredes, Cloud NAT, Cloud SQL e instancias GCE mediante `gcloud` o la consola GCP.
 2. Clonar el repositorio en `web-server` y `worker-server`.
 3. Copiar las plantillas `.env.example` a `.env` y configurar credenciales reales de Cloud SQL y HMAC Keys de GCS.
 4. En `worker-server`: `docker compose -f deploy/docker-compose.worker.yml up -d`
 5. En `web-server`: `docker compose -f deploy/docker-compose.web.yml up -d`
+
+### Despliegue continuo (CD) para cambios posteriores
+Los pasos 2, 4 y 5 de arriba ya **no se repiten a mano** en cada cambio:
+`.github/workflows/deploy.yml` los automatiza — se dispara solo cuando
+el CI pasa en `main` (o manualmente desde GitHub Actions) y hace
+`git pull` + `docker compose up -d --build` en ambas VMs por SSH vía
+IAP. Ver [`docs/CD.md`](../CD.md) para la configuración única de
+GCP que esto requiere (cuenta de servicio, Workload Identity Federation,
+firewall de IAP) y el detalle de qué hace cada corrida.
 
 ### Migración y Respaldo de Base de Datos
 - Las migraciones SQL se ejecutan automáticamente al inicio de la aplicación o manualmente con `golang-migrate` desde el `web-server`.
