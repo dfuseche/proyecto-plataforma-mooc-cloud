@@ -78,9 +78,15 @@ jobs:
           cache: true
 
       - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v6
+        # v6 + "version: latest" resolvio a un binario de golangci-lint
+        # compilado con una version de Go mas vieja que la del go.mod
+        # (go 1.25.0), y golangci-lint se niega a correr en ese caso
+        # ("the Go language version used to build golangci-lint is lower
+        # than the targeted Go version"). v7 + golangci-lint v2 (que SI
+        # viene compilado con Go mas reciente) resuelve esto.
+        uses: golangci/golangci-lint-action@v7
         with:
-          version: latest
+          version: v2.13
           working-directory: backend
           args: --timeout=5m
 

@@ -3,6 +3,7 @@ package learning
 import (
 	"context"
 	"testing"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/mooc-platform/backend/internal/domain"
@@ -193,6 +194,7 @@ func (c *mockCourseRepo) CreateUnit(ctx context.Context, unit *domain.Unit) erro
 func (c *mockCourseRepo) CreateResource(ctx context.Context, resource *domain.Resource) error { return nil }
 func (c *mockCourseRepo) GetResourceByID(ctx context.Context, resourceID uuid.UUID) (*domain.Resource, error) { return nil, nil }
 func (c *mockCourseRepo) UpdateResource(ctx context.Context, resource *domain.Resource) error { return nil }
+func (c *mockCourseRepo) AutosaveResource(ctx context.Context, resourceID uuid.UUID, title *string, markdown *string, at time.Time) error { return nil }
 func (c *mockCourseRepo) DeleteResource(ctx context.Context, resourceID uuid.UUID) error { return nil }
 func (c *mockCourseRepo) UnpublishCourse(ctx context.Context, courseID uuid.UUID) error { return nil }
 func (c *mockCourseRepo) GetLatestDraftVersion(ctx context.Context, courseID uuid.UUID) (*domain.CourseVersion, error) { return nil, nil }
