@@ -1,0 +1,66 @@
+name: Deploy to GCP (CD)
+
+# Se dispara automáticamente cuando el workflow "Backend CI Pipeline"
+# (ci.yml) termina en la rama main, y solo si terminó con éxito — así el
+# deploy nunca corre sobre un build que no pasó pruebas/lint/seguridad.
+# También se puede disparar a mano desde la pestaña Actions (botón "Run
+# workflow"), por ejemplo para re-desplegar sin cambios de código nuevos.
+on:
+  workflow_run:
+    workflows: [ "Backend CI Pipeline" ]
+    types: [ completed ]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    name: Deploy web-server y worker-server
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
+    # id-token: write es obligatorio para Workload Identity Federation
+    # (permite que este job pida un token de identidad de OIDC de GitHub,
+    # que GCP cambia por credenciales temporales — sin esto, el paso
+    # "Authenticate to GCP" falla).
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Autenticar contra GCP (Workload Identity Federation)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT_EMAIL }}
+
+      - name: Instalar gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Desplegar en web-server (API)
+        run: |
+          gcloud compute ssh "${{ vars.GCP_WEB_INSTANCE }}" \
+            --project="${{ vars.GCP_PROJECT_ID }}" \
+            --zone="${{ vars.GCP_ZONE }}" \
+            --tunnel-through-iap \
+            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && docker compose -f deploy/docker-compose.web.yml up -d --build"
+
+      - name: Desplegar en worker-server (Worker Asíncrono + Redis)
+        run: |
+          gcloud compute ssh "${{ vars.GCP_WORKER_INSTANCE }}" \
+            --project="${{ vars.GCP_PROJECT_ID }}" \
+            --zone="${{ vars.GCP_ZONE }}" \
+            --tunnel-through-iap \
+            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && docker compose -f deploy/docker-compose.worker.yml up -d --build"
+
+      # worker-server no tiene IP pública (ver ARCHITECTURE_CLOUD.md,
+      # subred privada), así que no se puede healthcheckear directo desde
+      # el runner de GitHub Actions. En vez de eso, se verifica la API
+      # (web-server, sí accesible vía IAP) ejecutando el curl DENTRO de la
+      # VM por el mismo túnel SSH, no contra una IP pública.
+      - name: Verificar salud tras el deploy
+        run: |
+          gcloud compute ssh "${{ vars.GCP_WEB_INSTANCE }}" \
+            --project="${{ vars.GCP_PROJECT_ID }}" \
+            --zone="${{ vars.GCP_ZONE }}" \
+            --tunnel-through-iap \
+            --command="for i in \$(seq 1 15); do curl -sf http://localhost/health && exit 0; echo 'esperando a que la API quede healthy...'; sleep 2; done; echo 'La API nunca quedó healthy tras el deploy'; exit 1"
