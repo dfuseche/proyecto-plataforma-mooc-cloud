@@ -172,7 +172,7 @@ Resumen:
 2. Se autentica contra GCP sin ninguna llave almacenada (Workload
    Identity Federation, pasos 2-3 arriba).
 3. Por SSH vía IAP, en `web-server`: `git fetch` + `git reset --hard
-   origin/main` + `docker compose -f deploy/docker-compose.web.yml up -d
+   origin/main` + `docker-compose -f deploy/docker-compose.web.yml up -d
    --build`.
 4. Lo mismo en `worker-server` con `docker-compose.worker.yml`.
 5. Verifica `GET /health` (desde dentro de `web-server`, por el mismo
@@ -197,6 +197,12 @@ Resumen:
    qué falta (permiso de IAM, firewall, o que el pool/provider no
    coincide con el nombre del repo).
 
-> _TODO: pegar aquí la salida real de la primera corrida exitosa de
-> "Deploy to GCP (CD)" una vez se complete la configuración de los pasos
-> 1-4._
+**Confirmado funcionando end-to-end (2026-10-07)**: push a `main` → CI
+verde → `deploy.yml` se dispara solo → `web-server` y `worker-server`
+quedan actualizados automáticamente. Llegar a este punto requirió
+resolver 6 problemas reales de configuración de GCP/VM no documentados
+en ningún lado de antemano — ver
+[`docs/TROUBLESHOOTING.md`](TROUBLESHOOTING.md) para el detalle de cada
+uno (API deshabilitada, permiso de metadata, OS Login rompiendo el
+acceso externo, `serviceAccountUser` faltante, ownership de Git, versión
+de `docker-compose`).
