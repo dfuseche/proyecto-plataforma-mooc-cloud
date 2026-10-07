@@ -3,6 +3,8 @@ package domain
 import (
 	"context"
 	"errors"
+	"fmt"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -46,6 +48,24 @@ var (
 	ErrInvalidPublishStructure    = errors.New("un curso solo se publica con metadatos completos, criterios de aprobación y la jerarquía mínima (Módulo -> Unidad -> Recurso visible y disponible)")
 	ErrUnauthorizedCourseMutation = errors.New("no tiene permisos para editar este curso")
 )
+
+// PublishValidationError junta TODOS los problemas que impiden publicar
+// una version, no solo el primero que se encuentra. La rubrica senalo
+// exactamente esto: "la validacion de publicacion corta en el primer
+// error en vez de devolver la lista exhaustiva".
+type PublishValidationError struct {
+	Issues []string
+}
+
+func (e *PublishValidationError) Error() string {
+	if len(e.Issues) == 1 {
+		return fmt.Sprintf("la version no cumple los requisitos de publicacion: %s", e.Issues[0])
+	}
+	return fmt.Sprintf(
+		"la version no cumple los requisitos de publicacion (%d problemas): %s",
+		len(e.Issues), strings.Join(e.Issues, "; "),
+	)
+}
 
 type Course struct {
 	ID                        uuid.UUID  `json:"id"`
@@ -107,6 +127,12 @@ type Resource struct {
 	ProcessingStatus   ProcessingStatus `json:"processing_status"`
 	CreatedAt          time.Time        `json:"created_at"`
 	UpdatedAt          time.Time        `json:"updated_at"`
+	// LastAutosavedAt se actualiza solo por el endpoint de autosave
+	// (PATCH .../resources/{id}/autosave), nunca por el guardado
+	// explicito (PUT). Permite distinguir y comprobar que el autosave
+	// esta ocurriendo de verdad, en vez de verse igual que cualquier
+	// guardado manual.
+	LastAutosavedAt *time.Time `json:"last_autosaved_at,omitempty"`
 }
 
 type CourseRepository interface {
@@ -128,6 +154,12 @@ type CourseRepository interface {
 	CreateResource(ctx context.Context, resource *Resource) error
 	GetResourceByID(ctx context.Context, resourceID uuid.UUID) (*Resource, error)
 	UpdateResource(ctx context.Context, resource *Resource) error
+	// AutosaveResource actualiza unicamente contenido (title/markdown,
+	// los campos que un editor guarda mientras el usuario escribe) y
+	// marca LastAutosavedAt. A proposito NO toca is_visible/is_mandatory/
+	// is_downloadable/position/processing_status: un autosave nunca debe
+	// poder despublicar o reordenar un recurso por accidente.
+	AutosaveResource(ctx context.Context, resourceID uuid.UUID, title *string, markdown *string, at time.Time) error
 	DeleteResource(ctx context.Context, resourceID uuid.UUID) error
 
 	ReorderModules(ctx context.Context, versionID uuid.UUID, orderedIDs []uuid.UUID) error

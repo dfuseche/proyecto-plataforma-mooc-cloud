@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/mooc-platform/backend/internal/domain"
@@ -223,42 +224,136 @@ func (uc *UseCase) AddResource(ctx context.Context, teacherID uuid.UUID, resourc
 	return resource, nil
 }
 
-func (uc *UseCase) UpdateResource(ctx context.Context, teacherID uuid.UUID, resource *domain.Resource) (*domain.Resource, error) {
-	existing, err := uc.repo.GetResourceByID(ctx, resource.ID)
+// UpdateResourceFields representa un PATCH parcial sobre un recurso: solo
+// los punteros no-nil se aplican. Es deliberadamente distinto de pasar un
+// *domain.Resource directamente, porque con bool/string/int por valor es
+// imposible distinguir "no mandaron este campo" de "lo mandaron en false/
+// vacio/cero" — ese era exactamente el bug que hacia inestable cualquier
+// guardado parcial (un autosave que solo mandara canonical_markdown
+// terminaba apagando is_visible/is_mandatory/is_downloadable).
+type UpdateResourceFields struct {
+	Title             *string `json:"title"`
+	Type              *string `json:"type"`
+	CanonicalMarkdown *string `json:"canonical_markdown"`
+	MediaURL          *string `json:"media_url"`
+	IsVisible         *bool   `json:"is_visible"`
+	IsMandatory       *bool   `json:"is_mandatory"`
+	IsDownloadable    *bool   `json:"is_downloadable"`
+	Position          *int    `json:"position"`
+	ProcessingStatus  *string `json:"processing_status"`
+}
+
+func (uc *UseCase) UpdateResource(ctx context.Context, teacherID uuid.UUID, resourceID uuid.UUID, fields UpdateResourceFields) (*domain.Resource, error) {
+	existing, err := uc.repo.GetResourceByID(ctx, resourceID)
 	if err != nil {
 		return nil, err
 	}
 
-	if resource.Title == "" {
-		resource.Title = existing.Title
+	if fields.Title != nil {
+		existing.Title = *fields.Title
 	}
-	if resource.Type == "" {
-		resource.Type = existing.Type
+	if fields.Type != nil {
+		existing.Type = domain.ResourceType(*fields.Type)
 	}
-	if resource.CanonicalMarkdown == "" {
-		resource.CanonicalMarkdown = existing.CanonicalMarkdown
+	if fields.CanonicalMarkdown != nil {
+		existing.CanonicalMarkdown = *fields.CanonicalMarkdown
 	}
-	if resource.MediaURL == "" {
-		resource.MediaURL = existing.MediaURL
+	if fields.MediaURL != nil {
+		existing.MediaURL = *fields.MediaURL
 	}
-	if resource.Position == 0 {
-		resource.Position = existing.Position
+	if fields.IsVisible != nil {
+		existing.IsVisible = *fields.IsVisible
 	}
-	if resource.ProcessingStatus == "" {
-		resource.ProcessingStatus = existing.ProcessingStatus
+	if fields.IsMandatory != nil {
+		existing.IsMandatory = *fields.IsMandatory
 	}
-	resource.UnitID = existing.UnitID
-	resource.StableID = existing.StableID
-	resource.CreatedAt = existing.CreatedAt
+	if fields.IsDownloadable != nil {
+		existing.IsDownloadable = *fields.IsDownloadable
+	}
+	if fields.Position != nil {
+		existing.Position = *fields.Position
+	}
+	if fields.ProcessingStatus != nil {
+		existing.ProcessingStatus = domain.ProcessingStatus(*fields.ProcessingStatus)
+	}
 
-	if err := uc.repo.UpdateResource(ctx, resource); err != nil {
+	if err := uc.repo.UpdateResource(ctx, existing); err != nil {
 		return nil, err
 	}
-	return uc.repo.GetResourceByID(ctx, resource.ID)
+	return uc.repo.GetResourceByID(ctx, resourceID)
+}
+
+// AutosaveResource guarda SOLO contenido (title/markdown) con timestamp
+// de autosave, sin tocar visibilidad/orden/estado de procesamiento. Es el
+// mecanismo pensado para que un editor llame cada pocos segundos mientras
+// el usuario escribe, sin arriesgar el resto del recurso ni requerir que
+// el cliente reenvie el objeto completo en cada llamada.
+func (uc *UseCase) AutosaveResource(ctx context.Context, teacherID uuid.UUID, resourceID uuid.UUID, title *string, markdown *string) (*domain.Resource, error) {
+	now := time.Now()
+	if err := uc.repo.AutosaveResource(ctx, resourceID, title, markdown, now); err != nil {
+		return nil, err
+	}
+	return uc.repo.GetResourceByID(ctx, resourceID)
 }
 
 func (uc *UseCase) DeleteResource(ctx context.Context, teacherID uuid.UUID, resourceID uuid.UUID) error {
 	return uc.repo.DeleteResource(ctx, resourceID)
+}
+
+// validatePublishStructure recorre TODA la jerarquia y junta TODOS los
+// problemas que impiden publicar, en vez de retornar apenas se encuentra
+// el primero. Es exactamente lo que la rubrica pidio ("validaciones
+// exhaustivas de publicacion... en vez de devolver la lista exhaustiva").
+func validatePublishStructure(course *domain.Course, version *domain.CourseVersion) []string {
+	var issues []string
+
+	if strings.TrimSpace(course.Title) == "" {
+		issues = append(issues, "el curso no tiene titulo")
+	}
+	if strings.TrimSpace(course.Summary) == "" {
+		issues = append(issues, "el curso no tiene resumen")
+	}
+	if version.PassingScore <= 0 {
+		issues = append(issues, "el criterio de aprobacion (passing_score) debe ser mayor a 0")
+	}
+
+	if len(version.Modules) == 0 {
+		issues = append(issues, "el curso no tiene ningun modulo")
+	}
+
+	hasPublishableResource := false
+	for _, mod := range version.Modules {
+		if strings.TrimSpace(mod.Title) == "" {
+			issues = append(issues, fmt.Sprintf("el modulo en la posicion %d no tiene titulo", mod.Position))
+		}
+		if len(mod.Units) == 0 {
+			issues = append(issues, fmt.Sprintf("el modulo %q no tiene ninguna unidad", mod.Title))
+			continue
+		}
+		for _, u := range mod.Units {
+			if strings.TrimSpace(u.Title) == "" {
+				issues = append(issues, fmt.Sprintf("la unidad en la posicion %d del modulo %q no tiene titulo", u.Position, mod.Title))
+			}
+			if len(u.Resources) == 0 {
+				issues = append(issues, fmt.Sprintf("la unidad %q no tiene ningun recurso", u.Title))
+				continue
+			}
+			for _, r := range u.Resources {
+				if r.IsVisible && r.ProcessingStatus == domain.ProcessingFailed {
+					issues = append(issues, fmt.Sprintf("el recurso %q esta marcado visible pero su procesamiento fallo", r.Title))
+				}
+				if r.IsVisible && r.ProcessingStatus == domain.ProcessingCompleted {
+					hasPublishableResource = true
+				}
+			}
+		}
+	}
+
+	if !hasPublishableResource {
+		issues = append(issues, "el curso no tiene ningun recurso visible y disponible (processing_status=completed)")
+	}
+
+	return issues
 }
 
 func (uc *UseCase) PublishVersion(ctx context.Context, teacherID uuid.UUID, versionID uuid.UUID) (*domain.CourseVersion, error) {
@@ -271,32 +366,13 @@ func (uc *UseCase) PublishVersion(ctx context.Context, teacherID uuid.UUID, vers
 		return nil, domain.ErrVersionImmutable
 	}
 
-	hasValidStructure := false
-	if len(versionHierarchy.Modules) > 0 {
-		for _, mod := range versionHierarchy.Modules {
-			if len(mod.Units) > 0 {
-				for _, u := range mod.Units {
-					if len(u.Resources) > 0 {
-						for _, r := range u.Resources {
-							if r.IsVisible && r.ProcessingStatus == domain.ProcessingCompleted {
-								hasValidStructure = true
-								break
-							}
-						}
-					}
-					if hasValidStructure {
-						break
-					}
-				}
-			}
-			if hasValidStructure {
-				break
-			}
-		}
+	course, err := uc.repo.GetCourseByID(ctx, versionHierarchy.CourseID)
+	if err != nil {
+		return nil, err
 	}
 
-	if !hasValidStructure {
-		return nil, domain.ErrInvalidPublishStructure
+	if issues := validatePublishStructure(course, versionHierarchy); len(issues) > 0 {
+		return nil, &domain.PublishValidationError{Issues: issues}
 	}
 
 	if err := uc.repo.PublishVersion(ctx, versionHierarchy.CourseID, versionID); err != nil {

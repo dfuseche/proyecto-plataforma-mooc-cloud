@@ -2,6 +2,7 @@ package course
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strconv"
 
@@ -38,6 +39,7 @@ func (h *HTTPHandler) RegisterRoutes(r chi.Router) {
 		r.Patch("/units/{unitId}/reorder-resources", h.ReorderResources)
 
 		r.Put("/resources/{id}", h.UpdateResource)
+		r.Patch("/resources/{id}/autosave", h.AutosaveResource)
 		r.Delete("/resources/{id}", h.DeleteResource)
 
 		r.Post("/versions/{versionId}/publish", h.PublishVersion)
@@ -45,9 +47,12 @@ func (h *HTTPHandler) RegisterRoutes(r chi.Router) {
 }
 
 type APIResponse struct {
-	Success bool   `json:"success"`
-	Data    any    `json:"data,omitempty"`
-	Error   string `json:"error,omitempty"`
+	Success bool     `json:"success"`
+	Data    any      `json:"data,omitempty"`
+	Error   string   `json:"error,omitempty"`
+	// Details lista TODOS los problemas de validacion de publicacion
+	// (ver domain.PublishValidationError), no solo uno.
+	Details []string `json:"details,omitempty"`
 }
 
 func respondJSON(w http.ResponseWriter, status int, data any) {
@@ -60,6 +65,12 @@ func respondError(w http.ResponseWriter, status int, message string) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(APIResponse{Success: false, Error: message})
+}
+
+func respondValidationError(w http.ResponseWriter, status int, message string, details []string) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	json.NewEncoder(w).Encode(APIResponse{Success: false, Error: message, Details: details})
 }
 
 func (h *HTTPHandler) ListCourses(w http.ResponseWriter, r *http.Request) {
@@ -286,15 +297,56 @@ func (h *HTTPHandler) UpdateResource(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var res domain.Resource
-	if err := json.NewDecoder(r.Body).Decode(&res); err != nil {
+	var fields UpdateResourceFields
+	if err := json.NewDecoder(r.Body).Decode(&fields); err != nil {
 		respondError(w, http.StatusBadRequest, "Payload JSON inválido")
 		return
 	}
-	res.ID = resourceID
 
-	updatedRes, err := h.useCase.UpdateResource(r.Context(), uuid.Nil, &res)
+	updatedRes, err := h.useCase.UpdateResource(r.Context(), uuid.Nil, resourceID, fields)
 	if err != nil {
+		if err == domain.ErrResourceNotFound {
+			respondError(w, http.StatusNotFound, err.Error())
+			return
+		}
+		respondError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	respondJSON(w, http.StatusOK, updatedRes)
+}
+
+// AutosaveResource guarda SOLO title/canonical_markdown con un timestamp
+// de autosave distinto del guardado explicito (PUT). Pensado para que un
+// editor lo llame cada pocos segundos mientras el usuario escribe, sin
+// reenviar el recurso completo y sin riesgo de tocar visibilidad/orden.
+func (h *HTTPHandler) AutosaveResource(w http.ResponseWriter, r *http.Request) {
+	idStr := chi.URLParam(r, "id")
+	resourceID, err := uuid.Parse(idStr)
+	if err != nil {
+		respondError(w, http.StatusBadRequest, "ID de recurso inválido")
+		return
+	}
+
+	var payload struct {
+		Title             *string `json:"title"`
+		CanonicalMarkdown *string `json:"canonical_markdown"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
+		respondError(w, http.StatusBadRequest, "Payload JSON inválido")
+		return
+	}
+	if payload.Title == nil && payload.CanonicalMarkdown == nil {
+		respondError(w, http.StatusBadRequest, "autosave requiere al menos 'title' o 'canonical_markdown'")
+		return
+	}
+
+	updatedRes, err := h.useCase.AutosaveResource(r.Context(), uuid.Nil, resourceID, payload.Title, payload.CanonicalMarkdown)
+	if err != nil {
+		if err == domain.ErrResourceNotFound {
+			respondError(w, http.StatusNotFound, err.Error())
+			return
+		}
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -400,8 +452,9 @@ func (h *HTTPHandler) PublishVersion(w http.ResponseWriter, r *http.Request) {
 
 	pubVersion, err := h.useCase.PublishVersion(r.Context(), uuid.Nil, versionID)
 	if err != nil {
-		if err == domain.ErrInvalidPublishStructure {
-			respondError(w, http.StatusBadRequest, err.Error())
+		var validationErr *domain.PublishValidationError
+		if errors.As(err, &validationErr) {
+			respondValidationError(w, http.StatusBadRequest, "la versión no cumple los requisitos de publicación", validationErr.Issues)
 			return
 		}
 		if err == domain.ErrVersionImmutable {

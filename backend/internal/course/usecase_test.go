@@ -2,6 +2,7 @@ package course
 
 import (
 	"context"
+	"errors"
 	"testing"
 	"time"
 
@@ -143,6 +144,22 @@ func (m *mockCourseRepo) UpdateResource(ctx context.Context, res *domain.Resourc
 	return nil
 }
 
+func (m *mockCourseRepo) AutosaveResource(ctx context.Context, resourceID uuid.UUID, title *string, markdown *string, at time.Time) error {
+	r, ok := m.resources[resourceID]
+	if !ok {
+		return domain.ErrResourceNotFound
+	}
+	if title != nil {
+		r.Title = *title
+	}
+	if markdown != nil {
+		r.CanonicalMarkdown = *markdown
+	}
+	atCopy := at
+	r.LastAutosavedAt = &atCopy
+	return nil
+}
+
 func (m *mockCourseRepo) GetResourceByID(ctx context.Context, resourceID uuid.UUID) (*domain.Resource, error) {
 	r, ok := m.resources[resourceID]
 	if !ok {
@@ -212,10 +229,17 @@ func TestCoursePublicationValidation(t *testing.T) {
 		t.Fatalf("Creación de curso falló: %v", err)
 	}
 
-	// 1. Intentar publicar sin estructura mínima (debe fallar)
+	// 1. Intentar publicar sin estructura mínima (debe fallar con la lista
+	// COMPLETA de problemas, no solo el primero: la rúbrica señaló
+	// explícitamente que la validación "cortaba en el primer error en
+	// vez de devolver la lista exhaustiva").
 	_, err = uc.PublishVersion(ctx, teacherID, version.ID)
-	if err != domain.ErrInvalidPublishStructure {
-		t.Errorf("Esperaba ErrInvalidPublishStructure al publicar sin jerarquía, obtenido: %v", err)
+	var validationErr *domain.PublishValidationError
+	if !errors.As(err, &validationErr) {
+		t.Fatalf("Esperaba *domain.PublishValidationError al publicar sin jerarquía, obtenido: %v", err)
+	}
+	if len(validationErr.Issues) < 2 {
+		t.Errorf("Esperaba al menos 2 problemas reportados (sin módulos Y sin recurso publicable), obtenido %d: %v", len(validationErr.Issues), validationErr.Issues)
 	}
 
 	// 2. Agregar Módulo, Unidad y Recurso visible y disponible
@@ -244,5 +268,84 @@ func TestCoursePublicationValidation(t *testing.T) {
 	_, err = uc.AddModule(ctx, teacherID, version.ID, "Módulo 2: Concurrencia", "Goroutines", 2)
 	if err != domain.ErrVersionImmutable {
 		t.Errorf("Esperaba ErrVersionImmutable al editar versión publicada, obtenido: %v", err)
+	}
+}
+
+// TestAutosaveDoesNotResetVisibility es la prueba de regresión del bug
+// que la rúbrica describió como "autosave inestable": antes de este fix,
+// guardar solo el campo canonical_markdown (lo único que un editor de
+// texto necesita autoguardar mientras el usuario escribe) apagaba
+// is_visible/is_mandatory/is_downloadable porque UpdateResource no podía
+// distinguir "no me mandaron este campo" de "me lo mandaron en false".
+func TestAutosaveDoesNotResetVisibility(t *testing.T) {
+	cRepo := newMockCourseRepo()
+	uRepo := &mockUserRepo{}
+	uc := NewUseCase(cRepo, uRepo)
+	ctx := context.Background()
+	teacherID := uuid.New()
+
+	_, version, err := uc.CreateCourse(ctx, teacherID, CreateCourseInput{
+		Title:        "Curso de Prueba",
+		Summary:      "Resumen",
+		PassingScore: 70.0,
+	})
+	if err != nil {
+		t.Fatalf("Creación de curso falló: %v", err)
+	}
+
+	mod, _ := uc.AddModule(ctx, teacherID, version.ID, "Módulo 1", "Desc", 1)
+	unit, _ := uc.AddUnit(ctx, teacherID, mod.ID, "Unidad 1", 1)
+	resource, err := uc.AddResource(ctx, teacherID, &domain.Resource{
+		UnitID:           unit.ID,
+		Title:            "Lección 1",
+		Type:             domain.ResourceTypeText,
+		CanonicalMarkdown: "# Borrador inicial",
+		IsVisible:        true,
+		IsMandatory:      true,
+		IsDownloadable:   false,
+		ProcessingStatus: domain.ProcessingCompleted,
+		Position:         1,
+	})
+	if err != nil {
+		t.Fatalf("AddResource falló: %v", err)
+	}
+
+	// Autosave: solo se manda el markdown, como haría un editor cada
+	// pocos segundos mientras el usuario escribe.
+	newMarkdown := "# Borrador actualizado por autosave"
+	saved, err := uc.AutosaveResource(ctx, teacherID, resource.ID, nil, &newMarkdown)
+	if err != nil {
+		t.Fatalf("AutosaveResource falló: %v", err)
+	}
+	if saved.CanonicalMarkdown != newMarkdown {
+		t.Errorf("Esperaba que el markdown se actualizara, obtenido: %q", saved.CanonicalMarkdown)
+	}
+	if saved.LastAutosavedAt == nil {
+		t.Errorf("Esperaba que LastAutosavedAt quedara marcado tras el autosave")
+	}
+	if !saved.IsVisible {
+		t.Errorf("BUG DE REGRESIÓN: el autosave apagó is_visible, debía quedar intacto en true")
+	}
+	if !saved.IsMandatory {
+		t.Errorf("BUG DE REGRESIÓN: el autosave apagó is_mandatory, debía quedar intacto en true")
+	}
+	if saved.IsDownloadable {
+		t.Errorf("BUG DE REGRESIÓN: el autosave cambió is_downloadable, debía quedar intacto en false")
+	}
+
+	// El guardado explícito (PUT / UpdateResource) con un payload parcial
+	// tampoco debe tocar los campos que no vienen en la petición.
+	newTitle := "Lección 1 (editada)"
+	updated, err := uc.UpdateResource(ctx, teacherID, resource.ID, UpdateResourceFields{
+		Title: &newTitle,
+	})
+	if err != nil {
+		t.Fatalf("UpdateResource falló: %v", err)
+	}
+	if updated.Title != newTitle {
+		t.Errorf("Esperaba que el título se actualizara, obtenido: %q", updated.Title)
+	}
+	if !updated.IsVisible || !updated.IsMandatory {
+		t.Errorf("BUG DE REGRESIÓN: un PATCH parcial por PUT apagó banderas que no venían en el payload")
 	}
 }

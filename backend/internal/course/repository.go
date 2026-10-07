@@ -226,7 +226,7 @@ func (r *PostgresRepository) GetFullVersionHierarchy(ctx context.Context, versio
 			}
 
 			resourcesQuery := `
-				SELECT id, unit_id, stable_id, title, type, canonical_markdown, media_url, is_visible, is_mandatory, is_downloadable, position, processing_status, created_at, updated_at
+				SELECT id, unit_id, stable_id, title, type, canonical_markdown, media_url, is_visible, is_mandatory, is_downloadable, position, processing_status, created_at, updated_at, last_autosaved_at
 				FROM course_resources WHERE unit_id = $1 ORDER BY position ASC
 			`
 			rRows, err := r.db.QueryContext(ctx, resourcesQuery, u.ID)
@@ -240,9 +240,10 @@ func (r *PostgresRepository) GetFullVersionHierarchy(ctx context.Context, versio
 				var res domain.Resource
 				var typeStr, procStr string
 				var canonicalMarkdown, mediaURL sql.NullString
+				var lastAutosavedAt sql.NullTime
 				if err := rRows.Scan(
 					&res.ID, &res.UnitID, &res.StableID, &res.Title, &typeStr, &canonicalMarkdown, &mediaURL,
-					&res.IsVisible, &res.IsMandatory, &res.IsDownloadable, &res.Position, &procStr, &res.CreatedAt, &res.UpdatedAt,
+					&res.IsVisible, &res.IsMandatory, &res.IsDownloadable, &res.Position, &procStr, &res.CreatedAt, &res.UpdatedAt, &lastAutosavedAt,
 				); err != nil {
 					rRows.Close()
 					uRows.Close()
@@ -252,6 +253,9 @@ func (r *PostgresRepository) GetFullVersionHierarchy(ctx context.Context, versio
 				res.ProcessingStatus = domain.ProcessingStatus(procStr)
 				res.CanonicalMarkdown = canonicalMarkdown.String
 				res.MediaURL = mediaURL.String
+				if lastAutosavedAt.Valid {
+					res.LastAutosavedAt = &lastAutosavedAt.Time
+				}
 				resources = append(resources, res)
 			}
 			rRows.Close()
@@ -352,15 +356,16 @@ func (r *PostgresRepository) CreateResource(ctx context.Context, res *domain.Res
 
 func (r *PostgresRepository) GetResourceByID(ctx context.Context, resourceID uuid.UUID) (*domain.Resource, error) {
 	query := `
-		SELECT id, unit_id, stable_id, title, type, canonical_markdown, media_url, is_visible, is_mandatory, is_downloadable, position, processing_status, created_at, updated_at
+		SELECT id, unit_id, stable_id, title, type, canonical_markdown, media_url, is_visible, is_mandatory, is_downloadable, position, processing_status, created_at, updated_at, last_autosaved_at
 		FROM course_resources WHERE id = $1
 	`
 	var res domain.Resource
 	var typeStr, procStr string
 	var canonicalMarkdown, mediaURL sql.NullString
+	var lastAutosavedAt sql.NullTime
 	err := r.db.QueryRowContext(ctx, query, resourceID).Scan(
 		&res.ID, &res.UnitID, &res.StableID, &res.Title, &typeStr, &canonicalMarkdown, &mediaURL,
-		&res.IsVisible, &res.IsMandatory, &res.IsDownloadable, &res.Position, &procStr, &res.CreatedAt, &res.UpdatedAt,
+		&res.IsVisible, &res.IsMandatory, &res.IsDownloadable, &res.Position, &procStr, &res.CreatedAt, &res.UpdatedAt, &lastAutosavedAt,
 	)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
@@ -372,6 +377,9 @@ func (r *PostgresRepository) GetResourceByID(ctx context.Context, resourceID uui
 	res.ProcessingStatus = domain.ProcessingStatus(procStr)
 	res.CanonicalMarkdown = canonicalMarkdown.String
 	res.MediaURL = mediaURL.String
+	if lastAutosavedAt.Valid {
+		res.LastAutosavedAt = &lastAutosavedAt.Time
+	}
 	return &res, nil
 }
 
@@ -386,6 +394,42 @@ func (r *PostgresRepository) UpdateResource(ctx context.Context, res *domain.Res
 		res.Title, res.CanonicalMarkdown, res.MediaURL, res.IsVisible, res.IsMandatory, res.IsDownloadable, res.Position, string(res.ProcessingStatus), res.UpdatedAt, res.ID,
 	)
 	return err
+}
+
+// AutosaveResource actualiza SOLO title/canonical_markdown (si vienen) y
+// last_autosaved_at. A diferencia de UpdateResource, nunca toca
+// is_visible/is_mandatory/is_downloadable/position/processing_status —
+// evita exactamente el bug que hacia inestable el autosave: un guardado
+// parcial no debe poder despublicar un recurso por efecto secundario.
+func (r *PostgresRepository) AutosaveResource(ctx context.Context, resourceID uuid.UUID, title *string, markdown *string, at time.Time) error {
+	query := `
+		UPDATE course_resources
+		SET
+			title = COALESCE($1, title),
+			canonical_markdown = COALESCE($2, canonical_markdown),
+			last_autosaved_at = $3,
+			updated_at = $3
+		WHERE id = $4
+	`
+	var titleArg, markdownArg sql.NullString
+	if title != nil {
+		titleArg = sql.NullString{String: *title, Valid: true}
+	}
+	if markdown != nil {
+		markdownArg = sql.NullString{String: *markdown, Valid: true}
+	}
+	result, err := r.db.ExecContext(ctx, query, titleArg, markdownArg, at, resourceID)
+	if err != nil {
+		return err
+	}
+	rows, err := result.RowsAffected()
+	if err != nil {
+		return err
+	}
+	if rows == 0 {
+		return domain.ErrResourceNotFound
+	}
+	return nil
 }
 
 func (r *PostgresRepository) DeleteResource(ctx context.Context, resourceID uuid.UUID) error {
