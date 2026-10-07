@@ -178,6 +178,9 @@ func main() {
 	if err != nil {
 		log.Printf("[WARNING] No se pudo conectar con MinIO S3 inmediatamente: %v", err)
 	}
+	if storageService != nil {
+		storageService.EnsureBuckets(context.Background())
+	}
 
 	// Inicializar capas de Dominio
 	userRepo := user.NewPostgresRepository(db)

@@ -3,6 +3,7 @@ package media
 import (
 	"context"
 	"fmt"
+	"log"
 	"net"
 	"net/http"
 	"net/url"
@@ -18,6 +19,7 @@ type StorageService struct {
 	client      *minio.Client
 	mediaBucket string
 	badgeBucket string
+	region      string
 }
 
 func NewStorageService(cfg *config.Config) (*StorageService, error) {
@@ -64,6 +66,7 @@ func NewStorageService(cfg *config.Config) (*StorageService, error) {
 		client:      client,
 		mediaBucket: mediaBucket,
 		badgeBucket: badgeBucket,
+		region:      cfg.S3Region,
 	}, nil
 }
 
@@ -125,4 +128,45 @@ func (s *StorageService) GetClient() *minio.Client {
 
 func (s *StorageService) GetMediaBucket() string {
 	return s.mediaBucket
+}
+
+// EnsureBuckets verifica que los buckets de media y badges existan, y los
+// crea si hace falta. Se apoya unicamente en la API estandar de S3
+// (BucketExists/MakeBucket) para funcionar igual contra MinIO, GCS
+// (via su API de interoperabilidad S3) o cualquier otro backend
+// S3-compatible usado en desarrollo local/CI (p. ej. RustFS) -- sin
+// depender de trucos especificos de un backend, como la creacion
+// automatica de buckets a partir de subdirectorios que tenia MinIO.
+//
+// No retorna error: en produccion (GCS) los buckets ya existen y las
+// credenciales HMAC pueden no tener permiso para crearlos, asi que un
+// fallo aqui solo se registra como advertencia y no debe impedir el
+// arranque del servicio.
+func (s *StorageService) EnsureBuckets(ctx context.Context) {
+	for _, bucket := range []string{s.mediaBucket, s.badgeBucket} {
+		if bucket == "" {
+			continue
+		}
+
+		exists, err := s.client.BucketExists(ctx, bucket)
+		if err != nil {
+			log.Printf("[WARNING] No se pudo verificar si el bucket %q existe: %v", bucket, err)
+			continue
+		}
+		if exists {
+			continue
+		}
+
+		opts := minio.MakeBucketOptions{}
+		if s.region != "" {
+			opts.Region = s.region
+		}
+
+		if err := s.client.MakeBucket(ctx, bucket, opts); err != nil {
+			log.Printf("[WARNING] No se pudo crear el bucket %q: %v", bucket, err)
+			continue
+		}
+
+		log.Printf("Bucket %q creado exitosamente", bucket)
+	}
 }

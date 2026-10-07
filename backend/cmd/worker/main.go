@@ -34,6 +34,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error al inicializar almacenamiento S3 en Worker: %v", err)
 	}
+	storage.EnsureBuckets(context.Background())
 
 	courseRepo := course.NewPostgresRepository(db)
 	processor := worker.NewProcessor(storage, courseRepo)

@@ -31,31 +31,54 @@ services:
       timeout: 5s
       retries: 5
 
+  # Prepara el volumen de datos para RustFS: el contenedor principal
+  # corre como el usuario no-root "rustfs" (uid 10001), pero el volumen
+  # "minio_data" ya existia de ejecuciones previas con la imagen de
+  # MinIO (que corria distinto usuario), asi que sin este paso RustFS
+  # falla con "Permission denied" al intentar escribir en /data. Este
+  # servicio corre una sola vez, como root, ajusta el dueño del volumen
+  # y termina; "minio" espera a que termine exitosamente antes de
+  # arrancar.
+  minio-init:
+    image: busybox:latest
+    container_name: mooc-minio-init
+    command: ["sh", "-c", "chown -R 10001:10001 /data"]
+    volumes:
+      - minio_data:/data
+
   minio:
     # MinIO dejo de publicar imagenes gratuitas en Docker Hub a fines de
-    # 2025 (la ultima release comunitaria quedo en septiembre de 2025) y
-    # archivo el repo de GitHub en abril de 2026, empujando a un producto
-    # con licencia (AIStor). "minio/minio:latest" en Docker Hub ya
-    # devuelve "pull access denied" para quien no lo tenga cacheado.
-    # quay.io sirve un mirror con esa misma ultima release comunitaria.
-    # Si ese mirror tambien deja de servir imagenes, la alternativa
-    # documentada por la comunidad es migrar a un store S3-compatible
-    # como RustFS (rustfs/rustfs).
-    image: quay.io/minio/minio:latest
+    # 2025 y archivo su repo de GitHub en abril de 2026, empujando a un
+    # producto con licencia (AIStor). Tanto "minio/minio:latest" (Docker
+    # Hub) como el mirror "quay.io/minio/minio:latest" ya devuelven error
+    # de autorizacion al intentar hacer pull. Se migro a RustFS
+    # (rustfs/rustfs), un store S3-compatible en Rust que la comunidad
+    # recomienda como reemplazo para desarrollo local/CI, y que acepta
+    # las mismas variables MINIO_ROOT_USER/MINIO_ROOT_PASSWORD (las
+    # mapea automaticamente a sus equivalentes RUSTFS_*).
+    #
+    # El truco anterior de "mkdir -p" para que MinIO creara los buckets
+    # a partir de subdirectorios ya no aplica (RustFS no lo soporta): en
+    # su lugar, el backend ahora crea los buckets el mismo al arrancar
+    # via la API estandar de S3 (ver StorageService.EnsureBuckets en
+    # backend/internal/media/s3.go), que funciona igual contra RustFS,
+    # MinIO o GCS.
+    image: rustfs/rustfs:latest
     container_name: mooc-minio
     restart: always
-    entrypoint: sh
-    command: -c 'mkdir -p /data/mooc-media /data/mooc-badges && /usr/bin/minio server /data --console-address ":9001"'
+    depends_on:
+      minio-init:
+        condition: service_completed_successfully
     environment:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadminpassword
     ports:
       - "9002:9000" # API S3
-      - "9003:9001" # Consola Web MinIO
+      - "9003:9001" # Consola Web
     volumes:
       - minio_data:/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      test: ["CMD", "curl", "-f", "http://localhost:9000/health"]
       interval: 5s
       timeout: 5s
       retries: 5
