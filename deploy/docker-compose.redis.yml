@@ -1,0 +1,28 @@
+version: '3.8'
+
+# Redis vive en su propia VM, fuera de los grupos elasticos de API y
+# workers, porque la Entrega 3 exige que la cola compartida no dependa
+# de una instancia que el autoscaling pueda crear o retirar (ver
+# docs/entrega3/arquitectura.md). Antes vivia junto al worker en
+# deploy/docker-compose.worker.yml; se separo a este archivo cuando
+# worker-server paso a ser un grupo de instancias administradas (MIG)
+# con 1 a 3 replicas.
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: mooc-redis
+    restart: always
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  redis_data:
