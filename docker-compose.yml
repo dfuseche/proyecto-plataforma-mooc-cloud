@@ -132,6 +132,24 @@ services:
     depends_on:
       - api
 
+  # Servicio opcional, no se levanta en un `docker compose up` normal
+  # (profiles: ["test"]): corre la suite E2E real (build tag "e2e") contra
+  # el propio stack de Compose, reutilizando el target "builder" del
+  # Dockerfile del backend (que ya tiene el toolchain de Go) en vez de
+  # instalar Go en la máquina del desarrollador. Uso:
+  #   docker compose --profile test run --rm e2e-tests
+  e2e-tests:
+    profiles: ["test"]
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: builder
+    command: ["go", "test", "-tags=e2e", "-v", "-count=1", "./tests/e2e/..."]
+    environment:
+      E2E_BASE_URL: "http://nginx"
+    depends_on:
+      - nginx
+
 volumes:
   postgres_data:
   redis_data:

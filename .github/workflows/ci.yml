@@ -63,3 +63,148 @@ jobs:
         run: |
           cd backend
           go test -v ./...
+
+  lint:
+    name: Lint (golangci-lint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.27'
+          cache: true
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          working-directory: backend
+          args: --timeout=5m
+
+  security:
+    name: Security Scan (gosec)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.27'
+          cache: true
+
+      - name: Run gosec
+        uses: securego/gosec@master
+        with:
+          args: '-fmt=sarif -out=gosec-results.sarif ./...'
+        working-directory: backend
+
+      - name: Upload gosec SARIF report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gosec-sarif-report
+          path: backend/gosec-results.sarif
+          retention-days: 30
+
+  e2e:
+    name: E2E Tests (live Docker Compose stack)
+    runs-on: ubuntu-latest
+    needs: [ test ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Las pruebas E2E (tests/e2e/critical_flows_test.go, build tag "e2e")
+      # corren por HTTP real contra el stack completo levantado por
+      # Docker Compose (api + worker + nginx + postgres + redis + minio),
+      # nunca contra dobles en memoria — ver docker-compose.yml, servicio
+      # "e2e-tests" (profiles: ["test"]).
+      - name: Start full stack
+        run: docker compose up -d --build
+
+      - name: Wait for API health
+        run: |
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:8081/health > /dev/null; then
+              echo "API healthy"
+              exit 0
+            fi
+            echo "Esperando a que la API esté lista... ($i/30)"
+            sleep 2
+          done
+          echo "La API nunca quedó healthy"
+          docker compose logs
+          exit 1
+
+      - name: Run E2E suite
+        run: docker compose --profile test run --rm e2e-tests
+
+      - name: Dump stack logs on failure
+        if: failure()
+        run: docker compose logs
+
+      - name: Tear down stack
+        if: always()
+        run: docker compose down -v
+
+  postman:
+    name: Postman Collection (newman)
+    runs-on: ubuntu-latest
+    needs: [ test ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Start full stack
+        run: docker compose up -d --build
+
+      - name: Wait for API health
+        run: |
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:8081/health > /dev/null; then
+              echo "API healthy"
+              exit 0
+            fi
+            echo "Esperando a que la API esté lista... ($i/30)"
+            sleep 2
+          done
+          echo "La API nunca quedó healthy"
+          docker compose logs
+          exit 1
+
+      - name: Install newman
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Run Postman collection against the live stack
+        run: |
+          newman run postman_collection.json \
+            --env-var baseUrl=http://localhost:8081 \
+            --reporters cli,junit,htmlextra \
+            --reporter-junit-export newman-report/junit.xml \
+            --reporter-htmlextra-export newman-report/report.html \
+            || echo "newman_failed=1" >> "$GITHUB_ENV"
+
+      - name: Upload Postman run report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: postman-report
+          path: newman-report/
+          retention-days: 30
+
+      - name: Fail job if newman reported failures
+        if: env.newman_failed == '1'
+        run: exit 1
+
+      - name: Dump stack logs on failure
+        if: failure()
+        run: docker compose logs
+
+      - name: Tear down stack
+        if: always()
+        run: docker compose down -v

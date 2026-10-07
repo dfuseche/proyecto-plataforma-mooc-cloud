@@ -220,16 +220,56 @@ erDiagram
 7. **Backup y recuperación de PostgreSQL (RPO ≤ 15 min, RTO ≤ 4 h)**:
    - `scripts/backup/backup_postgres.sh` toma `pg_dump` periódicos (programado cada 10 min) y `scripts/backup/restore_postgres.sh` restaura desde cualquiera de esos dumps, verificando al final el conteo de filas. Procedimiento completo, objetivo de RPO/RTO y evidencia de una restauración real (con pérdida de datos simulada) en [`docs/OPERACIONES.md`](docs/OPERACIONES.md).
 
+8. **Validación exhaustiva de publicación y autosave estable**:
+   - `PublishVersion` recorre toda la jerarquía y junta **todos** los problemas que impiden publicar (curso sin título/resumen, `passing_score` ≤ 0, módulos sin unidades, unidades sin recursos, recursos visibles con procesamiento fallido, falta de recurso publicable) en un único `PublishValidationError`, devuelto completo en `details` por `POST .../publish` — antes se cortaba en el primer problema encontrado.
+   - Se agregó `PATCH /resources/{id}/autosave`, que guarda solo `title`/`canonical_markdown` y marca `last_autosaved_at`, sin tocar nunca `is_visible`/`is_mandatory`/`is_downloadable`/`position`/`processing_status`. Esto corrige un bug real: el `PUT` de recursos decodificaba el payload directo a `domain.Resource`, y como los booleanos no tienen forma de distinguir "no vino en la petición" de "vino en `false`", cualquier guardado parcial apagaba `is_visible` y compañía — la causa concreta del "autosave inestable" señalado por la rúbrica.
+   - Evidencia (`go test ./internal/course/... -v`, vía `docker build --target builder` + `docker run`, 2026-10-07):
+     ```
+     === RUN   TestCoursePublicationValidation
+     --- PASS: TestCoursePublicationValidation (0.00s)
+     === RUN   TestAutosaveDoesNotResetVisibility
+     --- PASS: TestAutosaveDoesNotResetVisibility (0.00s)
+     PASS
+     ok      github.com/mooc-platform/backend/internal/course        0.003s
+     ```
+     `TestAutosaveDoesNotResetVisibility` es la prueba de regresión del bug descrito arriba; `TestCoursePublicationValidation` ahora exige que el error de publicación traiga al menos 2 problemas distintos cuando faltan varios a la vez.
+
+9. **E2E reales, lint, análisis de seguridad y observabilidad en CI**:
+   - `tests/e2e/critical_flows_test.go` (build tag `e2e`) dejó de usar `mockE2ERepo` en memoria: ahora es un cliente HTTP real que recorre 9 flujos críticos (salud, registro, verificación de correo, login, autoría de jerarquía de curso, rechazo de publicación con lista exhaustiva de errores, publicación exitosa + catálogo, inscripción + heartbeat, envío de quiz + rechazo de reenvío duplicado) contra el stack **desplegado** (API + Postgres + Redis + MinIO vía Docker Compose), apuntando a `nginx` en vez de a un doble. Se corre con `docker compose --profile test run --rm e2e-tests` (servicio nuevo en `docker-compose.yml`, reutiliza el target `builder` del `Dockerfile` para no requerir Go instalado localmente).
+   - `.github/workflows/ci.yml` ahora tiene 5 jobs: `test` (build+unitarias, igual que antes), `lint` (`golangci-lint`), `security` (`gosec`, sube el reporte SARIF como artifact), `e2e` (levanta el stack completo con Docker Compose y corre la suite anterior) y `postman` (corre `postman_collection.json` con `newman` contra el stack real y sube el reporte HTML/JUnit como artifact de CI — antes la colección existía pero no se ejecutaba de forma automatizada ni dejaba evidencia guardada).
+   - Se agregó `GET /metrics` (`internal/middleware/metrics.go`) con contadores en formato Prometheus (`http_requests_total`, `http_request_duration_seconds_sum`, `http_requests_errors_total`), sin dependencias nuevas de Go. La correlación por `request_id` y el logging de acceso **ya existían** antes de este trabajo (middlewares propios de chi: `RequestID`, `Logger`); lo que faltaba y se documenta en [`docs/OPERACIONES.md`](docs/OPERACIONES.md), sección "Observabilidad", es el endpoint de métricas y un ejemplo de regla de alerta.
+   - Evidencia real (`docker compose --profile test run --build --rm e2e-tests`, 2026-10-07): la primera corrida encontró un bug genuino (abajo); corregido, la siguiente corrida pasó completa:
+     ```
+     --- PASS: TestE2ECriticalFlows (0.28s)
+         --- PASS: TestE2ECriticalFlows/01_health_check (0.00s)
+         --- PASS: TestE2ECriticalFlows/02_registro_estudiante (0.09s)
+         --- PASS: TestE2ECriticalFlows/03_verificacion_email (0.01s)
+         --- PASS: TestE2ECriticalFlows/04_login_y_sesion (0.07s)
+         --- PASS: TestE2ECriticalFlows/05_autoria_jerarquia_curso (0.02s)
+         --- PASS: TestE2ECriticalFlows/06_publicacion_rechazada_lista_exhaustiva (0.01s)
+         --- PASS: TestE2ECriticalFlows/07_publicacion_exitosa_y_catalogo (0.01s)
+         --- PASS: TestE2ECriticalFlows/08_inscripcion_y_heartbeat (0.02s)
+         --- PASS: TestE2ECriticalFlows/09_quiz_envio_y_rechazo_doble_envio (0.03s)
+     PASS
+     ok      github.com/mooc-platform/backend/tests/e2e      0.287s
+     ```
+     Ver [`docs/OPERACIONES.md`](docs/OPERACIONES.md), sección "Observabilidad", para la evidencia de `/metrics` de esta misma corrida, incluyendo el bug real que la primera ejecución expuso (tipo de recurso inválido → 500 en vez de 400) y el hallazgo colateral de validación de entrada que quedó pendiente.
+   - _TODO: pegar aquí la salida real de los jobs `lint`/`security`/`postman` corriendo en GitHub Actions (o localmente), la primera vez que se ejecuten._
+
 ---
 
 ## 🚀 8. Verificación y Calidad de Código
 
-El backend cuenta con una suite integral de pruebas unitarias y de integración de flujos críticos E2E que aseguran el funcionamiento correcto de todos los dominios:
+El backend cuenta con una suite de pruebas unitarias por dominio (`go test ./...`, dobles en memoria — rápidas, para lógica de negocio) y una suite E2E real separada (`go test -tags=e2e ./tests/e2e/...`, HTTP contra el stack desplegado — ver punto 9 arriba) que no se mezclan: la primera no requiere Docker, la segunda sí.
 
 ```bash
-# Ejecutar todas las pruebas unitarias y E2E
+# Pruebas unitarias/integración (dobles en memoria, sin stack levantado)
 cd backend
 go test -v ./...
+
+# Pruebas E2E reales (requieren el stack de Docker Compose levantado)
+docker compose up -d --build
+docker compose --profile test run --rm e2e-tests
 ```
 
-Estado de cobertura de pruebas: **100% APROBADO (PASS)**.
+Pipeline de CI (`.github/workflows/ci.yml`): build + pruebas unitarias, lint (`golangci-lint`), análisis de seguridad estática (`gosec`), suite E2E contra el stack real, y ejecución de la colección Postman vía `newman` con reporte guardado como artifact — ver punto 9 arriba.

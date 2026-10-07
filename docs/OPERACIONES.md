@@ -128,3 +128,144 @@ ofrece respaldos automáticos administrados (ver
 `docs/entrega2/ARCHITECTURE_CLOUD.md`, "Migración y Respaldo de Base de
 Datos": retención diaria activada). Estos scripts aplican al entorno
 local de `docker-compose.yml` usado en la Entrega 1 / desarrollo.
+
+## Observabilidad
+
+### Qué existe y qué no (corrección respecto a una afirmación anterior)
+
+El proyecto **ya tenía** correlación de peticiones y logging de acceso
+estructurado antes de este trabajo: `cmd/api/main.go` registra los
+middlewares propios de chi (`middleware.RequestID`, `middleware.Logger`,
+junto a `middleware.RealIP` y `middleware.Recoverer`), que:
+
+- generan un `X-Request-ID` único por petición (o reutilizan el que venga
+  del cliente/proxy),
+- lo incluyen en cada línea de log de acceso,
+- registran método, ruta, código de estado y duración de cada request.
+
+Lo que **sí faltaba**, y es lo que se agrega aquí, es:
+
+1. **Métricas agregadas** (contadores, no solo logs línea por línea) —
+   ver abajo.
+2. **Un ejemplo documentado de regla de alertas** sobre esas métricas.
+
+### Endpoint de métricas
+
+`GET /metrics` expone contadores en formato de texto de Prometheus
+(`internal/middleware/metrics.go`), sin añadir una dependencia nueva de
+Go (ver comentario en ese archivo sobre por qué es una implementación
+manual y no `client_golang`):
+
+- `http_requests_total{method,path,status}` — contador de peticiones.
+- `http_request_duration_seconds_sum{method,path,status}` — suma de
+  duración, para calcular latencia promedio dividiendo por el contador
+  anterior.
+- `http_requests_errors_total{method,path}` — peticiones con status >= 500.
+- `process_uptime_seconds` — tiempo desde que el proceso arrancó.
+
+Las rutas se normalizan (los segmentos que son UUID o numéricos se
+reemplazan por `:id`) para que la cardinalidad de series no crezca sin
+límite con cada curso/recurso/intento distinto.
+
+Verificación rápida (requiere el stack levantado):
+
+```bash
+curl -s http://localhost:8081/metrics | head -30
+```
+
+Evidencia real (primera corrida, 2026-10-07, fragmento — contadores de
+una ejecución de la suite E2E completa):
+
+```
+http_requests_total{method="POST",path="/api/v1/learning/heartbeat",status="200"} 1
+http_requests_total{method="GET",path="/health",status="200"} 2
+# HELP http_request_duration_seconds_sum ...
+http_request_duration_seconds_sum{method="POST",path="/api/v1/auth/login",status="200"} 0.078463
+http_request_duration_seconds_sum{method="POST",path="/api/v1/auth/register",status="201"} 0.097042
+http_request_duration_seconds_sum{method="POST",path="/api/v1/auth/verify-email",status="200"} 0.008920
+http_request_duration_seconds_sum{method="POST",path="/api/v1/courses",status="201"} 0.016652
+http_request_duration_seconds_sum{method="POST",path="/api/v1/courses/modules/:id/units",status="201"} 0.005186
+http_request_duration_seconds_sum{method="POST",path="/api/v1/courses/resources/quiz",status="400"} 0.000038
+http_request_duration_seconds_sum{method="POST",path="/api/v1/courses/units/:id/resources",status="500"} 0.001570
+http_request_duration_seconds_sum{method="POST",path="/api/v1/courses/versions/:id/modules",status="201"} 0.005701
+http_request_duration_seconds_sum{method="POST",path="/api/v1/courses/versions/:id/publish",status="400"} 0.020857
+http_request_duration_seconds_sum{method="POST",path="/api/v1/learning/enrollments",status="201"} 0.008545
+http_request_duration_seconds_sum{method="POST",path="/api/v1/learning/heartbeat",status="200"} 0.009098
+http_request_duration_seconds_sum{method="GET",path="/health",status="200"} 0.000079
+# HELP http_requests_errors_total ...
+http_requests_errors_total{method="POST",path="/api/v1/courses/units/:id/resources"} 1
+```
+
+Esta primera corrida sirvió de prueba real de que `/metrics` funciona,
+pero también **confirmó el valor de tener E2E reales**: expuso un 500 en
+`POST .../units/{unitId}/resources`, causado por la propia suite E2E
+(usaba `"type": "article"`, que no está en el `CHECK` de
+`course_resources.type` — ver migración `000002`). Ya se corrigió en
+`tests/e2e/critical_flows_test.go` (ahora usa `"type": "text"`).
+
+**Hallazgo colateral, no corregido todavía**: ese error debería haber
+sido un 400 de validación ("tipo de recurso inválido"), no un 500 — el
+handler de `AddResource` no valida `Type` contra la lista permitida
+antes de insertar, así que cualquier valor fuera del `CHECK` de la base
+de datos se ve como un error interno del servidor en vez de un error de
+entrada del cliente. No estaba entre los 4 sub-ítems seleccionados para
+este punto; queda como mejora pendiente si se quiere endurecer la
+validación de entrada.
+
+> _TODO: tras el fix del test, volver a correr
+> `docker compose --profile test run --rm e2e-tests` y pegar aquí la
+> salida completa de `curl http://localhost:8081/metrics` de una corrida
+> limpia (sin el 500), para que esta sección tenga evidencia de un caso
+> exitoso además de uno que encontró un bug real._
+
+### Correlacionar un request específico en los logs
+
+Cuando una métrica (p.ej. un conteo elevado de `http_requests_errors_total`
+para una ruta/método) señala un problema, el siguiente paso es encontrar
+las peticiones concretas que fallaron:
+
+```bash
+# 1. Ver los logs de la API con su request_id
+docker compose logs api | grep "reqId"
+
+# 2. Una vez identificado un request_id puntual (p.ej. de un reporte de
+#    usuario con hora aproximada), filtrar por él:
+docker compose logs api | grep "<request_id>"
+```
+
+Como el `X-Request-ID` se propaga en la respuesta HTTP (cabecera de chi),
+un cliente (frontend, Postman, curl -v) puede capturarlo de la respuesta
+y reportarlo junto con el error, cerrando el ciclo "usuario reporta algo
+raro -> se encuentra exactamente esa petición en los logs".
+
+### Ejemplo de regla de alerta (diseño documentado)
+
+No se despliega un stack completo de Prometheus + Alertmanager para este
+proyecto (está fuera de alcance para la entrega), pero se documenta aquí
+una regla de alerta concreta y evaluable, como evidencia de diseño de
+observabilidad más allá de "hay un endpoint de métricas":
+
+```yaml
+# Ejemplo de regla de Prometheus (prometheus/alerting rules). Asume un
+# scrape job apuntando a GET /metrics con el label job="mooc-api".
+groups:
+  - name: mooc-api-alerts
+    rules:
+      - alert: MoocApiHighErrorRate
+        expr: |
+          sum(rate(http_requests_errors_total{job="mooc-api"}[5m]))
+            /
+          sum(rate(http_requests_total{job="mooc-api"}[5m]))
+          > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Tasa de errores 5xx > 5% en la API de MOOC"
+          description: >-
+            Más del 5% de las peticiones de los últimos 5 minutos
+            devolvieron un error de servidor. Revisar
+            `docker compose logs api` filtrando por request_id de las
+            peticiones fallidas (ver sección "Correlacionar un request
+            específico en los logs" arriba).
+```

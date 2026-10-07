@@ -189,6 +189,7 @@ func main() {
 
 	authMw := internalMw.NewAuthMiddleware(userRepo)
 	rateLimiter := internalMw.NewRateLimiter(rdb, 100, 1*time.Minute)
+	metrics := internalMw.NewMetrics()
 
 	// Router Chi
 	r := chi.NewRouter()
@@ -199,6 +200,11 @@ func main() {
 	r.Use(middleware.RealIP)
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
+	// Metrics va después de Recoverer (para no perderse si un handler
+	// hace panic) y antes de Idempotency/Authenticate, así cuenta TODAS
+	// las peticiones que llegan al router, incluidas las rechazadas por
+	// autenticación o limitadas por rate limit.
+	r.Use(metrics.Middleware)
 	r.Use(internalMw.Idempotency(rdb))
 	r.Use(authMw.Authenticate)
 
@@ -224,6 +230,13 @@ func main() {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte(`{"status":"ok", "timestamp":"` + time.Now().Format(time.RFC3339) + `"}`))
 	})
+
+	// Métricas básicas en formato Prometheus (contadores de peticiones,
+	// duración acumulada y errores 5xx, por método+ruta normalizada).
+	// Ver docs/OPERACIONES.md, sección "Observabilidad", para cómo
+	// correlacionar un request_id de un log con una fila de estas
+	// métricas y para un ejemplo de regla de alertas.
+	r.Get("/metrics", metrics.Handler())
 
 	// Registrar rutas de dominios
 	courseHandler.RegisterRoutes(r)
