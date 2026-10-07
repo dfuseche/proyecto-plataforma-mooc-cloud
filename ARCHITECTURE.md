@@ -267,7 +267,7 @@ erDiagram
      --- PASS: TestLastAdminProtection (0.04s)
      ok      github.com/mooc-platform/backend/internal/user  0.167s
      ```
-   - Hallazgo real al correr esto por primera vez en GitHub Actions: los jobs `e2e` y `postman` fallaban al hacer `docker compose up` con `pull access denied for minio/minio` — no es un bug del proyecto, MinIO dejó de publicar imágenes gratuitas en Docker Hub (última release comunitaria en septiembre de 2025, repo de GitHub archivado en abril de 2026). Localmente no se notaba porque la imagen ya estaba cacheada de antes. Corregido en `docker-compose.yml` apuntando a `quay.io/minio/minio:latest` (mirror que sirve esa misma última release comunitaria).
+   - Durante la implementación se encontró y resolvió un problema real de infraestructura (MinIO dejó de poder descargarse desde Docker Hub, se migró a RustFS) — ver [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) para el detalle completo, incluyendo la evidencia de la suite E2E (9/9) pasando de nuevo tras el fix.
    - _TODO: pegar aquí la salida real de los jobs `lint`/`security`/`postman`/`e2e` corriendo en GitHub Actions tras este fix, la primera vez que se ejecuten allí con éxito._
 
 ---

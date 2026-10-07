@@ -42,7 +42,7 @@ jobs:
             --project="${{ vars.GCP_PROJECT_ID }}" \
             --zone="${{ vars.GCP_ZONE }}" \
             --tunnel-through-iap \
-            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && docker compose -f deploy/docker-compose.web.yml up -d --build"
+            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && docker-compose -f deploy/docker-compose.web.yml up -d --build"
 
       - name: Desplegar en worker-server (Worker Asíncrono + Redis)
         run: |
@@ -50,7 +50,7 @@ jobs:
             --project="${{ vars.GCP_PROJECT_ID }}" \
             --zone="${{ vars.GCP_ZONE }}" \
             --tunnel-through-iap \
-            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && docker compose -f deploy/docker-compose.worker.yml up -d --build"
+            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && docker-compose -f deploy/docker-compose.worker.yml up -d --build"
 
       # worker-server no tiene IP pública (ver ARCHITECTURE_CLOUD.md,
       # subred privada), así que no se puede healthcheckear directo desde
