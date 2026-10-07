@@ -18,7 +18,7 @@ CONTAINER="${1:?Uso: ./monitor_vm.sh <contenedor> [intervalo] [salida.csv]}"
 INTERVAL="${2:-5}"
 OUT="${3:-metrics_$(hostname)_$(date +%Y%m%d_%H%M%S).csv}"
 
-echo "host,timestamp,container_cpu_pct,container_mem_used_mb,container_mem_limit_mb,container_net_rx_mb,container_net_tx_mb,host_cpu_used_pct,host_mem_used_mb,host_mem_total_mb,host_load1,pg_active_connections" > "$OUT"
+echo "host,timestamp,container_cpu_pct,container_mem_used_mb,container_mem_limit_mb,container_net_rx_mb,container_net_tx_mb,host_cpu_used_pct,host_mem_used_mb,host_mem_total_mb,host_load1,host_disk_used_pct,host_disk_read_kb_s,host_disk_write_kb_s,pg_active_connections" > "$OUT"
 
 echo "Escribiendo metricas cada ${INTERVAL}s en $OUT (Ctrl+C para detener)..."
 
@@ -37,8 +37,16 @@ get_pg_active_connections() {
     "SELECT count(*) FROM pg_stat_activity WHERE state = 'active';" 2>/dev/null | tr -d '[:space:]' || echo ""
 }
 
+# Estado previo de /proc/diskstats para calcular KB/s leidos/escritos entre
+# muestras (sector = 512 bytes). Vacio en la primera iteracion -> primera
+# fila de disco I/O queda vacia, normal y esperado.
+prev_disk_ts=""
+prev_read_sectors=""
+prev_write_sectors=""
+
 while true; do
   ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+  now_epoch=$(date +%s)
 
   # --- Metricas del contenedor (docker stats, una sola muestra) ---
   stats=$(docker stats "$CONTAINER" --no-stream --format '{{.CPUPerc}}|{{.MemUsage}}|{{.NetIO}}' 2>/dev/null || echo "||")
@@ -58,9 +66,38 @@ while true; do
   host_mem_total=$(echo "$mem_line" | cut -d, -f2)
   load1=$(cut -d' ' -f1 /proc/loadavg)
 
+  # --- Disco: % de uso del filesystem raiz y throughput agregado de
+  # todos los discos fisicos (suma de /proc/diskstats, excluye loop/dm) ---
+  disk_used_pct=$(df -P / | awk 'NR==2 {gsub("%","",$5); print $5}')
+
+  read_sectors=0
+  write_sectors=0
+  while read -r _major _minor dev_name _reads_completed _reads_merged sectors_read _ms_reading _writes_completed _writes_merged sectors_written _rest; do
+    case "$dev_name" in
+      loop*|dm-*) continue ;;
+    esac
+    if [[ "$dev_name" =~ ^(sd|vd|nvme|xvd) ]]; then
+      read_sectors=$((read_sectors + sectors_read))
+      write_sectors=$((write_sectors + sectors_written))
+    fi
+  done < /proc/diskstats
+
+  disk_read_kb_s=""
+  disk_write_kb_s=""
+  if [ -n "$prev_disk_ts" ]; then
+    elapsed=$((now_epoch - prev_disk_ts))
+    if [ "$elapsed" -gt 0 ]; then
+      disk_read_kb_s=$(( (read_sectors - prev_read_sectors) * 512 / 1024 / elapsed ))
+      disk_write_kb_s=$(( (write_sectors - prev_write_sectors) * 512 / 1024 / elapsed ))
+    fi
+  fi
+  prev_disk_ts=$now_epoch
+  prev_read_sectors=$read_sectors
+  prev_write_sectors=$write_sectors
+
   pg_conns=$(get_pg_active_connections)
 
-  echo "$(hostname),$ts,$cpu_pct,$mem_used,$mem_limit,$net_rx,$net_tx,$host_cpu_used,$host_mem_used,$host_mem_total,$load1,$pg_conns" | tee -a "$OUT" >/dev/null
+  echo "$(hostname),$ts,$cpu_pct,$mem_used,$mem_limit,$net_rx,$net_tx,$host_cpu_used,$host_mem_used,$host_mem_total,$load1,$disk_used_pct,$disk_read_kb_s,$disk_write_kb_s,$pg_conns" | tee -a "$OUT" >/dev/null
 
   sleep "$INTERVAL"
 done
