@@ -74,7 +74,11 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.27'
+          # Solo este job fija 1.25 (la version del go.mod y del Dockerfile):
+          # con '1.27' golangci-lint v2.13 no puede leer la stdlib de Go 1.27
+          # ("export data version 5 is greater than maximum supported version 4")
+          # porque el binario del linter esta compilado con un Go anterior.
+          go-version: '1.25'
           cache: true
 
       - name: Run golangci-lint
