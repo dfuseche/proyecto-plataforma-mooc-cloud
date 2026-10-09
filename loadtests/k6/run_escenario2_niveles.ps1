@@ -45,6 +45,11 @@ if ($RepetirUltimoNivel) {
 
 $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
 
+# Ventanas exactas de cada nivel (UTC) para cruzarlas con los CSV de
+# monitor_vm.sh (Web Server / Worker Server) sin tener que inferirlas.
+$ventanasCsv = Join-Path $resultsDir "$timestamp`_ventanas.csv"
+"nivel,inicio_utc,fin_utc" | Out-File -FilePath $ventanasCsv -Encoding ascii
+
 Write-Host "=== Escenario 2: $($niveles.Count) corridas contra $BaseUrl ===" -ForegroundColor Cyan
 
 for ($idx = 0; $idx -lt $niveles.Count; $idx++) {
@@ -55,6 +60,7 @@ for ($idx = 0; $idx -lt $niveles.Count; $idx++) {
   Write-Host ""
   Write-Host "--- [$($idx + 1)/$($niveles.Count)] $($n.tag): UPLOAD_VUS=$($n.upload) PLAYBACK_VUS=$($n.playback) DURATION=$($n.dur) ---" -ForegroundColor Yellow
 
+  $inicioUtc = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
   k6 run `
     -e BASE_URL=$BaseUrl `
     -e UPLOAD_VUS=$($n.upload) `
@@ -65,6 +71,8 @@ for ($idx = 0; $idx -lt $niveles.Count; $idx++) {
     --summary-export=$jsonOut `
     (Join-Path $scriptDir "media-load-test.js") 2>&1 | Tee-Object -FilePath $logOut
 
+  $finUtc = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+  "$($n.tag),$inicioUtc,$finUtc" | Out-File -FilePath $ventanasCsv -Encoding ascii -Append
   Write-Host "Resultado guardado en: $jsonOut" -ForegroundColor Green
 
   if ($idx -lt $niveles.Count - 1) {
@@ -74,4 +82,4 @@ for ($idx = 0; $idx -lt $niveles.Count; $idx++) {
 }
 
 Write-Host ""
-Write-Host "=== Listo. Resultados en $resultsDir ===" -ForegroundColor Cyan
+Write-Host "=== Listo. Resultados en $resultsDir (ventanas por nivel: $ventanasCsv) ===" -ForegroundColor Cyan

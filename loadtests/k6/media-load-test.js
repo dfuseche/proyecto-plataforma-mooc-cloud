@@ -62,6 +62,7 @@
 //   PLAYBACK_DURATION             duracion del escenario de reproduccion (default 3m)
 //   PLAYBACK_POOL_SIZE           cuantos videos se pre-transcodifican en el setup para el escenario de reproduccion (default 3: uno por perfil, rotando)
 //   PRETRANSCODED_RESOURCE_IDS   CSV de resource_id ya transcodificados; si se define, el setup NO sube nada nuevo y reutiliza estos para consumo_hls
+//   SETUP_MAX_WAIT_SECONDS       cuanto esperar, POR VIDEO, en el setup (default 1200). Si el worker aun tiene cola de un nivel anterior, el video del pool queda detras de ella: esperar aqui es esperar el drenado de la cola, y no cuenta como medicion
 //   MAX_WAIT_FOR_MANIFEST_SECONDS cuanto esperar a que un video termine de transcodificarse antes de darlo por fallido (default 180: el perfil pesado con 4 renditions tarda mucho mas en 2 vCPU)
 //   POLL_INTERVAL_SECONDS        cada cuanto reconsultar stream-url mientras se espera la transcodificacion (default 3)
 //   MAX_SEGMENTS_PER_ITERACION    tope de segmentos .ts a descargar por reproduccion, para no bajar videos larguisimos completos en cada iteracion (default 5)
@@ -88,6 +89,7 @@ const PRETRANSCODED_RESOURCE_IDS = (__ENV.PRETRANSCODED_RESOURCE_IDS || '')
   .filter((id) => id.length > 0);
 
 const MAX_WAIT_FOR_MANIFEST_SECONDS = Number(__ENV.MAX_WAIT_FOR_MANIFEST_SECONDS || 180);
+const SETUP_MAX_WAIT_SECONDS = Number(__ENV.SETUP_MAX_WAIT_SECONDS || 1200);
 const POLL_INTERVAL_SECONDS = Number(__ENV.POLL_INTERVAL_SECONDS || 3);
 const MAX_SEGMENTS_PER_ITERACION = Number(__ENV.MAX_SEGMENTS_PER_ITERACION || 5);
 
@@ -161,7 +163,15 @@ export const options = {
     'http_req_duration{endpoint:stream_url}': ['p(95)<500'],
     'http_req_duration{endpoint:manifest}': ['p(95)<600'],
     'http_req_duration{endpoint:variant_playlist}': ['p(95)<600'],
-    'http_req_duration{endpoint:segment}': ['p(95)<1000'],
+    // Los segmentos pesan segun la calidad (6s a 0.8-5 Mbps = ~0.6-3.7 MB),
+    // asi que un umbral unico no tiene sentido: se fija uno por rendition.
+    // Incluyen el ancho de banda de la laptop generadora (no medido).
+    'http_req_duration{endpoint:segment,rendition:360p}': ['p(95)<1000'],
+    'http_req_duration{endpoint:segment,rendition:480p}': ['p(95)<1000'],
+    'http_req_duration{endpoint:segment,rendition:720p}': ['p(95)<2000'],
+    'http_req_duration{endpoint:segment,rendition:1080p}': ['p(95)<3000'],
+    // Sin umbral real: mantiene el agregado en el summary-export.
+    'http_req_duration{endpoint:segment}': ['max>=0'],
     'http_req_duration{endpoint:resume}': ['p(95)<400'],
     // El pipeline completo (ffmpeg incluido) tardando mas de ~45s con
     // carga concurrente en un worker de 2 vCPU es senal de saturacion.
@@ -178,12 +188,10 @@ export const options = {
     'http_req_duration{endpoint:upload_put,profile:ligero}': ['max>=0'],
     'http_req_duration{endpoint:upload_put,profile:medio}': ['max>=0'],
     'http_req_duration{endpoint:upload_put,profile:pesado}': ['max>=0'],
-    'http_req_duration{endpoint:segment,rendition:1080p}': ['max>=0'],
-    'http_req_duration{endpoint:segment,rendition:720p}': ['max>=0'],
-    'http_req_duration{endpoint:segment,rendition:480p}': ['max>=0'],
-    'http_req_duration{endpoint:segment,rendition:360p}': ['max>=0'],
   },
-  setupTimeout: '5m',
+  // 3 videos del pool, hasta SETUP_MAX_WAIT_SECONDS cada uno (1200s por
+  // defecto) mas el drenado de cola del nivel anterior.
+  setupTimeout: '70m',
 };
 
 function crearYSubirVideo(tagPrefix, profile) {
@@ -242,9 +250,14 @@ function crearYSubirVideo(tagPrefix, profile) {
 // Espera (con polling) a que stream-url deje de apuntar al archivo crudo y
 // pase a apuntar al manifiesto HLS firmado. Devuelve la URL absoluta del
 // manifiesto, o null si se agoto el tiempo maximo de espera.
-function esperarManifiesto(resourceId, profile) {
+// enSetup: el video del pool se espera con mas margen y NO se registra en
+// media_processing_duration / media_processing_timeouts: en el setup el
+// worker puede estar drenando la cola del nivel anterior, y ese tiempo no es
+// una medicion del nivel que se esta probando.
+function esperarManifiesto(resourceId, profile, enSetup) {
   const start = Date.now();
-  const deadline = start + MAX_WAIT_FOR_MANIFEST_SECONDS * 1000;
+  const maxWait = enSetup ? SETUP_MAX_WAIT_SECONDS : MAX_WAIT_FOR_MANIFEST_SECONDS;
+  const deadline = start + maxWait * 1000;
 
   while (Date.now() < deadline) {
     const streamRes = http.get(`${BASE_URL}/api/v1/media/resources/${resourceId}/stream-url`, {
@@ -253,14 +266,14 @@ function esperarManifiesto(resourceId, profile) {
     if (streamRes.status === 200) {
       const url = streamRes.json('data.presigned_url');
       if (url && url.indexOf('manifest.m3u8') !== -1) {
-        processingDuration.add(Date.now() - start, { profile: profile.name });
+        if (!enSetup) processingDuration.add(Date.now() - start, { profile: profile.name });
         return url;
       }
     }
     sleep(POLL_INTERVAL_SECONDS);
   }
 
-  processingTimeouts.add(1);
+  if (!enSetup) processingTimeouts.add(1);
   return null;
 }
 
@@ -303,7 +316,7 @@ export function setup() {
       console.log(`Setup: no se pudo crear/subir el video ${i + 1}/${PLAYBACK_POOL_SIZE}, se omite.`);
       continue;
     }
-    const manifestUrl = esperarManifiesto(resourceId, profile);
+    const manifestUrl = esperarManifiesto(resourceId, profile, true);
     if (manifestUrl) {
       pool.push({ id: resourceId, profile: profile.name });
       console.log(`Setup: video ${i + 1}/${PLAYBACK_POOL_SIZE} listo (perfil ${profile.name}, ${resourceId}).`);
