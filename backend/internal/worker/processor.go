@@ -89,20 +89,26 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 			outputPlaylist,
 		)
 	} else {
-		// Video: HLS sin upscaling
-		cmd = exec.CommandContext(ctx, "ffmpeg",
-			"-i", localOriginalPath,
-			"-c:v", "h264",
-			"-crf", "22",
-			"-preset", "fast",
-			"-c:a", "aac",
-			"-b:a", "128k",
-			"-f", "hls",
-			"-hls_time", "10",
-			"-hls_playlist_type", "vod",
-			"-hls_segment_filename", segmentFilename,
-			outputPlaylist,
-		)
+		// Video: escalera multi-calidad (1080p/720p/480p/360p) sin upscaling.
+		// Se inspecciona el original para generar solo los escalones que no
+		// superan su altura y para saber si trae pista de audio.
+		probeOut, probeErr := exec.CommandContext(ctx, "ffprobe",
+			"-v", "error",
+			"-show_entries", "stream=codec_type,height",
+			"-of", "json",
+			localOriginalPath,
+		).Output()
+		if probeErr != nil {
+			return fmt.Errorf("ffprobe failed on original %s: %w", payload.OriginalKey, probeErr)
+		}
+		probe, parseErr := parseProbeOutput(probeOut)
+		if parseErr != nil {
+			return fmt.Errorf("cannot inspect original %s: %w", payload.OriginalKey, parseErr)
+		}
+
+		ladder := ladderForHeight(probe.Height)
+		log.Printf("[WORKER] Original de %dp (audio=%t): generando %d rendition(s) HLS", probe.Height, probe.HasAudio, len(ladder))
+		cmd = exec.CommandContext(ctx, "ffmpeg", buildVideoHLSArgs(localOriginalPath, tmpDir, ladder, probe.HasAudio)...)
 	}
 
 	output, err := cmd.CombinedOutput()

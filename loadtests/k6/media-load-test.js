@@ -38,9 +38,12 @@
 // Requiere:
 //   - loadtests/seed/seed_load_test_data.sql ya corrido (usa la unidad
 //     sembrada como destino de los recursos de video de prueba).
-//   - loadtests/assets/sample_upload.mp4 (incluido en el repo: ~90KB,
-//     5s de video sintetico generado con ffmpeg, suficiente para ejercitar
-//     el pipeline real sin mover archivos grandes en cada iteracion).
+//   - Los 3 perfiles de video de loadtests/assets/ (incluidos en el repo,
+//     ver generate_assets.sh): ligero 640x360/10s/~1MB, medio 1280x720/20s/
+//     ~6.6MB y pesado 1920x1080/20s/~12.9MB. Cada subida usa uno de los tres
+//     (rotando), asi el worker transcodifica archivos con costo realmente
+//     distinto y genera escaleras HLS de 1, 3 y 4 renditions respectivamente
+//     (sin upscaling: solo escalones <= la altura del original).
 //
 // Uso basico (correr desde la raiz del repo, FUERA de las VMs, igual que
 // load-test.js):
@@ -57,9 +60,9 @@
 //   UPLOAD_DURATION               duracion del escenario de subida (default 3m)
 //   PLAYBACK_VUS                 VUs concurrentes reproduciendo HLS (default 150)
 //   PLAYBACK_DURATION             duracion del escenario de reproduccion (default 3m)
-//   PLAYBACK_POOL_SIZE           cuantos videos se pre-transcodifican en el setup para el escenario de reproduccion (default 3)
+//   PLAYBACK_POOL_SIZE           cuantos videos se pre-transcodifican en el setup para el escenario de reproduccion (default 3: uno por perfil, rotando)
 //   PRETRANSCODED_RESOURCE_IDS   CSV de resource_id ya transcodificados; si se define, el setup NO sube nada nuevo y reutiliza estos para consumo_hls
-//   MAX_WAIT_FOR_MANIFEST_SECONDS cuanto esperar a que un video termine de transcodificarse antes de darlo por fallido (default 90)
+//   MAX_WAIT_FOR_MANIFEST_SECONDS cuanto esperar a que un video termine de transcodificarse antes de darlo por fallido (default 180: el perfil pesado con 4 renditions tarda mucho mas en 2 vCPU)
 //   POLL_INTERVAL_SECONDS        cada cuanto reconsultar stream-url mientras se espera la transcodificacion (default 3)
 //   MAX_SEGMENTS_PER_ITERACION    tope de segmentos .ts a descargar por reproduccion, para no bajar videos larguisimos completos en cada iteracion (default 5)
 
@@ -84,13 +87,24 @@ const PRETRANSCODED_RESOURCE_IDS = (__ENV.PRETRANSCODED_RESOURCE_IDS || '')
   .map((id) => id.trim())
   .filter((id) => id.length > 0);
 
-const MAX_WAIT_FOR_MANIFEST_SECONDS = Number(__ENV.MAX_WAIT_FOR_MANIFEST_SECONDS || 90);
+const MAX_WAIT_FOR_MANIFEST_SECONDS = Number(__ENV.MAX_WAIT_FOR_MANIFEST_SECONDS || 180);
 const POLL_INTERVAL_SECONDS = Number(__ENV.POLL_INTERVAL_SECONDS || 3);
 const MAX_SEGMENTS_PER_ITERACION = Number(__ENV.MAX_SEGMENTS_PER_ITERACION || 5);
 
-// Se lee una sola vez en el contexto de inicializacion de k6 (obligatorio:
-// open() no puede llamarse dentro de una funcion de VU).
-const SAMPLE_VIDEO_BYTES = open('../assets/sample_upload.mp4', 'b');
+// Se leen una sola vez en el contexto de inicializacion de k6 (obligatorio:
+// open() no puede llamarse dentro de una funcion de VU). open() exige
+// literales de ruta, por eso no se arma en un bucle.
+// expectedRenditions = escalones de la escalera HLS que el worker debe
+// generar (1080/720/480/360 con altura <= la del original).
+const PROFILES = [
+  { name: 'ligero', bytes: open('../assets/perfil_ligero_360p_10s.mp4', 'b'), expectedRenditions: 1 },
+  { name: 'medio', bytes: open('../assets/perfil_medio_720p_20s.mp4', 'b'), expectedRenditions: 3 },
+  { name: 'pesado', bytes: open('../assets/perfil_pesado_1080p_20s.mp4', 'b'), expectedRenditions: 4 },
+];
+
+function profileByName(name) {
+  return PROFILES.find((p) => p.name === name);
+}
 
 // --- Metricas propias -------------------------------------------------
 
@@ -113,6 +127,10 @@ const segmentBytes = new Counter('media_segment_bytes_downloaded');
 // Si esto sube, el bug original del escenario (manifiesto firmado sin
 // firmar los segmentos) volvio.
 const segmentDownloadFailures = new Counter('media_segment_download_failures');
+// La escalera multi-calidad no coincide con la esperada para el perfil
+// (p. ej. un 1080p que solo trae 1 rendition: el bug que motivo este cambio).
+const unexpectedLadder = new Counter('media_unexpected_ladder');
+const variantPlaylistDuration = new Trend('media_variant_playlist_duration', true);
 
 export const options = {
   summaryTrendStats: ['avg', 'min', 'med', 'p(90)', 'p(95)', 'p(99)', 'max'],
@@ -136,10 +154,13 @@ export const options = {
   thresholds: {
     http_req_failed: ['rate<0.02'],
     'http_req_duration{endpoint:create_resource}': ['p(95)<800'],
-    'http_req_duration{endpoint:upload_put}': ['p(95)<5000'],
+    // Los perfiles pesan hasta ~13 MB (antes ~90 KB): la subida directa ya
+    // no es casi instantanea.
+    'http_req_duration{endpoint:upload_put}': ['p(95)<15000'],
     'http_req_duration{endpoint:complete_upload}': ['p(95)<800'],
     'http_req_duration{endpoint:stream_url}': ['p(95)<500'],
     'http_req_duration{endpoint:manifest}': ['p(95)<600'],
+    'http_req_duration{endpoint:variant_playlist}': ['p(95)<600'],
     'http_req_duration{endpoint:segment}': ['p(95)<1000'],
     'http_req_duration{endpoint:resume}': ['p(95)<400'],
     // El pipeline completo (ffmpeg incluido) tardando mas de ~45s con
@@ -148,15 +169,28 @@ export const options = {
     media_processing_timeouts: ['count==0'],
     // Igual que en load-test.js: condicion funcional, no solo de latencia.
     media_segment_download_failures: ['count==0'],
+    media_unexpected_ladder: ['count==0'],
+    // Sin umbral real: declarar los sub-metricos por perfil hace que k6 los
+    // incluya en --summary-export, para separar el costo de cada perfil.
+    'media_processing_duration{profile:ligero}': ['max>=0'],
+    'media_processing_duration{profile:medio}': ['max>=0'],
+    'media_processing_duration{profile:pesado}': ['max>=0'],
+    'http_req_duration{endpoint:upload_put,profile:ligero}': ['max>=0'],
+    'http_req_duration{endpoint:upload_put,profile:medio}': ['max>=0'],
+    'http_req_duration{endpoint:upload_put,profile:pesado}': ['max>=0'],
+    'http_req_duration{endpoint:segment,rendition:1080p}': ['max>=0'],
+    'http_req_duration{endpoint:segment,rendition:720p}': ['max>=0'],
+    'http_req_duration{endpoint:segment,rendition:480p}': ['max>=0'],
+    'http_req_duration{endpoint:segment,rendition:360p}': ['max>=0'],
   },
   setupTimeout: '5m',
 };
 
-function crearYSubirVideo(tagPrefix) {
+function crearYSubirVideo(tagPrefix, profile) {
   const createRes = http.post(
     `${BASE_URL}/api/v1/courses/units/${UNIT_ID}/resources`,
     JSON.stringify({
-      title: `${tagPrefix} ${Date.now()}-${Math.floor(Math.random() * 1e6)}`,
+      title: `${tagPrefix} ${profile.name} ${Date.now()}-${Math.floor(Math.random() * 1e6)}`,
       type: 'video',
       is_visible: true,
       is_mandatory: false,
@@ -176,11 +210,11 @@ function crearYSubirVideo(tagPrefix) {
   const uploadUrl = body && body.data && body.data.presigned_upload_url;
   if (!resourceId || !objectKey || !uploadUrl) return null;
 
-  const putRes = http.put(uploadUrl, SAMPLE_VIDEO_BYTES, {
+  const putRes = http.put(uploadUrl, profile.bytes, {
     headers: { 'Content-Type': 'video/mp4' },
-    tags: { endpoint: 'upload_put' },
+    tags: { endpoint: 'upload_put', profile: profile.name },
   });
-  uploadPutDuration.add(putRes.timings.duration);
+  uploadPutDuration.add(putRes.timings.duration, { profile: profile.name });
   const uploaded = check(putRes, {
     'subida directa a almacenamiento responde 2xx': (r) => r.status >= 200 && r.status < 300,
   });
@@ -208,7 +242,7 @@ function crearYSubirVideo(tagPrefix) {
 // Espera (con polling) a que stream-url deje de apuntar al archivo crudo y
 // pase a apuntar al manifiesto HLS firmado. Devuelve la URL absoluta del
 // manifiesto, o null si se agoto el tiempo maximo de espera.
-function esperarManifiesto(resourceId) {
+function esperarManifiesto(resourceId, profile) {
   const start = Date.now();
   const deadline = start + MAX_WAIT_FOR_MANIFEST_SECONDS * 1000;
 
@@ -219,7 +253,7 @@ function esperarManifiesto(resourceId) {
     if (streamRes.status === 200) {
       const url = streamRes.json('data.presigned_url');
       if (url && url.indexOf('manifest.m3u8') !== -1) {
-        processingDuration.add(Date.now() - start);
+        processingDuration.add(Date.now() - start, { profile: profile.name });
         return url;
       }
     }
@@ -233,13 +267,15 @@ function esperarManifiesto(resourceId) {
 // Escenario "subida_multimedia": flujo completo de un profesor subiendo un
 // video nuevo y esperando a que quede listo para reproducirse.
 export function subirVideo() {
-  const resourceId = crearYSubirVideo('Carga HLS k6');
+  // Rota los 3 perfiles entre VUs e iteraciones para que todos se ejerciten.
+  const profile = PROFILES[(__VU + __ITER) % PROFILES.length];
+  const resourceId = crearYSubirVideo('Carga HLS k6', profile);
   if (!resourceId) {
     sleep(1);
     return;
   }
 
-  esperarManifiesto(resourceId);
+  esperarManifiesto(resourceId, profile);
 
   // "think time": un profesor no encadena subidas espalda con espalda.
   sleep(Math.random() * 3 + 2);
@@ -254,21 +290,23 @@ export function setup() {
       `Usando ${PRETRANSCODED_RESOURCE_IDS.length} resource_id ya transcodificados ` +
       '(PRETRANSCODED_RESOURCE_IDS), sin subir nada nuevo en el setup.'
     );
-    return { pool: PRETRANSCODED_RESOURCE_IDS };
+    return { pool: PRETRANSCODED_RESOURCE_IDS.map((id) => ({ id, profile: null })) };
   }
 
   console.log(`Preparando pool de ${PLAYBACK_POOL_SIZE} video(s) para el escenario de reproduccion...`);
   const pool = [];
   for (let i = 0; i < PLAYBACK_POOL_SIZE; i++) {
-    const resourceId = crearYSubirVideo('Pool HLS k6 setup');
+    // Un video de cada perfil, en orden, para que el pool cubra los 3.
+    const profile = PROFILES[i % PROFILES.length];
+    const resourceId = crearYSubirVideo('Pool HLS k6 setup', profile);
     if (!resourceId) {
       console.log(`Setup: no se pudo crear/subir el video ${i + 1}/${PLAYBACK_POOL_SIZE}, se omite.`);
       continue;
     }
-    const manifestUrl = esperarManifiesto(resourceId);
+    const manifestUrl = esperarManifiesto(resourceId, profile);
     if (manifestUrl) {
-      pool.push(resourceId);
-      console.log(`Setup: video ${i + 1}/${PLAYBACK_POOL_SIZE} listo (${resourceId}).`);
+      pool.push({ id: resourceId, profile: profile.name });
+      console.log(`Setup: video ${i + 1}/${PLAYBACK_POOL_SIZE} listo (perfil ${profile.name}, ${resourceId}).`);
     } else {
       console.log(`Setup: video ${i + 1}/${PLAYBACK_POOL_SIZE} no termino de procesar a tiempo, se omite.`);
     }
@@ -295,7 +333,8 @@ export function reproducirHLS(data) {
     return;
   }
 
-  const resourceId = data.pool[Math.floor(Math.random() * data.pool.length)];
+  const entry = data.pool[Math.floor(Math.random() * data.pool.length)];
+  const resourceId = entry.id;
 
   const streamRes = http.get(`${BASE_URL}/api/v1/media/resources/${resourceId}/stream-url`, {
     tags: { endpoint: 'stream_url' },
@@ -331,18 +370,48 @@ export function reproducirHLS(data) {
     return;
   }
 
-  // Extrae las URLs de segmento/sub-playlist ya firmadas (lineas que no
-  // empiezan con # dentro del .m3u8), tope MAX_SEGMENTS_PER_ITERACION para
-  // no bajar un video entero por iteracion si el archivo es largo.
-  const segmentUrls = manifestRes
-    .body
+  // Manifiesto maestro multi-calidad: lista de renditions. Si no trae
+  // #EXT-X-STREAM-INF es una media playlist directa (videos transcodificados
+  // antes de la escalera, o audio) y se consume como antes.
+  const renditions = parseMasterRenditions(manifestRes.body);
+  let mediaPlaylistBody = manifestRes.body;
+  let renditionTag = 'unica';
+
+  if (renditions.length > 0) {
+    const expected = entry.profile ? profileByName(entry.profile).expectedRenditions : null;
+    if (expected !== null && renditions.length !== expected) {
+      unexpectedLadder.add(1);
+    }
+
+    // Un reproductor adaptativo real elige segun su ancho de banda; aca se
+    // elige una al azar para repartir el trafico entre todas las calidades.
+    const chosen = renditions[Math.floor(Math.random() * renditions.length)];
+    renditionTag = chosen.name;
+
+    const variantRes = http.get(chosen.url, { tags: { endpoint: 'variant_playlist', rendition: chosen.name } });
+    variantPlaylistDuration.add(variantRes.timings.duration);
+    const variantOk = check(variantRes, {
+      'playlist de la rendition responde 200': (r) => r.status === 200,
+    });
+    if (!variantOk) {
+      segmentDownloadFailures.add(1);
+      sleep(1);
+      return;
+    }
+    mediaPlaylistBody = variantRes.body;
+  }
+
+  // Extrae las URLs de segmento ya firmadas (lineas que no empiezan con #
+  // dentro de la media playlist), tope MAX_SEGMENTS_PER_ITERACION para no
+  // bajar un video entero por iteracion si el archivo es largo.
+  const segmentUrls = mediaPlaylistBody
     .split('\n')
     .map((line) => line.trim())
     .filter((line) => line.length > 0 && !line.startsWith('#'))
     .slice(0, MAX_SEGMENTS_PER_ITERACION);
 
   for (const segmentUrl of segmentUrls) {
-    const segRes = http.get(segmentUrl, { tags: { endpoint: 'segment' } });
+    const segRes = http.get(segmentUrl, { tags: { endpoint: 'segment', rendition: renditionTag } });
     segmentDuration.add(segRes.timings.duration);
     const segOk = check(segRes, {
       // Este es EXACTAMENTE el bug original del escenario: sin el fix del
@@ -364,4 +433,19 @@ export function reproducirHLS(data) {
 
   // "think time": un estudiante ve un rato antes de pedir el siguiente tramo.
   sleep(Math.random() * 4 + 2);
+}
+
+// Lee un manifiesto maestro HLS y devuelve [{ name, url }] por cada
+// #EXT-X-STREAM-INF, donde name es la altura del RESOLUTION ("720p") y url
+// la linea siguiente (ya reescrita por la API para volver a pasar por ella).
+function parseMasterRenditions(body) {
+  const lines = body.split('\n').map((l) => l.trim());
+  const out = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i].startsWith('#EXT-X-STREAM-INF')) continue;
+    const m = lines[i].match(/RESOLUTION=\d+x(\d+)/);
+    const url = lines.slice(i + 1).find((l) => l.length > 0 && !l.startsWith('#'));
+    if (url) out.push({ name: m ? `${m[1]}p` : `rendition${out.length}`, url });
+  }
+  return out;
 }

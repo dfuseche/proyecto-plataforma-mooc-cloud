@@ -138,8 +138,17 @@ en paralelo — pocos VUs subiendo video (`subida_multimedia`, trabajo
 pesado: PUT directo a almacenamiento + espera de la transcodificación
 HLS real en el worker) y muchos VUs reproduciendo HLS ya transcodificado
 (`consumo_hls`: stream-url + manifiesto firmado + segmentos — el tráfico
-de lectura real a escala). Usa `loadtests/assets/sample_upload.mp4`
-(incluido en el repo) como archivo de prueba.
+de lectura real a escala). Usa los 3 perfiles de video de `loadtests/assets/`
+(incluidos en el repo; ver `generate_assets.sh`): ligero 640x360/10s
+(~1.1 MB), medio 1280x720/20s (~6.6 MB) y pesado 1920x1080/20s
+(~12.9 MB). Cada subida rota entre los tres, y el worker genera una
+escalera HLS multi-calidad sin upscaling (1, 3 y 4 renditions
+respectivamente). El consumo baja el manifiesto maestro, elige una
+rendition al azar, baja su playlist (`?variant=` del mismo endpoint de
+manifiesto) y sus segmentos. `media_unexpected_ladder` (umbral `count==0`)
+falla si algún perfil produce un número de renditions distinto al esperado.
+Las métricas de procesamiento, subida y segmentos se separan por perfil
+(`profile:`) y por rendition (`rendition:`) en el `--summary-export`.
 
 Humo rápido:
 

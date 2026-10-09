@@ -159,10 +159,12 @@ Ver "Propuesta de evolución" al final del documento — se completa junto con e
 
 Dos escenarios de k6 corriendo en paralelo en `loadtests/k6/media-load-test.js` (ver comentarios del archivo para el detalle):
 
-- **`subida_multimedia`** (pocos VUs): sube un video real (`loadtests/assets/sample_upload.mp4`, ~90KB, 5s) por PUT directo a almacenamiento vía URL firmada, confirma la carga (`complete-upload`) y espera a que termine la transcodificación HLS asíncrona.
+- **`subida_multimedia`** (pocos VUs): sube un video real por PUT directo a almacenamiento vía URL firmada, confirma la carga (`complete-upload`) y espera a que termine la transcodificación HLS asíncrona.
 - **`consumo_hls`** (muchos VUs): pide `stream-url`, descarga el manifiesto firmado y hasta 5 segmentos `.ts` por iteración, a la cadencia declarada (no descarga todo el video de una sentada).
 
-`PLAYBACK_POOL_SIZE=3` en todos los niveles: 3 videos pre-transcodificados al arranque de cada corrida, cubriendo los 3 perfiles que pide el enunciado (mismo archivo de origen reutilizado; ver limitaciones). La concurrencia de workers no se tocó entre niveles.
+`PLAYBACK_POOL_SIZE=3` en todos los niveles: 3 videos pre-transcodificados al arranque de cada corrida, uno por perfil. La concurrencia de workers no se tocó entre niveles.
+
+> **Cambio posterior a la corrida del 25 de septiembre (pendiente de re-correr).** Las tablas de abajo se midieron con un único archivo de origen (`sample_upload.mp4`, ~90KB/5s, ya retirado del repo) reutilizado como "3 perfiles" y con una escalera HLS de una sola calidad. Ahora el script usa **3 archivos distintos** (`loadtests/assets/perfil_*.mp4`: 640x360/10s/1.1MB, 1280x720/20s/6.6MB y 1920x1080/20s/12.9MB) y el worker genera una **escalera multi-calidad sin upscaling** (1080p/720p/480p/360p, solo los escalones ≤ la altura del original: 1, 3 y 4 renditions), con las playlists de cada rendition servidas firmadas por el mismo endpoint de manifiesto. Esto cambia materialmente el costo de transcodificación por video, por lo que **los números de Escenario 2 de este documento deben re-medirse** con el código nuevo antes de la entrega final; hasta entonces son una línea base del pipeline anterior, no del actual.
 
 ### Niveles de carga
 
@@ -249,7 +251,7 @@ Ejecutados con `loadtests/k6/run_escenario2_niveles.ps1` (subida y consumo suben
 ### Limitaciones del experimento
 
 - **No se alcanzó saturación real** en ningún nivel probado — el máximo reportado (`UPLOAD_VUS=10`, `PLAYBACK_VUS=300`) no corresponde a la capacidad máxima de la plataforma, solo al techo probado en esta entrega.
-- **Los 3 perfiles de video son el mismo archivo de origen** (`sample_upload.mp4`, ~90KB/5s) reutilizado 3 veces vía `PLAYBACK_POOL_SIZE=3`, no 3 archivos con duración/tamaño/resolución realmente distintos como pide el enunciado.
+- **Perfiles y escalera de la corrida documentada vs. código actual:** la corrida del 25 de septiembre usó el mismo archivo (~90KB/5s) para los 3 "perfiles" y una escalera HLS de una sola calidad; ese hallazgo ya está corregido en el código (3 archivos distintos + escalera multi-calidad, ver nota en la definición del escenario) pero **las cifras de este documento aún no reflejan la corrección**. Los videos nuevos siguen siendo sintéticos (patrón de prueba + ruido + tono), no contenido filmado.
 - **No se midió tiempo hasta el primer cuadro ni interrupciones de reproducción con un reproductor real** — las métricas de manifiesto/segmento son peticiones HTTP, no reproducción real.
 - **No se instrumentó la profundidad/antigüedad de la cola de asynq directamente**; se usó `media_processing_duration` como proxy.
 

@@ -7,6 +7,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
+	"path"
+	"regexp"
 	"time"
 
 	"github.com/go-chi/chi/v5"
@@ -292,6 +295,10 @@ func (h *HTTPHandler) GetStreamURL(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// variantNamePattern restringe ?variant= a un nombre plano de playlist HLS
+// (p. ej. "720p.m3u8"), sin separadores de ruta.
+var variantNamePattern = regexp.MustCompile(`^[A-Za-z0-9_-]+\.m3u8$`)
+
 // GetSignedManifest sirve el manifiesto HLS de un recurso ya transcodificado,
 // con cada línea de segmento/sub-playlist reescrita como una URL prefirmada
 // de S3/MinIO. Ver el comentario en GetStreamURL para el porqué.
@@ -314,7 +321,31 @@ func (h *HTTPHandler) GetSignedManifest(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	body, err := h.storage.RewriteHLSManifest(r.Context(), res.MediaURL)
+	manifestKey := res.MediaURL
+	var variantURL func(entry string) string
+	if variant := r.URL.Query().Get("variant"); variant != "" {
+		// Sub-playlist de una calidad (p. ej. 720p.m3u8) del manifiesto
+		// maestro. El nombre sale de la query, así que solo se aceptan
+		// nombres planos: nada de rutas ni "..".
+		if !variantNamePattern.MatchString(variant) {
+			respondError(w, http.StatusBadRequest, "Variante HLS inválida")
+			return
+		}
+		manifestKey = path.Join(path.Dir(res.MediaURL), variant)
+		if _, statErr := h.storage.StatObject(r.Context(), manifestKey); statErr != nil {
+			respondError(w, http.StatusNotFound, "Variante HLS no encontrada")
+			return
+		}
+	} else {
+		// Manifiesto maestro: sus sub-playlists vuelven a este endpoint
+		// (?variant=) para que sus segmentos también salgan firmados.
+		base := publicBaseURL(r)
+		variantURL = func(entry string) string {
+			return fmt.Sprintf("%s/api/v1/media/resources/%s/manifest.m3u8?variant=%s", base, res.ID, url.QueryEscape(entry))
+		}
+	}
+
+	body, err := h.storage.RewriteHLSManifest(r.Context(), manifestKey, variantURL)
 	if err != nil {
 		respondError(w, http.StatusInternalServerError, "No se pudo generar el manifiesto firmado")
 		return
