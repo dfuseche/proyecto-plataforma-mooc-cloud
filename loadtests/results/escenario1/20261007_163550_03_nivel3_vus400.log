@@ -1,0 +1,1911 @@
+
+         /\      Grafana   /ÔÇ¥ÔÇ¥/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ÔÇ¥ÔÇ¥\ 
+  /          \   |   (  |  (ÔÇ¥)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\code\proyecto-plataforma-mooc\loadtests\k6\load-test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 400 max VUs, 5m0s max duration (incl. graceful stop):
+              * trafico_mixto: Up to 400 looping VUs for 4m30s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+time="2026-10-07T17:01:46-05:00" level=info msg="Setup listo: 300/300 usuarios autenticados." source=console
+
+running (4m31.0s), 004/400 VUs, 0 complete and 0 interrupted iterations
+trafico_mixto   [   0% ] 004/400 VUs  0m00.6s/4m30.0s
+
+running (4m32.0s), 010/400 VUs, 0 complete and 0 interrupted iterations
+trafico_mixto   [   1% ] 010/400 VUs  0m01.6s/4m30.0s
+
+running (4m33.0s), 017/400 VUs, 3 complete and 0 interrupted iterations
+trafico_mixto   [   1% ] 017/400 VUs  0m02.6s/4m30.0s
+
+running (4m34.0s), 024/400 VUs, 3 complete and 0 interrupted iterations
+trafico_mixto   [   1% ] 024/400 VUs  0m03.6s/4m30.0s
+
+running (4m35.0s), 030/400 VUs, 11 complete and 0 interrupted iterations
+trafico_mixto   [   2% ] 030/400 VUs  0m04.6s/4m30.0s
+
+running (4m36.0s), 037/400 VUs, 23 complete and 0 interrupted iterations
+trafico_mixto   [   2% ] 037/400 VUs  0m05.6s/4m30.0s
+
+running (4m37.0s), 044/400 VUs, 31 complete and 0 interrupted iterations
+trafico_mixto   [   2% ] 044/400 VUs  0m06.6s/4m30.0s
+
+running (4m38.0s), 050/400 VUs, 40 complete and 0 interrupted iterations
+trafico_mixto   [   3% ] 050/400 VUs  0m07.6s/4m30.0s
+
+running (4m39.0s), 057/400 VUs, 57 complete and 0 interrupted iterations
+trafico_mixto   [   3% ] 057/400 VUs  0m08.6s/4m30.0s
+
+running (4m40.0s), 064/400 VUs, 74 complete and 0 interrupted iterations
+trafico_mixto   [   4% ] 064/400 VUs  0m09.6s/4m30.0s
+
+running (4m41.0s), 070/400 VUs, 100 complete and 0 interrupted iterations
+trafico_mixto   [   4% ] 070/400 VUs  0m10.6s/4m30.0s
+
+running (4m42.0s), 077/400 VUs, 125 complete and 0 interrupted iterations
+trafico_mixto   [   4% ] 077/400 VUs  0m11.6s/4m30.0s
+
+running (4m43.0s), 084/400 VUs, 146 complete and 0 interrupted iterations
+trafico_mixto   [   5% ] 084/400 VUs  0m12.6s/4m30.0s
+
+running (4m44.0s), 090/400 VUs, 179 complete and 0 interrupted iterations
+trafico_mixto   [   5% ] 090/400 VUs  0m13.6s/4m30.0s
+
+running (4m45.0s), 097/400 VUs, 207 complete and 0 interrupted iterations
+trafico_mixto   [   5% ] 097/400 VUs  0m14.6s/4m30.0s
+
+running (4m46.0s), 104/400 VUs, 234 complete and 0 interrupted iterations
+trafico_mixto   [   6% ] 104/400 VUs  0m15.6s/4m30.0s
+
+running (4m47.0s), 110/400 VUs, 262 complete and 0 interrupted iterations
+trafico_mixto   [   6% ] 110/400 VUs  0m16.6s/4m30.0s
+
+running (4m48.0s), 117/400 VUs, 282 complete and 0 interrupted iterations
+trafico_mixto   [   7% ] 117/400 VUs  0m17.6s/4m30.0s
+
+running (4m49.0s), 124/400 VUs, 304 complete and 0 interrupted iterations
+trafico_mixto   [   7% ] 124/400 VUs  0m18.6s/4m30.0s
+
+running (4m50.0s), 130/400 VUs, 326 complete and 0 interrupted iterations
+trafico_mixto   [   7% ] 130/400 VUs  0m19.6s/4m30.0s
+
+running (4m51.0s), 137/400 VUs, 342 complete and 0 interrupted iterations
+trafico_mixto   [   8% ] 137/400 VUs  0m20.6s/4m30.0s
+
+running (4m52.0s), 144/400 VUs, 361 complete and 0 interrupted iterations
+trafico_mixto   [   8% ] 144/400 VUs  0m21.6s/4m30.0s
+
+running (4m53.0s), 150/400 VUs, 386 complete and 0 interrupted iterations
+trafico_mixto   [   8% ] 150/400 VUs  0m22.6s/4m30.0s
+
+running (4m54.0s), 157/400 VUs, 414 complete and 0 interrupted iterations
+trafico_mixto   [   9% ] 157/400 VUs  0m23.6s/4m30.0s
+
+running (4m55.0s), 164/400 VUs, 437 complete and 0 interrupted iterations
+trafico_mixto   [   9% ] 164/400 VUs  0m24.6s/4m30.0s
+
+running (4m56.0s), 170/400 VUs, 463 complete and 0 interrupted iterations
+trafico_mixto   [   9% ] 170/400 VUs  0m25.6s/4m30.0s
+
+running (4m57.0s), 177/400 VUs, 502 complete and 0 interrupted iterations
+trafico_mixto   [  10% ] 177/400 VUs  0m26.6s/4m30.0s
+
+running (4m58.0s), 184/400 VUs, 528 complete and 0 interrupted iterations
+trafico_mixto   [  10% ] 184/400 VUs  0m27.6s/4m30.0s
+
+running (4m59.0s), 190/400 VUs, 564 complete and 0 interrupted iterations
+trafico_mixto   [  11% ] 190/400 VUs  0m28.6s/4m30.0s
+
+running (5m00.0s), 197/400 VUs, 596 complete and 0 interrupted iterations
+trafico_mixto   [  11% ] 197/400 VUs  0m29.6s/4m30.0s
+
+running (5m01.0s), 204/400 VUs, 634 complete and 0 interrupted iterations
+trafico_mixto   [  11% ] 204/400 VUs  0m30.6s/4m30.0s
+
+running (5m02.0s), 210/400 VUs, 657 complete and 0 interrupted iterations
+trafico_mixto   [  12% ] 210/400 VUs  0m31.6s/4m30.0s
+
+running (5m03.0s), 217/400 VUs, 687 complete and 0 interrupted iterations
+trafico_mixto   [  12% ] 217/400 VUs  0m32.6s/4m30.0s
+
+running (5m04.0s), 224/400 VUs, 711 complete and 0 interrupted iterations
+trafico_mixto   [  12% ] 224/400 VUs  0m33.6s/4m30.0s
+
+running (5m05.0s), 230/400 VUs, 730 complete and 0 interrupted iterations
+trafico_mixto   [  13% ] 230/400 VUs  0m34.6s/4m30.0s
+
+running (5m06.0s), 237/400 VUs, 751 complete and 0 interrupted iterations
+trafico_mixto   [  13% ] 237/400 VUs  0m35.6s/4m30.0s
+
+running (5m07.0s), 244/400 VUs, 769 complete and 0 interrupted iterations
+trafico_mixto   [  14% ] 244/400 VUs  0m36.6s/4m30.0s
+
+running (5m08.0s), 250/400 VUs, 786 complete and 0 interrupted iterations
+trafico_mixto   [  14% ] 250/400 VUs  0m37.6s/4m30.0s
+
+running (5m09.0s), 257/400 VUs, 812 complete and 0 interrupted iterations
+trafico_mixto   [  14% ] 257/400 VUs  0m38.6s/4m30.0s
+
+running (5m10.0s), 264/400 VUs, 840 complete and 0 interrupted iterations
+trafico_mixto   [  15% ] 264/400 VUs  0m39.6s/4m30.0s
+
+running (5m11.0s), 270/400 VUs, 868 complete and 0 interrupted iterations
+trafico_mixto   [  15% ] 270/400 VUs  0m40.6s/4m30.0s
+
+running (5m12.0s), 277/400 VUs, 895 complete and 0 interrupted iterations
+trafico_mixto   [  15% ] 277/400 VUs  0m41.6s/4m30.0s
+
+running (5m13.0s), 284/400 VUs, 924 complete and 0 interrupted iterations
+trafico_mixto   [  16% ] 284/400 VUs  0m42.6s/4m30.0s
+
+running (5m14.0s), 290/400 VUs, 950 complete and 0 interrupted iterations
+trafico_mixto   [  16% ] 290/400 VUs  0m43.6s/4m30.0s
+
+running (5m15.0s), 297/400 VUs, 981 complete and 0 interrupted iterations
+trafico_mixto   [  17% ] 297/400 VUs  0m44.6s/4m30.0s
+
+running (5m16.0s), 304/400 VUs, 991 complete and 0 interrupted iterations
+trafico_mixto   [  17% ] 304/400 VUs  0m45.6s/4m30.0s
+
+running (5m17.0s), 310/400 VUs, 1014 complete and 0 interrupted iterations
+trafico_mixto   [  17% ] 310/400 VUs  0m46.6s/4m30.0s
+
+running (5m18.0s), 317/400 VUs, 1049 complete and 0 interrupted iterations
+trafico_mixto   [  18% ] 317/400 VUs  0m47.6s/4m30.0s
+
+running (5m19.0s), 324/400 VUs, 1069 complete and 0 interrupted iterations
+trafico_mixto   [  18% ] 324/400 VUs  0m48.6s/4m30.0s
+
+running (5m20.0s), 330/400 VUs, 1094 complete and 0 interrupted iterations
+trafico_mixto   [  18% ] 330/400 VUs  0m49.6s/4m30.0s
+
+running (5m21.0s), 337/400 VUs, 1119 complete and 0 interrupted iterations
+trafico_mixto   [  19% ] 337/400 VUs  0m50.6s/4m30.0s
+
+running (5m22.0s), 344/400 VUs, 1157 complete and 0 interrupted iterations
+trafico_mixto   [  19% ] 344/400 VUs  0m51.6s/4m30.0s
+
+running (5m23.0s), 350/400 VUs, 1188 complete and 0 interrupted iterations
+trafico_mixto   [  19% ] 350/400 VUs  0m52.6s/4m30.0s
+
+running (5m24.0s), 357/400 VUs, 1216 complete and 0 interrupted iterations
+trafico_mixto   [  20% ] 357/400 VUs  0m53.6s/4m30.0s
+
+running (5m25.0s), 364/400 VUs, 1242 complete and 0 interrupted iterations
+trafico_mixto   [  20% ] 364/400 VUs  0m54.6s/4m30.0s
+
+running (5m26.0s), 370/400 VUs, 1272 complete and 0 interrupted iterations
+trafico_mixto   [  21% ] 370/400 VUs  0m55.6s/4m30.0s
+
+running (5m27.0s), 377/400 VUs, 1294 complete and 0 interrupted iterations
+trafico_mixto   [  21% ] 377/400 VUs  0m56.6s/4m30.0s
+
+running (5m28.0s), 384/400 VUs, 1315 complete and 0 interrupted iterations
+trafico_mixto   [  21% ] 384/400 VUs  0m57.6s/4m30.0s
+
+running (5m29.0s), 390/400 VUs, 1339 complete and 0 interrupted iterations
+trafico_mixto   [  22% ] 390/400 VUs  0m58.6s/4m30.0s
+
+running (5m30.0s), 397/400 VUs, 1366 complete and 0 interrupted iterations
+trafico_mixto   [  22% ] 397/400 VUs  0m59.6s/4m30.0s
+
+running (5m31.0s), 400/400 VUs, 1395 complete and 0 interrupted iterations
+trafico_mixto   [  22% ] 400/400 VUs  1m00.6s/4m30.0s
+
+running (5m32.0s), 400/400 VUs, 1416 complete and 0 interrupted iterations
+trafico_mixto   [  23% ] 400/400 VUs  1m01.6s/4m30.0s
+
+running (5m33.0s), 400/400 VUs, 1442 complete and 0 interrupted iterations
+trafico_mixto   [  23% ] 400/400 VUs  1m02.6s/4m30.0s
+
+running (5m34.0s), 400/400 VUs, 1477 complete and 0 interrupted iterations
+trafico_mixto   [  24% ] 400/400 VUs  1m03.6s/4m30.0s
+
+running (5m35.0s), 400/400 VUs, 1498 complete and 0 interrupted iterations
+trafico_mixto   [  24% ] 400/400 VUs  1m04.6s/4m30.0s
+
+running (5m36.0s), 400/400 VUs, 1535 complete and 0 interrupted iterations
+trafico_mixto   [  24% ] 400/400 VUs  1m05.6s/4m30.0s
+
+running (5m37.0s), 400/400 VUs, 1566 complete and 0 interrupted iterations
+trafico_mixto   [  25% ] 400/400 VUs  1m06.6s/4m30.0s
+
+running (5m38.0s), 400/400 VUs, 1603 complete and 0 interrupted iterations
+trafico_mixto   [  25% ] 400/400 VUs  1m07.6s/4m30.0s
+
+running (5m39.0s), 400/400 VUs, 1637 complete and 0 interrupted iterations
+trafico_mixto   [  25% ] 400/400 VUs  1m08.6s/4m30.0s
+
+running (5m40.0s), 400/400 VUs, 1665 complete and 0 interrupted iterations
+trafico_mixto   [  26% ] 400/400 VUs  1m09.6s/4m30.0s
+
+running (5m41.0s), 400/400 VUs, 1694 complete and 0 interrupted iterations
+trafico_mixto   [  26% ] 400/400 VUs  1m10.6s/4m30.0s
+
+running (5m42.0s), 400/400 VUs, 1723 complete and 0 interrupted iterations
+trafico_mixto   [  27% ] 400/400 VUs  1m11.6s/4m30.0s
+
+running (5m43.0s), 400/400 VUs, 1737 complete and 0 interrupted iterations
+trafico_mixto   [  27% ] 400/400 VUs  1m12.6s/4m30.0s
+
+running (5m44.0s), 400/400 VUs, 1762 complete and 0 interrupted iterations
+trafico_mixto   [  27% ] 400/400 VUs  1m13.6s/4m30.0s
+
+running (5m45.0s), 400/400 VUs, 1783 complete and 0 interrupted iterations
+trafico_mixto   [  28% ] 400/400 VUs  1m14.6s/4m30.0s
+
+running (5m46.0s), 400/400 VUs, 1800 complete and 0 interrupted iterations
+trafico_mixto   [  28% ] 400/400 VUs  1m15.6s/4m30.0s
+
+running (5m47.0s), 400/400 VUs, 1830 complete and 0 interrupted iterations
+trafico_mixto   [  28% ] 400/400 VUs  1m16.6s/4m30.0s
+
+running (5m48.0s), 400/400 VUs, 1852 complete and 0 interrupted iterations
+trafico_mixto   [  29% ] 400/400 VUs  1m17.6s/4m30.0s
+
+running (5m49.0s), 400/400 VUs, 1879 complete and 0 interrupted iterations
+trafico_mixto   [  29% ] 400/400 VUs  1m18.6s/4m30.0s
+
+running (5m50.0s), 400/400 VUs, 1910 complete and 0 interrupted iterations
+trafico_mixto   [  29% ] 400/400 VUs  1m19.6s/4m30.0s
+
+running (5m51.0s), 400/400 VUs, 1950 complete and 0 interrupted iterations
+trafico_mixto   [  30% ] 400/400 VUs  1m20.6s/4m30.0s
+
+running (5m52.0s), 400/400 VUs, 2001 complete and 0 interrupted iterations
+trafico_mixto   [  30% ] 400/400 VUs  1m21.6s/4m30.0s
+
+running (5m53.0s), 400/400 VUs, 2033 complete and 0 interrupted iterations
+trafico_mixto   [  31% ] 400/400 VUs  1m22.6s/4m30.0s
+
+running (5m54.0s), 400/400 VUs, 2073 complete and 0 interrupted iterations
+trafico_mixto   [  31% ] 400/400 VUs  1m23.6s/4m30.0s
+
+running (5m55.0s), 400/400 VUs, 2105 complete and 0 interrupted iterations
+trafico_mixto   [  31% ] 400/400 VUs  1m24.6s/4m30.0s
+
+running (5m56.0s), 400/400 VUs, 2144 complete and 0 interrupted iterations
+trafico_mixto   [  32% ] 400/400 VUs  1m25.6s/4m30.0s
+
+running (5m57.0s), 400/400 VUs, 2168 complete and 0 interrupted iterations
+trafico_mixto   [  32% ] 400/400 VUs  1m26.6s/4m30.0s
+
+running (5m58.0s), 400/400 VUs, 2205 complete and 0 interrupted iterations
+trafico_mixto   [  32% ] 400/400 VUs  1m27.6s/4m30.0s
+
+running (5m59.0s), 400/400 VUs, 2241 complete and 0 interrupted iterations
+trafico_mixto   [  33% ] 400/400 VUs  1m28.6s/4m30.0s
+
+running (6m00.0s), 400/400 VUs, 2273 complete and 0 interrupted iterations
+trafico_mixto   [  33% ] 400/400 VUs  1m29.6s/4m30.0s
+
+running (6m01.0s), 400/400 VUs, 2291 complete and 0 interrupted iterations
+trafico_mixto   [  34% ] 400/400 VUs  1m30.6s/4m30.0s
+
+running (6m02.0s), 400/400 VUs, 2312 complete and 0 interrupted iterations
+trafico_mixto   [  34% ] 400/400 VUs  1m31.6s/4m30.0s
+
+running (6m03.0s), 400/400 VUs, 2339 complete and 0 interrupted iterations
+trafico_mixto   [  34% ] 400/400 VUs  1m32.6s/4m30.0s
+
+running (6m04.0s), 400/400 VUs, 2360 complete and 0 interrupted iterations
+trafico_mixto   [  35% ] 400/400 VUs  1m33.6s/4m30.0s
+
+running (6m05.0s), 400/400 VUs, 2382 complete and 0 interrupted iterations
+trafico_mixto   [  35% ] 400/400 VUs  1m34.6s/4m30.0s
+
+running (6m06.0s), 400/400 VUs, 2405 complete and 0 interrupted iterations
+trafico_mixto   [  35% ] 400/400 VUs  1m35.6s/4m30.0s
+
+running (6m07.0s), 400/400 VUs, 2438 complete and 0 interrupted iterations
+trafico_mixto   [  36% ] 400/400 VUs  1m36.6s/4m30.0s
+
+running (6m08.0s), 400/400 VUs, 2467 complete and 0 interrupted iterations
+trafico_mixto   [  36% ] 400/400 VUs  1m37.6s/4m30.0s
+
+running (6m09.0s), 400/400 VUs, 2488 complete and 0 interrupted iterations
+trafico_mixto   [  37% ] 400/400 VUs  1m38.6s/4m30.0s
+
+running (6m10.0s), 400/400 VUs, 2511 complete and 0 interrupted iterations
+trafico_mixto   [  37% ] 400/400 VUs  1m39.6s/4m30.0s
+
+running (6m11.0s), 400/400 VUs, 2547 complete and 0 interrupted iterations
+trafico_mixto   [  37% ] 400/400 VUs  1m40.6s/4m30.0s
+
+running (6m12.0s), 400/400 VUs, 2566 complete and 0 interrupted iterations
+trafico_mixto   [  38% ] 400/400 VUs  1m41.6s/4m30.0s
+
+running (6m13.0s), 400/400 VUs, 2590 complete and 0 interrupted iterations
+trafico_mixto   [  38% ] 400/400 VUs  1m42.6s/4m30.0s
+
+running (6m14.0s), 400/400 VUs, 2614 complete and 0 interrupted iterations
+trafico_mixto   [  38% ] 400/400 VUs  1m43.6s/4m30.0s
+
+running (6m15.0s), 400/400 VUs, 2638 complete and 0 interrupted iterations
+trafico_mixto   [  39% ] 400/400 VUs  1m44.6s/4m30.0s
+
+running (6m16.0s), 400/400 VUs, 2661 complete and 0 interrupted iterations
+trafico_mixto   [  39% ] 400/400 VUs  1m45.6s/4m30.0s
+
+running (6m17.0s), 400/400 VUs, 2680 complete and 0 interrupted iterations
+trafico_mixto   [  39% ] 400/400 VUs  1m46.6s/4m30.0s
+
+running (6m18.0s), 400/400 VUs, 2702 complete and 0 interrupted iterations
+trafico_mixto   [  40% ] 400/400 VUs  1m47.6s/4m30.0s
+
+running (6m19.0s), 400/400 VUs, 2724 complete and 0 interrupted iterations
+trafico_mixto   [  40% ] 400/400 VUs  1m48.6s/4m30.0s
+
+running (6m20.0s), 400/400 VUs, 2747 complete and 0 interrupted iterations
+trafico_mixto   [  41% ] 400/400 VUs  1m49.6s/4m30.0s
+
+running (6m21.0s), 400/400 VUs, 2776 complete and 0 interrupted iterations
+trafico_mixto   [  41% ] 400/400 VUs  1m50.6s/4m30.0s
+
+running (6m22.0s), 400/400 VUs, 2804 complete and 0 interrupted iterations
+trafico_mixto   [  41% ] 400/400 VUs  1m51.6s/4m30.0s
+
+running (6m23.0s), 400/400 VUs, 2833 complete and 0 interrupted iterations
+trafico_mixto   [  42% ] 400/400 VUs  1m52.6s/4m30.0s
+
+running (6m24.0s), 400/400 VUs, 2863 complete and 0 interrupted iterations
+trafico_mixto   [  42% ] 400/400 VUs  1m53.6s/4m30.0s
+
+running (6m25.0s), 400/400 VUs, 2901 complete and 0 interrupted iterations
+trafico_mixto   [  42% ] 400/400 VUs  1m54.6s/4m30.0s
+
+running (6m26.0s), 400/400 VUs, 2939 complete and 0 interrupted iterations
+trafico_mixto   [  43% ] 400/400 VUs  1m55.6s/4m30.0s
+time="2026-10-07T17:03:42-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m27.0s), 400/400 VUs, 2970 complete and 0 interrupted iterations
+trafico_mixto   [  43% ] 400/400 VUs  1m56.6s/4m30.0s
+
+running (6m28.0s), 400/400 VUs, 3005 complete and 0 interrupted iterations
+trafico_mixto   [  44% ] 400/400 VUs  1m57.6s/4m30.0s
+
+running (6m29.0s), 400/400 VUs, 3043 complete and 0 interrupted iterations
+trafico_mixto   [  44% ] 400/400 VUs  1m58.6s/4m30.0s
+
+running (6m30.0s), 400/400 VUs, 3078 complete and 0 interrupted iterations
+trafico_mixto   [  44% ] 400/400 VUs  1m59.6s/4m30.0s
+
+running (6m31.0s), 400/400 VUs, 3105 complete and 0 interrupted iterations
+trafico_mixto   [  45% ] 400/400 VUs  2m00.6s/4m30.0s
+time="2026-10-07T17:03:47-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m32.0s), 400/400 VUs, 3153 complete and 0 interrupted iterations
+trafico_mixto   [  45% ] 400/400 VUs  2m01.6s/4m30.0s
+
+running (6m33.0s), 400/400 VUs, 3182 complete and 0 interrupted iterations
+trafico_mixto   [  45% ] 400/400 VUs  2m02.6s/4m30.0s
+
+running (6m34.0s), 400/400 VUs, 3220 complete and 0 interrupted iterations
+trafico_mixto   [  46% ] 400/400 VUs  2m03.6s/4m30.0s
+
+running (6m35.0s), 400/400 VUs, 3256 complete and 0 interrupted iterations
+trafico_mixto   [  46% ] 400/400 VUs  2m04.6s/4m30.0s
+
+running (6m36.0s), 400/400 VUs, 3285 complete and 0 interrupted iterations
+trafico_mixto   [  47% ] 400/400 VUs  2m05.6s/4m30.0s
+
+running (6m37.0s), 400/400 VUs, 3307 complete and 0 interrupted iterations
+trafico_mixto   [  47% ] 400/400 VUs  2m06.6s/4m30.0s
+
+running (6m38.0s), 400/400 VUs, 3335 complete and 0 interrupted iterations
+trafico_mixto   [  47% ] 400/400 VUs  2m07.6s/4m30.0s
+
+running (6m39.0s), 400/400 VUs, 3356 complete and 0 interrupted iterations
+trafico_mixto   [  48% ] 400/400 VUs  2m08.6s/4m30.0s
+
+running (6m40.0s), 400/400 VUs, 3382 complete and 0 interrupted iterations
+trafico_mixto   [  48% ] 400/400 VUs  2m09.6s/4m30.0s
+
+running (6m41.0s), 400/400 VUs, 3411 complete and 0 interrupted iterations
+trafico_mixto   [  48% ] 400/400 VUs  2m10.6s/4m30.0s
+
+running (6m42.0s), 400/400 VUs, 3435 complete and 0 interrupted iterations
+trafico_mixto   [  49% ] 400/400 VUs  2m11.6s/4m30.0s
+
+running (6m43.0s), 400/400 VUs, 3463 complete and 0 interrupted iterations
+trafico_mixto   [  49% ] 400/400 VUs  2m12.6s/4m30.0s
+
+running (6m44.0s), 400/400 VUs, 3497 complete and 0 interrupted iterations
+trafico_mixto   [  49% ] 400/400 VUs  2m13.6s/4m30.0s
+
+running (6m45.0s), 400/400 VUs, 3529 complete and 0 interrupted iterations
+trafico_mixto   [  50% ] 400/400 VUs  2m14.6s/4m30.0s
+
+running (6m46.0s), 400/400 VUs, 3569 complete and 0 interrupted iterations
+trafico_mixto   [  50% ] 400/400 VUs  2m15.6s/4m30.0s
+
+running (6m47.0s), 400/400 VUs, 3597 complete and 0 interrupted iterations
+trafico_mixto   [  51% ] 400/400 VUs  2m16.6s/4m30.0s
+time="2026-10-07T17:04:04-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m48.0s), 400/400 VUs, 3628 complete and 0 interrupted iterations
+trafico_mixto   [  51% ] 400/400 VUs  2m17.6s/4m30.0s
+
+running (6m49.0s), 400/400 VUs, 3663 complete and 0 interrupted iterations
+trafico_mixto   [  51% ] 400/400 VUs  2m18.6s/4m30.0s
+
+running (6m50.0s), 400/400 VUs, 3691 complete and 0 interrupted iterations
+trafico_mixto   [  52% ] 400/400 VUs  2m19.6s/4m30.0s
+
+running (6m51.0s), 400/400 VUs, 3723 complete and 0 interrupted iterations
+trafico_mixto   [  52% ] 400/400 VUs  2m20.6s/4m30.0s
+
+running (6m52.0s), 400/400 VUs, 3756 complete and 0 interrupted iterations
+trafico_mixto   [  52% ] 400/400 VUs  2m21.6s/4m30.0s
+time="2026-10-07T17:04:08-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m53.0s), 400/400 VUs, 3792 complete and 0 interrupted iterations
+trafico_mixto   [  53% ] 400/400 VUs  2m22.6s/4m30.0s
+
+running (6m54.0s), 400/400 VUs, 3824 complete and 0 interrupted iterations
+trafico_mixto   [  53% ] 400/400 VUs  2m23.6s/4m30.0s
+
+running (6m55.0s), 400/400 VUs, 3851 complete and 0 interrupted iterations
+trafico_mixto   [  54% ] 400/400 VUs  2m24.6s/4m30.0s
+
+running (6m56.0s), 400/400 VUs, 3878 complete and 0 interrupted iterations
+trafico_mixto   [  54% ] 400/400 VUs  2m25.6s/4m30.0s
+
+running (6m57.0s), 400/400 VUs, 3888 complete and 0 interrupted iterations
+trafico_mixto   [  54% ] 400/400 VUs  2m26.6s/4m30.0s
+
+running (6m58.0s), 400/400 VUs, 3907 complete and 0 interrupted iterations
+trafico_mixto   [  55% ] 400/400 VUs  2m27.6s/4m30.0s
+
+running (6m59.0s), 400/400 VUs, 3926 complete and 0 interrupted iterations
+trafico_mixto   [  55% ] 400/400 VUs  2m28.6s/4m30.0s
+time="2026-10-07T17:04:15-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m00.0s), 400/400 VUs, 3947 complete and 0 interrupted iterations
+trafico_mixto   [  55% ] 400/400 VUs  2m29.6s/4m30.0s
+
+running (7m01.0s), 400/400 VUs, 3958 complete and 0 interrupted iterations
+trafico_mixto   [  56% ] 400/400 VUs  2m30.6s/4m30.0s
+
+running (7m02.0s), 400/400 VUs, 3976 complete and 0 interrupted iterations
+trafico_mixto   [  56% ] 400/400 VUs  2m31.6s/4m30.0s
+
+running (7m03.0s), 400/400 VUs, 3987 complete and 0 interrupted iterations
+trafico_mixto   [  57% ] 400/400 VUs  2m32.6s/4m30.0s
+
+running (7m04.0s), 400/400 VUs, 4003 complete and 0 interrupted iterations
+trafico_mixto   [  57% ] 400/400 VUs  2m33.6s/4m30.0s
+time="2026-10-07T17:04:21-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m05.0s), 400/400 VUs, 4012 complete and 0 interrupted iterations
+trafico_mixto   [  57% ] 400/400 VUs  2m34.6s/4m30.0s
+
+running (7m06.0s), 400/400 VUs, 4023 complete and 0 interrupted iterations
+trafico_mixto   [  58% ] 400/400 VUs  2m35.6s/4m30.0s
+
+running (7m07.0s), 400/400 VUs, 4039 complete and 0 interrupted iterations
+trafico_mixto   [  58% ] 400/400 VUs  2m36.6s/4m30.0s
+
+running (7m08.0s), 400/400 VUs, 4052 complete and 0 interrupted iterations
+trafico_mixto   [  58% ] 400/400 VUs  2m37.6s/4m30.0s
+
+running (7m09.0s), 400/400 VUs, 4062 complete and 0 interrupted iterations
+trafico_mixto   [  59% ] 400/400 VUs  2m38.6s/4m30.0s
+
+running (7m10.0s), 400/400 VUs, 4079 complete and 0 interrupted iterations
+trafico_mixto   [  59% ] 400/400 VUs  2m39.6s/4m30.0s
+
+running (7m11.0s), 400/400 VUs, 4092 complete and 0 interrupted iterations
+trafico_mixto   [  59% ] 400/400 VUs  2m40.6s/4m30.0s
+
+running (7m12.0s), 400/400 VUs, 4103 complete and 0 interrupted iterations
+trafico_mixto   [  60% ] 400/400 VUs  2m41.6s/4m30.0s
+
+running (7m13.0s), 400/400 VUs, 4110 complete and 0 interrupted iterations
+trafico_mixto   [  60% ] 400/400 VUs  2m42.6s/4m30.0s
+
+running (7m14.0s), 400/400 VUs, 4127 complete and 0 interrupted iterations
+trafico_mixto   [  61% ] 400/400 VUs  2m43.6s/4m30.0s
+
+running (7m15.0s), 400/400 VUs, 4141 complete and 0 interrupted iterations
+trafico_mixto   [  61% ] 400/400 VUs  2m44.6s/4m30.0s
+
+running (7m16.0s), 400/400 VUs, 4150 complete and 0 interrupted iterations
+trafico_mixto   [  61% ] 400/400 VUs  2m45.6s/4m30.0s
+
+running (7m17.0s), 400/400 VUs, 4161 complete and 0 interrupted iterations
+trafico_mixto   [  62% ] 400/400 VUs  2m46.6s/4m30.0s
+
+running (7m18.0s), 400/400 VUs, 4172 complete and 0 interrupted iterations
+trafico_mixto   [  62% ] 400/400 VUs  2m47.6s/4m30.0s
+
+running (7m19.0s), 400/400 VUs, 4188 complete and 0 interrupted iterations
+trafico_mixto   [  62% ] 400/400 VUs  2m48.6s/4m30.0s
+
+running (7m20.0s), 400/400 VUs, 4200 complete and 0 interrupted iterations
+trafico_mixto   [  63% ] 400/400 VUs  2m49.6s/4m30.0s
+
+running (7m21.0s), 400/400 VUs, 4214 complete and 0 interrupted iterations
+trafico_mixto   [  63% ] 400/400 VUs  2m50.6s/4m30.0s
+
+running (7m22.0s), 400/400 VUs, 4222 complete and 0 interrupted iterations
+trafico_mixto   [  64% ] 400/400 VUs  2m51.6s/4m30.0s
+
+running (7m23.0s), 400/400 VUs, 4235 complete and 0 interrupted iterations
+trafico_mixto   [  64% ] 400/400 VUs  2m52.6s/4m30.0s
+time="2026-10-07T17:04:40-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m24.0s), 400/400 VUs, 4240 complete and 0 interrupted iterations
+trafico_mixto   [  64% ] 400/400 VUs  2m53.6s/4m30.0s
+
+running (7m25.0s), 400/400 VUs, 4252 complete and 0 interrupted iterations
+trafico_mixto   [  65% ] 400/400 VUs  2m54.6s/4m30.0s
+time="2026-10-07T17:04:41-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m26.0s), 400/400 VUs, 4263 complete and 0 interrupted iterations
+trafico_mixto   [  65% ] 400/400 VUs  2m55.6s/4m30.0s
+
+running (7m27.0s), 400/400 VUs, 4284 complete and 0 interrupted iterations
+trafico_mixto   [  65% ] 400/400 VUs  2m56.6s/4m30.0s
+time="2026-10-07T17:04:43-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m28.0s), 400/400 VUs, 4295 complete and 0 interrupted iterations
+trafico_mixto   [  66% ] 400/400 VUs  2m57.6s/4m30.0s
+time="2026-10-07T17:04:44-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:04:45-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m29.0s), 400/400 VUs, 4301 complete and 0 interrupted iterations
+trafico_mixto   [  66% ] 400/400 VUs  2m58.6s/4m30.0s
+time="2026-10-07T17:04:46-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m30.0s), 400/400 VUs, 4317 complete and 0 interrupted iterations
+trafico_mixto   [  67% ] 400/400 VUs  2m59.6s/4m30.0s
+
+running (7m31.0s), 400/400 VUs, 4329 complete and 0 interrupted iterations
+trafico_mixto   [  67% ] 400/400 VUs  3m00.6s/4m30.0s
+
+running (7m32.0s), 400/400 VUs, 4343 complete and 0 interrupted iterations
+trafico_mixto   [  67% ] 400/400 VUs  3m01.6s/4m30.0s
+
+running (7m33.0s), 400/400 VUs, 4357 complete and 0 interrupted iterations
+trafico_mixto   [  68% ] 400/400 VUs  3m02.6s/4m30.0s
+time="2026-10-07T17:04:49-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m34.0s), 400/400 VUs, 4369 complete and 0 interrupted iterations
+trafico_mixto   [  68% ] 400/400 VUs  3m03.6s/4m30.0s
+
+running (7m35.0s), 400/400 VUs, 4378 complete and 0 interrupted iterations
+trafico_mixto   [  68% ] 400/400 VUs  3m04.6s/4m30.0s
+
+running (7m36.0s), 400/400 VUs, 4387 complete and 0 interrupted iterations
+trafico_mixto   [  69% ] 400/400 VUs  3m05.6s/4m30.0s
+
+running (7m37.0s), 400/400 VUs, 4400 complete and 0 interrupted iterations
+trafico_mixto   [  69% ] 400/400 VUs  3m06.6s/4m30.0s
+
+running (7m38.0s), 400/400 VUs, 4412 complete and 0 interrupted iterations
+trafico_mixto   [  69% ] 400/400 VUs  3m07.6s/4m30.0s
+time="2026-10-07T17:04:54-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:04:54-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m39.0s), 400/400 VUs, 4421 complete and 0 interrupted iterations
+trafico_mixto   [  70% ] 400/400 VUs  3m08.6s/4m30.0s
+time="2026-10-07T17:04:55-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m40.0s), 400/400 VUs, 4440 complete and 0 interrupted iterations
+trafico_mixto   [  70% ] 400/400 VUs  3m09.6s/4m30.0s
+time="2026-10-07T17:04:57-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m41.0s), 400/400 VUs, 4456 complete and 0 interrupted iterations
+trafico_mixto   [  71% ] 400/400 VUs  3m10.6s/4m30.0s
+time="2026-10-07T17:04:57-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:04:57-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:04:58-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m42.0s), 400/400 VUs, 4471 complete and 0 interrupted iterations
+trafico_mixto   [  71% ] 400/400 VUs  3m11.6s/4m30.0s
+time="2026-10-07T17:04:59-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m43.0s), 400/400 VUs, 4483 complete and 0 interrupted iterations
+trafico_mixto   [  71% ] 400/400 VUs  3m12.6s/4m30.0s
+time="2026-10-07T17:05:00-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:00-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:00-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m44.0s), 400/400 VUs, 4506 complete and 0 interrupted iterations
+trafico_mixto   [  72% ] 400/400 VUs  3m13.6s/4m30.0s
+
+running (7m45.0s), 400/400 VUs, 4518 complete and 0 interrupted iterations
+trafico_mixto   [  72% ] 400/400 VUs  3m14.6s/4m30.0s
+time="2026-10-07T17:05:01-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:01-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:02-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:02-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m46.0s), 400/400 VUs, 4539 complete and 0 interrupted iterations
+trafico_mixto   [  72% ] 400/400 VUs  3m15.6s/4m30.0s
+time="2026-10-07T17:05:03-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m47.0s), 400/400 VUs, 4556 complete and 0 interrupted iterations
+trafico_mixto   [  73% ] 400/400 VUs  3m16.6s/4m30.0s
+time="2026-10-07T17:05:04-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m48.0s), 400/400 VUs, 4586 complete and 0 interrupted iterations
+trafico_mixto   [  73% ] 400/400 VUs  3m17.6s/4m30.0s
+time="2026-10-07T17:05:04-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:04-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:05-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:05-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:05-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m49.0s), 400/400 VUs, 4604 complete and 0 interrupted iterations
+trafico_mixto   [  74% ] 400/400 VUs  3m18.6s/4m30.0s
+time="2026-10-07T17:05:05-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:05-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:06-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:06-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m50.0s), 400/400 VUs, 4622 complete and 0 interrupted iterations
+trafico_mixto   [  74% ] 400/400 VUs  3m19.6s/4m30.0s
+time="2026-10-07T17:05:06-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:07-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m51.0s), 400/400 VUs, 4643 complete and 0 interrupted iterations
+trafico_mixto   [  74% ] 400/400 VUs  3m20.6s/4m30.0s
+time="2026-10-07T17:05:07-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:07-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:07-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:07-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:07-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:07-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:08-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m52.0s), 400/400 VUs, 4664 complete and 0 interrupted iterations
+trafico_mixto   [  75% ] 400/400 VUs  3m21.6s/4m30.0s
+time="2026-10-07T17:05:08-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:08-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:09-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m53.0s), 400/400 VUs, 4696 complete and 0 interrupted iterations
+trafico_mixto   [  75% ] 400/400 VUs  3m22.6s/4m30.0s
+time="2026-10-07T17:05:10-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:10-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m54.0s), 400/400 VUs, 4718 complete and 0 interrupted iterations
+trafico_mixto   [  75% ] 400/400 VUs  3m23.6s/4m30.0s
+time="2026-10-07T17:05:10-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:11-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m55.0s), 400/400 VUs, 4738 complete and 0 interrupted iterations
+trafico_mixto   [  76% ] 400/400 VUs  3m24.6s/4m30.0s
+time="2026-10-07T17:05:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:12-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m56.0s), 400/400 VUs, 4762 complete and 0 interrupted iterations
+trafico_mixto   [  76% ] 400/400 VUs  3m25.6s/4m30.0s
+time="2026-10-07T17:05:12-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:12-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m57.0s), 400/400 VUs, 4785 complete and 0 interrupted iterations
+trafico_mixto   [  77% ] 400/400 VUs  3m26.6s/4m30.0s
+
+running (7m58.0s), 400/400 VUs, 4801 complete and 0 interrupted iterations
+trafico_mixto   [  77% ] 400/400 VUs  3m27.6s/4m30.0s
+time="2026-10-07T17:05:15-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m59.0s), 400/400 VUs, 4814 complete and 0 interrupted iterations
+trafico_mixto   [  77% ] 400/400 VUs  3m28.6s/4m30.0s
+time="2026-10-07T17:05:15-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:15-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:16-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m00.0s), 400/400 VUs, 4829 complete and 0 interrupted iterations
+trafico_mixto   [  78% ] 400/400 VUs  3m29.6s/4m30.0s
+time="2026-10-07T17:05:16-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:17-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:17-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m01.0s), 400/400 VUs, 4858 complete and 0 interrupted iterations
+trafico_mixto   [  78% ] 400/400 VUs  3m30.6s/4m30.0s
+
+running (8m02.0s), 400/400 VUs, 4870 complete and 0 interrupted iterations
+trafico_mixto   [  78% ] 400/400 VUs  3m31.6s/4m30.0s
+time="2026-10-07T17:05:18-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:18-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:19-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m03.0s), 400/400 VUs, 4883 complete and 0 interrupted iterations
+trafico_mixto   [  79% ] 400/400 VUs  3m32.6s/4m30.0s
+time="2026-10-07T17:05:19-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:20-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m04.0s), 400/400 VUs, 4899 complete and 0 interrupted iterations
+trafico_mixto   [  79% ] 400/400 VUs  3m33.6s/4m30.0s
+time="2026-10-07T17:05:20-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m05.0s), 400/400 VUs, 4916 complete and 0 interrupted iterations
+trafico_mixto   [  79% ] 400/400 VUs  3m34.6s/4m30.0s
+time="2026-10-07T17:05:22-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:22-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m06.0s), 400/400 VUs, 4934 complete and 0 interrupted iterations
+trafico_mixto   [  80% ] 400/400 VUs  3m35.6s/4m30.0s
+
+running (8m07.0s), 400/400 VUs, 4957 complete and 0 interrupted iterations
+trafico_mixto   [  80% ] 400/400 VUs  3m36.6s/4m30.0s
+time="2026-10-07T17:05:23-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:24-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:24-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:24-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m08.0s), 400/400 VUs, 4967 complete and 0 interrupted iterations
+trafico_mixto   [  81% ] 400/400 VUs  3m37.6s/4m30.0s
+
+running (8m09.0s), 400/400 VUs, 4978 complete and 0 interrupted iterations
+trafico_mixto   [  81% ] 400/400 VUs  3m38.6s/4m30.0s
+time="2026-10-07T17:05:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:25-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m10.0s), 400/400 VUs, 4998 complete and 0 interrupted iterations
+trafico_mixto   [  81% ] 400/400 VUs  3m39.6s/4m30.0s
+
+running (8m11.0s), 400/400 VUs, 5020 complete and 0 interrupted iterations
+trafico_mixto   [  82% ] 400/400 VUs  3m40.6s/4m30.0s
+
+running (8m12.0s), 400/400 VUs, 5042 complete and 0 interrupted iterations
+trafico_mixto   [  82% ] 400/400 VUs  3m41.6s/4m30.0s
+time="2026-10-07T17:05:28-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m13.0s), 400/400 VUs, 5060 complete and 0 interrupted iterations
+trafico_mixto   [  82% ] 400/400 VUs  3m42.6s/4m30.0s
+
+running (8m14.0s), 400/400 VUs, 5073 complete and 0 interrupted iterations
+trafico_mixto   [  83% ] 400/400 VUs  3m43.6s/4m30.0s
+
+running (8m15.0s), 400/400 VUs, 5090 complete and 0 interrupted iterations
+trafico_mixto   [  83% ] 400/400 VUs  3m44.6s/4m30.0s
+time="2026-10-07T17:05:32-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m16.0s), 400/400 VUs, 5104 complete and 0 interrupted iterations
+trafico_mixto   [  84% ] 400/400 VUs  3m45.6s/4m30.0s
+time="2026-10-07T17:05:32-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m17.0s), 400/400 VUs, 5118 complete and 0 interrupted iterations
+trafico_mixto   [  84% ] 400/400 VUs  3m46.6s/4m30.0s
+time="2026-10-07T17:05:34-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m18.0s), 400/400 VUs, 5129 complete and 0 interrupted iterations
+trafico_mixto   [  84% ] 400/400 VUs  3m47.6s/4m30.0s
+
+running (8m19.0s), 400/400 VUs, 5141 complete and 0 interrupted iterations
+trafico_mixto   [  85% ] 400/400 VUs  3m48.6s/4m30.0s
+
+running (8m20.0s), 400/400 VUs, 5155 complete and 0 interrupted iterations
+trafico_mixto   [  85% ] 400/400 VUs  3m49.6s/4m30.0s
+time="2026-10-07T17:05:36-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:36-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m21.0s), 400/400 VUs, 5168 complete and 0 interrupted iterations
+trafico_mixto   [  85% ] 400/400 VUs  3m50.6s/4m30.0s
+
+running (8m22.0s), 400/400 VUs, 5182 complete and 0 interrupted iterations
+trafico_mixto   [  86% ] 400/400 VUs  3m51.6s/4m30.0s
+time="2026-10-07T17:05:38-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:38-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m23.0s), 400/400 VUs, 5188 complete and 0 interrupted iterations
+trafico_mixto   [  86% ] 400/400 VUs  3m52.6s/4m30.0s
+time="2026-10-07T17:05:40-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m24.0s), 400/400 VUs, 5200 complete and 0 interrupted iterations
+trafico_mixto   [  87% ] 400/400 VUs  3m53.6s/4m30.0s
+
+running (8m25.0s), 400/400 VUs, 5211 complete and 0 interrupted iterations
+trafico_mixto   [  87% ] 400/400 VUs  3m54.6s/4m30.0s
+
+running (8m26.0s), 400/400 VUs, 5222 complete and 0 interrupted iterations
+trafico_mixto   [  87% ] 400/400 VUs  3m55.6s/4m30.0s
+time="2026-10-07T17:05:42-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m27.0s), 400/400 VUs, 5229 complete and 0 interrupted iterations
+trafico_mixto   [  88% ] 400/400 VUs  3m56.6s/4m30.0s
+time="2026-10-07T17:05:43-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m28.0s), 400/400 VUs, 5241 complete and 0 interrupted iterations
+trafico_mixto   [  88% ] 400/400 VUs  3m57.6s/4m30.0s
+
+running (8m29.0s), 400/400 VUs, 5255 complete and 0 interrupted iterations
+trafico_mixto   [  88% ] 400/400 VUs  3m58.6s/4m30.0s
+
+running (8m30.0s), 400/400 VUs, 5267 complete and 0 interrupted iterations
+trafico_mixto   [  89% ] 400/400 VUs  3m59.6s/4m30.0s
+time="2026-10-07T17:05:46-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m31.0s), 400/400 VUs, 5286 complete and 0 interrupted iterations
+trafico_mixto   [  89% ] 400/400 VUs  4m00.6s/4m30.0s
+time="2026-10-07T17:05:47-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m32.0s), 399/400 VUs, 5303 complete and 0 interrupted iterations
+trafico_mixto   [  89% ] 399/400 VUs  4m01.6s/4m30.0s
+
+running (8m33.0s), 399/400 VUs, 5317 complete and 0 interrupted iterations
+trafico_mixto   [  90% ] 399/400 VUs  4m02.6s/4m30.0s
+time="2026-10-07T17:05:50-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m34.0s), 397/400 VUs, 5334 complete and 0 interrupted iterations
+trafico_mixto   [  90% ] 397/400 VUs  4m03.6s/4m30.0s
+time="2026-10-07T17:05:50-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m35.0s), 396/400 VUs, 5348 complete and 0 interrupted iterations
+trafico_mixto   [  91% ] 396/400 VUs  4m04.6s/4m30.0s
+
+running (8m36.0s), 394/400 VUs, 5363 complete and 0 interrupted iterations
+trafico_mixto   [  91% ] 394/400 VUs  4m05.6s/4m30.0s
+time="2026-10-07T17:05:53-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m37.0s), 393/400 VUs, 5375 complete and 0 interrupted iterations
+trafico_mixto   [  91% ] 393/400 VUs  4m06.6s/4m30.0s
+
+running (8m38.0s), 392/400 VUs, 5392 complete and 0 interrupted iterations
+trafico_mixto   [  92% ] 392/400 VUs  4m07.6s/4m30.0s
+
+running (8m39.0s), 389/400 VUs, 5412 complete and 0 interrupted iterations
+trafico_mixto   [  92% ] 389/400 VUs  4m08.6s/4m30.0s
+time="2026-10-07T17:05:56-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m40.0s), 388/400 VUs, 5427 complete and 0 interrupted iterations
+trafico_mixto   [  92% ] 388/400 VUs  4m09.6s/4m30.0s
+time="2026-10-07T17:05:57-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m41.0s), 382/400 VUs, 5445 complete and 0 interrupted iterations
+trafico_mixto   [  93% ] 382/400 VUs  4m10.6s/4m30.0s
+
+running (8m42.0s), 375/400 VUs, 5464 complete and 0 interrupted iterations
+trafico_mixto   [  93% ] 375/400 VUs  4m11.6s/4m30.0s
+
+running (8m43.0s), 370/400 VUs, 5485 complete and 0 interrupted iterations
+trafico_mixto   [  94% ] 370/400 VUs  4m12.6s/4m30.0s
+time="2026-10-07T17:05:59-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:05:59-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m44.0s), 362/400 VUs, 5504 complete and 0 interrupted iterations
+trafico_mixto   [  94% ] 362/400 VUs  4m13.6s/4m30.0s
+time="2026-10-07T17:06:01-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m45.0s), 352/400 VUs, 5523 complete and 0 interrupted iterations
+trafico_mixto   [  94% ] 352/400 VUs  4m14.6s/4m30.0s
+time="2026-10-07T17:06:01-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m46.0s), 341/400 VUs, 5546 complete and 0 interrupted iterations
+trafico_mixto   [  95% ] 341/400 VUs  4m15.6s/4m30.0s
+
+running (8m47.0s), 332/400 VUs, 5564 complete and 0 interrupted iterations
+trafico_mixto   [  95% ] 332/400 VUs  4m16.6s/4m30.0s
+time="2026-10-07T17:06:04-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:06:04-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m48.0s), 325/400 VUs, 5588 complete and 0 interrupted iterations
+trafico_mixto   [  95% ] 325/400 VUs  4m17.6s/4m30.0s
+time="2026-10-07T17:06:05-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m49.0s), 319/400 VUs, 5601 complete and 0 interrupted iterations
+trafico_mixto   [  96% ] 319/400 VUs  4m18.6s/4m30.0s
+time="2026-10-07T17:06:06-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m50.0s), 313/400 VUs, 5618 complete and 0 interrupted iterations
+trafico_mixto   [  96% ] 313/400 VUs  4m19.6s/4m30.0s
+time="2026-10-07T17:06:06-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:06:06-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m51.0s), 302/400 VUs, 5640 complete and 0 interrupted iterations
+trafico_mixto   [  97% ] 302/400 VUs  4m20.6s/4m30.0s
+time="2026-10-07T17:06:08-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m52.0s), 294/400 VUs, 5655 complete and 0 interrupted iterations
+trafico_mixto   [  97% ] 294/400 VUs  4m21.6s/4m30.0s
+time="2026-10-07T17:06:08-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m53.0s), 279/400 VUs, 5676 complete and 0 interrupted iterations
+trafico_mixto   [  97% ] 279/400 VUs  4m22.6s/4m30.0s
+
+running (8m54.0s), 275/400 VUs, 5684 complete and 0 interrupted iterations
+trafico_mixto   [  98% ] 275/400 VUs  4m23.6s/4m30.0s
+
+running (8m55.0s), 257/400 VUs, 5710 complete and 0 interrupted iterations
+trafico_mixto   [  98% ] 257/400 VUs  4m24.6s/4m30.0s
+time="2026-10-07T17:06:11-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m56.0s), 251/400 VUs, 5719 complete and 0 interrupted iterations
+trafico_mixto   [  98% ] 251/400 VUs  4m25.6s/4m30.0s
+
+running (8m57.0s), 241/400 VUs, 5733 complete and 0 interrupted iterations
+trafico_mixto   [  99% ] 241/400 VUs  4m26.6s/4m30.0s
+time="2026-10-07T17:06:13-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:06:14-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (8m58.0s), 225/400 VUs, 5755 complete and 0 interrupted iterations
+trafico_mixto   [  99% ] 225/400 VUs  4m27.6s/4m30.0s
+
+running (8m59.0s), 206/400 VUs, 5778 complete and 0 interrupted iterations
+trafico_mixto   [  99% ] 206/400 VUs  4m28.6s/4m30.0s
+time="2026-10-07T17:06:15-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:06:16-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:06:16-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (9m00.0s), 189/400 VUs, 5796 complete and 0 interrupted iterations
+trafico_mixto   [ 100% ] 189/400 VUs  4m29.6s/4m30.0s
+
+running (9m01.0s), 171/400 VUs, 5813 complete and 1 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+time="2026-10-07T17:06:17-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:06:17-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (9m02.0s), 148/400 VUs, 5835 complete and 2 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m03.0s), 135/400 VUs, 5847 complete and 3 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+time="2026-10-07T17:06:19-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (9m04.0s), 117/400 VUs, 5863 complete and 5 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m05.0s), 103/400 VUs, 5877 complete and 5 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+time="2026-10-07T17:06:21-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (9m06.0s), 086/400 VUs, 5894 complete and 5 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m07.0s), 074/400 VUs, 5905 complete and 6 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m08.0s), 053/400 VUs, 5926 complete and 6 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m09.0s), 045/400 VUs, 5934 complete and 6 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m10.0s), 035/400 VUs, 5943 complete and 7 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+time="2026-10-07T17:06:27-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (9m11.0s), 019/400 VUs, 5958 complete and 8 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+time="2026-10-07T17:06:27-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (9m12.0s), 015/400 VUs, 5962 complete and 8 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+time="2026-10-07T17:06:28-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-07T17:06:29-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (9m13.0s), 009/400 VUs, 5967 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m14.0s), 004/400 VUs, 5972 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m15.0s), 002/400 VUs, 5974 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m16.0s), 001/400 VUs, 5975 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m17.0s), 001/400 VUs, 5975 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m18.0s), 001/400 VUs, 5975 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m19.0s), 001/400 VUs, 5975 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m20.0s), 001/400 VUs, 5975 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m21.0s), 001/400 VUs, 5975 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+running (9m22.0s), 001/400 VUs, 5975 complete and 9 interrupted iterations
+trafico_mixto Ôåô [ 100% ] 181/400 VUs  4m30s
+
+
+  Ôûê THRESHOLDS 
+
+    http_req_duration
+    Ô£ù 'p(95)<500' p(95)=34.4s
+
+      {endpoint:badge}
+      Ô£ù 'p(95)<300' p(95)=1.27s
+
+      {endpoint:catalog}
+      Ô£ù 'p(95)<300' p(95)=42.03s
+
+      {endpoint:enroll}
+      Ô£ù 'p(95)<500' p(95)=1.25s
+
+      {endpoint:heartbeat}
+      Ô£ù 'p(95)<400' p(95)=1.26s
+
+      {endpoint:quiz_start}
+      Ô£ù 'p(95)<500' p(95)=1.17s
+
+      {endpoint:quiz_submit}
+      Ô£ô 'p(95)<600' p(95)=208.18ms
+
+    http_req_failed
+    Ô£ù 'rate<0.01' rate=1.04%
+
+    quiz_double_grading_detected
+    Ô£ô 'count==0' count=0
+
+
+  Ôûê TOTAL RESULTS 
+
+    checks_total.......: 11552  20.540185/s
+    checks_succeeded...: 98.92% 11428 out of 11552
+    checks_failed......: 1.07%  124 out of 11552
+
+    Ô£ô inscripcion responde 200/201/409
+    Ô£ô heartbeat responde 200
+    Ô£ô catalogo responde 200
+    Ô£ô inicio de intento de quiz responde 201/409
+    Ô£ù detalle de curso responde 200
+      Ôå│  96% ÔÇö Ô£ô 3408 / Ô£ù 124
+    Ô£ô verificacion de insignia responde 200
+    Ô£ô envio de intento de quiz responde 200
+    Ô£ô el intento queda calificado (score numerico)
+    Ô£ô envio duplicado de quiz es rechazado (409) sin doble calificacion
+
+    CUSTOM
+    enroll_duration................: avg=597.39ms min=118.67ms med=666.35ms p(90)=939.26ms p(95)=1.25s    p(99)=1.6s     max=3.49s   
+    heartbeat_duration.............: avg=627.24ms min=144.07ms med=676.1ms  p(90)=954.22ms p(95)=1.26s    p(99)=1.56s    max=7.58s   
+    quiz_double_grading_detected...: 0      0/s
+    quiz_max_attempts_reached......: 470    0.83569/s
+    quiz_start_duration............: avg=605.17ms min=131.05ms med=664.94ms p(90)=918.29ms p(95)=1.17s    p(99)=1.48s    max=6.5s    
+    quiz_submit_duration...........: avg=208.18ms min=208.18ms med=208.18ms p(90)=208.18ms p(95)=208.18ms p(99)=208.18ms max=208.18ms
+
+    HTTP
+    http_req_duration..............: avg=6.97s    min=106.9ms  med=785.6ms  p(90)=24.64s   p(95)=34.4s    p(99)=1m0s     max=1m0s    
+      { endpoint:badge }...........: avg=616.84ms min=108.98ms med=681.98ms p(90)=957.78ms p(95)=1.27s    p(99)=1.76s    max=3.87s   
+      { endpoint:catalog }.........: avg=11.29s   min=106.9ms  med=1.37s    p(90)=32.08s   p(95)=42.03s   p(99)=1m0s     max=1m0s    
+      { endpoint:enroll }..........: avg=597.39ms min=118.67ms med=666.35ms p(90)=939.26ms p(95)=1.25s    p(99)=1.6s     max=3.49s   
+      { endpoint:heartbeat }.......: avg=627.24ms min=144.07ms med=676.1ms  p(90)=954.22ms p(95)=1.26s    p(99)=1.56s    max=7.58s   
+      { endpoint:quiz_start }......: avg=605.17ms min=131.05ms med=664.94ms p(90)=918.29ms p(95)=1.17s    p(99)=1.48s    max=6.5s    
+      { endpoint:quiz_submit }.....: avg=208.18ms min=208.18ms med=208.18ms p(90)=208.18ms p(95)=208.18ms p(99)=208.18ms max=208.18ms
+      { expected_response:true }...: avg=6.41s    min=106.9ms  med=781.98ms p(90)=23.24s   p(95)=31.92s   p(99)=47.68s   max=1m0s    
+    http_req_failed................: 1.04%  124 out of 11852
+    http_reqs......................: 11852  21.073604/s
+
+    EXECUTION
+    iteration_duration.............: avg=15.81s   min=1.15s    med=11.83s   p(90)=37.11s   p(95)=47.44s   p(99)=1m2s     max=1m4s    
+    iterations.....................: 5975   10.623927/s
+    vus............................: 1      min=0            max=400
+    vus_max........................: 400    min=400          max=400
+
+    NETWORK
+    data_received..................: 1.0 GB 1.9 MB/s
+    data_sent......................: 2.1 MB 3.8 kB/s
+
+
+
+
+running (9m22.4s), 000/400 VUs, 5975 complete and 10 interrupted iterations
+trafico_mixto Ô£ô [ 100% ] 000/400 VUs  4m30s
+time="2026-10-07T17:06:40-05:00" level=error msg="thresholds on metrics 'http_req_duration, http_req_duration{endpoint:badge}, http_req_duration{endpoint:catalog}, http_req_duration{endpoint:enroll}, http_req_duration{endpoint:heartbeat}, http_req_duration{endpoint:quiz_start}, http_req_failed' have been crossed"

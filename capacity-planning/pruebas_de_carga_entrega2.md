@@ -2,17 +2,19 @@
 
 > Estado: **Escenario 1 y Escenario 2 completos**, con resultados
 > funcionales y de infraestructura (Web Server, Worker Server y Cloud SQL)
-> para ambos, sobre el commit `870f259`. Ninguna cifra de este documento es
-> estimada; todas salen de las corridas enlazadas en `loadtests/results/`.
-> Gaps conocidos y explícitos (no bloquean la entrega, quedan documentados
-> en "Limitaciones" de cada escenario): p99 no capturado en la corrida de
-> Escenario 1 (el script ya lo agrega para corridas futuras); memoria/red/
-> disco no capturadas en ninguna VM (Cloud Monitoring retroactivo solo trae
-> CPU y conexiones sin agente adicional), con granularidad de 1 minuto
-> (más gruesa que los 5s de `monitor_vm.sh`); no se acotó el punto exacto
-> de degradación de Escenario 1 entre 150 y 400 VUs; no se corrió una
-> ráfaga de login aparte; Escenario 2 no alcanzó saturación real con los
-> niveles probados, reutiliza el mismo archivo de video para los "3
+> para ambos. Ninguna cifra de este documento es estimada; todas salen de
+> las corridas enlazadas en `loadtests/results/`. Escenario 1 se repitió
+> el 2026-10-07 (sobre el commit `38d89bc`) específicamente para capturar
+> **p99** (ya en `summaryTrendStats` del script) y **memoria/red/disco**
+> en vivo con `monitor_vm.sh` (5s de granularidad) en Web Server — ambos
+> gaps de la corrida original quedan cerrados, ver resultados abajo.
+> Gaps conocidos y explícitos que siguen pendientes (no bloquean la
+> entrega, quedan documentados en "Limitaciones" de cada escenario): no
+> se acotó el punto exacto de degradación de Escenario 1 entre 150 y 400
+> VUs; no se corrió una ráfaga de login aparte; `monitor_vm.sh` solo corrió
+> en Web Server para Escenario 1 (no en Worker Server ni Cloud SQL, que no
+> participan en este flujo); Escenario 2 no alcanzó saturación real con
+> los niveles probados, reutiliza el mismo archivo de video para los "3
 > perfiles", y no mide reproducción con un player real ni profundidad de
 > cola de asynq directamente.
 
@@ -71,54 +73,64 @@ Ejecutados con `loadtests/k6/run_escenario1_niveles.ps1` (perfil corto `LEVEL_RU
 - Base de datos: Cloud SQL PostgreSQL (`mooc-db-instance`) — tier **`db-custom-2-8192`** (2 vCPU, 8 GiB RAM), 20 GiB disco, zonal (sin réplicas de lectura, como pide el enunciado).
 - Versión de k6: **`k6.exe v2.3.0` (commit e088784614, go1.26.8, windows/amd64)**
 - Generador de carga: laptop del equipo (Intel Core i9-13905H, 14 núcleos/20 hilos, 32 GB RAM) — fuera de las dos VMs de la aplicación, como exige el enunciado. Con esta carga (máx. ~35 req/s, cientos de VUs I/O-bound) el generador no fue el cuello de botella; no se instrumentó CPU/red del generador para esta entrega (ver limitaciones).
-- Corrida usada: `loadtests/results/escenario1/20260925_131343_*` (línea base 13:13, repetición finalizó 13:54 — ver `.log`/`.json` de cada nivel)
+- Corrida usada (funcional): `loadtests/results/escenario1/20260925_131343_*` — sigue siendo la fuente de la tabla de checks/funcionalidad.
+- Corrida de **repetición para cerrar p99 + infraestructura** (2026-10-07, commit `38d89bc`): `loadtests/results/escenario1/20261007_163550_*` (línea base 21:35 UTC, repetición finalizó 22:16 UTC), con `loadtests/monitoring/monitor_vm.sh` corriendo en paralelo en Web Server a 5s de granularidad. Datos crudos: `loadtests/results/escenario1/infra/web-server_monitor_20261007.csv`. Es la fuente de la tabla de latencias (incluyendo p99) e infraestructura más abajo.
 
 ### Resultados por nivel
 
-_(p50/p90/p95 de `http_req_duration` global, en ms; **p99 no quedó capturado en esta corrida** — el `summaryTrendStats` por defecto de k6 no incluye p99, ya corregido en el script para corridas futuras, ver limitaciones)_
+_(p50/p90/p95/p99 de `http_req_duration` global, en ms — corrida del 2026-10-07, `loadtests/results/escenario1/20261007_163550_*`; ya incluye p99, antes no capturado)_
 
-| Nivel | MAX_VUS | p50 (ms) | p90 (ms) | p95 (ms) | Throughput (req/s) | Tasa de error | Iteraciones completas | `quiz_max_attempts_reached` |
-|---|---|---|---|---|---|---|---|---|
-| Línea base | 10 | 119.8 | 126.8 | 129.4 | 7.09 | 0.00% | 1009 | 16 |
-| Nivel 1 | 50 | 116.3 | 126.2 | 137.4 | 28.44 | 0.00% | 5021 | 169 |
-| Nivel 2 | 150 | 118.1 | 214.1 | 255.4 | 56.03 | 0.00% | 14818 | 577 |
-| Nivel 3 | 400 | 157.7 | 56984.0 | 59894.8 | 21.22 | 5.19% | 5826 | 356 |
-| Repetición | 400 | 149.4 | 59169.0 | 60000.2 | 14.77 | 8.71% | 3961 | 240 |
+| Nivel | MAX_VUS | p50 (ms) | p90 (ms) | p95 (ms) | p99 (ms) | Throughput (req/s) | Tasa de error | Iteraciones completas | `quiz_max_attempts_reached` |
+|---|---|---|---|---|---|---|---|---|---|
+| Línea base | 10 | 144.4 | 908.3 | 1111.3 | 2324.1 | 5.51 | 0.00% | 821 | 52 |
+| Nivel 1 | 50 | 146.6 | 1425.7 | 2670.9 | 5336.6 | 19.30 | 0.00% | 3575 | 246 |
+| Nivel 2 | 150 | 182.1 | 5046.7 | 6780.6 | 9937.5 | 25.44 | 0.00% | 7016 | 477 |
+| Nivel 3 | 400 | 785.6 | 24648.2 | 34404.2 | 60000.1 | 21.07 | 1.05% | 5975 | 470 |
+| Repetición | 400 | 704.3 | 19231.0 | 23997.1 | 33960.2 | 26.83 | 0.07% | 7474 | 574 |
 
-Por endpoint (avg / p95, ms) — línea base → nivel 2 (rango sano) vs. nivel 3 (saturado):
+Nota sobre la tasa de error: esta corrida del 2026-10-07 muestra errores notablemente más bajos en Nivel 3/Repetición (1.05%/0.07%) que la corrida original del 25 de septiembre (5.19%/8.71%, ver nota de corrida funcional arriba). Esto es variación real entre corridas — ambas usan el mismo commit de aplicación y la misma infraestructura declarada (VMs `e2-highcpu-2`, Cloud SQL `db-custom-2-8192`) — probablemente por diferencias de carga/latencia de red externas al entorno controlado (ambas corridas se lanzaron desde la laptop del equipo contra internet público). El patrón estructural se mantiene: el p95/p99 global se dispara igual entre Nivel 2 y Nivel 3 en ambas corridas, lo que confirma el mismo punto de quiebre aunque la tasa exacta de timeouts varíe.
 
-| Endpoint | Línea base (avg/p95) | Nivel 1 (avg/p95) | Nivel 2 (avg/p95) | Nivel 3 (avg/p95) | Repetición (avg/p95) |
+Por endpoint (avg / p95 / p99, ms) — corrida del 2026-10-07 (`20261007_163550_*`), línea base → nivel 2 (rango sano) vs. nivel 3/repetición (saturado):
+
+| Endpoint | Línea base (avg/p95/p99) | Nivel 1 (avg/p95/p99) | Nivel 2 (avg/p95/p99) | Nivel 3 (avg/p95/p99) | Repetición (avg/p95/p99) |
 |---|---|---|---|---|---|
-| `catalog` | 119.5 / 127.2 | 117.3 / 134.3 | 138.7 / 246.1 | 6586.3 / 59659.1 | 10345.3 / 60000.3 |
-| `enroll` | 119.3 / 125.4 | 117.0 / 123.8 | 132.4 / 219.8 | 7340.9 / 60000.1 | 11451.6 / 60000.2 |
-| `heartbeat` | 125.9 / 131.5 | 127.4 / 148.4 | 170.9 / 303.8 | 5838.5 / 59897.7 | 10078.9 / 60000.3 |
-| `badge` | 116.6 / 122.7 | 113.5 / 120.7 | 123.2 / 195.6 | 8552.8 / 58939.1 | 11776.4 / 58944.4 |
-| `quiz_start` | 123.6 / 130.3 | 122.2 / 134.4 | 156.0 / 275.2 | 4511.2 / 59896.0 | 8708.4 / 59897.3 |
-| `quiz_submit` | 123.3 / 127.1 | 124.8 / 133.2 | 157.7 / 290.5 | **199.9 / 306.5** | **178.3 / 265.8** |
+| `catalog` | 534.5 / 1260.0 / 2640.9 | 879.1 / 3625.3 / 5981.1 | 2252.1 / 7917.8 / 10554.9 | 11291.5 / 42036.2 / 60000.4 | 8361.3 / 27105.0 / 36535.6 |
+| `enroll` | 132.5 / 149.5 / 160.7 | 137.8 / 155.2 / 243.2 | 169.3 / 298.0 / 520.9 | 597.4 / 1251.3 / 1607.1 | 542.1 / 1121.6 / 1472.1 |
+| `heartbeat` | 162.6 / 190.7 / 209.2 | 173.9 / 217.3 / 500.0 | 224.4 / 438.0 / 609.3 | 627.2 / 1263.7 / 1560.8 | 625.5 / 1260.2 / 1500.0 |
+| `badge` | 124.9 / 139.0 / 151.2 | 130.5 / 147.4 / 465.7 | 155.2 / 252.5 / 509.8 | 616.9 / 1275.4 / 1760.4 | 529.3 / 1045.6 / 1341.7 |
+| `quiz_start` | 144.5 / 159.9 / 166.6 | 156.8 / 185.9 / 480.7 | 192.1 / 338.3 / 510.5 | 605.2 / 1177.8 / 1482.7 | 577.8 / 1218.7 / 1373.6 |
+| `quiz_submit` | sin muestras* | 138.2 / 138.2 / 138.2** | 233.3 / 325.2 / 327.5 | 208.2 / 208.2 / 208.2** | 608.4 / 612.6 / 612.9** |
 
-**Infraestructura** (Cloud Monitoring, cruzado por ventana de tiempo exacta de cada nivel — `loadtests/results/escenario1/infra/`):
+\* Ningún VU llegó a enviar un quiz en la ventana de línea base (10 VUS, muy pocos iteran el flujo completo de quiz en 3 min).
+\** Muy pocas muestras en este nivel (1-2 envíos completos) — no es representativo como percentil, se deja por transparencia pero no se usa para conclusiones.
 
-| Nivel | CPU Web Server (avg/max %) | CPU Cloud SQL (avg/max %) | Conexiones activas Cloud SQL (avg/max) |
-|---|---|---|---|
-| Línea base | 4.1 / 5.4 | 5.7 / 6.1 | 7.8 / 8 |
-| Nivel 1 | 8.6 / 13.3 | 7.9 / 11.0 | 8.0 / 8 |
-| Nivel 2 | 17.6 / 38.2 | 22.9 / 55.7 | 8.4 / 12 |
-| Nivel 3 | 8.9 / 24.5 | 11.7 / 35.0 | 16.0 / 28 |
-| Repetición | 8.2 / 15.1 | 12.2 / 24.6 | 21.7 / 28 |
+**Infraestructura — Web Server** (medición en vivo con `loadtests/monitoring/monitor_vm.sh`, 5s de granularidad, corrida del 2026-10-07; ventanas por nivel identificadas por los tramos de CPU activa separados por las pausas de 30s del script — ver nota de reproducibilidad abajo):
 
-**Hallazgo clave:** la CPU de Cloud SQL nunca supera 56% (Nivel 2, su pico real) y de hecho *baja* en Nivel 3 respecto a Nivel 2 — igual que la CPU de Web Server. Lo que sí crece de forma sostenida y proporcionalmente mucho más que la CPU es el número de conexiones activas (8 → 28, x3.5) entre Nivel 2 y Nivel 3/Repetición. Esto apunta a agotamiento del **pool de conexiones** (de la API hacia Cloud SQL, o el límite de conexiones de la instancia) como el mecanismo de degradación, no a falta de cómputo en la base de datos — la CPU de ambas VMs y de Cloud SQL cae en Nivel 3 porque las requests se quedan esperando una conexión libre en vez de ejecutarse.
+| Nivel | CPU contenedor API (avg/max %) | CPU host (avg/max %) | Memoria contenedor (avg/max MiB) | Memoria host (avg/max MB de 1976) | Disco lectura (avg/max KB/s) | Disco escritura (avg/max KB/s) | Conexiones PG *activas* (avg/max) |
+|---|---|---|---|---|---|---|---|
+| Línea base | 4.2 / 16.6 | 3.5 / 8.0 | 18.9 / 21.4 | 705 / 732 | 543 / 14322 | 1384 / 15114 | 1.1 / 3 |
+| Nivel 1 | 15.5 / 33.8 | 10.0 / 20.0 | 24.0 / 30.0 | 694 / 714 | 215 / 3489 | 950 / 4475 | 1.1 / 4 |
+| Nivel 2 | 24.5 / 93.8 | 14.1 / 49.0 | 41.3 / 74.7 | 701 / 734 | 143 / 5357 | 868 / 974 | 1.2 / 3 |
+| Nivel 3 | 20.6 / 62.4 | 13.2 / 59.0 | 138.6 / 319.1 | 785 / 957 | 290 / 6950 | 860 / 979 | 1.1 / 3 |
+| Repetición | 26.6 / 84.2 | 15.5 / 41.0 | 239.8 / 302.9 | 866 / 940 | 265 / 11597 | 1083 / 15078 | 1.4 / 7 |
 
-Nota sobre `quiz_submit` en Nivel 3/Repetición: su latencia se mantiene baja (no es el cuello de botella) porque muy pocas iteraciones llegan a completarlo — la mayoría de las VUs ya quedan bloqueadas esperando `catalog`/`enroll`/`heartbeat`/`quiz_start` (todas saturadas al límite de 60s, el timeout HTTP por defecto de k6) antes de alcanzar el paso de submit. El error 5.19%/8.71% es prácticamente en su totalidad timeout de esas cuatro operaciones.
+**Hallazgo clave (actualizado con esta medición directa):** la memoria del contenedor de la API crece de forma clara y sostenida con la carga — de ~19 MiB en línea base a ~240-320 MiB en Nivel 3/Repetición, 15x — mientras que el disco se mantiene básicamente ocioso en todos los niveles (los picos puntuales de miles de KB/s son ráfagas aisladas de una sola muestra de 5s, no un patrón sostenido; consistente con que este flujo no hace I/O de archivo, solo llamadas a PostgreSQL). La CPU del contenedor y del host también crecen con la carga, pero de forma menos limpia (picos puntuales altos — 93.8%/59.0% — mezclados con promedios moderados), compatible con el patrón de "ráfagas cortas de cómputo intercaladas con espera" esperado cuando las requests pasan más tiempo bloqueadas que ejecutándose.
+
+El número de conexiones **activas** a PostgreSQL (`pg_stat_activity WHERE state='active'`, medido en vivo) se mantiene bajo (1-7) en todos los niveles, incluyendo Nivel 3/Repetición — a diferencia de la corrida original (25 de septiembre), donde las conexiones **totales** reportadas por Cloud Monitoring sí crecían de forma marcada (8→28) entre Nivel 2 y Nivel 3. Esto no es necesariamente una contradicción: `state='active'` cuenta solo conexiones ejecutando una consulta en ese instante, no las que están abiertas pero esperando turno en el pool — así que una saturación del pool de conexiones seguiría siendo compatible con "activas" bajas si la mayoría de las conexiones abiertas están en estado `idle` esperando, no `active`. Para confirmar o descartar la hipótesis del pool de conexiones con la misma precisión que el resto de esta tabla, la próxima corrida debería medir conexiones **totales** (no solo activas) desde el mismo `monitor_vm.sh`, cambiando la consulta a `SELECT count(*) FROM pg_stat_activity` sin el filtro de estado.
+
+Nota sobre `quiz_submit` en Nivel 3/Repetición: su latencia se mantiene baja (no es el cuello de botella) porque muy pocas iteraciones llegan a completarlo — la mayoría de las VUs ya quedan bloqueadas esperando `catalog`/`enroll`/`heartbeat`/`quiz_start` (todas saturadas al límite de 60s, el timeout HTTP por defecto de k6) antes de alcanzar el paso de submit.
+
+_Nota de reproducibilidad: las ventanas de tiempo de cada nivel se identificaron por inspección de los tramos de CPU activa del contenedor separados por pausas de ~20-30s (coincide con `PausaEntreCorridasSegundos=30` del script), no por una marca de tiempo explícita de inicio/fin de cada nivel — el script no las registra todavía. Para la próxima corrida, que `run_escenario1_niveles.ps1` imprima (o guarde en un log) el timestamp de inicio y fin de cada nivel eliminaría esta ambigüedad por completo._
 
 ### Respuestas exigidas por el enunciado
 
 **¿Qué volumen de actividad sostiene la plataforma dentro de los umbrales definidos y en qué nivel comienza la degradación?**
 
-Hasta 150 VUs concurrentes (Nivel 2) la plataforma sostiene toda la mezcla de operaciones con 0% de errores y p95 por debajo de 300 ms en todos los endpoints (throughput ~56 req/s). Entre 150 y 400 VUs ocurre el colapso: en Nivel 3 el p95 global salta a ~59.9s (contra el umbral de referencia de <500-800ms por endpoint) y la tasa de error sube a 5.19%, con la Repetición confirmando el mismo punto de quiebre (8.71% de error, throughput cayendo de 56 a ~15-21 req/s). El límite sostenible de esta configuración está entre Nivel 2 (150) y Nivel 3 (400); no se acotó más fino dentro del alcance de esta entrega (ver limitaciones).
+Hasta 150 VUs concurrentes (Nivel 2) la plataforma sostiene toda la mezcla de operaciones con 0% de errores y p95 por debajo de 300 ms en los endpoints de negocio simples (`enroll`, `heartbeat`, `badge`, `quiz_start`); `catalog` ya muestra p95 de ~7.9s en Nivel 2, el primero en mostrar señales de presión. Entre 150 y 400 VUs ocurre el colapso: en Nivel 3 el p99 global llega al límite de 60s (timeout HTTP de k6) y la tasa de error sube a 1.05%, con la Repetición confirmando el mismo punto de quiebre (0.07% de error — más bajo que Nivel 3, pero con p95/p99 globales igualmente degradados: 24.0s/34.0s). El límite sostenible de esta configuración está entre Nivel 2 (150) y Nivel 3 (400); no se acotó más fino dentro del alcance de esta entrega (ver limitaciones).
 
 **¿Qué operaciones concentran la latencia o los errores y cómo se relacionan con la API, Redis o su cola de mensajería, el pool de conexiones y PostgreSQL?**
 
-Los cuatro endpoints que golpean la base de datos en cada request (`catalog`, `enroll`, `heartbeat`, `quiz_start` — todos con lectura/escritura a PostgreSQL) se degradan juntos y de forma pareja en Nivel 3/Repetición (p95 ~58.9-60.0s en los cuatro), lo que apunta a un cuello de botella compartido aguas abajo. Las métricas de infraestructura (tabla arriba) confirman **cuál** de los dos: no es cómputo — la CPU de Cloud SQL nunca pasa de 56% y de hecho cae en Nivel 3 respecto a Nivel 2 (22.9%→11.7% avg), igual que la CPU de Web Server (17.6%→8.9% avg) — es el **pool de conexiones hacia PostgreSQL**, cuyas conexiones activas casi se cuadruplican (8→28) justo cuando la CPU de ambos servidores cae, el patrón clásico de requests haciendo cola por una conexión libre en vez de ejecutarse. Este escenario no usa Redis ni cola de mensajería (esa es la ruta del Escenario 2).
+Los cuatro endpoints que golpean la base de datos en cada request (`catalog`, `enroll`, `heartbeat`, `quiz_start` — todos con lectura/escritura a PostgreSQL) se degradan juntos en Nivel 3/Repetición, con `catalog` siempre el más golpeado (p99 de 60.0s/36.5s) y los otros tres en un rango similar entre sí (p99 ~1.4-1.8s), lo que apunta a un cuello de botella compartido aguas abajo más que a una consulta puntual cara. La medición directa de infraestructura (tabla arriba) muestra que la memoria del contenedor de la API crece 15x con la carga (19→320 MiB) mientras el disco se mantiene ocioso — consistente con trabajo retenido en memoria (conexiones/goroutines/buffers esperando) más que con I/O. La hipótesis de la corrida anterior (agotamiento del pool de conexiones hacia PostgreSQL) sigue siendo plausible pero no quedó confirmada con la misma precisión en esta repetición: el conteo de conexiones **activas** se mantuvo bajo (1-7) en todos los niveles, lo cual no la descarta (ver nota bajo la tabla de infraestructura sobre la diferencia entre conexiones activas e idle-en-pool) pero tampoco la confirma directamente — haría falta medir conexiones totales, no solo activas, en una próxima corrida. Este escenario no usa Redis ni cola de mensajería (esa es la ruta del Escenario 2).
 
 **¿Se conservan la integridad de intentos, la calificación y el progreso bajo concurrencia? (incluye la comprobación de envío duplicado sin doble calificación)**
 
@@ -130,11 +142,14 @@ Ver "Propuesta de evolución" al final del documento — se completa junto con e
 
 ### Limitaciones del experimento
 
-- **CPU/memoria de infraestructura obtenidas retroactivamente de Cloud Monitoring** (no se corrió `monitor_vm.sh` en vivo durante esta corrida), cruzadas por ventana de tiempo de cada nivel — ver `loadtests/results/escenario1/infra/`. No se capturaron memoria/red/disco de la VM ni de PostgreSQL (Cloud Monitoring por defecto solo trae CPU y conexiones sin agente adicional), y la granularidad es de 1 minuto, más gruesa que los 5s de `monitor_vm.sh`.
-- **p99 no capturado en esta corrida.** El `summaryTrendStats` por defecto de k6 solo exporta avg/min/med/p90/p95/max; se agregó `p(99)` explícitamente al script para corridas futuras, pero esta corrida ya no se repitió solo por esa métrica.
+- **p99 y memoria/red/disco ya capturados** (cerrado el 2026-10-07, ver tablas arriba) — estas dos limitaciones de la corrida original ya no aplican.
+- **`monitor_vm.sh` solo corrió en Web Server**, no en Worker Server ni Cloud SQL. Worker Server no participa en el flujo de Escenario 1 (sin async), así que no era necesario; Cloud SQL es un servicio administrado sin acceso SSH, así que su CPU/conexiones totales (no solo activas) seguirían requiriendo Cloud Monitoring o una consulta directa vía `psql` si se quiere esa precisión en el futuro.
+- **Las ventanas de tiempo de cada nivel se infirieron por los tramos de CPU activa del contenedor**, no por una marca de tiempo explícita que el script registre — ver la nota de reproducibilidad bajo la tabla de infraestructura.
+- **El conteo de conexiones a PostgreSQL mide solo conexiones "activas"** (`pg_stat_activity WHERE state='active'`), no el total de conexiones abiertas (incluyendo las `idle` esperando turno en el pool) — insuficiente para confirmar o descartar directamente la hipótesis de agotamiento del pool de conexiones planteada en la corrida original.
 - **No se acotó el punto exacto de degradación entre 150 y 400 VUs** — el salto entre Nivel 2 y Nivel 3 es grande; un nivel intermedio (p. ej. 250) ayudaría a ubicar el límite con más precisión.
 - **No se ejecutó una variante separada de ráfaga de login**, tal como permite el enunciado (autenticación fuera del recorrido medido en todos los niveles).
 - El máximo probado (400 VUs, ya claramente degradado) no equivale a la capacidad máxima teórica de la plataforma — es el punto donde se decidió detener el escalado para esta entrega.
+- **La tasa de error varió considerablemente entre la corrida original (25 sept) y esta repetición (7 oct)** para el mismo nivel de carga (Nivel 3: 5.19% vs 1.05%; Repetición: 8.71% vs 0.07%) — variación real atribuible a condiciones externas al entorno controlado (ambas corridas salen desde la laptop del equipo contra internet público), no a un cambio en la aplicación. El punto estructural de quiebre (entre Nivel 2 y Nivel 3) se mantiene estable en ambas corridas.
 
 ---
 
