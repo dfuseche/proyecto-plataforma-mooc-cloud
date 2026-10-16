@@ -74,6 +74,28 @@ jobs:
             --tunnel-through-iap \
             --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && bash deploy/scripts/gar-login.sh ${REGISTRY} && export BACKEND_IMAGE=${BACKEND_IMAGE} && docker-compose -f deploy/docker-compose.worker.yml pull && docker-compose -f deploy/docker-compose.worker.yml up -d"
 
+      # Las instancias de los MIGs bajan `:latest` de Artifact Registry al
+      # arrancar (deploy/startup/startup.sh), así que para desplegar basta con
+      # reemplazarlas. `--max-surge=1 --max-unavailable=0` crea la instancia
+      # nueva ANTES de borrar la vieja; en la API, el health check de
+      # autohealing hace que el MIG espere a que la nueva responda /health.
+      # Un worker reemplazado a mitad de un job lo deja a asynq, que lo
+      # reintenta (MaxRetry 3) en otro worker.
+      - name: Actualizar los MIGs (API y workers)
+        run: |
+          for mig in "${{ vars.GCP_API_MIG || 'mooc-api-mig' }}" "${{ vars.GCP_WORKER_MIG || 'mooc-worker-mig' }}"; do
+            gcloud compute instance-groups managed rolling-action replace "$mig" \
+              --project="${{ vars.GCP_PROJECT_ID }}" \
+              --zone="${{ vars.GCP_ZONE }}" \
+              --max-surge=1 --max-unavailable=0
+          done
+          for mig in "${{ vars.GCP_API_MIG || 'mooc-api-mig' }}" "${{ vars.GCP_WORKER_MIG || 'mooc-worker-mig' }}"; do
+            gcloud compute instance-groups managed wait-until "$mig" --stable \
+              --project="${{ vars.GCP_PROJECT_ID }}" \
+              --zone="${{ vars.GCP_ZONE }}" \
+              --timeout=900
+          done
+
       # worker-server no tiene IP pública (ver ARCHITECTURE_CLOUD.md,
       # subred privada), así que no se puede healthcheckear directo desde
       # el runner de GitHub Actions. En vez de eso, se verifica la API
