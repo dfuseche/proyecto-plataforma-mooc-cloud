@@ -1,3 +1,14 @@
+# Stage 0: frontend (React + Vite). El contexto de build es la raíz del repo.
+FROM node:22-alpine AS web
+
+WORKDIR /web
+
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci --no-audit --no-fund
+
+COPY frontend/ ./
+RUN npm run build
+
 # Stage 1: Build
 FROM golang:1.25-alpine AS builder
 
@@ -5,10 +16,10 @@ WORKDIR /app
 
 RUN apk add --no-cache git gcc musl-dev
 
-COPY go.mod go.sum ./
+COPY backend/go.mod backend/go.sum ./
 RUN go mod download
 
-COPY . .
+COPY backend/ .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o /app/api ./cmd/api
 RUN CGO_ENABLED=0 GOOS=linux go build -o /app/worker ./cmd/worker
@@ -24,6 +35,8 @@ COPY --from=builder /app/api /app/api
 COPY --from=builder /app/worker /app/worker
 COPY --from=builder /app/migrations /app/migrations
 COPY --from=builder /app/docs /app/docs
+# La API sirve la SPA desde WEB_DIR (por defecto /app/web).
+COPY --from=web /web/dist /app/web
 
 EXPOSE 8080
 

@@ -27,8 +27,9 @@ func (m *AuthMiddleware) Authenticate(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		authHeader := r.Header.Get("Authorization")
 		if authHeader == "" || !strings.HasPrefix(authHeader, "Bearer ") {
-			// Intentar fallback con cabeceras directas para compatibilidad en dev/tests si existen
-			m.handleHeaderFallback(w, r, next)
+			// Sin credenciales: la petición sigue como anónima. Las rutas que
+			// exigen sesión o rol las protege AccessPolicy (roles.go).
+			next.ServeHTTP(w, r)
 			return
 		}
 
@@ -81,28 +82,6 @@ func (m *AuthMiddleware) RequireRole(roles ...domain.Role) func(http.Handler) ht
 			next.ServeHTTP(w, r)
 		})
 	}
-}
-
-func (m *AuthMiddleware) handleHeaderFallback(w http.ResponseWriter, r *http.Request, next http.Handler) {
-	adminIDStr := r.Header.Get("X-Admin-ID")
-	teacherIDStr := r.Header.Get("X-Teacher-ID")
-
-	targetIDStr := adminIDStr
-	if targetIDStr == "" {
-		targetIDStr = teacherIDStr
-	}
-
-	if targetIDStr != "" {
-		// Validar si existe el usuario por ID
-		sessionUser, err := m.repo.GetByEmail(r.Context(), "admin@mooc.com")
-		if err == nil {
-			ctx := context.WithValue(r.Context(), UserContextKey, sessionUser)
-			next.ServeHTTP(w, r.WithContext(ctx))
-			return
-		}
-	}
-
-	next.ServeHTTP(w, r)
 }
 
 func (m *AuthMiddleware) respondUnauthorized(w http.ResponseWriter, msg string) {

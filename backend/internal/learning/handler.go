@@ -27,6 +27,8 @@ func (h *HTTPHandler) RegisterRoutes(r chi.Router) {
 		r.Post("/quizzes/{quizId}/attempts", h.SubmitQuizAttempt)
 		r.Post("/attempts/{attemptId}/submit", h.SubmitQuizAttempt)
 		r.Post("/heartbeat", h.RecordHeartbeat)
+		r.Get("/enrollments", h.ListMyEnrollments)
+		r.Get("/resources/{resourceId}/quiz", h.GetQuizForResource)
 	})
 
 	r.Post("/api/v1/courses/resources/{resourceId}/quiz", h.CreateQuiz)
@@ -64,16 +66,11 @@ func (h *HTTPHandler) EnrollStudent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var req struct {
-		StudentID string `json:"student_id"`
-		CourseID  string `json:"course_id"`
+		CourseID string `json:"course_id"`
 	}
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		respondError(w, http.StatusBadRequest, "Payload JSON inválido")
 		return
-	}
-
-	if studentID == uuid.Nil && req.StudentID != "" {
-		studentID, _ = uuid.Parse(req.StudentID)
 	}
 
 	courseID, err := uuid.Parse(req.CourseID)
@@ -286,9 +283,13 @@ func (h *HTTPHandler) RecordHeartbeat(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if authUser != nil && input.StudentID == uuid.Nil {
-		input.StudentID = authUser.ID
+	if authUser == nil {
+		respondError(w, http.StatusUnauthorized, "Se requiere estudiante autenticado")
+		return
 	}
+	// El estudiante sale siempre de la sesión: ignorar el student_id del body
+	// evita registrar progreso en nombre de otra persona.
+	input.StudentID = authUser.ID
 
 	enrollment, err := h.useCase.RecordHeartbeat(r.Context(), input)
 	if err != nil {
@@ -343,4 +344,38 @@ func (h *HTTPHandler) RevokeBadge(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respondJSON(w, http.StatusOK, map[string]string{"message": "Insignia revocada exitosamente"})
+}
+
+// ListMyEnrollments devuelve las inscripciones del usuario autenticado con los
+// datos básicos del curso, para la pantalla "Mis cursos".
+func (h *HTTPHandler) ListMyEnrollments(w http.ResponseWriter, r *http.Request) {
+	authUser := middleware.GetUserFromContext(r.Context())
+	if authUser == nil {
+		respondError(w, http.StatusUnauthorized, "Se requiere estudiante autenticado")
+		return
+	}
+
+	items, err := h.useCase.ListStudentEnrollments(r.Context(), authUser.ID)
+	if err != nil {
+		respondError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	respondJSON(w, http.StatusOK, items)
+}
+
+// GetQuizForResource resuelve el quiz asociado a un recurso de tipo quiz y lo
+// devuelve como snapshot seguro (sin respuestas correctas).
+func (h *HTTPHandler) GetQuizForResource(w http.ResponseWriter, r *http.Request) {
+	resourceID, err := uuid.Parse(chi.URLParam(r, "resourceId"))
+	if err != nil {
+		respondError(w, http.StatusBadRequest, "ID de recurso inválido")
+		return
+	}
+
+	snapshot, err := h.useCase.GetQuizSnapshotByResource(r.Context(), resourceID)
+	if err != nil {
+		respondError(w, http.StatusNotFound, "Este recurso no tiene un quiz configurado")
+		return
+	}
+	respondJSON(w, http.StatusOK, snapshot)
 }

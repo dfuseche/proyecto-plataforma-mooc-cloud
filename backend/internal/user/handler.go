@@ -183,19 +183,11 @@ func (h *HTTPHandler) ResetPassword(w http.ResponseWriter, r *http.Request) {
 
 func (h *HTTPHandler) CreateTeacher(w http.ResponseWriter, r *http.Request) {
 	authUser := middleware.GetUserFromContext(r.Context())
-	adminID := uuid.Nil
-	if authUser != nil {
-		adminID = authUser.ID
-	} else {
-		adminIDStr := r.Header.Get("X-Admin-ID")
-		if adminIDStr != "" {
-			adminID, _ = uuid.Parse(adminIDStr)
-		}
+	if authUser == nil {
+		respondError(w, http.StatusUnauthorized, "Se requiere autenticación")
+		return
 	}
-
-	if adminID == uuid.Nil {
-		adminID = uuid.MustParse("00000000-0000-0000-0000-000000000001")
-	}
+	adminID := authUser.ID
 
 	var input CreateTeacherInput
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
@@ -222,19 +214,11 @@ func (h *HTTPHandler) CreateTeacher(w http.ResponseWriter, r *http.Request) {
 
 func (h *HTTPHandler) ChangeUserStatus(w http.ResponseWriter, r *http.Request) {
 	authUser := middleware.GetUserFromContext(r.Context())
-	adminID := uuid.Nil
-	if authUser != nil {
-		adminID = authUser.ID
-	} else {
-		adminIDStr := r.Header.Get("X-Admin-ID")
-		if adminIDStr != "" {
-			adminID, _ = uuid.Parse(adminIDStr)
-		}
+	if authUser == nil {
+		respondError(w, http.StatusUnauthorized, "Se requiere autenticación")
+		return
 	}
-
-	if adminID == uuid.Nil {
-		adminID = uuid.MustParse("00000000-0000-0000-0000-000000000001")
-	}
+	adminID := authUser.ID
 
 	targetIDStr := chi.URLParam(r, "id")
 	targetID, err := uuid.Parse(targetIDStr)

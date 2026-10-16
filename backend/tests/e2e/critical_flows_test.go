@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 	"testing"
 	"time"
 
@@ -32,6 +33,9 @@ type apiClient struct {
 	baseURL string
 	http    *http.Client
 	token   string
+	// adminToken autentica los pasos de docente (crear/publicar cursos, quizzes);
+	// la API ya no acepta cabeceras X-Admin-ID ni usuario por defecto.
+	adminToken string
 }
 
 func newAPIClient(t *testing.T) *apiClient {
@@ -41,6 +45,7 @@ func newAPIClient(t *testing.T) *apiClient {
 	}
 	c := &apiClient{baseURL: base, http: &http.Client{Timeout: 15 * time.Second}}
 	c.waitForHealth(t)
+	c.adminToken = c.loginAdmin(t)
 	return c
 }
 
@@ -62,6 +67,38 @@ func (c *apiClient) waitForHealth(t *testing.T) {
 		time.Sleep(500 * time.Millisecond)
 	}
 	t.Fatalf("la API en %s nunca respondió healthy (último error: %v)", c.baseURL, lastErr)
+}
+
+// loginAdmin inicia sesión con el administrador sembrado (E2E_ADMIN_EMAIL /
+// E2E_ADMIN_PASSWORD, con los valores por defecto del seed si no se definen).
+func (c *apiClient) loginAdmin(t *testing.T) string {
+	email := os.Getenv("E2E_ADMIN_EMAIL")
+	if email == "" {
+		email = "admin@mooc.com"
+	}
+	password := os.Getenv("E2E_ADMIN_PASSWORD")
+	if password == "" {
+		password = "Admin123!"
+	}
+	raw, _ := json.Marshal(map[string]string{"email": email, "password": password})
+	resp, err := c.http.Post(c.baseURL+"/api/v1/auth/login", "application/json", bytes.NewReader(raw))
+	if err != nil {
+		t.Fatalf("login de admin falló a nivel de transporte: %v", err)
+	}
+	defer resp.Body.Close()
+	var parsed apiResponse
+	if err := json.NewDecoder(resp.Body).Decode(&parsed); err != nil || !parsed.Success {
+		t.Fatalf("login de admin rechazado (status %d): %q", resp.StatusCode, parsed.Error)
+	}
+	var out struct {
+		Session struct {
+			Token string `json:"token"`
+		} `json:"session"`
+	}
+	if err := json.Unmarshal(parsed.Data, &out); err != nil || out.Session.Token == "" {
+		t.Fatalf("login de admin sin session.token: %v", err)
+	}
+	return out.Session.Token
 }
 
 type apiResponse struct {
@@ -92,6 +129,9 @@ func (c *apiClient) do(t *testing.T, method, path string, body any, authenticate
 	req.Header.Set("Content-Type", "application/json")
 	if authenticated && c.token != "" {
 		req.Header.Set("Authorization", "Bearer "+c.token)
+	} else if !authenticated && c.adminToken != "" && method != http.MethodGet &&
+		(strings.HasPrefix(path, "/api/v1/courses") || strings.HasPrefix(path, "/api/v1/media")) {
+		req.Header.Set("Authorization", "Bearer "+c.adminToken)
 	}
 
 	resp, err := c.http.Do(req)
@@ -206,10 +246,8 @@ func TestE2ECriticalFlows(t *testing.T) {
 	})
 
 	t.Run("05_autoria_jerarquia_curso", func(t *testing.T) {
-		// Crear curso. Sin cabecera X-Teacher-ID/X-Admin-ID ni usuario
-		// autenticado con rol docente/admin, el handler usa como fallback
-		// el admin sembrado por defecto (00000000-0000-0000-0000-000000000001),
-		// que SeedDefaultAdmin garantiza que existe en cada arranque limpio.
+		// Crear curso como el admin sembrado (SeedDefaultAdmin lo garantiza en
+		// cada arranque limpio); do() adjunta su token en rutas de docente.
 		resp, parsed := client.do(t, http.MethodPost, "/api/v1/courses", map[string]any{
 			"title":         "Curso E2E " + runID,
 			"summary":       "Curso generado por la suite E2E",

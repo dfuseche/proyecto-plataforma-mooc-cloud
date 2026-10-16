@@ -83,6 +83,31 @@ func (h *HTTPHandler) ListCourses(w http.ResponseWriter, r *http.Request) {
 	}
 	offset, _ := strconv.Atoi(offsetStr)
 
+	// ?published=true devuelve solo cursos con versión publicada (catálogo de
+	// estudiantes); sin el parámetro se listan todos (panel de docentes).
+	if r.URL.Query().Get("published") == "true" {
+		all, err := h.useCase.GetCourseCatalog(r.Context(), 1000, 0)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		published := make([]*domain.Course, 0, len(all))
+		for _, c := range all {
+			if c.CurrentPublishedVersionID != nil {
+				published = append(published, c)
+			}
+		}
+		if offset > len(published) {
+			offset = len(published)
+		}
+		end := offset + limit
+		if end > len(published) {
+			end = len(published)
+		}
+		respondJSON(w, http.StatusOK, published[offset:end])
+		return
+	}
+
 	courses, err := h.useCase.GetCourseCatalog(r.Context(), limit, offset)
 	if err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
@@ -94,22 +119,11 @@ func (h *HTTPHandler) ListCourses(w http.ResponseWriter, r *http.Request) {
 
 func (h *HTTPHandler) CreateCourse(w http.ResponseWriter, r *http.Request) {
 	authUser := middleware.GetUserFromContext(r.Context())
-	teacherID := uuid.Nil
-	if authUser != nil {
-		teacherID = authUser.ID
-	} else {
-		teacherIDStr := r.Header.Get("X-Teacher-ID")
-		if teacherIDStr == "" {
-			teacherIDStr = r.Header.Get("X-Admin-ID")
-		}
-		if teacherIDStr != "" {
-			teacherID, _ = uuid.Parse(teacherIDStr)
-		}
+	if authUser == nil {
+		respondError(w, http.StatusUnauthorized, "Se requiere autenticación")
+		return
 	}
-
-	if teacherID == uuid.Nil {
-		teacherID = uuid.MustParse("00000000-0000-0000-0000-000000000001")
-	}
+	teacherID := authUser.ID
 
 	var input CreateCourseInput
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {

@@ -97,8 +97,8 @@ services:
 
   api:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
     # Sin container_name ni "ports" con host fijo: ambos impiden
     # `docker compose up --scale api=N` (dos contenedores no pueden
     # compartir ni el mismo nombre ni el mismo puerto de host). El
@@ -131,8 +131,8 @@ services:
 
   worker:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
     # Sin container_name, por la misma razon que en "api": permite
     # `docker compose up --scale worker=N`. No publica puertos (no
     # recibe trafico entrante, solo consume la cola de Asynq en Redis).
@@ -173,8 +173,8 @@ services:
   e2e-tests:
     profiles: ["test"]
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
       target: builder
     command: ["go", "test", "-tags=e2e", "-v", "-count=1", "./tests/e2e/..."]
     environment:

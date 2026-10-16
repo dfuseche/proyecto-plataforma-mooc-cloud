@@ -6,8 +6,8 @@ services:
     # hacen `pull`. `build:` queda como respaldo local (`up --build`).
     image: ${BACKEND_IMAGE:-us-central1-docker.pkg.dev/proyecto-plataforma-mooc/mooc/backend:latest}
     build:
-      context: ../backend
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: backend/Dockerfile
     container_name: mooc-api-server
     restart: always
     ports:

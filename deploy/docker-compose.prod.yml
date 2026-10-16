@@ -31,8 +31,8 @@ services:
   # Instancia 1 de la API Go
   api-1:
     build:
-      context: ../backend
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: backend/Dockerfile
     container_name: prod-api-1
     restart: always
     environment:
@@ -49,8 +49,8 @@ services:
   # Instancia 2 de la API Go (Escalamiento Horizontal)
   api-2:
     build:
-      context: ../backend
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: backend/Dockerfile
     container_name: prod-api-2
     restart: always
     environment:
@@ -67,8 +67,8 @@ services:
   # Worker Instancia 1
   worker-1:
     build:
-      context: ../backend
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: backend/Dockerfile
     container_name: prod-worker-1
     command: ["/app/worker"]
     restart: always
@@ -84,8 +84,8 @@ services:
   # Worker Instancia 2
   worker-2:
     build:
-      context: ../backend
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: backend/Dockerfile
     container_name: prod-worker-2
     command: ["/app/worker"]
     restart: always

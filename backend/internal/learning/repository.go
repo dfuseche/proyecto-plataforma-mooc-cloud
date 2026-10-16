@@ -373,3 +373,35 @@ func (r *PostgresRepository) RevokeBadge(ctx context.Context, badgeID uuid.UUID)
 	_, err := r.db.ExecContext(ctx, query, badgeID)
 	return err
 }
+
+// ListEnrollmentsByStudent lista las inscripciones de un estudiante junto con
+// los datos básicos de cada curso (más recientes primero).
+func (r *PostgresRepository) ListEnrollmentsByStudent(ctx context.Context, studentID uuid.UUID) ([]EnrollmentSummary, error) {
+	query := `
+		SELECT e.id, e.student_id, e.course_id, e.status, e.academic_status, e.progress_percentage,
+		       e.created_at, e.updated_at, c.title, c.slug, c.summary
+		FROM enrollments e
+		JOIN courses c ON c.id = e.course_id
+		WHERE e.student_id = $1
+		ORDER BY e.updated_at DESC
+	`
+	rows, err := r.db.QueryContext(ctx, query, studentID)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+
+	items := make([]EnrollmentSummary, 0)
+	for rows.Next() {
+		var it EnrollmentSummary
+		var statusStr, acadStr string
+		if err := rows.Scan(&it.ID, &it.StudentID, &it.CourseID, &statusStr, &acadStr, &it.ProgressPercentage,
+			&it.CreatedAt, &it.UpdatedAt, &it.CourseTitle, &it.CourseSlug, &it.CourseSummary); err != nil {
+			return nil, err
+		}
+		it.Status = domain.EnrollmentStatus(statusStr)
+		it.AcademicStatus = domain.AcademicStatus(acadStr)
+		items = append(items, it)
+	}
+	return items, rows.Err()
+}

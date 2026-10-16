@@ -26,6 +26,7 @@ import (
 	"github.com/mooc-platform/backend/internal/media"
 	internalMw "github.com/mooc-platform/backend/internal/middleware"
 	"github.com/mooc-platform/backend/internal/user"
+	"github.com/mooc-platform/backend/internal/web"
 )
 
 func runMigrations(db *sql.DB) error {
@@ -222,11 +223,12 @@ func main() {
 	r.Use(metrics.Middleware)
 	r.Use(internalMw.Idempotency(rdb))
 	r.Use(authMw.Authenticate)
+	r.Use(authMw.AccessPolicy)
 
 	r.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   []string{"https://*", "http://*"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
-		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token", "Idempotency-Key", "X-Admin-ID", "X-Teacher-ID"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token", "Idempotency-Key"},
 		ExposedHeaders:   []string{"Link", "ETag"},
 		AllowCredentials: true,
 		MaxAge:           300,
@@ -261,6 +263,16 @@ func main() {
 		mediaHandler.RegisterRoutes(r)
 	}
 	learningHandler.RegisterRoutes(r)
+
+	// SPA (frontend React compilado): se sirve en "/" con fallback a index.html.
+	webDir := os.Getenv("WEB_DIR")
+	if webDir == "" {
+		webDir = "web"
+	}
+	if spa := web.NewSPAHandler(webDir); spa != nil {
+		r.NotFound(spa.ServeHTTP)
+		log.Printf("Frontend servido desde %s", webDir)
+	}
 
 	serverAddr := fmt.Sprintf(":%s", cfg.Port)
 	log.Printf("Servidor API de la Plataforma MOOC iniciado en %s", serverAddr)

@@ -446,3 +446,42 @@ func (uc *UseCase) RevokeBadge(ctx context.Context, adminID, badgeID uuid.UUID) 
 func (uc *UseCase) VerifyBadge(ctx context.Context, verificationCode uuid.UUID) (*domain.Badge, error) {
 	return uc.repo.GetBadgeByCode(ctx, verificationCode)
 }
+
+// EnrollmentSummary une la inscripción con los datos del curso para listados.
+type EnrollmentSummary struct {
+	domain.Enrollment
+	CourseTitle   string `json:"course_title"`
+	CourseSlug    string `json:"course_slug"`
+	CourseSummary string `json:"course_summary"`
+}
+
+// enrollmentLister es una capacidad opcional del repositorio: se consulta por
+// type assertion para no ampliar domain.LearningRepository (y sus mocks).
+type enrollmentLister interface {
+	ListEnrollmentsByStudent(ctx context.Context, studentID uuid.UUID) ([]EnrollmentSummary, error)
+}
+
+func (uc *UseCase) ListStudentEnrollments(ctx context.Context, studentID uuid.UUID) ([]EnrollmentSummary, error) {
+	lister, ok := uc.repo.(enrollmentLister)
+	if !ok {
+		return nil, errors.New("el repositorio no soporta listar inscripciones")
+	}
+	items, err := lister.ListEnrollmentsByStudent(ctx, studentID)
+	if err != nil {
+		return nil, err
+	}
+	if items == nil {
+		items = []EnrollmentSummary{}
+	}
+	return items, nil
+}
+
+// GetQuizSnapshotByResource localiza el quiz de un recurso y devuelve su
+// snapshot seguro.
+func (uc *UseCase) GetQuizSnapshotByResource(ctx context.Context, resourceID uuid.UUID) (*QuizSnapshotResponse, error) {
+	quiz, err := uc.repo.GetQuizByResourceID(ctx, resourceID)
+	if err != nil {
+		return nil, err
+	}
+	return uc.GetQuizSnapshot(ctx, quiz.ID)
+}
