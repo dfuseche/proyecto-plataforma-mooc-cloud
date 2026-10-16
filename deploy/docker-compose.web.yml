@@ -2,6 +2,9 @@ version: '3.8'
 
 services:
   api:
+    # La imagen la construye y publica el CD en Artifact Registry; las VMs
+    # hacen `pull`. `build:` queda como respaldo local (`up --build`).
+    image: ${BACKEND_IMAGE:-us-central1-docker.pkg.dev/proyecto-plataforma-mooc/mooc/backend:latest}
     build:
       context: ../backend
       dockerfile: Dockerfile

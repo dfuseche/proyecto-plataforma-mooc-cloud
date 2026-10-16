@@ -27,6 +27,11 @@ jobs:
       contents: read
       id-token: write
     steps:
+      - name: Checkout del commit que pasó el CI
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
       - name: Autenticar contra GCP (Workload Identity Federation)
         uses: google-github-actions/auth@v2
         with:
@@ -36,13 +41,30 @@ jobs:
       - name: Instalar gcloud CLI
         uses: google-github-actions/setup-gcloud@v2
 
+      # La imagen se construye UNA vez aquí y las VMs solo hacen pull (antes
+      # cada VM compilaba el backend: 5-10 min). Se publica con el SHA del
+      # commit (trazable/rollback) y como `latest` (lo que usan las plantillas
+      # de instancia de los MIGs al arrancar).
+      - name: Construir y publicar imagen en Artifact Registry
+        env:
+          SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          REGISTRY: ${{ vars.GCP_REGION || 'us-central1' }}-docker.pkg.dev
+        run: |
+          IMAGE="${REGISTRY}/${{ vars.GCP_PROJECT_ID }}/mooc/backend"
+          gcloud auth configure-docker "${REGISTRY}" --quiet
+          docker build -t "${IMAGE}:${SHA}" -t "${IMAGE}:latest" backend
+          docker push "${IMAGE}:${SHA}"
+          docker push "${IMAGE}:latest"
+          echo "BACKEND_IMAGE=${IMAGE}:${SHA}" >> "$GITHUB_ENV"
+          echo "REGISTRY=${REGISTRY}" >> "$GITHUB_ENV"
+
       - name: Desplegar en web-server (API)
         run: |
           gcloud compute ssh "${{ vars.GCP_WEB_INSTANCE }}" \
             --project="${{ vars.GCP_PROJECT_ID }}" \
             --zone="${{ vars.GCP_ZONE }}" \
             --tunnel-through-iap \
-            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && docker-compose -f deploy/docker-compose.web.yml up -d --build"
+            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && bash deploy/scripts/gar-login.sh ${REGISTRY} && export BACKEND_IMAGE=${BACKEND_IMAGE} && docker-compose -f deploy/docker-compose.web.yml pull && docker-compose -f deploy/docker-compose.web.yml up -d"
 
       - name: Desplegar en worker-server (Worker Asíncrono + Redis)
         run: |
@@ -50,7 +72,7 @@ jobs:
             --project="${{ vars.GCP_PROJECT_ID }}" \
             --zone="${{ vars.GCP_ZONE }}" \
             --tunnel-through-iap \
-            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && docker-compose -f deploy/docker-compose.worker.yml up -d --build"
+            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && bash deploy/scripts/gar-login.sh ${REGISTRY} && export BACKEND_IMAGE=${BACKEND_IMAGE} && docker-compose -f deploy/docker-compose.worker.yml pull && docker-compose -f deploy/docker-compose.worker.yml up -d"
 
       # worker-server no tiene IP pública (ver ARCHITECTURE_CLOUD.md,
       # subred privada), así que no se puede healthcheckear directo desde
