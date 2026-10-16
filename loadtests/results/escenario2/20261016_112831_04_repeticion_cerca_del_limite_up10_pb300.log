@@ -1,0 +1,2660 @@
+
+         /\      Grafana   /ÔÇ¥ÔÇ¥/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ÔÇ¥ÔÇ¥\ 
+  /          \   |   (  |  (ÔÇ¥)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\code\proyecto-plataforma-mooc\loadtests\k6\media-load-test.js
+        output: -
+
+     scenarios: (100.00%) 2 scenarios, 310 max VUs, 3m35s max duration (incl. graceful stop):
+              * subida_multimedia: 10 looping VUs for 3m0s (exec: subirVideo, gracefulStop: 30s)
+              * consumo_hls: 300 looping VUs for 3m0s (exec: reproducirHLS, startTime: 5s, gracefulStop: 30s)
+
+
+Init                [  48% ] 148/310 VUs initialized
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Init                [  96% ] 297/310 VUs initialized
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-16T11:50:38-05:00" level=info msg="Preparando pool de 3 video(s) para el escenario de reproduccion..." source=console
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-16T11:53:31-05:00" level=info msg="Setup: video 1/3 listo (perfil ligero, 37ed8077-8891-4c0d-b31a-d2e2359d2b6c)." source=console
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-16T11:54:09-05:00" level=info msg="Setup: video 2/3 listo (perfil medio, 8bc3e60b-99b1-46c3-820c-238b813f8d31)." source=console
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-16T11:55:05-05:00" level=info msg="Setup: video 3/3 listo (perfil pesado, c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f)." source=console
+time="2026-10-16T11:55:05-05:00" level=info msg="Setup listo: 3/3 video(s) en el pool de reproduccion." source=console
+
+running (4m26.9s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   0% ] 10 VUs   0m00.3s/3m0s
+consumo_hls       ÔÇó [   0% ] waiting  4.7s
+
+running (4m27.9s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   1% ] 10 VUs   0m01.3s/3m0s
+consumo_hls       ÔÇó [   0% ] waiting  3.7s
+
+running (4m28.9s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   1% ] 10 VUs   0m02.3s/3m0s
+consumo_hls       ÔÇó [   0% ] waiting  2.7s
+
+running (4m29.9s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   2% ] 10 VUs   0m03.3s/3m0s
+consumo_hls       ÔÇó [   0% ] waiting  1.7s
+
+running (4m30.9s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   2% ] 10 VUs   0m04.3s/3m0s
+consumo_hls       ÔÇó [   0% ] waiting  0.7s
+
+running (4m31.9s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   3% ] 10 VUs   0m05.3s/3m0s
+consumo_hls         [   0% ] 300 VUs  0m00.3s/3m0s
+
+running (4m32.9s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   4% ] 10 VUs   0m06.3s/3m0s
+consumo_hls         [   1% ] 300 VUs  0m01.3s/3m0s
+
+running (4m33.9s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   4% ] 10 VUs   0m07.3s/3m0s
+consumo_hls         [   1% ] 300 VUs  0m02.3s/3m0s
+
+running (4m34.9s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   5% ] 10 VUs   0m08.3s/3m0s
+consumo_hls         [   2% ] 300 VUs  0m03.3s/3m0s
+
+running (4m35.9s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   5% ] 10 VUs   0m09.3s/3m0s
+consumo_hls         [   2% ] 300 VUs  0m04.3s/3m0s
+
+running (4m36.9s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   6% ] 10 VUs   0m10.3s/3m0s
+consumo_hls         [   3% ] 300 VUs  0m05.3s/3m0s
+
+running (4m37.9s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   6% ] 10 VUs   0m11.3s/3m0s
+consumo_hls         [   4% ] 300 VUs  0m06.3s/3m0s
+
+running (4m38.9s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   7% ] 10 VUs   0m12.3s/3m0s
+consumo_hls         [   4% ] 300 VUs  0m07.3s/3m0s
+
+running (4m39.9s), 310/310 VUs, 2 complete and 0 interrupted iterations
+subida_multimedia   [   7% ] 10 VUs   0m13.3s/3m0s
+consumo_hls         [   5% ] 300 VUs  0m08.3s/3m0s
+
+running (4m40.9s), 310/310 VUs, 2 complete and 0 interrupted iterations
+subida_multimedia   [   8% ] 10 VUs   0m14.3s/3m0s
+consumo_hls         [   5% ] 300 VUs  0m09.3s/3m0s
+
+running (4m41.9s), 310/310 VUs, 2 complete and 0 interrupted iterations
+subida_multimedia   [   9% ] 10 VUs   0m15.3s/3m0s
+consumo_hls         [   6% ] 300 VUs  0m10.3s/3m0s
+
+running (4m42.9s), 310/310 VUs, 3 complete and 0 interrupted iterations
+subida_multimedia   [   9% ] 10 VUs   0m16.3s/3m0s
+consumo_hls         [   6% ] 300 VUs  0m11.3s/3m0s
+
+running (4m43.9s), 310/310 VUs, 3 complete and 0 interrupted iterations
+subida_multimedia   [  10% ] 10 VUs   0m17.3s/3m0s
+consumo_hls         [   7% ] 300 VUs  0m12.3s/3m0s
+
+running (4m44.9s), 310/310 VUs, 3 complete and 0 interrupted iterations
+subida_multimedia   [  10% ] 10 VUs   0m18.3s/3m0s
+consumo_hls         [   7% ] 300 VUs  0m13.3s/3m0s
+time="2026-10-16T11:55:23-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": unexpected EOF"
+
+running (4m45.9s), 310/310 VUs, 4 complete and 0 interrupted iterations
+subida_multimedia   [  11% ] 10 VUs   0m19.3s/3m0s
+consumo_hls         [   8% ] 300 VUs  0m14.3s/3m0s
+time="2026-10-16T11:55:25-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0fce12798b925b8f597e39b901fdf7c489afe988b688cf00d679f0fcfbf093d2\": unexpected EOF"
+time="2026-10-16T11:55:25-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=a5fc00f5e121f43eb4192ce25439a7dcfd1f94b5906dacaac278fb5bf43ec540\": read tcp 192.168.1.32:58260->172.253.147.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (4m46.9s), 310/310 VUs, 4 complete and 0 interrupted iterations
+subida_multimedia   [  11% ] 10 VUs   0m20.3s/3m0s
+consumo_hls         [   9% ] 300 VUs  0m15.3s/3m0s
+time="2026-10-16T11:55:25-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e141e2052cc524fc4918d90468531955b0390cff0ce9544b5bb9ffd0dba1616b\": http2: client conn could not be established"
+time="2026-10-16T11:55:25-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=70669a8196bef09782be32e28668542e54c29439111006b1a873a165d18f403d\": read tcp 192.168.1.32:58246->74.125.196.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:55:26-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0aed4192adf26210f1c4b73e9aa7ce6307f5985c7c92c15e729e21f18c4465de\": unexpected EOF"
+
+running (4m47.9s), 310/310 VUs, 4 complete and 0 interrupted iterations
+subida_multimedia   [  12% ] 10 VUs   0m21.3s/3m0s
+consumo_hls         [   9% ] 300 VUs  0m16.3s/3m0s
+time="2026-10-16T11:55:27-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=25688d06a4946cb2d2ee6b3ef4995c78f20a9897e95e99c305c4540343c2e2fc\": unexpected EOF"
+time="2026-10-16T11:55:27-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": read tcp 192.168.1.32:58345->142.251.129.219:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:55:27-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": read tcp 192.168.1.32:58330->142.251.132.187:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (4m48.9s), 310/310 VUs, 4 complete and 0 interrupted iterations
+subida_multimedia   [  12% ] 10 VUs   0m22.3s/3m0s
+consumo_hls         [  10% ] 300 VUs  0m17.3s/3m0s
+
+running (4m49.9s), 310/310 VUs, 4 complete and 0 interrupted iterations
+subida_multimedia   [  13% ] 10 VUs   0m23.3s/3m0s
+consumo_hls         [  10% ] 300 VUs  0m18.3s/3m0s
+time="2026-10-16T11:55:28-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=25688d06a4946cb2d2ee6b3ef4995c78f20a9897e95e99c305c4540343c2e2fc\": unexpected EOF"
+
+running (4m50.9s), 310/310 VUs, 4 complete and 0 interrupted iterations
+subida_multimedia   [  14% ] 10 VUs   0m24.3s/3m0s
+consumo_hls         [  11% ] 300 VUs  0m19.3s/3m0s
+time="2026-10-16T11:55:30-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": unexpected EOF"
+time="2026-10-16T11:55:30-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": unexpected EOF"
+
+running (4m51.9s), 310/310 VUs, 4 complete and 0 interrupted iterations
+subida_multimedia   [  14% ] 10 VUs   0m25.3s/3m0s
+consumo_hls         [  11% ] 300 VUs  0m20.3s/3m0s
+time="2026-10-16T11:55:30-05:00" level=warning msg="Request Failed" error="Put \"https://mooc-media-equipo-3.storage.googleapis.com/resources/1218699e-ac6a-46dd-805b-8468de017b2c/raw?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165505Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=29171441481e56464482abb1ab3e0c2c214cf61daf20c2676f34def034efb2ac\": read tcp 192.168.1.32:57760->172.217.29.27:443: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."
+time="2026-10-16T11:55:31-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=25688d06a4946cb2d2ee6b3ef4995c78f20a9897e95e99c305c4540343c2e2fc\": read tcp 192.168.1.32:58276->172.217.162.123:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:55:31-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=70669a8196bef09782be32e28668542e54c29439111006b1a873a165d18f403d\": read tcp 192.168.1.32:58271->172.217.203.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (4m52.9s), 310/310 VUs, 4 complete and 0 interrupted iterations
+subida_multimedia   [  15% ] 10 VUs   0m26.3s/3m0s
+consumo_hls         [  12% ] 300 VUs  0m21.3s/3m0s
+
+running (4m53.9s), 310/310 VUs, 5 complete and 0 interrupted iterations
+subida_multimedia   [  15% ] 10 VUs   0m27.3s/3m0s
+consumo_hls         [  12% ] 300 VUs  0m22.3s/3m0s
+time="2026-10-16T11:55:32-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": dial tcp 142.251.107.207:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."
+
+running (4m54.9s), 310/310 VUs, 5 complete and 0 interrupted iterations
+subida_multimedia   [  16% ] 10 VUs   0m28.3s/3m0s
+consumo_hls         [  13% ] 300 VUs  0m23.3s/3m0s
+
+running (4m55.9s), 310/310 VUs, 5 complete and 0 interrupted iterations
+subida_multimedia   [  16% ] 10 VUs   0m29.3s/3m0s
+consumo_hls         [  14% ] 300 VUs  0m24.3s/3m0s
+
+running (4m56.9s), 310/310 VUs, 5 complete and 0 interrupted iterations
+subida_multimedia   [  17% ] 10 VUs   0m30.3s/3m0s
+consumo_hls         [  14% ] 300 VUs  0m25.3s/3m0s
+
+running (4m57.9s), 310/310 VUs, 6 complete and 0 interrupted iterations
+subida_multimedia   [  17% ] 10 VUs   0m31.3s/3m0s
+consumo_hls         [  15% ] 300 VUs  0m26.3s/3m0s
+
+running (4m58.9s), 310/310 VUs, 7 complete and 0 interrupted iterations
+subida_multimedia   [  18% ] 10 VUs   0m32.3s/3m0s
+consumo_hls         [  15% ] 300 VUs  0m27.3s/3m0s
+time="2026-10-16T11:55:38-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=70669a8196bef09782be32e28668542e54c29439111006b1a873a165d18f403d\": read tcp 192.168.1.32:58213->172.253.147.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (4m59.9s), 310/310 VUs, 7 complete and 0 interrupted iterations
+subida_multimedia   [  19% ] 10 VUs   0m33.3s/3m0s
+consumo_hls         [  16% ] 300 VUs  0m28.3s/3m0s
+
+running (5m00.9s), 310/310 VUs, 7 complete and 0 interrupted iterations
+subida_multimedia   [  19% ] 10 VUs   0m34.3s/3m0s
+consumo_hls         [  16% ] 300 VUs  0m29.3s/3m0s
+
+running (5m01.9s), 310/310 VUs, 8 complete and 0 interrupted iterations
+subida_multimedia   [  20% ] 10 VUs   0m35.3s/3m0s
+consumo_hls         [  17% ] 300 VUs  0m30.3s/3m0s
+
+running (5m02.9s), 310/310 VUs, 8 complete and 0 interrupted iterations
+subida_multimedia   [  20% ] 10 VUs   0m36.3s/3m0s
+consumo_hls         [  17% ] 300 VUs  0m31.3s/3m0s
+
+running (5m03.9s), 310/310 VUs, 10 complete and 0 interrupted iterations
+subida_multimedia   [  21% ] 10 VUs   0m37.3s/3m0s
+consumo_hls         [  18% ] 300 VUs  0m32.3s/3m0s
+
+running (5m04.9s), 310/310 VUs, 10 complete and 0 interrupted iterations
+subida_multimedia   [  21% ] 10 VUs   0m38.3s/3m0s
+consumo_hls         [  19% ] 300 VUs  0m33.3s/3m0s
+
+running (5m05.9s), 310/310 VUs, 12 complete and 0 interrupted iterations
+subida_multimedia   [  22% ] 10 VUs   0m39.3s/3m0s
+consumo_hls         [  19% ] 300 VUs  0m34.3s/3m0s
+
+running (5m06.9s), 310/310 VUs, 15 complete and 0 interrupted iterations
+subida_multimedia   [  22% ] 10 VUs   0m40.3s/3m0s
+consumo_hls         [  20% ] 300 VUs  0m35.3s/3m0s
+
+running (5m07.9s), 310/310 VUs, 15 complete and 0 interrupted iterations
+subida_multimedia   [  23% ] 10 VUs   0m41.3s/3m0s
+consumo_hls         [  20% ] 300 VUs  0m36.3s/3m0s
+
+running (5m08.9s), 310/310 VUs, 16 complete and 0 interrupted iterations
+subida_multimedia   [  24% ] 10 VUs   0m42.3s/3m0s
+consumo_hls         [  21% ] 300 VUs  0m37.3s/3m0s
+
+running (5m09.9s), 310/310 VUs, 17 complete and 0 interrupted iterations
+subida_multimedia   [  24% ] 10 VUs   0m43.3s/3m0s
+consumo_hls         [  21% ] 300 VUs  0m38.3s/3m0s
+
+running (5m10.9s), 310/310 VUs, 18 complete and 0 interrupted iterations
+subida_multimedia   [  25% ] 10 VUs   0m44.3s/3m0s
+consumo_hls         [  22% ] 300 VUs  0m39.3s/3m0s
+
+running (5m11.9s), 310/310 VUs, 18 complete and 0 interrupted iterations
+subida_multimedia   [  25% ] 10 VUs   0m45.3s/3m0s
+consumo_hls         [  22% ] 300 VUs  0m40.3s/3m0s
+
+running (5m12.9s), 310/310 VUs, 18 complete and 0 interrupted iterations
+subida_multimedia   [  26% ] 10 VUs   0m46.3s/3m0s
+consumo_hls         [  23% ] 300 VUs  0m41.3s/3m0s
+time="2026-10-16T11:55:51-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0fce12798b925b8f597e39b901fdf7c489afe988b688cf00d679f0fcfbf093d2\": read tcp 192.168.1.32:58259->172.217.30.187:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (5m13.9s), 310/310 VUs, 23 complete and 0 interrupted iterations
+subida_multimedia   [  26% ] 10 VUs   0m47.3s/3m0s
+consumo_hls         [  24% ] 300 VUs  0m42.3s/3m0s
+
+running (5m14.9s), 310/310 VUs, 24 complete and 0 interrupted iterations
+subida_multimedia   [  27% ] 10 VUs   0m48.3s/3m0s
+consumo_hls         [  24% ] 300 VUs  0m43.3s/3m0s
+time="2026-10-16T11:55:54-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=c2751f0e20a91880156234969ff92c2d6b81b85174bd89812e268be48aeced84\": read tcp 192.168.1.32:58337->172.217.28.123:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (5m15.9s), 310/310 VUs, 26 complete and 0 interrupted iterations
+subida_multimedia   [  27% ] 10 VUs   0m49.3s/3m0s
+consumo_hls         [  25% ] 300 VUs  0m44.3s/3m0s
+time="2026-10-16T11:55:55-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=25688d06a4946cb2d2ee6b3ef4995c78f20a9897e95e99c305c4540343c2e2fc\": unexpected EOF"
+
+running (5m16.9s), 310/310 VUs, 28 complete and 0 interrupted iterations
+subida_multimedia   [  28% ] 10 VUs   0m50.3s/3m0s
+consumo_hls         [  25% ] 300 VUs  0m45.3s/3m0s
+
+running (5m17.9s), 310/310 VUs, 29 complete and 0 interrupted iterations
+subida_multimedia   [  29% ] 10 VUs   0m51.3s/3m0s
+consumo_hls         [  26% ] 300 VUs  0m46.3s/3m0s
+time="2026-10-16T11:55:57-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0fce12798b925b8f597e39b901fdf7c489afe988b688cf00d679f0fcfbf093d2\": read tcp 192.168.1.32:58326->172.217.30.187:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:55:57-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=25688d06a4946cb2d2ee6b3ef4995c78f20a9897e95e99c305c4540343c2e2fc\": read tcp 192.168.1.32:58282->142.251.132.27:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (5m18.9s), 310/310 VUs, 29 complete and 0 interrupted iterations
+subida_multimedia   [  29% ] 10 VUs   0m52.3s/3m0s
+consumo_hls         [  26% ] 300 VUs  0m47.3s/3m0s
+
+running (5m19.9s), 310/310 VUs, 30 complete and 0 interrupted iterations
+subida_multimedia   [  30% ] 10 VUs   0m53.3s/3m0s
+consumo_hls         [  27% ] 300 VUs  0m48.3s/3m0s
+
+running (5m20.9s), 310/310 VUs, 32 complete and 0 interrupted iterations
+subida_multimedia   [  30% ] 10 VUs   0m54.3s/3m0s
+consumo_hls         [  27% ] 300 VUs  0m49.3s/3m0s
+time="2026-10-16T11:56:00-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0aed4192adf26210f1c4b73e9aa7ce6307f5985c7c92c15e729e21f18c4465de\": read tcp 192.168.1.32:58329->172.253.147.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:56:00-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=a5fc00f5e121f43eb4192ce25439a7dcfd1f94b5906dacaac278fb5bf43ec540\": read tcp 192.168.1.32:58270->142.251.132.27:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (5m21.9s), 310/310 VUs, 34 complete and 0 interrupted iterations
+subida_multimedia   [  31% ] 10 VUs   0m55.3s/3m0s
+consumo_hls         [  28% ] 300 VUs  0m50.3s/3m0s
+
+running (5m22.9s), 310/310 VUs, 36 complete and 0 interrupted iterations
+subida_multimedia   [  31% ] 10 VUs   0m56.3s/3m0s
+consumo_hls         [  29% ] 300 VUs  0m51.3s/3m0s
+
+running (5m23.9s), 310/310 VUs, 38 complete and 0 interrupted iterations
+subida_multimedia   [  32% ] 10 VUs   0m57.3s/3m0s
+consumo_hls         [  29% ] 300 VUs  0m52.3s/3m0s
+
+running (5m24.9s), 310/310 VUs, 41 complete and 0 interrupted iterations
+subida_multimedia   [  32% ] 10 VUs   0m58.3s/3m0s
+consumo_hls         [  30% ] 300 VUs  0m53.3s/3m0s
+
+running (5m25.9s), 310/310 VUs, 42 complete and 0 interrupted iterations
+subida_multimedia   [  33% ] 10 VUs   0m59.3s/3m0s
+consumo_hls         [  30% ] 300 VUs  0m54.3s/3m0s
+time="2026-10-16T11:56:05-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0aed4192adf26210f1c4b73e9aa7ce6307f5985c7c92c15e729e21f18c4465de\": read tcp 192.168.1.32:58294->172.253.147.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:56:05-05:00" level=warning msg="Request Failed" error="Put \"https://mooc-media-equipo-3.storage.googleapis.com/resources/b58b3d52-9a99-47e3-bb98-f6e4c90d8e94/raw?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165505Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=3805aedfe66de7a87c6904bf494896abe267d7ec4e2e865fcad148b85fcc523a\": request timeout"
+
+running (5m26.9s), 310/310 VUs, 44 complete and 0 interrupted iterations
+subida_multimedia   [  34% ] 10 VUs   1m00.3s/3m0s
+consumo_hls         [  31% ] 300 VUs  0m55.3s/3m0s
+
+running (5m27.9s), 310/310 VUs, 48 complete and 0 interrupted iterations
+subida_multimedia   [  34% ] 10 VUs   1m01.3s/3m0s
+consumo_hls         [  31% ] 300 VUs  0m56.3s/3m0s
+time="2026-10-16T11:56:06-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0aed4192adf26210f1c4b73e9aa7ce6307f5985c7c92c15e729e21f18c4465de\": read tcp 192.168.1.32:58291->172.217.30.187:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:56:07-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": unexpected EOF"
+
+running (5m28.9s), 310/310 VUs, 48 complete and 0 interrupted iterations
+subida_multimedia   [  35% ] 10 VUs   1m02.3s/3m0s
+consumo_hls         [  32% ] 300 VUs  0m57.3s/3m0s
+time="2026-10-16T11:56:07-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": read tcp 192.168.1.32:58238->173.194.44.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:56:08-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": read tcp 192.168.1.32:58339->172.217.203.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (5m29.9s), 310/310 VUs, 48 complete and 0 interrupted iterations
+subida_multimedia   [  35% ] 10 VUs   1m03.3s/3m0s
+consumo_hls         [  32% ] 300 VUs  0m58.3s/3m0s
+
+running (5m30.9s), 310/310 VUs, 50 complete and 0 interrupted iterations
+subida_multimedia   [  36% ] 10 VUs   1m04.3s/3m0s
+consumo_hls         [  33% ] 300 VUs  0m59.3s/3m0s
+
+running (5m31.9s), 310/310 VUs, 50 complete and 0 interrupted iterations
+subida_multimedia   [  36% ] 10 VUs   1m05.3s/3m0s
+consumo_hls         [  34% ] 300 VUs  1m00.3s/3m0s
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e141e2052cc524fc4918d90468531955b0390cff0ce9544b5bb9ffd0dba1616b\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e141e2052cc524fc4918d90468531955b0390cff0ce9544b5bb9ffd0dba1616b\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=70669a8196bef09782be32e28668542e54c29439111006b1a873a165d18f403d\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"http://35.209.105.199/api/v1/media/resources/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/manifest.m3u8?variant=1080p.m3u8\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0fce12798b925b8f597e39b901fdf7c489afe988b688cf00d679f0fcfbf093d2\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=25688d06a4946cb2d2ee6b3ef4995c78f20a9897e95e99c305c4540343c2e2fc\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"http://35.209.105.199/api/v1/media/resources/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/manifest.m3u8?variant=360p.m3u8\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=c2751f0e20a91880156234969ff92c2d6b81b85174bd89812e268be48aeced84\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=70669a8196bef09782be32e28668542e54c29439111006b1a873a165d18f403d\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5427d974e6de4491d5a948714c963dcd5c02c06ab8647b212da96e26ad4fbe8d\": request timeout"
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=0aed4192adf26210f1c4b73e9aa7ce6307f5985c7c92c15e729e21f18c4465de\": request timeout"
+
+running (5m32.9s), 310/310 VUs, 50 complete and 0 interrupted iterations
+subida_multimedia   [  37% ] 10 VUs   1m06.3s/3m0s
+consumo_hls         [  34% ] 300 VUs  1m01.3s/3m0s
+time="2026-10-16T11:56:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:12-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m33.9s), 310/310 VUs, 54 complete and 0 interrupted iterations
+subida_multimedia   [  37% ] 10 VUs   1m07.3s/3m0s
+consumo_hls         [  35% ] 300 VUs  1m02.3s/3m0s
+time="2026-10-16T11:56:12-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:13-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=70669a8196bef09782be32e28668542e54c29439111006b1a873a165d18f403d\": request timeout"
+
+running (5m34.9s), 310/310 VUs, 55 complete and 0 interrupted iterations
+subida_multimedia   [  38% ] 10 VUs   1m08.3s/3m0s
+consumo_hls         [  35% ] 300 VUs  1m03.3s/3m0s
+
+running (5m35.9s), 310/310 VUs, 56 complete and 0 interrupted iterations
+subida_multimedia   [  39% ] 10 VUs   1m09.3s/3m0s
+consumo_hls         [  36% ] 300 VUs  1m04.3s/3m0s
+time="2026-10-16T11:56:15-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165512Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=cbf639bb521c4e79a34ea5757362c73fcc53ff9b48495650754b29a60e393236\": request timeout"
+time="2026-10-16T11:56:15-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:15-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m36.9s), 310/310 VUs, 56 complete and 0 interrupted iterations
+subida_multimedia   [  39% ] 10 VUs   1m10.3s/3m0s
+consumo_hls         [  36% ] 300 VUs  1m05.3s/3m0s
+
+running (5m37.9s), 310/310 VUs, 62 complete and 0 interrupted iterations
+subida_multimedia   [  40% ] 10 VUs   1m11.3s/3m0s
+consumo_hls         [  37% ] 300 VUs  1m06.3s/3m0s
+
+running (5m38.9s), 310/310 VUs, 63 complete and 0 interrupted iterations
+subida_multimedia   [  40% ] 10 VUs   1m12.3s/3m0s
+consumo_hls         [  37% ] 300 VUs  1m07.3s/3m0s
+
+running (5m39.9s), 310/310 VUs, 64 complete and 0 interrupted iterations
+subida_multimedia   [  41% ] 10 VUs   1m13.3s/3m0s
+consumo_hls         [  38% ] 300 VUs  1m08.3s/3m0s
+time="2026-10-16T11:56:19-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m40.9s), 310/310 VUs, 64 complete and 0 interrupted iterations
+subida_multimedia   [  41% ] 10 VUs   1m14.3s/3m0s
+consumo_hls         [  39% ] 300 VUs  1m09.3s/3m0s
+
+running (5m41.9s), 310/310 VUs, 65 complete and 0 interrupted iterations
+subida_multimedia   [  42% ] 10 VUs   1m15.3s/3m0s
+consumo_hls         [  39% ] 300 VUs  1m10.3s/3m0s
+time="2026-10-16T11:56:21-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e65d36915192e2e25120edd89c6e35b0625aa29b555d4658f68af7b6ffee93bf\": read tcp 192.168.1.32:58474->142.251.132.27:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:56:21-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4639a4d808631e6c6267bbb633ffd12c0635d3aff696146f617c229356576fd9\": read tcp 192.168.1.32:58476->172.217.30.219:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:56:21-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:21-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m42.9s), 310/310 VUs, 67 complete and 0 interrupted iterations
+subida_multimedia   [  42% ] 10 VUs   1m16.3s/3m0s
+consumo_hls         [  40% ] 300 VUs  1m11.3s/3m0s
+
+running (5m43.9s), 310/310 VUs, 69 complete and 0 interrupted iterations
+subida_multimedia   [  43% ] 10 VUs   1m17.3s/3m0s
+consumo_hls         [  40% ] 300 VUs  1m12.3s/3m0s
+
+running (5m44.9s), 310/310 VUs, 70 complete and 0 interrupted iterations
+subida_multimedia   [  44% ] 10 VUs   1m18.3s/3m0s
+consumo_hls         [  41% ] 300 VUs  1m13.3s/3m0s
+
+running (5m45.9s), 310/310 VUs, 72 complete and 0 interrupted iterations
+subida_multimedia   [  44% ] 10 VUs   1m19.3s/3m0s
+consumo_hls         [  41% ] 300 VUs  1m14.3s/3m0s
+time="2026-10-16T11:56:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:25-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m46.9s), 310/310 VUs, 74 complete and 0 interrupted iterations
+subida_multimedia   [  45% ] 10 VUs   1m20.3s/3m0s
+consumo_hls         [  42% ] 300 VUs  1m15.3s/3m0s
+time="2026-10-16T11:56:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:26-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e65d36915192e2e25120edd89c6e35b0625aa29b555d4658f68af7b6ffee93bf\": request timeout"
+
+running (5m47.9s), 310/310 VUs, 80 complete and 0 interrupted iterations
+subida_multimedia   [  45% ] 10 VUs   1m21.3s/3m0s
+consumo_hls         [  42% ] 300 VUs  1m16.3s/3m0s
+time="2026-10-16T11:56:27-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e65d36915192e2e25120edd89c6e35b0625aa29b555d4658f68af7b6ffee93bf\": unexpected EOF"
+
+running (5m48.9s), 310/310 VUs, 81 complete and 0 interrupted iterations
+subida_multimedia   [  46% ] 10 VUs   1m22.3s/3m0s
+consumo_hls         [  43% ] 300 VUs  1m17.3s/3m0s
+
+running (5m49.9s), 310/310 VUs, 86 complete and 0 interrupted iterations
+subida_multimedia   [  46% ] 10 VUs   1m23.3s/3m0s
+consumo_hls         [  44% ] 300 VUs  1m18.3s/3m0s
+time="2026-10-16T11:56:28-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m50.9s), 310/310 VUs, 88 complete and 0 interrupted iterations
+subida_multimedia   [  47% ] 10 VUs   1m24.3s/3m0s
+consumo_hls         [  44% ] 300 VUs  1m19.3s/3m0s
+
+running (5m51.9s), 310/310 VUs, 90 complete and 0 interrupted iterations
+subida_multimedia   [  47% ] 10 VUs   1m25.3s/3m0s
+consumo_hls         [  45% ] 300 VUs  1m20.3s/3m0s
+time="2026-10-16T11:56:31-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m52.9s), 310/310 VUs, 92 complete and 0 interrupted iterations
+subida_multimedia   [  48% ] 10 VUs   1m26.3s/3m0s
+consumo_hls         [  45% ] 300 VUs  1m21.3s/3m0s
+time="2026-10-16T11:56:32-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=3f65cef5a11ed34e1945418d5c963d42b0d2e99b055cf36ce2d17110a78f85a7\": read tcp 192.168.1.32:58501->172.217.162.155:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (5m53.9s), 310/310 VUs, 94 complete and 0 interrupted iterations
+subida_multimedia   [  49% ] 10 VUs   1m27.3s/3m0s
+consumo_hls         [  46% ] 300 VUs  1m22.3s/3m0s
+
+running (5m54.9s), 310/310 VUs, 96 complete and 0 interrupted iterations
+subida_multimedia   [  49% ] 10 VUs   1m28.3s/3m0s
+consumo_hls         [  46% ] 300 VUs  1m23.3s/3m0s
+
+running (5m55.9s), 310/310 VUs, 96 complete and 0 interrupted iterations
+subida_multimedia   [  50% ] 10 VUs   1m29.3s/3m0s
+consumo_hls         [  47% ] 300 VUs  1m24.3s/3m0s
+time="2026-10-16T11:56:35-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m56.9s), 310/310 VUs, 97 complete and 0 interrupted iterations
+subida_multimedia   [  50% ] 10 VUs   1m30.3s/3m0s
+consumo_hls         [  47% ] 300 VUs  1m25.3s/3m0s
+
+running (5m57.9s), 310/310 VUs, 99 complete and 0 interrupted iterations
+subida_multimedia   [  51% ] 10 VUs   1m31.3s/3m0s
+consumo_hls         [  48% ] 300 VUs  1m26.3s/3m0s
+
+running (5m58.9s), 310/310 VUs, 100 complete and 0 interrupted iterations
+subida_multimedia   [  51% ] 10 VUs   1m32.3s/3m0s
+consumo_hls         [  49% ] 300 VUs  1m27.3s/3m0s
+time="2026-10-16T11:56:38-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (5m59.9s), 310/310 VUs, 103 complete and 0 interrupted iterations
+subida_multimedia   [  52% ] 10 VUs   1m33.3s/3m0s
+consumo_hls         [  49% ] 300 VUs  1m28.3s/3m0s
+
+running (6m00.9s), 310/310 VUs, 108 complete and 0 interrupted iterations
+subida_multimedia   [  52% ] 10 VUs   1m34.3s/3m0s
+consumo_hls         [  50% ] 300 VUs  1m29.3s/3m0s
+time="2026-10-16T11:56:40-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m01.9s), 310/310 VUs, 109 complete and 0 interrupted iterations
+subida_multimedia   [  53% ] 10 VUs   1m35.3s/3m0s
+consumo_hls         [  50% ] 300 VUs  1m30.3s/3m0s
+time="2026-10-16T11:56:41-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m02.9s), 310/310 VUs, 111 complete and 0 interrupted iterations
+subida_multimedia   [  54% ] 10 VUs   1m36.3s/3m0s
+consumo_hls         [  51% ] 300 VUs  1m31.3s/3m0s
+time="2026-10-16T11:56:42-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m03.9s), 310/310 VUs, 114 complete and 0 interrupted iterations
+subida_multimedia   [  54% ] 10 VUs   1m37.3s/3m0s
+consumo_hls         [  51% ] 300 VUs  1m32.3s/3m0s
+time="2026-10-16T11:56:43-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:43-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m04.9s), 310/310 VUs, 115 complete and 0 interrupted iterations
+subida_multimedia   [  55% ] 10 VUs   1m38.3s/3m0s
+consumo_hls         [  52% ] 300 VUs  1m33.3s/3m0s
+
+running (6m05.9s), 310/310 VUs, 118 complete and 0 interrupted iterations
+subida_multimedia   [  55% ] 10 VUs   1m39.3s/3m0s
+consumo_hls         [  52% ] 300 VUs  1m34.3s/3m0s
+time="2026-10-16T11:56:45-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m06.9s), 310/310 VUs, 121 complete and 0 interrupted iterations
+subida_multimedia   [  56% ] 10 VUs   1m40.3s/3m0s
+consumo_hls         [  53% ] 300 VUs  1m35.3s/3m0s
+time="2026-10-16T11:56:46-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m07.9s), 310/310 VUs, 121 complete and 0 interrupted iterations
+subida_multimedia   [  56% ] 10 VUs   1m41.3s/3m0s
+consumo_hls         [  54% ] 300 VUs  1m36.3s/3m0s
+time="2026-10-16T11:56:47-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:47-05:00" level=warning msg="Request Failed" error="Put \"https://mooc-media-equipo-3.storage.googleapis.com/resources/98428c6a-c7d3-499e-9680-115a70c25908/raw?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165606Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=eacf1d72aeb72ebe23355c446bf9051f451d0ee35615e58a01630594a8969196\": read tcp 192.168.1.32:57755->74.125.196.207:443: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."
+
+running (6m08.9s), 310/310 VUs, 121 complete and 0 interrupted iterations
+subida_multimedia   [  57% ] 10 VUs   1m42.3s/3m0s
+consumo_hls         [  54% ] 300 VUs  1m37.3s/3m0s
+time="2026-10-16T11:56:48-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m09.9s), 310/310 VUs, 125 complete and 0 interrupted iterations
+subida_multimedia   [  57% ] 10 VUs   1m43.3s/3m0s
+consumo_hls         [  55% ] 300 VUs  1m38.3s/3m0s
+time="2026-10-16T11:56:49-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m10.9s), 310/310 VUs, 128 complete and 0 interrupted iterations
+subida_multimedia   [  58% ] 10 VUs   1m44.3s/3m0s
+consumo_hls         [  55% ] 300 VUs  1m39.3s/3m0s
+time="2026-10-16T11:56:50-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:50-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m11.9s), 310/310 VUs, 128 complete and 0 interrupted iterations
+subida_multimedia   [  59% ] 10 VUs   1m45.3s/3m0s
+consumo_hls         [  56% ] 300 VUs  1m40.3s/3m0s
+time="2026-10-16T11:56:51-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m12.9s), 310/310 VUs, 131 complete and 0 interrupted iterations
+subida_multimedia   [  59% ] 10 VUs   1m46.3s/3m0s
+consumo_hls         [  56% ] 300 VUs  1m41.3s/3m0s
+time="2026-10-16T11:56:51-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:52-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165614Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=749640b1985bc70de33f65c286d437dff886e360054c241a1ccb512aef608af5\": read tcp 192.168.1.32:58497->172.253.147.207:443: wsarecv: An existing connection was forcibly closed by the remote host."
+time="2026-10-16T11:56:52-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:52-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m13.9s), 310/310 VUs, 132 complete and 0 interrupted iterations
+subida_multimedia   [  60% ] 10 VUs   1m47.3s/3m0s
+consumo_hls         [  57% ] 300 VUs  1m42.3s/3m0s
+time="2026-10-16T11:56:53-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m14.9s), 310/310 VUs, 133 complete and 0 interrupted iterations
+subida_multimedia   [  60% ] 10 VUs   1m48.3s/3m0s
+consumo_hls         [  57% ] 300 VUs  1m43.3s/3m0s
+time="2026-10-16T11:56:54-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:54-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:54-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m15.9s), 310/310 VUs, 137 complete and 0 interrupted iterations
+subida_multimedia   [  61% ] 10 VUs   1m49.3s/3m0s
+consumo_hls         [  58% ] 300 VUs  1m44.3s/3m0s
+time="2026-10-16T11:56:54-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:55-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:55-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:55-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m16.9s), 310/310 VUs, 138 complete and 0 interrupted iterations
+subida_multimedia   [  61% ] 10 VUs   1m50.3s/3m0s
+consumo_hls         [  59% ] 300 VUs  1m45.3s/3m0s
+
+running (6m17.9s), 310/310 VUs, 140 complete and 0 interrupted iterations
+subida_multimedia   [  62% ] 10 VUs   1m51.3s/3m0s
+consumo_hls         [  59% ] 300 VUs  1m46.3s/3m0s
+time="2026-10-16T11:56:57-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:56:57-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m18.9s), 310/310 VUs, 142 complete and 0 interrupted iterations
+subida_multimedia   [  62% ] 10 VUs   1m52.3s/3m0s
+consumo_hls         [  60% ] 300 VUs  1m47.3s/3m0s
+
+running (6m19.9s), 310/310 VUs, 145 complete and 0 interrupted iterations
+subida_multimedia   [  63% ] 10 VUs   1m53.3s/3m0s
+consumo_hls         [  60% ] 300 VUs  1m48.3s/3m0s
+time="2026-10-16T11:56:59-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m20.9s), 310/310 VUs, 146 complete and 0 interrupted iterations
+subida_multimedia   [  64% ] 10 VUs   1m54.3s/3m0s
+consumo_hls         [  61% ] 300 VUs  1m49.3s/3m0s
+time="2026-10-16T11:57:00-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:00-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:00-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m21.9s), 310/310 VUs, 147 complete and 0 interrupted iterations
+subida_multimedia   [  64% ] 10 VUs   1m55.3s/3m0s
+consumo_hls         [  61% ] 300 VUs  1m50.3s/3m0s
+time="2026-10-16T11:57:00-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:01-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m22.9s), 310/310 VUs, 149 complete and 0 interrupted iterations
+subida_multimedia   [  65% ] 10 VUs   1m56.3s/3m0s
+consumo_hls         [  62% ] 300 VUs  1m51.3s/3m0s
+time="2026-10-16T11:57:01-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:02-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:02-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m23.9s), 310/310 VUs, 150 complete and 0 interrupted iterations
+subida_multimedia   [  65% ] 10 VUs   1m57.3s/3m0s
+consumo_hls         [  62% ] 300 VUs  1m52.3s/3m0s
+time="2026-10-16T11:57:03-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:03-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m24.9s), 310/310 VUs, 151 complete and 0 interrupted iterations
+subida_multimedia   [  66% ] 10 VUs   1m58.3s/3m0s
+consumo_hls         [  63% ] 300 VUs  1m53.3s/3m0s
+time="2026-10-16T11:57:04-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m25.9s), 310/310 VUs, 153 complete and 0 interrupted iterations
+subida_multimedia   [  66% ] 10 VUs   1m59.3s/3m0s
+consumo_hls         [  64% ] 300 VUs  1m54.3s/3m0s
+time="2026-10-16T11:57:05-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m26.9s), 310/310 VUs, 157 complete and 0 interrupted iterations
+subida_multimedia   [  67% ] 10 VUs   2m00.3s/3m0s
+consumo_hls         [  64% ] 300 VUs  1m55.3s/3m0s
+time="2026-10-16T11:57:05-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m27.9s), 310/310 VUs, 158 complete and 0 interrupted iterations
+subida_multimedia   [  67% ] 10 VUs   2m01.3s/3m0s
+consumo_hls         [  65% ] 300 VUs  1m56.3s/3m0s
+
+running (6m28.9s), 310/310 VUs, 160 complete and 0 interrupted iterations
+subida_multimedia   [  68% ] 10 VUs   2m02.3s/3m0s
+consumo_hls         [  65% ] 300 VUs  1m57.3s/3m0s
+time="2026-10-16T11:57:08-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:08-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m29.9s), 310/310 VUs, 160 complete and 0 interrupted iterations
+subida_multimedia   [  69% ] 10 VUs   2m03.3s/3m0s
+consumo_hls         [  66% ] 300 VUs  1m58.3s/3m0s
+time="2026-10-16T11:57:08-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m30.9s), 310/310 VUs, 160 complete and 0 interrupted iterations
+subida_multimedia   [  69% ] 10 VUs   2m04.3s/3m0s
+consumo_hls         [  66% ] 300 VUs  1m59.3s/3m0s
+time="2026-10-16T11:57:10-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m31.9s), 310/310 VUs, 163 complete and 0 interrupted iterations
+subida_multimedia   [  70% ] 10 VUs   2m05.3s/3m0s
+consumo_hls         [  67% ] 300 VUs  2m00.3s/3m0s
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=d812901834d7d237a7fae0e06dcfaead81108aac2db2453f1de27fdaf6ad6e0c\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4639a4d808631e6c6267bbb633ffd12c0635d3aff696146f617c229356576fd9\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=98348be2f1775dab07a4aafe47dd98cd433f02a856bb12035a49b3275002a6fb\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=9daa9dd351b00a65df0dce9383526df21fd1ca90a49fbec8df0950076288f8d4\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=b2d76b54234ce5762605c95635977ccf2751da12f12d7821d418c57ee1ad0d38\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=b2d76b54234ce5762605c95635977ccf2751da12f12d7821d418c57ee1ad0d38\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4639a4d808631e6c6267bbb633ffd12c0635d3aff696146f617c229356576fd9\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=98348be2f1775dab07a4aafe47dd98cd433f02a856bb12035a49b3275002a6fb\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=9daa9dd351b00a65df0dce9383526df21fd1ca90a49fbec8df0950076288f8d4\": request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m32.9s), 310/310 VUs, 165 complete and 0 interrupted iterations
+subida_multimedia   [  70% ] 10 VUs   2m06.3s/3m0s
+consumo_hls         [  67% ] 300 VUs  2m01.3s/3m0s
+time="2026-10-16T11:57:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:12-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:12-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m33.9s), 310/310 VUs, 166 complete and 0 interrupted iterations
+subida_multimedia   [  71% ] 10 VUs   2m07.3s/3m0s
+consumo_hls         [  68% ] 300 VUs  2m02.3s/3m0s
+time="2026-10-16T11:57:12-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:13-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m34.9s), 310/310 VUs, 167 complete and 0 interrupted iterations
+subida_multimedia   [  71% ] 10 VUs   2m08.3s/3m0s
+consumo_hls         [  69% ] 300 VUs  2m03.3s/3m0s
+time="2026-10-16T11:57:14-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m35.9s), 310/310 VUs, 169 complete and 0 interrupted iterations
+subida_multimedia   [  72% ] 10 VUs   2m09.3s/3m0s
+consumo_hls         [  69% ] 300 VUs  2m04.3s/3m0s
+time="2026-10-16T11:57:15-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:15-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m36.9s), 310/310 VUs, 173 complete and 0 interrupted iterations
+subida_multimedia   [  72% ] 10 VUs   2m10.3s/3m0s
+consumo_hls         [  70% ] 300 VUs  2m05.3s/3m0s
+time="2026-10-16T11:57:16-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m37.9s), 310/310 VUs, 174 complete and 0 interrupted iterations
+subida_multimedia   [  73% ] 10 VUs   2m11.3s/3m0s
+consumo_hls         [  70% ] 300 VUs  2m06.3s/3m0s
+
+running (6m38.9s), 310/310 VUs, 174 complete and 0 interrupted iterations
+subida_multimedia   [  74% ] 10 VUs   2m12.3s/3m0s
+consumo_hls         [  71% ] 300 VUs  2m07.3s/3m0s
+time="2026-10-16T11:57:18-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m39.9s), 310/310 VUs, 176 complete and 0 interrupted iterations
+subida_multimedia   [  74% ] 10 VUs   2m13.3s/3m0s
+consumo_hls         [  71% ] 300 VUs  2m08.3s/3m0s
+
+running (6m40.9s), 310/310 VUs, 177 complete and 0 interrupted iterations
+subida_multimedia   [  75% ] 10 VUs   2m14.3s/3m0s
+consumo_hls         [  72% ] 300 VUs  2m09.3s/3m0s
+time="2026-10-16T11:57:19-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m41.9s), 310/310 VUs, 177 complete and 0 interrupted iterations
+subida_multimedia   [  75% ] 10 VUs   2m15.3s/3m0s
+consumo_hls         [  72% ] 300 VUs  2m10.3s/3m0s
+time="2026-10-16T11:57:21-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m42.9s), 310/310 VUs, 178 complete and 0 interrupted iterations
+subida_multimedia   [  76% ] 10 VUs   2m16.3s/3m0s
+consumo_hls         [  73% ] 300 VUs  2m11.3s/3m0s
+
+running (6m43.9s), 310/310 VUs, 181 complete and 0 interrupted iterations
+subida_multimedia   [  76% ] 10 VUs   2m17.3s/3m0s
+consumo_hls         [  74% ] 300 VUs  2m12.3s/3m0s
+time="2026-10-16T11:57:23-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m44.9s), 310/310 VUs, 181 complete and 0 interrupted iterations
+subida_multimedia   [  77% ] 10 VUs   2m18.3s/3m0s
+consumo_hls         [  74% ] 300 VUs  2m13.3s/3m0s
+time="2026-10-16T11:57:24-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m45.9s), 310/310 VUs, 181 complete and 0 interrupted iterations
+subida_multimedia   [  77% ] 10 VUs   2m19.3s/3m0s
+consumo_hls         [  75% ] 300 VUs  2m14.3s/3m0s
+time="2026-10-16T11:57:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:25-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m46.9s), 310/310 VUs, 181 complete and 0 interrupted iterations
+subida_multimedia   [  78% ] 10 VUs   2m20.3s/3m0s
+consumo_hls         [  75% ] 300 VUs  2m15.3s/3m0s
+time="2026-10-16T11:57:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:25-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4f75b297bee95a0240f60d39eac011c2c3ee7796b1fb5c068203d84ebccae21a\": request timeout"
+time="2026-10-16T11:57:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:26-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m47.9s), 310/310 VUs, 184 complete and 0 interrupted iterations
+subida_multimedia   [  79% ] 10 VUs   2m21.3s/3m0s
+consumo_hls         [  76% ] 300 VUs  2m16.3s/3m0s
+time="2026-10-16T11:57:27-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:27-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:27-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:27-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m48.9s), 310/310 VUs, 184 complete and 0 interrupted iterations
+subida_multimedia   [  79% ] 10 VUs   2m22.3s/3m0s
+consumo_hls         [  76% ] 300 VUs  2m17.3s/3m0s
+time="2026-10-16T11:57:28-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m49.9s), 310/310 VUs, 185 complete and 0 interrupted iterations
+subida_multimedia   [  80% ] 10 VUs   2m23.3s/3m0s
+consumo_hls         [  77% ] 300 VUs  2m18.3s/3m0s
+time="2026-10-16T11:57:28-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:29-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m50.9s), 310/310 VUs, 187 complete and 0 interrupted iterations
+subida_multimedia   [  80% ] 10 VUs   2m24.3s/3m0s
+consumo_hls         [  77% ] 300 VUs  2m19.3s/3m0s
+
+running (6m51.9s), 310/310 VUs, 187 complete and 0 interrupted iterations
+subida_multimedia   [  81% ] 10 VUs   2m25.3s/3m0s
+consumo_hls         [  78% ] 300 VUs  2m20.3s/3m0s
+time="2026-10-16T11:57:31-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:31-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m52.9s), 310/310 VUs, 188 complete and 0 interrupted iterations
+subida_multimedia   [  81% ] 10 VUs   2m26.3s/3m0s
+consumo_hls         [  79% ] 300 VUs  2m21.3s/3m0s
+time="2026-10-16T11:57:32-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m53.9s), 310/310 VUs, 190 complete and 0 interrupted iterations
+subida_multimedia   [  82% ] 10 VUs   2m27.3s/3m0s
+consumo_hls         [  79% ] 300 VUs  2m22.3s/3m0s
+
+running (6m54.9s), 310/310 VUs, 192 complete and 0 interrupted iterations
+subida_multimedia   [  82% ] 10 VUs   2m28.3s/3m0s
+consumo_hls         [  80% ] 300 VUs  2m23.3s/3m0s
+time="2026-10-16T11:57:34-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m55.9s), 310/310 VUs, 193 complete and 0 interrupted iterations
+subida_multimedia   [  83% ] 10 VUs   2m29.3s/3m0s
+consumo_hls         [  80% ] 300 VUs  2m24.3s/3m0s
+time="2026-10-16T11:57:35-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:35-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m56.9s), 310/310 VUs, 194 complete and 0 interrupted iterations
+subida_multimedia   [  84% ] 10 VUs   2m30.3s/3m0s
+consumo_hls         [  81% ] 300 VUs  2m25.3s/3m0s
+
+running (6m57.9s), 310/310 VUs, 196 complete and 0 interrupted iterations
+subida_multimedia   [  84% ] 10 VUs   2m31.3s/3m0s
+consumo_hls         [  81% ] 300 VUs  2m26.3s/3m0s
+
+running (6m58.9s), 310/310 VUs, 196 complete and 0 interrupted iterations
+subida_multimedia   [  85% ] 10 VUs   2m32.3s/3m0s
+consumo_hls         [  82% ] 300 VUs  2m27.3s/3m0s
+time="2026-10-16T11:57:37-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:38-05:00" level=warning msg="Request Failed" error="Get \"http://35.209.105.199/api/v1/media/resources/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/resume\": request timeout"
+time="2026-10-16T11:57:38-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (6m59.9s), 310/310 VUs, 197 complete and 0 interrupted iterations
+subida_multimedia   [  85% ] 10 VUs   2m33.3s/3m0s
+consumo_hls         [  82% ] 300 VUs  2m28.3s/3m0s
+time="2026-10-16T11:57:39-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:39-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:39-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:39-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:39-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m00.9s), 310/310 VUs, 197 complete and 0 interrupted iterations
+subida_multimedia   [  86% ] 10 VUs   2m34.3s/3m0s
+consumo_hls         [  83% ] 300 VUs  2m29.3s/3m0s
+
+running (7m01.9s), 310/310 VUs, 197 complete and 0 interrupted iterations
+subida_multimedia   [  86% ] 10 VUs   2m35.3s/3m0s
+consumo_hls         [  84% ] 300 VUs  2m30.3s/3m0s
+time="2026-10-16T11:57:41-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m02.9s), 310/310 VUs, 197 complete and 0 interrupted iterations
+subida_multimedia   [  87% ] 10 VUs   2m36.3s/3m0s
+consumo_hls         [  84% ] 300 VUs  2m31.3s/3m0s
+time="2026-10-16T11:57:42-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:42-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m03.9s), 310/310 VUs, 199 complete and 0 interrupted iterations
+subida_multimedia   [  87% ] 10 VUs   2m37.3s/3m0s
+consumo_hls         [  85% ] 300 VUs  2m32.3s/3m0s
+time="2026-10-16T11:57:42-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:43-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:43-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:43-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m04.9s), 310/310 VUs, 200 complete and 0 interrupted iterations
+subida_multimedia   [  88% ] 10 VUs   2m38.3s/3m0s
+consumo_hls         [  85% ] 300 VUs  2m33.3s/3m0s
+
+running (7m05.9s), 310/310 VUs, 202 complete and 0 interrupted iterations
+subida_multimedia   [  89% ] 10 VUs   2m39.3s/3m0s
+consumo_hls         [  86% ] 300 VUs  2m34.3s/3m0s
+
+running (7m06.9s), 310/310 VUs, 203 complete and 0 interrupted iterations
+subida_multimedia   [  89% ] 10 VUs   2m40.3s/3m0s
+consumo_hls         [  86% ] 300 VUs  2m35.3s/3m0s
+time="2026-10-16T11:57:45-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:45-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:46-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m07.9s), 310/310 VUs, 205 complete and 0 interrupted iterations
+subida_multimedia   [  90% ] 10 VUs   2m41.3s/3m0s
+consumo_hls         [  87% ] 300 VUs  2m36.3s/3m0s
+time="2026-10-16T11:57:47-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:47-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:47-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m08.9s), 310/310 VUs, 207 complete and 0 interrupted iterations
+subida_multimedia   [  90% ] 10 VUs   2m42.3s/3m0s
+consumo_hls         [  87% ] 300 VUs  2m37.3s/3m0s
+
+running (7m09.9s), 310/310 VUs, 208 complete and 0 interrupted iterations
+subida_multimedia   [  91% ] 10 VUs   2m43.3s/3m0s
+consumo_hls         [  88% ] 300 VUs  2m38.3s/3m0s
+
+running (7m10.9s), 310/310 VUs, 208 complete and 0 interrupted iterations
+subida_multimedia   [  91% ] 10 VUs   2m44.3s/3m0s
+consumo_hls         [  89% ] 300 VUs  2m39.3s/3m0s
+time="2026-10-16T11:57:50-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:50-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m11.9s), 310/310 VUs, 208 complete and 0 interrupted iterations
+subida_multimedia   [  92% ] 10 VUs   2m45.3s/3m0s
+consumo_hls         [  89% ] 300 VUs  2m40.3s/3m0s
+time="2026-10-16T11:57:51-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:51-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m12.9s), 310/310 VUs, 209 complete and 0 interrupted iterations
+subida_multimedia   [  92% ] 10 VUs   2m46.3s/3m0s
+consumo_hls         [  90% ] 300 VUs  2m41.3s/3m0s
+time="2026-10-16T11:57:51-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:52-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m13.9s), 310/310 VUs, 210 complete and 0 interrupted iterations
+subida_multimedia   [  93% ] 10 VUs   2m47.3s/3m0s
+consumo_hls         [  90% ] 300 VUs  2m42.3s/3m0s
+time="2026-10-16T11:57:53-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:53-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m14.9s), 310/310 VUs, 213 complete and 0 interrupted iterations
+subida_multimedia   [  94% ] 10 VUs   2m48.3s/3m0s
+consumo_hls         [  91% ] 300 VUs  2m43.3s/3m0s
+time="2026-10-16T11:57:53-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:54-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/360p_003.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=f24eac72f206f1d135aa22bdc7dddbc9e652466b4330a4852a37a9fb16e62892\": request timeout"
+time="2026-10-16T11:57:54-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m15.9s), 310/310 VUs, 213 complete and 0 interrupted iterations
+subida_multimedia   [  94% ] 10 VUs   2m49.3s/3m0s
+consumo_hls         [  91% ] 300 VUs  2m44.3s/3m0s
+time="2026-10-16T11:57:55-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:55-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:55-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=7cac5e9eed52a69c3cf6396e20a13790d539270c7619f6ca86b047bcb6e746af\": request timeout"
+
+running (7m16.9s), 310/310 VUs, 215 complete and 0 interrupted iterations
+subida_multimedia   [  95% ] 10 VUs   2m50.3s/3m0s
+consumo_hls         [  92% ] 300 VUs  2m45.3s/3m0s
+
+running (7m17.9s), 310/310 VUs, 217 complete and 0 interrupted iterations
+subida_multimedia   [  95% ] 10 VUs   2m51.3s/3m0s
+consumo_hls         [  92% ] 300 VUs  2m46.3s/3m0s
+time="2026-10-16T11:57:57-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:57-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=7cac5e9eed52a69c3cf6396e20a13790d539270c7619f6ca86b047bcb6e746af\": request timeout"
+
+running (7m18.9s), 310/310 VUs, 218 complete and 0 interrupted iterations
+subida_multimedia   [  96% ] 10 VUs   2m52.3s/3m0s
+consumo_hls         [  93% ] 300 VUs  2m47.3s/3m0s
+
+running (7m19.9s), 310/310 VUs, 219 complete and 0 interrupted iterations
+subida_multimedia   [  96% ] 10 VUs   2m53.3s/3m0s
+consumo_hls         [  94% ] 300 VUs  2m48.3s/3m0s
+time="2026-10-16T11:57:59-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:59-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:57:59-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m20.9s), 310/310 VUs, 220 complete and 0 interrupted iterations
+subida_multimedia   [  97% ] 10 VUs   2m54.3s/3m0s
+consumo_hls         [  94% ] 300 VUs  2m49.3s/3m0s
+time="2026-10-16T11:58:00-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:00-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m21.9s), 310/310 VUs, 221 complete and 0 interrupted iterations
+subida_multimedia   [  97% ] 10 VUs   2m55.3s/3m0s
+consumo_hls         [  95% ] 300 VUs  2m50.3s/3m0s
+time="2026-10-16T11:58:00-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:01-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:01-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m22.9s), 310/310 VUs, 222 complete and 0 interrupted iterations
+subida_multimedia   [  98% ] 10 VUs   2m56.3s/3m0s
+consumo_hls         [  95% ] 300 VUs  2m51.3s/3m0s
+time="2026-10-16T11:58:01-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:02-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165602Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=7056d1662fe71832e8ffd174814692c7e94f2f8f7c31e844b064e6e701dbfa27\": request timeout"
+time="2026-10-16T11:58:02-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m23.9s), 310/310 VUs, 223 complete and 0 interrupted iterations
+subida_multimedia   [  99% ] 10 VUs   2m57.3s/3m0s
+consumo_hls         [  96% ] 300 VUs  2m52.3s/3m0s
+time="2026-10-16T11:58:03-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165559Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=11108e01b2f85d972276ac2ccfee3cfd43427426faef4f2dd3270387f03bf2ba\": request timeout"
+time="2026-10-16T11:58:03-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:03-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m24.9s), 310/310 VUs, 224 complete and 0 interrupted iterations
+subida_multimedia   [  99% ] 10 VUs   2m58.3s/3m0s
+consumo_hls         [  96% ] 300 VUs  2m53.3s/3m0s
+time="2026-10-16T11:58:04-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m25.9s), 310/310 VUs, 226 complete and 0 interrupted iterations
+subida_multimedia   [ 100% ] 10 VUs   2m59.3s/3m0s
+consumo_hls         [  97% ] 300 VUs  2m54.3s/3m0s
+time="2026-10-16T11:58:05-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:05-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/480p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165705Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=376cdc1519f967885246e56384adcdd1345e5e71b5602cc3b030009bc014ac06\": request timeout"
+
+running (7m26.9s), 310/310 VUs, 227 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls         [  97% ] 300 VUs  2m55.3s/3m0s
+time="2026-10-16T11:58:05-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:06-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m27.9s), 310/310 VUs, 227 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls         [  98% ] 300 VUs  2m56.3s/3m0s
+time="2026-10-16T11:58:07-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m28.9s), 310/310 VUs, 229 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls         [  99% ] 300 VUs  2m57.3s/3m0s
+time="2026-10-16T11:58:08-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:08-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:08-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:08-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m29.9s), 310/310 VUs, 232 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls         [  99% ] 300 VUs  2m58.3s/3m0s
+time="2026-10-16T11:58:08-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:08-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m30.9s), 310/310 VUs, 234 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls         [ 100% ] 300 VUs  2m59.3s/3m0s
+time="2026-10-16T11:58:10-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m31.9s), 310/310 VUs, 235 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4f75b297bee95a0240f60d39eac011c2c3ee7796b1fb5c068203d84ebccae21a\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=81342ac5c773e46df1c7bf4a43ca694524f8a44c6fbf7b0c3b98b227748c3d6f\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=91c151692559b2700e169b659435a05dac27585cacbc9739c7914c617f83ecf8\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=91c151692559b2700e169b659435a05dac27585cacbc9739c7914c617f83ecf8\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/360p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=9a363aef837c556c00e13a5fc4bf1c2072b2236187db9da0c01cd1ede45814e3\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=7cac5e9eed52a69c3cf6396e20a13790d539270c7619f6ca86b047bcb6e746af\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4f75b297bee95a0240f60d39eac011c2c3ee7796b1fb5c068203d84ebccae21a\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=81342ac5c773e46df1c7bf4a43ca694524f8a44c6fbf7b0c3b98b227748c3d6f\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4f75b297bee95a0240f60d39eac011c2c3ee7796b1fb5c068203d84ebccae21a\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=81342ac5c773e46df1c7bf4a43ca694524f8a44c6fbf7b0c3b98b227748c3d6f\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4f75b297bee95a0240f60d39eac011c2c3ee7796b1fb5c068203d84ebccae21a\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=7cac5e9eed52a69c3cf6396e20a13790d539270c7619f6ca86b047bcb6e746af\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=81342ac5c773e46df1c7bf4a43ca694524f8a44c6fbf7b0c3b98b227748c3d6f\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4f75b297bee95a0240f60d39eac011c2c3ee7796b1fb5c068203d84ebccae21a\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/480p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=7cac5e9eed52a69c3cf6396e20a13790d539270c7619f6ca86b047bcb6e746af\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=91c151692559b2700e169b659435a05dac27585cacbc9739c7914c617f83ecf8\": request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m32.9s), 310/310 VUs, 235 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:11-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:12-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:12-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:12-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m33.9s), 310/310 VUs, 235 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:12-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:13-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:13-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m34.9s), 308/310 VUs, 237 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:14-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:14-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m35.9s), 308/310 VUs, 237 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:15-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:15-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:15-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/720p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=91c151692559b2700e169b659435a05dac27585cacbc9739c7914c617f83ecf8\": request timeout"
+
+running (7m36.9s), 307/310 VUs, 238 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:16-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:16-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:16-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m37.9s), 305/310 VUs, 240 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:17-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:17-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:17-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165715Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=31eff892924acd5a5bf76c5618191860c4a7850f28ae01d6c594e5a70d548bd2\": request timeout"
+
+running (7m38.9s), 303/310 VUs, 242 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:18-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m39.9s), 302/310 VUs, 243 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:19-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m40.9s), 299/310 VUs, 246 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:20-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m41.9s), 296/310 VUs, 249 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:21-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m42.9s), 293/310 VUs, 252 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+
+running (7m43.9s), 292/310 VUs, 253 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:23-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:23-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:23-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m44.9s), 290/310 VUs, 255 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:24-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m45.9s), 288/310 VUs, 257 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:25-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_003.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=72665d26bf2e23e531c360dfdb6e0fcaf63a7e67e48cb8d0f9e1dee61ce07dec\": request timeout"
+time="2026-10-16T11:58:25-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:25-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/360p_002.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165601Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=67c3251396d3964b7906163010678d1ad09edd65479a745bb4605aeeb340f779\": request timeout"
+
+running (7m46.9s), 286/310 VUs, 259 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:25-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_003.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e8dcd885a2a68d3ec447d79211387622a0c3e7fd729599463f6d68f8f888b0b2\": request timeout"
+time="2026-10-16T11:58:25-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m47.9s), 285/310 VUs, 260 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:27-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/480p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165626Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=397a3acbca00bac2e4e2f7aba5965dea555815f1a4f45bac934eddfef966e1b0\": request timeout"
+time="2026-10-16T11:58:27-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m48.9s), 284/310 VUs, 261 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:28-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:28-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m49.9s), 282/310 VUs, 263 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:28-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:29-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m50.9s), 280/310 VUs, 265 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+
+running (7m51.9s), 276/310 VUs, 269 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:31-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m52.9s), 273/310 VUs, 272 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:32-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/c4f2cdf6-0df6-43aa-9e48-831cc9bc8b8f/1080p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165632Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=715615cc97ccecfa60eff4701dd3e568815861ac34ddc8c03e8416e5604c30c5\": request timeout"
+
+running (7m53.9s), 270/310 VUs, 275 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+
+running (7m54.9s), 270/310 VUs, 275 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:34-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m55.9s), 268/310 VUs, 277 complete and 0 interrupted iterations
+subida_multimedia Ôåô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:35-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:35-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m56.9s), 258/310 VUs, 278 complete and 9 interrupted iterations
+subida_multimedia Ô£ô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:35-05:00" level=warning msg="Request Failed" error="request timeout"
+
+running (7m57.9s), 256/310 VUs, 280 complete and 9 interrupted iterations
+subida_multimedia Ô£ô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+
+running (7m58.9s), 256/310 VUs, 280 complete and 9 interrupted iterations
+subida_multimedia Ô£ô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:37-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165637Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=b71cf6ec2dd10153e519b27ae70a2b304908e59987f91ca9f0ff9a45e6e3a1b2\": request timeout"
+time="2026-10-16T11:58:38-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/8bc3e60b-99b1-46c3-820c-238b813f8d31/720p_003.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165511Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e8dcd885a2a68d3ec447d79211387622a0c3e7fd729599463f6d68f8f888b0b2\": request timeout"
+
+running (7m59.9s), 254/310 VUs, 282 complete and 9 interrupted iterations
+subida_multimedia Ô£ô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:39-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:39-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:39-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_001.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165638Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=710c903276b717632c863311a57c67e22a1f5f83fd50d6f7a6174a6cab70dca7\": request timeout"
+time="2026-10-16T11:58:39-05:00" level=warning msg="Request Failed" error="request timeout"
+time="2026-10-16T11:58:39-05:00" level=warning msg="Request Failed" error="Get \"https://mooc-media-equipo-3.storage.googleapis.com/hls/37ed8077-8891-4c0d-b31a-d2e2359d2b6c/360p_000.ts?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EVSGHNGIMN23QFDVMWGZK4HTWWAVZFMVA76ZU6GKTRM5KNKG4JJNRMUB%2F20261016%2Fus-central1%2Fs3%2Faws4_request&X-Amz-Date=20261016T165808Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=4ad63d839ddd17f672b1a3ec762250c2cf7e7cc1f76028e1118541f3b8c6763f\": read tcp 192.168.1.32:58193->172.217.162.123:443: wsarecv: An existing connection was forcibly closed by the remote host."
+
+running (8m00.9s), 253/310 VUs, 283 complete and 9 interrupted iterations
+subida_multimedia Ô£ô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ôåô [ 100% ] 300 VUs  3m0s
+
+
+  Ôûê THRESHOLDS 
+
+    http_req_duration{endpoint:complete_upload}
+    Ô£ù 'p(95)<800' p(95)=1.3s
+
+    http_req_duration{endpoint:create_resource}
+    Ô£ù 'p(95)<800' p(95)=3.04s
+
+    http_req_duration{endpoint:manifest}
+    Ô£ù 'p(95)<600' p(95)=904.71ms
+
+    http_req_duration{endpoint:resume}
+    Ô£ù 'p(95)<400' p(95)=1.74s
+
+    http_req_duration{endpoint:segment,rendition:1080p}
+    Ô£ù 'p(95)<3000' p(95)=1m0s
+
+    http_req_duration{endpoint:segment,rendition:360p}
+    Ô£ù 'p(95)<1000' p(95)=1m0s
+
+    http_req_duration{endpoint:segment,rendition:480p}
+    Ô£ù 'p(95)<1000' p(95)=1m0s
+
+    http_req_duration{endpoint:segment,rendition:720p}
+    Ô£ù 'p(95)<2000' p(95)=1m0s
+
+    http_req_duration{endpoint:segment}
+    Ô£ô 'max>=0' max=1m0s
+
+    http_req_duration{endpoint:stream_url}
+    Ô£ù 'p(95)<500' p(95)=1.28s
+
+    http_req_duration{endpoint:upload_put,profile:ligero}
+    Ô£ô 'max>=0' max=32.74s
+
+    http_req_duration{endpoint:upload_put,profile:medio}
+    Ô£ô 'max>=0' max=1m0s
+
+    http_req_duration{endpoint:upload_put,profile:pesado}
+    Ô£ô 'max>=0' max=42.78s
+
+    http_req_duration{endpoint:upload_put}
+    Ô£ù 'p(95)<15000' p(95)=39.27s
+
+    http_req_duration{endpoint:variant_playlist}
+    Ô£ù 'p(95)<600' p(95)=3.93s
+
+    http_req_failed
+    Ô£ù 'rate<0.02' rate=14.97%
+
+    media_processing_duration
+    Ô£ù 'p(95)<45000' p(95)=2m16s
+
+      {profile:ligero}
+      Ô£ô 'max>=0' max=1m55s
+
+      {profile:medio}
+      Ô£ô 'max>=0' max=2m38s
+
+      {profile:pesado}
+      Ô£ô 'max>=0' max=1m32s
+
+    media_processing_timeouts
+    Ô£ô 'count==0' count=0
+
+    media_segment_download_failures
+    Ô£ù 'count==0' count=556
+
+    media_unexpected_ladder
+    Ô£ô 'count==0' count=0
+
+
+  Ôûê TOTAL RESULTS 
+
+    checks_total.......: 3745   7.775457/s
+    checks_succeeded...: 85.02% 3184 out of 3745
+    checks_failed......: 14.97% 561 out of 3745
+
+    Ô£ô creacion de recurso responde 201
+    Ô£ù subida directa a almacenamiento responde 2xx
+      Ôå│  85% ÔÇö Ô£ô 24 / Ô£ù 4
+    Ô£ô complete-upload responde 200/502
+    Ô£ô stream-url responde 200
+    Ô£ô manifiesto HLS responde 200
+    Ô£ô manifiesto trae Content-Type de HLS
+    Ô£ù playlist de la rendition responde 200
+      Ôå│  99% ÔÇö Ô£ô 515 / Ô£ù 4
+    Ô£ù segmento HLS responde 200
+      Ôå│  57% ÔÇö Ô£ô 755 / Ô£ù 552
+    Ô£ù resume responde 200
+      Ôå│  99% ÔÇö Ô£ô 278 / Ô£ù 1
+
+    CUSTOM
+    media_manifest_duration....................: avg=553.15ms min=133.55ms med=292.12ms p(90)=719.41ms p(95)=904.71ms p(99)=6.68s  max=31.15s
+    media_processing_duration..................: avg=1m6s     min=6.41s    med=1m2s     p(90)=1m58s    p(95)=2m16s    p(99)=2m34s  max=2m38s 
+      { profile:ligero }.......................: avg=30.75s   min=6.41s    med=9.56s    p(90)=1m15s    p(95)=1m35s    p(99)=1m51s  max=1m55s 
+      { profile:medio }........................: avg=1m43s    min=42.67s   med=1m56s    p(90)=2m22s    p(95)=2m30s    p(99)=2m36s  max=2m38s 
+      { profile:pesado }.......................: avg=1m32s    min=1m32s    med=1m32s    p(90)=1m32s    p(95)=1m32s    p(99)=1m32s  max=1m32s 
+    media_processing_timeouts..................: 0         0/s
+    media_segment_bytes_downloaded.............: 537246800 1115444.496628/s
+    media_segment_download_failures............: 556       1.15438/s
+    media_segment_duration.....................: avg=38.71s   min=0s       med=41.37s   p(90)=1m0s     p(95)=1m0s     p(99)=1m0s   max=1m0s  
+    media_unexpected_ladder....................: 0         0/s
+    media_upload_put_duration..................: avg=11.53s   min=0s       med=5.09s    p(90)=28.68s   p(95)=39.27s   p(99)=55.35s max=1m0s  
+    media_variant_playlist_duration............: avg=1.51s    min=152.54ms med=382.95ms p(90)=1.83s    p(95)=3.93s    p(99)=27.57s max=1m0s  
+
+    HTTP
+    http_req_duration..........................: avg=14.07s   min=0s       med=520.73ms p(90)=59.95s   p(95)=1m0s     p(99)=1m0s   max=1m0s  
+      { endpoint:complete_upload }.............: avg=491.46ms min=139.08ms med=177.47ms p(90)=601.24ms p(95)=1.3s     p(99)=4.36s  max=5.24s 
+      { endpoint:create_resource }.............: avg=700.19ms min=118.1ms  med=173.02ms p(90)=2.08s    p(95)=3.04s    p(99)=3.31s  max=3.33s 
+      { endpoint:manifest }....................: avg=553.15ms min=133.55ms med=292.12ms p(90)=719.41ms p(95)=904.71ms p(99)=6.68s  max=31.15s
+      { endpoint:resume }......................: avg=716.83ms min=111.68ms med=139.26ms p(90)=979.09ms p(95)=1.74s    p(99)=10.17s max=1m0s  
+      { endpoint:segment,rendition:1080p }.....: avg=57.43s   min=0s       med=1m0s     p(90)=1m0s     p(95)=1m0s     p(99)=1m0s   max=1m0s  
+      { endpoint:segment,rendition:360p }......: avg=28.49s   min=0s       med=24.08s   p(90)=59.83s   p(95)=1m0s     p(99)=1m0s   max=1m0s  
+      { endpoint:segment,rendition:480p }......: avg=40.88s   min=0s       med=42.4s    p(90)=1m0s     p(95)=1m0s     p(99)=1m0s   max=1m0s  
+      { endpoint:segment,rendition:720p }......: avg=55.01s   min=0s       med=1m0s     p(90)=1m0s     p(95)=1m0s     p(99)=1m0s   max=1m0s  
+      { endpoint:segment }.....................: avg=38.71s   min=0s       med=41.37s   p(90)=1m0s     p(95)=1m0s     p(99)=1m0s   max=1m0s  
+      { endpoint:stream_url }..................: avg=457.8ms  min=109.55ms med=165.26ms p(90)=705.91ms p(95)=1.28s    p(99)=3.58s  max=48.87s
+      { endpoint:upload_put,profile:ligero }...: avg=6.99s    min=804.42ms med=1.3s     p(90)=20.97s   p(95)=26.85s   p(99)=31.56s max=32.74s
+      { endpoint:upload_put,profile:medio }....: avg=14.8s    min=0s       med=5.7s     p(90)=33.55s   p(95)=46.77s   p(99)=57.35s max=1m0s  
+      { endpoint:upload_put,profile:pesado }...: avg=12.67s   min=0s       med=10.32s   p(90)=23.89s   p(95)=33.34s   p(99)=40.89s max=42.78s
+      { endpoint:upload_put }..................: avg=11.53s   min=0s       med=5.09s    p(90)=28.68s   p(95)=39.27s   p(99)=55.35s max=1m0s  
+      { endpoint:variant_playlist }............: avg=1.51s    min=152.54ms med=382.95ms p(90)=1.83s    p(95)=3.93s    p(99)=27.57s max=1m0s  
+      { expected_response:true }...............: avg=7.03s    min=109.55ms med=381.14ms p(90)=29.24s   p(95)=40.61s   p(99)=54.41s max=59.98s
+    http_req_failed............................: 14.97%    561 out of 3745
+    http_reqs..................................: 3745      7.775457/s
+
+    EXECUTION
+    iteration_duration.........................: avg=1m34s    min=13s      med=1m24s    p(90)=2m51s    p(95)=3m15s    p(99)=3m27s  max=3m29s 
+    iterations.................................: 286       0.5938/s
+    vus........................................: 253       min=0            max=310
+    vus_max....................................: 310       min=148          max=310
+
+    NETWORK
+    data_received..............................: 1.3 GB    2.6 MB/s
+    data_sent..................................: 187 MB    388 kB/s
+
+
+
+
+running (8m01.6s), 000/310 VUs, 286 complete and 259 interrupted iterations
+subida_multimedia Ô£ô [ 100% ] 10 VUs   3m0s
+consumo_hls       Ô£ô [ 100% ] 300 VUs  3m0s
+time="2026-10-16T11:58:41-05:00" level=error msg="thresholds on metrics 'http_req_duration{endpoint:complete_upload}, http_req_duration{endpoint:create_resource}, http_req_duration{endpoint:manifest}, http_req_duration{endpoint:resume}, http_req_duration{endpoint:segment,rendition:1080p}, http_req_duration{endpoint:segment,rendition:360p}, http_req_duration{endpoint:segment,rendition:480p}, http_req_duration{endpoint:segment,rendition:720p}, http_req_duration{endpoint:stream_url}, http_req_duration{endpoint:upload_put}, http_req_duration{endpoint:variant_playlist}, http_req_failed, media_processing_duration, media_segment_download_failures' have been crossed"
