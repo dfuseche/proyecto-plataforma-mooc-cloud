@@ -17,6 +17,7 @@ func main() {
 	cfg := config.Load()
 
 	log.Println("[WORKER-DAEMON] Iniciando Worker de Procesamiento Asíncrono MOOC...")
+	log.Printf("[WORKER-DAEMON] Concurrencia de tareas: %d", cfg.WorkerConcurrency)
 
 	// Conexión a PostgreSQL
 	db, err := sql.Open("postgres", cfg.DatabaseURL)
@@ -43,7 +44,7 @@ func main() {
 	srv := asynq.NewServer(
 		asynq.RedisClientOpt{Addr: cfg.RedisAddr},
 		asynq.Config{
-			Concurrency: 5,
+			Concurrency: cfg.WorkerConcurrency,
 			Queues: map[string]int{
 				"critical": 6,
 				"default":  3,

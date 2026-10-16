@@ -20,6 +20,7 @@ type Config struct {
 	MailpitHost           string
 	MailpitPort           int
 	JWTSecret             string
+	WorkerConcurrency     int
 }
 
 func Load() *Config {
@@ -38,6 +39,11 @@ func Load() *Config {
 		MailpitHost:           getEnv("MAILPIT_HOST", "localhost"),
 		MailpitPort:           getEnvAsInt("MAILPIT_PORT", 1025),
 		JWTSecret:             getEnv("JWT_SECRET", "super-secret-key-change-in-production"),
+		// Tareas asynq que el worker procesa en paralelo. Cada transcodificacion
+		// HLS multi-calidad (ffmpeg) satura por si sola los 2 vCPU de la VM: con 5
+		// en paralelo (valor anterior) la VM llego a carga 12 y se congelo bajo la
+		// prueba de carga del Escenario 2. Default = 1 por vCPU.
+		WorkerConcurrency: getEnvAsInt("WORKER_CONCURRENCY", 2),
 	}
 }
 
