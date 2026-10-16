@@ -13,7 +13,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy web-server y worker-server
+    name: Build y despliegue (imagen + MIGs de API y worker)
     runs-on: ubuntu-latest
     if: >
       github.event_name == 'workflow_dispatch' ||
@@ -55,24 +55,6 @@ jobs:
           docker build -t "${IMAGE}:${SHA}" -t "${IMAGE}:latest" backend
           docker push "${IMAGE}:${SHA}"
           docker push "${IMAGE}:latest"
-          echo "BACKEND_IMAGE=${IMAGE}:${SHA}" >> "$GITHUB_ENV"
-          echo "REGISTRY=${REGISTRY}" >> "$GITHUB_ENV"
-
-      - name: Desplegar en web-server (API)
-        run: |
-          gcloud compute ssh "${{ vars.GCP_WEB_INSTANCE }}" \
-            --project="${{ vars.GCP_PROJECT_ID }}" \
-            --zone="${{ vars.GCP_ZONE }}" \
-            --tunnel-through-iap \
-            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && bash deploy/scripts/gar-login.sh ${REGISTRY} && export BACKEND_IMAGE=${BACKEND_IMAGE} && docker-compose -f deploy/docker-compose.web.yml pull && docker-compose -f deploy/docker-compose.web.yml up -d"
-
-      - name: Desplegar en worker-server (Worker Asíncrono + Redis)
-        run: |
-          gcloud compute ssh "${{ vars.GCP_WORKER_INSTANCE }}" \
-            --project="${{ vars.GCP_PROJECT_ID }}" \
-            --zone="${{ vars.GCP_ZONE }}" \
-            --tunnel-through-iap \
-            --command="cd ${{ vars.GCP_REPO_PATH }} && git fetch origin main && git reset --hard origin/main && bash deploy/scripts/gar-login.sh ${REGISTRY} && export BACKEND_IMAGE=${BACKEND_IMAGE} && docker-compose -f deploy/docker-compose.worker.yml pull && docker-compose -f deploy/docker-compose.worker.yml up -d"
 
       # Las instancias de los MIGs bajan `:latest` de Artifact Registry al
       # arrancar (deploy/startup/startup.sh), así que para desplegar basta con
@@ -96,15 +78,18 @@ jobs:
               --timeout=900
           done
 
-      # worker-server no tiene IP pública (ver ARCHITECTURE_CLOUD.md,
-      # subred privada), así que no se puede healthcheckear directo desde
-      # el runner de GitHub Actions. En vez de eso, se verifica la API
-      # (web-server, sí accesible vía IAP) ejecutando el curl DENTRO de la
-      # VM por el mismo túnel SSH, no contra una IP pública.
-      - name: Verificar salud tras el deploy
+      # Verificación de punta a punta por el balanceador HTTPS (certificado
+      # autofirmado, por eso -k). Se activa definiendo la variable de
+      # repositorio GCP_LB_IP; sin ella se omite y basta con que el MIG de la
+      # API haya quedado estable (arriba), que ya exige /health sano.
+      - name: Verificar salud por el balanceador
+        if: ${{ vars.GCP_LB_IP != '' }}
         run: |
-          gcloud compute ssh "${{ vars.GCP_WEB_INSTANCE }}" \
-            --project="${{ vars.GCP_PROJECT_ID }}" \
-            --zone="${{ vars.GCP_ZONE }}" \
-            --tunnel-through-iap \
-            --command="for i in \$(seq 1 15); do curl -sf http://localhost/health && exit 0; echo 'esperando a que la API quede healthy...'; sleep 2; done; echo 'La API nunca quedó healthy tras el deploy'; exit 1"
+          for i in $(seq 1 30); do
+            code=$(curl -sk -o /dev/null -w '%{http_code}' --max-time 10 "https://${{ vars.GCP_LB_IP }}/health" || true)
+            echo "intento $i: HTTP $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 10
+          done
+          echo "El balanceador nunca respondió 200 en /health"
+          exit 1
