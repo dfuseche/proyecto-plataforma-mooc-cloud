@@ -135,6 +135,7 @@ const unexpectedLadder = new Counter('media_unexpected_ladder');
 const variantPlaylistDuration = new Trend('media_variant_playlist_duration', true);
 
 export const options = {
+  insecureSkipTLSVerify: true,
   summaryTrendStats: ['avg', 'min', 'med', 'p(90)', 'p(95)', 'p(99)', 'max'],
   scenarios: {
     subida_multimedia: {

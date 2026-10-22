@@ -1,0 +1,4 @@
+# Asegurar que los scripts de shell siempre conserven saltos de línea LF (Linux)
+*.sh text eol=lf
+*.sql text eol=lf
+*.js text eol=lf
