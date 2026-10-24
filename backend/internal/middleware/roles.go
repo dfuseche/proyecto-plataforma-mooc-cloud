@@ -13,7 +13,7 @@ import (
 //
 //   - /api/v1/admin/*                      -> admin
 //   - escrituras y borradores de /courses  -> docente o admin
-//   - /api/v1/media (subida, descarga por clave) -> docente o admin
+//   - /api/v1/media/presigned-* (claves arbitrarias) -> admin; complete-upload -> docente o admin
 //   - /api/v1/learning/*                   -> cualquier usuario autenticado
 //
 // Todo lo demás (registro/login, catálogo, jerarquía publicada, verificación
@@ -41,10 +41,11 @@ func (m *AuthMiddleware) AccessPolicy(next http.Handler) http.Handler {
 				return
 			}
 			teacherOrAdmin.ServeHTTP(w, r)
-		case p == "/api/v1/media/presigned-upload",
-			p == "/api/v1/media/presigned-download",
-			strings.HasSuffix(p, "/complete-upload"):
-			teacherOrAdmin.ServeHTTP(w, r)
+		case p == "/api/v1/media/presigned-upload", p == "/api/v1/media/presigned-download":
+			// Operan sobre claves arbitrarias del bucket: solo administración.
+			adminOnly.ServeHTTP(w, r)
+		case strings.HasSuffix(p, "/complete-upload"):
+			teacherOrAdmin.ServeHTTP(w, r) // la propiedad del recurso se valida en el handler
 		default:
 			next.ServeHTTP(w, r)
 		}

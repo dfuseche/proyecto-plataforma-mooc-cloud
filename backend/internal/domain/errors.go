@@ -12,5 +12,6 @@ var (
 	ErrUnauthorized          = errors.New("no autorizado")
 	ErrForbidden             = errors.New("acceso denegado para su rol")
 	ErrLastAdminProtection   = errors.New("no es posible desactivar o degradar al último administrador activo")
+	ErrWeakPassword          = errors.New("la contraseña debe tener al menos 8 caracteres")
 	ErrInvalidToken          = errors.New("el token suministrado es inválido o ha expirado")
 )

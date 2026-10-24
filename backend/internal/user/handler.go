@@ -205,6 +205,10 @@ func (h *HTTPHandler) CreateTeacher(w http.ResponseWriter, r *http.Request) {
 			respondError(w, http.StatusConflict, err.Error())
 			return
 		}
+		if err == domain.ErrWeakPassword {
+			respondError(w, http.StatusBadRequest, err.Error())
+			return
+		}
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}

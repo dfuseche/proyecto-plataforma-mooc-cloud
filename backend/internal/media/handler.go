@@ -141,6 +141,20 @@ func (h *HTTPHandler) CompleteUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Solo el dueño del curso (o un admin) puede cerrar la carga de sus recursos.
+	switch err := domain.AuthorizeCourseEdit(r.Context(), h.courseRepo, middleware.GetUserFromContext(r.Context()), domain.EntityResource, resourceID); {
+	case err == nil:
+	case errors.Is(err, domain.ErrCourseNotFound):
+		respondError(w, http.StatusNotFound, "Recurso no encontrado")
+		return
+	case errors.Is(err, domain.ErrUnauthorizedCourseMutation):
+		respondError(w, http.StatusForbidden, err.Error())
+		return
+	default:
+		respondError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
 	var req struct {
 		ObjectKey string `json:"object_key"`
 	}

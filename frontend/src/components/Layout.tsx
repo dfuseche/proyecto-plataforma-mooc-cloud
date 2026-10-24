@@ -21,6 +21,7 @@ export default function Layout() {
           <NavLink to="/" end>Cursos</NavLink>
           {user && <NavLink to="/mis-cursos">Mis cursos</NavLink>}
           {isTeacher && <NavLink to="/docente">Docencia</NavLink>}
+          {user?.role === 'admin' && <NavLink to="/admin/docentes">Docentes</NavLink>}
         </nav>
         <div className="account">
           {user ? (
@@ -39,6 +40,9 @@ export default function Layout() {
       <main id="contenido" tabIndex={-1}>
         <Outlet />
       </main>
+      <footer className="footer">
+        Aula MOOC · versión {String(import.meta.env.VITE_APP_VERSION ?? 'dev').slice(0, 7)}
+      </footer>
     </>
   )
 }

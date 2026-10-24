@@ -55,6 +55,8 @@ main:focus { outline: none; }
 .account { display: flex; align-items: center; gap: .6rem; }
 .who { color: #cfd8ea; max-width: 14rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+.footer { padding: 1.2rem max(16px, 4vw); color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+
 /* Botones */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
@@ -98,7 +100,7 @@ main:focus { outline: none; }
 .field label { display: block; font-weight: 600; margin-bottom: .3rem; }
 input:not([type='radio']):not([type='checkbox']):not([type='file']), textarea, select {
   width: 100%; min-height: 44px; padding: .55rem .75rem; font: inherit; color: var(--ink);
-  background: var(--surface); border: 2px solid #9aa5b8; border-radius: 8px;
+  background: var(--surface); border: 2px solid #6f7b90; border-radius: 8px;
 }
 textarea { resize: vertical; }
 input:focus-visible, textarea:focus-visible, select:focus-visible { outline-offset: 0; border-color: var(--action); }
@@ -118,7 +120,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline-offs
 .issues { background: var(--danger-soft); border-radius: var(--radius); padding: 1rem 1rem 1rem 2.2rem; color: #7a1812; }
 
 /* Barra de avance */
-.progress { height: 10px; background: #dfe5ee; border-radius: 99px; overflow: hidden; margin: .6rem 0; }
+.progress { height: 10px; background: #dfe5ee; box-shadow: 0 0 0 1px #6f7b90; border-radius: 99px; overflow: hidden; margin: .6rem 0; }
 .progress span { display: block; height: 100%; background: var(--amber); border-radius: 99px; transition: width .4s ease; }
 .inline-progress { display: flex; align-items: center; gap: .6rem; min-width: 220px; }
 .inline-progress .progress { flex: 1; margin: 0; }

@@ -423,3 +423,9 @@ func (uc *UseCase) ReorderUnits(ctx context.Context, teacherID uuid.UUID, module
 func (uc *UseCase) ReorderResources(ctx context.Context, teacherID uuid.UUID, unitID uuid.UUID, orderedIDs []uuid.UUID) error {
 	return uc.repo.ReorderResources(ctx, unitID, orderedIDs)
 }
+
+// AuthorizeEdit comprueba que user puede modificar el curso al que pertenece
+// la entidad (ver domain.AuthorizeCourseEdit).
+func (uc *UseCase) AuthorizeEdit(ctx context.Context, user *domain.User, kind domain.CourseEntityKind, id uuid.UUID) error {
+	return domain.AuthorizeCourseEdit(ctx, uc.repo, user, kind, id)
+}

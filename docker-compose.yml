@@ -121,6 +121,9 @@ services:
       MAILPIT_HOST: "mailpit"
       MAILPIT_PORT: "1025"
       JWT_SECRET: "super-secret-key-change-in-production"
+      # Solo para desarrollo y CI locales. En producción viene de Secret Manager.
+      ADMIN_EMAIL: "${ADMIN_EMAIL:-admin@mooc.com}"
+      ADMIN_PASSWORD: "${ADMIN_PASSWORD:-Admin123!}"
     depends_on:
       postgres:
         condition: service_healthy

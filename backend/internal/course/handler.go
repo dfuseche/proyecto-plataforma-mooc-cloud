@@ -176,7 +176,10 @@ func (h *HTTPHandler) GetCourseDraftPreview(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	draft, err := h.useCase.GetCourseDraftPreview(r.Context(), uuid.Nil, courseID)
+	if !h.authorize(w, r, domain.EntityCourse, courseID) {
+		return
+	}
+	draft, err := h.useCase.GetCourseDraftPreview(r.Context(), actorID(r), courseID)
 	if err != nil {
 		if err == domain.ErrVersionNotFound {
 			respondError(w, http.StatusNotFound, "No existe un borrador de actualización disponible")
@@ -197,7 +200,10 @@ func (h *HTTPHandler) CreateDraftFromPublished(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	draft, err := h.useCase.CreateDraftFromPublished(r.Context(), uuid.Nil, courseID)
+	if !h.authorize(w, r, domain.EntityCourse, courseID) {
+		return
+	}
+	draft, err := h.useCase.CreateDraftFromPublished(r.Context(), actorID(r), courseID)
 	if err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
@@ -214,7 +220,10 @@ func (h *HTTPHandler) UnpublishCourse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := h.useCase.UnpublishCourse(r.Context(), uuid.Nil, courseID); err != nil {
+	if !h.authorize(w, r, domain.EntityCourse, courseID) {
+		return
+	}
+	if err := h.useCase.UnpublishCourse(r.Context(), actorID(r), courseID); err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -240,7 +249,10 @@ func (h *HTTPHandler) AddModule(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	mod, err := h.useCase.AddModule(r.Context(), uuid.Nil, versionID, req.Title, req.Description, req.Position)
+	if !h.authorize(w, r, domain.EntityVersion, versionID) {
+		return
+	}
+	mod, err := h.useCase.AddModule(r.Context(), actorID(r), versionID, req.Title, req.Description, req.Position)
 	if err != nil {
 		if err == domain.ErrVersionImmutable {
 			respondError(w, http.StatusConflict, err.Error())
@@ -270,7 +282,10 @@ func (h *HTTPHandler) AddUnit(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	unit, err := h.useCase.AddUnit(r.Context(), uuid.Nil, moduleID, req.Title, req.Position)
+	if !h.authorize(w, r, domain.EntityModule, moduleID) {
+		return
+	}
+	unit, err := h.useCase.AddUnit(r.Context(), actorID(r), moduleID, req.Title, req.Position)
 	if err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
@@ -294,7 +309,10 @@ func (h *HTTPHandler) AddResource(w http.ResponseWriter, r *http.Request) {
 	}
 	res.UnitID = unitID
 
-	createdRes, err := h.useCase.AddResource(r.Context(), uuid.Nil, &res)
+	if !h.authorize(w, r, domain.EntityUnit, unitID) {
+		return
+	}
+	createdRes, err := h.useCase.AddResource(r.Context(), actorID(r), &res)
 	if err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
@@ -317,7 +335,10 @@ func (h *HTTPHandler) UpdateResource(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	updatedRes, err := h.useCase.UpdateResource(r.Context(), uuid.Nil, resourceID, fields)
+	if !h.authorize(w, r, domain.EntityResource, resourceID) {
+		return
+	}
+	updatedRes, err := h.useCase.UpdateResource(r.Context(), actorID(r), resourceID, fields)
 	if err != nil {
 		if err == domain.ErrResourceNotFound {
 			respondError(w, http.StatusNotFound, err.Error())
@@ -355,7 +376,10 @@ func (h *HTTPHandler) AutosaveResource(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	updatedRes, err := h.useCase.AutosaveResource(r.Context(), uuid.Nil, resourceID, payload.Title, payload.CanonicalMarkdown)
+	if !h.authorize(w, r, domain.EntityResource, resourceID) {
+		return
+	}
+	updatedRes, err := h.useCase.AutosaveResource(r.Context(), actorID(r), resourceID, payload.Title, payload.CanonicalMarkdown)
 	if err != nil {
 		if err == domain.ErrResourceNotFound {
 			respondError(w, http.StatusNotFound, err.Error())
@@ -376,7 +400,10 @@ func (h *HTTPHandler) DeleteResource(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := h.useCase.DeleteResource(r.Context(), uuid.Nil, resourceID); err != nil {
+	if !h.authorize(w, r, domain.EntityResource, resourceID) {
+		return
+	}
+	if err := h.useCase.DeleteResource(r.Context(), actorID(r), resourceID); err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -400,7 +427,10 @@ func (h *HTTPHandler) ReorderModules(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := h.useCase.ReorderModules(r.Context(), uuid.Nil, versionID, req.OrderedIDs); err != nil {
+	if !h.authorize(w, r, domain.EntityVersion, versionID) {
+		return
+	}
+	if err := h.useCase.ReorderModules(r.Context(), actorID(r), versionID, req.OrderedIDs); err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -424,7 +454,10 @@ func (h *HTTPHandler) ReorderUnits(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := h.useCase.ReorderUnits(r.Context(), uuid.Nil, moduleID, req.OrderedIDs); err != nil {
+	if !h.authorize(w, r, domain.EntityModule, moduleID) {
+		return
+	}
+	if err := h.useCase.ReorderUnits(r.Context(), actorID(r), moduleID, req.OrderedIDs); err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -448,7 +481,10 @@ func (h *HTTPHandler) ReorderResources(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := h.useCase.ReorderResources(r.Context(), uuid.Nil, unitID, req.OrderedIDs); err != nil {
+	if !h.authorize(w, r, domain.EntityUnit, unitID) {
+		return
+	}
+	if err := h.useCase.ReorderResources(r.Context(), actorID(r), unitID, req.OrderedIDs); err != nil {
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -464,7 +500,10 @@ func (h *HTTPHandler) PublishVersion(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	pubVersion, err := h.useCase.PublishVersion(r.Context(), uuid.Nil, versionID)
+	if !h.authorize(w, r, domain.EntityVersion, versionID) {
+		return
+	}
+	pubVersion, err := h.useCase.PublishVersion(r.Context(), actorID(r), versionID)
 	if err != nil {
 		var validationErr *domain.PublishValidationError
 		if errors.As(err, &validationErr) {
@@ -480,4 +519,34 @@ func (h *HTTPHandler) PublishVersion(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respondJSON(w, http.StatusOK, pubVersion)
+}
+
+// actorID devuelve el id del usuario autenticado (uuid.Nil si no hay sesión;
+// AccessPolicy ya rechaza esas peticiones antes de llegar aquí).
+func actorID(r *http.Request) uuid.UUID {
+	if u := middleware.GetUserFromContext(r.Context()); u != nil {
+		return u.ID
+	}
+	return uuid.Nil
+}
+
+// authorize verifica que el usuario autenticado puede editar el curso al que
+// pertenece la entidad. Responde 401/403/404 y devuelve false si no.
+func (h *HTTPHandler) authorize(w http.ResponseWriter, r *http.Request, kind domain.CourseEntityKind, id uuid.UUID) bool {
+	user := middleware.GetUserFromContext(r.Context())
+	if user == nil {
+		respondError(w, http.StatusUnauthorized, "Se requiere autenticación")
+		return false
+	}
+	switch err := h.useCase.AuthorizeEdit(r.Context(), user, kind, id); {
+	case err == nil:
+		return true
+	case errors.Is(err, domain.ErrCourseNotFound):
+		respondError(w, http.StatusNotFound, "Recurso no encontrado")
+	case errors.Is(err, domain.ErrUnauthorizedCourseMutation):
+		respondError(w, http.StatusForbidden, err.Error())
+	default:
+		respondError(w, http.StatusInternalServerError, err.Error())
+	}
+	return false
 }

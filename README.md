@@ -1,20 +1,78 @@
-# 🚀 Plataforma Web MOOC — Entrega 2: Despliegue Básico en Google Cloud Platform (GCP)
+# 🚀 Plataforma Web MOOC — Entrega 3: Aplicación Elástica en IaaS (GCP)
 
-Este repositorio contiene el código fuente, la configuración de infraestructura, las pruebas de capacidad y la documentación de la **Entrega 2 — Despliegue Básico en la Nube** de la Plataforma Web de Cursos Masivos Abiertos en Línea (MOOC).
-
----
-
-## 📚 Documentación y Entregables Clave
-
-- 🏛️ **[Informe de Arquitectura Cloud (GCP)](docs/entrega2/ARCHITECTURE_CLOUD.md)**: Detalla la topología de red VPC, subredes, reglas de firewall, correspondencia de servicios (GCE, Cloud SQL, GCS, Redis) y guía de operación.
-- ⚙️ **[Operación: escalamiento y recuperación](docs/OPERACIONES.md)**: Cómo escalar `api`/`worker` a múltiples instancias con Compose y el procedimiento de backup/restauración de PostgreSQL (RPO/RTO) con evidencia de una restauración real.
-- 📊 **[Informe de Pruebas de Carga y Capacidad](capacity-planning/pruebas_de_carga_entrega2.md)**: Reporte con las mediciones, latencias (p50, p95, p99), throughput y cuellos de botella para el Escenario 1 (Actividad Académica) y Escenario 2 (Multimedia HLS).
-- 🧪 **[Scripts de Pruebas de Carga](capacity-planning/scripts/)**: Scripts en K6 para reproducir los escenarios de carga.
-- 🛠️ **[Plantillas de Entorno de Despliegue](deploy/)**: Plantillas `.env.example` y composiciones Docker desacopladas para `Web Server` y `Worker Server`.
+Este repositorio contiene el código fuente, la infraestructura, las pruebas de carga y la documentación de la **Entrega 3 — Aplicación Elástica** de la Plataforma Web de Cursos Masivos Abiertos en Línea (MOOC): API y workers en grupos de instancias con autoescalado, balanceador HTTPS, frontend versionado y análisis de calidad con SonarQube.
 
 ---
 
-## 🛠️ Arquitectura Resumida en GCP
+## 📚 Documentación de la Entrega 3
+
+- 🏛️ **[Arquitectura elástica](docs/entrega3/arquitectura.md)**: grupos de instancias de la API y de los workers, balanceador, cola, base de datos y almacenamiento.
+- 🖥️ **[Frontend y verificación](docs/entrega3/frontend.md)**: flujos de estudiante, docente y administrador, reglas de autorización, accesibilidad y guion de demostración.
+- 🧮 **[Deuda técnica y calidad (SonarQube)](docs/entrega3/deuda-tecnica.md)**: línea base, correcciones realizadas, inventario de deuda y plan de tratamiento.
+- 📊 **[Pruebas de carga de la Entrega 3](capacity-planning/pruebas_de_carga_entrega3.md)**: escenarios, autoescalado y comparación con la Entrega 2.
+- 🚚 **[Despliegue continuo](docs/CD.md)**: construcción de la imagen, publicación y actualización de los grupos de instancias.
+- ⚙️ **[Operación: escalamiento y recuperación](docs/OPERACIONES.md)**: escalado con Compose y procedimiento de backup/restauración (RPO/RTO).
+
+## 🗂️ Documentación de la Entrega 2
+
+- 🏛️ **[Informe de Arquitectura Cloud](docs/entrega2/ARCHITECTURE_CLOUD.md)**: red, subredes, firewall y servicios.
+- 📊 **[Pruebas de carga de la Entrega 2](capacity-planning/pruebas_de_carga_entrega2.md)** y 🧪 **[scripts k6](capacity-planning/scripts/)**.
+- 🛠️ **[Plantillas de despliegue](deploy/)**: `.env.example` y composiciones para el servidor web y el worker.
+
+---
+
+## 🧱 Estructura del repositorio
+
+| Carpeta | Contenido |
+|---|---|
+| `backend/` | API REST y worker en Go (`cmd/api`, `cmd/worker`, `internal/…`) y pruebas E2E |
+| `frontend/` | Aplicación web (React + Vite + TypeScript); el backend la sirve desde la misma imagen |
+| `deploy/` | Composiciones y plantillas de entorno para las instancias |
+| `docs/` | Documentación por entrega |
+| `capacity-planning/` | Pruebas de carga y sus informes |
+
+La imagen de Docker se construye desde la raíz e incluye el frontend compilado:
+
+```bash
+docker build -f backend/Dockerfile --build-arg APP_VERSION=$(git rev-parse --short HEAD) .
+```
+
+## 💻 Ejecución local
+
+```bash
+docker compose up -d --build
+```
+
+- Aplicación y API: `http://localhost:8081` (la API está bajo `/api/v1`).
+- Administrador inicial: el correo y la contraseña salen de `ADMIN_EMAIL` y `ADMIN_PASSWORD`. El
+  `docker-compose.yml` define valores solo para desarrollo local; fuera de él hay que definirlos
+  (en GCP, desde Secret Manager). Sin `ADMIN_PASSWORD` no se crea ningún administrador.
+- El administrador crea las cuentas de docente desde **Docentes** (`/admin/docentes`). Los
+  estudiantes se registran solos.
+
+Pruebas:
+
+```bash
+docker compose --profile test build e2e-tests
+docker compose --profile test run --rm e2e-tests
+```
+
+La suite E2E se reconstruye con el primer comando; sin él se ejecuta la imagen anterior.
+
+---
+
+## 🛠️ Arquitectura resumida
+
+- **API y workers**: dos grupos de instancias independientes (1 a 3 instancias cada uno) con autoescalado por CPU.
+- **Balanceador**: Application Load Balancer HTTPS externo con verificación de salud sobre la API.
+- **Cola**: Redis fuera de los grupos elásticos.
+- **Datos**: Cloud SQL for PostgreSQL 16 y Google Cloud Storage para los medios.
+- **Frontend**: aplicación de una sola página servida por la API, versionada con el hash del commit (visible en el pie de página).
+- Detalle y diagramas en [`docs/entrega3/arquitectura.md`](docs/entrega3/arquitectura.md).
+
+---
+
+### Arquitectura de la Entrega 2 (referencia)
 
 - **Red VPC (`mooc-vpc`)**: Subred pública (`10.0.1.0/24`) y subred privada (`10.0.2.0/24`) con Cloud NAT.
 - **`web-server` (GCE VM 1 - Pública)**: 2 vCPU, 2 GiB RAM. Ejecuta la API REST en Go. Exposición pública HTTP/HTTPS.
@@ -32,4 +90,5 @@ Este repositorio contiene el código fuente, la configuración de infraestructur
 
 ## 🔖 Release y Commit
 
-- **Release Tag**: `entrega-2`
+- **Release Tag**: `entrega-3`
+- **Commit de entrega**: `[Añadir hash del commit]`

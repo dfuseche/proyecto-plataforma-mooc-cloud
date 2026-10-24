@@ -7,6 +7,9 @@ COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci --no-audit --no-fund
 
 COPY frontend/ ./
+# Versión visible en el pie de la SPA (commit que generó la imagen).
+ARG APP_VERSION=dev
+ENV VITE_APP_VERSION=$APP_VERSION
 RUN npm run build
 
 # Stage 1: Build
