@@ -4,7 +4,10 @@ import (
 	"context"
 	"crypto/rand"
 	"encoding/hex"
+	"errors"
 	"log"
+	"os"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -20,15 +23,29 @@ func NewUseCase(repo domain.UserRepository) *UseCase {
 	return &UseCase{repo: repo}
 }
 
-// SeedDefaultAdmin crea el administrador principal por defecto si la BD está vacía
+// SeedDefaultAdmin crea el administrador inicial si todavía no hay ninguno.
+// El correo se toma de ADMIN_EMAIL (por defecto admin@mooc.com) y la contraseña
+// de ADMIN_PASSWORD, que debe venir del entorno (en producción, de Secret
+// Manager). Sin ADMIN_PASSWORD no se crea ningún administrador. La contraseña
+// nunca se escribe en el log.
 func (uc *UseCase) SeedDefaultAdmin(ctx context.Context) error {
 	count, err := uc.repo.CountActiveAdmins(ctx)
 	if err == nil && count > 0 {
 		return nil
 	}
 
-	adminEmail := "admin@mooc.com"
-	adminPass := "Admin123!"
+	adminPass := os.Getenv("ADMIN_PASSWORD")
+	if adminPass == "" {
+		log.Printf("[SEED-ADMIN] No hay administradores y ADMIN_PASSWORD no está definida: no se creó ninguno")
+		return nil
+	}
+	if len(adminPass) < 8 {
+		return errors.New("ADMIN_PASSWORD debe tener al menos 8 caracteres")
+	}
+	adminEmail := strings.TrimSpace(os.Getenv("ADMIN_EMAIL"))
+	if adminEmail == "" {
+		adminEmail = "admin@mooc.com"
+	}
 	hash, err := bcrypt.GenerateFromPassword([]byte(adminPass), bcrypt.DefaultCost)
 	if err != nil {
 		return err
@@ -49,7 +66,7 @@ func (uc *UseCase) SeedDefaultAdmin(ctx context.Context) error {
 		return err
 	}
 
-	log.Printf("[SEED-ADMIN] Administrador inicial creado exitosamente (Email: %s, Pass: %s)", adminEmail, adminPass)
+	log.Printf("[SEED-ADMIN] Administrador inicial creado (Email: %s)", adminEmail)
 	return nil
 }
 
@@ -313,8 +330,8 @@ func (uc *UseCase) CreateTeacher(ctx context.Context, adminID uuid.UUID, input C
 	}
 
 	password := input.Password
-	if password == "" {
-		password = "TeacherPass123!"
+	if len(password) < 8 {
+		return nil, domain.ErrWeakPassword
 	}
 
 	hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)

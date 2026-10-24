@@ -18,6 +18,7 @@ La versión desplegada (commit de la imagen) aparece en el pie de página y se i
 | Estudiante | Video/audio HLS, lecturas, PDF, imágenes, enlaces | ídem | `GET /media/resources/{id}/stream-url`, `.../manifest.m3u8`, `.../resume`, `POST /learning/heartbeat` | (A) |
 | Estudiante | Presentar un quiz y ver su resultado | ídem (recurso tipo evaluación) | `GET /learning/resources/{id}/quiz`, `POST .../start-attempt`, `PATCH /learning/attempts/{id}`, `POST .../submit` | (A) |
 | Profesor | Iniciar y cerrar sesión | `/entrar` | ídem | (A) |
+| Administrador | Crear la cuenta de un docente | `/admin/docentes` | `POST /admin/teachers` | (A) |
 | Profesor | Consultar sus cursos | `/docente` | `GET /courses` (filtrado por propietario) | (A) |
 | Profesor | Crear curso y estructura (módulos, unidades) | `/docente`, `/docente/cursos/:id` | `POST /courses`, `.../modules`, `.../units` | (A) |
 | Profesor | Agregar recursos, subir archivos y ver su procesamiento | `/docente/cursos/:id` | `POST .../resources`, `PUT <URL prefirmada>`, `POST /media/resources/{id}/complete-upload` | (A) |

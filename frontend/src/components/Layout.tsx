@@ -21,6 +21,7 @@ export default function Layout() {
           <NavLink to="/" end>Cursos</NavLink>
           {user && <NavLink to="/mis-cursos">Mis cursos</NavLink>}
           {isTeacher && <NavLink to="/docente">Docencia</NavLink>}
+          {user?.role === 'admin' && <NavLink to="/admin/docentes">Docentes</NavLink>}
         </nav>
         <div className="account">
           {user ? (

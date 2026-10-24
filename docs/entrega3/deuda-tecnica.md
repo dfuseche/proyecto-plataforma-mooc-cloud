@@ -33,6 +33,7 @@ enlace al reporte: **PENDIENTE**.
 | C-03 | No había control de propiedad: cualquier profesor podía modificar cursos ajenos. | `domain.AuthorizeCourseEdit`, `ownership_test.go`, subtest `05b` |
 | C-04 | El heartbeat y la inscripción aceptaban `student_id` en el cuerpo. Ahora el estudiante sale de la sesión. | `internal/learning/handler.go` |
 | C-05 | `presigned-upload/download` aceptaban claves arbitrarias del bucket para cualquier profesor. Ahora solo administración. | `internal/middleware/roles.go` |
+| C-06 | El administrador sembrado tenía la contraseña fija `Admin123!` (y la escribía en el log), y crear un docente sin contraseña usaba `TeacherPass123!`. Ahora la contraseña sale de `ADMIN_PASSWORD` (sin ella no se crea administrador), no se registra en el log y la API exige contraseña de al menos 8 caracteres para docentes. | `internal/user/usecase.go`, `docker-compose.yml`, `deploy/web-server.env.example` |
 
 (El commit de cada una se registra al cerrar la entrega.)
 
@@ -40,7 +41,6 @@ enlace al reporte: **PENDIENTE**.
 
 | Id | Categoría | Descripción y ubicación | Evidencia | Impacto | Prioridad |
 |---|---|---|---|---|---|
-| D-01 | Seguridad | Administrador sembrado con contraseña fija `Admin123!`, también escrita en el log de arranque (`internal/user/usecase.go`, `SeedDefaultAdmin`). | Código fuente | Cuenta privilegiada con credencial conocida en cualquier despliegue nuevo | Alta |
 | D-02 | Seguridad | El registro devuelve el código de verificación en la respuesta (`internal/user/handler.go`); no hay servicio de correo, así que la verificación de email no prueba posesión del correo. | Código fuente | Cuentas con correos ajenos | Alta |
 | D-03 | Funcional | La imagen de las insignias apunta a `<baseURL>/media/badges/<código>.png`, que nunca se genera ni se sube, y `baseURL` es `http://localhost:<puerto>` (`internal/learning/usecase.go`, `cmd/api/main.go`). | Código fuente | URLs de insignia rotas e internas | Media |
 | D-04 | Progreso | Un recurso se marca completado si el cliente reporta ≥10 s de permanencia (`RecordHeartbeat`); no se valida contra la duración real del recurso. | Código fuente | El progreso se puede inflar con llamadas manuales | Media |
@@ -60,5 +60,5 @@ enlace al reporte: **PENDIENTE**.
 **PENDIENTE:** completar con los hallazgos de SonarQube (bugs, vulnerabilidades, *security
 hotspots* y *code smells* más relevantes), asignar responsable y entrega objetivo a cada elemento
 y ordenar por impacto, urgencia y esfuerzo. Orden propuesto con lo conocido hoy:
-D-01 y D-02 (seguridad) → D-04 y D-03 (integridad del progreso e insignias) → D-05, D-06, D-07
+D-02 (seguridad) → D-04 y D-03 (integridad del progreso e insignias) → D-05, D-06, D-07
 → D-09, D-10, D-12 → resto.
