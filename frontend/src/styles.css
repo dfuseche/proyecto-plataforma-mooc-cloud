@@ -55,6 +55,8 @@ main:focus { outline: none; }
 .account { display: flex; align-items: center; gap: .6rem; }
 .who { color: #cfd8ea; max-width: 14rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+.footer { padding: 1.2rem max(16px, 4vw); color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+
 /* Botones */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .4rem;

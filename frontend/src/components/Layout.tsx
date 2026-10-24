@@ -39,6 +39,9 @@ export default function Layout() {
       <main id="contenido" tabIndex={-1}>
         <Outlet />
       </main>
+      <footer className="footer">
+        Aula MOOC · versión {String(import.meta.env.VITE_APP_VERSION ?? 'dev').slice(0, 7)}
+      </footer>
     </>
   )
 }

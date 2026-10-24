@@ -177,10 +177,6 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{adminToken}}"
-							},
-							{
-								"key": "X-Admin-ID",
-								"value": "{{adminId}}"
 							}
 						],
 						"body": {
@@ -434,10 +430,6 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{teacherToken}}"
-							},
-							{
-								"key": "X-Teacher-ID",
-								"value": "{{teacherId}}"
 							}
 						],
 						"body": {
@@ -746,7 +738,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{teacherToken}}"
+								"value": "Bearer {{adminToken}}"
 							}
 						],
 						"body": {

@@ -2,6 +2,7 @@ package learning
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -97,6 +98,20 @@ func (h *HTTPHandler) CreateQuiz(w http.ResponseWriter, r *http.Request) {
 	resourceID, err := uuid.Parse(resourceIDStr)
 	if err != nil {
 		respondError(w, http.StatusBadRequest, "ID de recurso inválido")
+		return
+	}
+
+	authUser := middleware.GetUserFromContext(r.Context())
+	switch err := h.useCase.AuthorizeQuizEdit(r.Context(), authUser, resourceID); {
+	case err == nil:
+	case errors.Is(err, domain.ErrCourseNotFound):
+		respondError(w, http.StatusNotFound, "Recurso no encontrado")
+		return
+	case errors.Is(err, domain.ErrUnauthorizedCourseMutation):
+		respondError(w, http.StatusForbidden, err.Error())
+		return
+	default:
+		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 

@@ -485,3 +485,37 @@ func (r *PostgresRepository) ReorderResources(ctx context.Context, unitID uuid.U
 	}
 	return tx.Commit()
 }
+
+// CourseIDOf implementa domain.CourseLocator: resuelve el curso dueño de una
+// versión, módulo, unidad o recurso.
+func (r *PostgresRepository) CourseIDOf(ctx context.Context, kind domain.CourseEntityKind, id uuid.UUID) (uuid.UUID, error) {
+	var query string
+	switch kind {
+	case domain.EntityCourse:
+		query = `SELECT id FROM courses WHERE id = $1`
+	case domain.EntityVersion:
+		query = `SELECT course_id FROM course_versions WHERE id = $1`
+	case domain.EntityModule:
+		query = `SELECT v.course_id FROM course_modules m JOIN course_versions v ON v.id = m.version_id WHERE m.id = $1`
+	case domain.EntityUnit:
+		query = `SELECT v.course_id FROM course_units u
+			JOIN course_modules m ON m.id = u.module_id
+			JOIN course_versions v ON v.id = m.version_id WHERE u.id = $1`
+	case domain.EntityResource:
+		query = `SELECT v.course_id FROM course_resources rs
+			JOIN course_units u ON u.id = rs.unit_id
+			JOIN course_modules m ON m.id = u.module_id
+			JOIN course_versions v ON v.id = m.version_id WHERE rs.id = $1`
+	default:
+		return uuid.Nil, fmt.Errorf("tipo de entidad desconocido: %s", kind)
+	}
+
+	var courseID uuid.UUID
+	if err := r.db.QueryRowContext(ctx, query, id).Scan(&courseID); err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return uuid.Nil, domain.ErrCourseNotFound
+		}
+		return uuid.Nil, err
+	}
+	return courseID, nil
+}

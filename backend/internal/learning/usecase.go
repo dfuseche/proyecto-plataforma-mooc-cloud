@@ -485,3 +485,9 @@ func (uc *UseCase) GetQuizSnapshotByResource(ctx context.Context, resourceID uui
 	}
 	return uc.GetQuizSnapshot(ctx, quiz.ID)
 }
+
+// AuthorizeQuizEdit comprueba que el usuario puede editar el curso al que
+// pertenece el recurso donde se define el quiz.
+func (uc *UseCase) AuthorizeQuizEdit(ctx context.Context, user *domain.User, resourceID uuid.UUID) error {
+	return domain.AuthorizeCourseEdit(ctx, uc.courseRepo, user, domain.EntityResource, resourceID)
+}

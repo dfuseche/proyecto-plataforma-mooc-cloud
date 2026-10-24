@@ -101,6 +101,15 @@ func (c *apiClient) loginAdmin(t *testing.T) string {
 	return out.Session.Token
 }
 
+// doAs ejecuta una petición con el token indicado (vacío = anónimo),
+// sin la sustitución automática por el token de administrador de do().
+func (c *apiClient) doAs(t *testing.T, token, method, path string, body any) (*http.Response, apiResponse) {
+	saved := c.token
+	c.token = token
+	defer func() { c.token = saved }()
+	return c.do(t, method, path, body, true)
+}
+
 type apiResponse struct {
 	Success bool            `json:"success"`
 	Data    json.RawMessage `json:"data"`
@@ -334,6 +343,54 @@ func TestE2ECriticalFlows(t *testing.T) {
 			t.Fatalf("no se pudo leer el recurso creado: %v (%s)", err, string(parsed.Data))
 		}
 		resourceID = res.ID
+	})
+
+	t.Run("05b_roles_y_propiedad_de_cursos", func(t *testing.T) {
+		// Estudiante: no puede crear cursos ni editar el curso del admin.
+		resp, _ := client.doAs(t, client.token, http.MethodPost, "/api/v1/courses", map[string]any{"title": "No debería", "summary": "x", "passing_score": 60.0})
+		if resp.StatusCode != http.StatusForbidden {
+			t.Fatalf("un estudiante creó un curso: status=%d", resp.StatusCode)
+		}
+		resp, _ = client.doAs(t, client.token, http.MethodPost, "/api/v1/courses/versions/"+versionID+"/modules", map[string]any{"title": "X", "position": 9})
+		if resp.StatusCode != http.StatusForbidden {
+			t.Fatalf("un estudiante editó un curso: status=%d", resp.StatusCode)
+		}
+		// Anónimo: 401.
+		resp, _ = client.doAs(t, "", http.MethodPost, "/api/v1/courses/versions/"+versionID+"/modules", map[string]any{"title": "X", "position": 9})
+		if resp.StatusCode != http.StatusUnauthorized {
+			t.Fatalf("una petición anónima editó un curso: status=%d", resp.StatusCode)
+		}
+
+		// Segundo profesor, creado por el admin: no puede tocar el curso del primero.
+		teacherEmail := fmt.Sprintf("profe.%s@mooc.com", runID)
+		resp, parsed := client.doAs(t, client.adminToken, http.MethodPost, "/api/v1/admin/teachers", map[string]any{
+			"email": teacherEmail, "password": studentPassword, "full_name": "Profesor E2E",
+		})
+		if resp.StatusCode != http.StatusCreated || !parsed.Success {
+			t.Fatalf("el admin no pudo crear un profesor: status=%d error=%q", resp.StatusCode, parsed.Error)
+		}
+		resp, parsed = client.do(t, http.MethodPost, "/api/v1/auth/login", map[string]any{"email": teacherEmail, "password": studentPassword}, false)
+		var login struct {
+			Session struct {
+				Token string `json:"token"`
+			} `json:"session"`
+		}
+		if resp.StatusCode != http.StatusOK || json.Unmarshal(parsed.Data, &login) != nil || login.Session.Token == "" {
+			t.Fatalf("login del profesor falló: status=%d error=%q", resp.StatusCode, parsed.Error)
+		}
+		resp, _ = client.doAs(t, login.Session.Token, http.MethodPost, "/api/v1/courses/versions/"+versionID+"/modules", map[string]any{"title": "Intruso", "position": 9})
+		if resp.StatusCode != http.StatusForbidden {
+			t.Fatalf("un profesor ajeno modificó un curso: status=%d", resp.StatusCode)
+		}
+		resp, _ = client.doAs(t, login.Session.Token, http.MethodPost, "/api/v1/courses/versions/"+versionID+"/publish", nil)
+		if resp.StatusCode != http.StatusForbidden {
+			t.Fatalf("un profesor ajeno publicó un curso: status=%d", resp.StatusCode)
+		}
+		// Sí puede crear y editar un curso propio.
+		resp, _ = client.doAs(t, login.Session.Token, http.MethodPost, "/api/v1/courses", map[string]any{"title": "Curso propio " + runID, "summary": "ok", "passing_score": 60.0})
+		if resp.StatusCode != http.StatusCreated {
+			t.Fatalf("el profesor no pudo crear su propio curso: status=%d", resp.StatusCode)
+		}
 	})
 
 	t.Run("06_publicacion_rechazada_lista_exhaustiva", func(t *testing.T) {
