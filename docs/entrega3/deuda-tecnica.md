@@ -41,7 +41,7 @@ enlace al reporte: **PENDIENTE**.
 
 | Id | Categoría | Descripción y ubicación | Evidencia | Impacto | Prioridad |
 |---|---|---|---|---|---|
-| D-02 | Seguridad | El registro devuelve el código de verificación en la respuesta (`internal/user/handler.go`); no hay servicio de correo, así que la verificación de email no prueba posesión del correo. | Código fuente | Cuentas con correos ajenos | Alta |
+| D-02 | Seguridad | El registro devuelve el código de verificación en la respuesta (`internal/user/handler.go`); no hay servicio de correo, así que la verificación de email no prueba posesión del correo. **Deuda aceptada para la Entrega 3:** quitar el código dejaría a los estudiantes sin forma de verificar su cuenta, y el frontend lo usa para completar el registro. Se corrige al integrar un servicio de correo (en local ya existe Mailpit). | Código fuente | Cuentas con correos ajenos | Alta (aceptada) |
 | D-03 | Funcional | La imagen de las insignias apunta a `<baseURL>/media/badges/<código>.png`, que nunca se genera ni se sube, y `baseURL` es `http://localhost:<puerto>` (`internal/learning/usecase.go`, `cmd/api/main.go`). | Código fuente | URLs de insignia rotas e internas | Media |
 | D-04 | Progreso | Un recurso se marca completado si el cliente reporta ≥10 s de permanencia (`RecordHeartbeat`); no se valida contra la duración real del recurso. | Código fuente | El progreso se puede inflar con llamadas manuales | Media |
 | D-05 | API | `backend/docs/openapi.yaml` (versión 3.1.0) documenta 21 paths, mientras el código registra 55 operaciones HTTP; faltan, entre otras, quizzes, recursos, módulos y unidades. | `grep '^  /'` del YAML frente a `grep 'r.Get(\|r.Post('` del código | Contrato incompleto para clientes y pruebas | Media |
@@ -60,5 +60,5 @@ enlace al reporte: **PENDIENTE**.
 **PENDIENTE:** completar con los hallazgos de SonarQube (bugs, vulnerabilidades, *security
 hotspots* y *code smells* más relevantes), asignar responsable y entrega objetivo a cada elemento
 y ordenar por impacto, urgencia y esfuerzo. Orden propuesto con lo conocido hoy:
-D-02 (seguridad) → D-04 y D-03 (integridad del progreso e insignias) → D-05, D-06, D-07
-→ D-09, D-10, D-12 → resto.
+D-04 y D-03 (integridad del progreso e insignias) → D-05, D-06, D-07
+→ D-09, D-10, D-12 → resto. D-02 queda aceptada hasta contar con un servicio de correo.
