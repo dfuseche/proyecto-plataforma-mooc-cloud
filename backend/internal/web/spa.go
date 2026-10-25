@@ -3,8 +3,10 @@
 package web
 
 import (
+	"io/fs"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 )
@@ -19,6 +21,9 @@ func NewSPAHandler(dir string) http.Handler {
 		return nil
 	}
 	files := http.FileServer(http.Dir(dir))
+	// os.DirFS rechaza por construcción rutas con ".." o absolutas, así que una
+	// ruta de la petición nunca sale de dir.
+	fsys := os.DirFS(dir)
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodGet && r.Method != http.MethodHead {
@@ -31,8 +36,8 @@ func NewSPAHandler(dir string) http.Handler {
 			return
 		}
 
-		clean := filepath.Join(dir, filepath.FromSlash(filepath.Clean("/"+r.URL.Path)))
-		if info, err := os.Stat(clean); err == nil && !info.IsDir() {
+		name := strings.TrimPrefix(path.Clean("/"+r.URL.Path), "/")
+		if info, err := fs.Stat(fsys, name); name != "" && err == nil && !info.IsDir() {
 			// Los assets de Vite llevan hash en el nombre: cacheables a largo plazo.
 			if strings.HasPrefix(r.URL.Path, "/assets/") {
 				w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")

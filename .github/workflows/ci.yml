@@ -121,7 +121,9 @@ jobs:
           # (solo aplica a steps "run:"); en su lugar, se le dice a gosec
           # que escanee ./backend/... desde la raiz del repo, que es
           # donde corre el action por defecto.
-          args: '-fmt=sarif -out=gosec-results.sarif ./backend/...'
+          # -stdout -verbose=text imprime los hallazgos en el log (con -out solo,
+          # el log no muestra por que falla); el SARIF se sigue guardando como artefacto.
+          args: '-fmt=sarif -out=gosec-results.sarif -stdout -verbose=text ./backend/...'
 
       - name: Upload gosec SARIF report
         if: always()

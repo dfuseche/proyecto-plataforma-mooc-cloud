@@ -66,6 +66,7 @@ func (uc *UseCase) SeedDefaultAdmin(ctx context.Context) error {
 		return err
 	}
 
+	// #nosec G706 -- ADMIN_EMAIL es configuración del despliegue, no entrada de usuario
 	log.Printf("[SEED-ADMIN] Administrador inicial creado (Email: %s)", adminEmail)
 	return nil
 }

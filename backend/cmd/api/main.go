@@ -60,6 +60,7 @@ func runMigrations(db *sql.DB) error {
 
 	for _, file := range upFiles {
 		log.Printf("[MIGRATIONS] Ejecutando migración SQL: %s", filepath.Base(file))
+		// #nosec G304 -- la ruta sale de filepath.Glob sobre el directorio fijo de migraciones, no de entrada de usuario
 		content, err := os.ReadFile(file)
 		if err != nil {
 			return fmt.Errorf("failed to read migration file %s: %w", file, err)
@@ -271,12 +272,20 @@ func main() {
 	}
 	if spa := web.NewSPAHandler(webDir); spa != nil {
 		r.NotFound(spa.ServeHTTP)
+		// #nosec G706 -- WEB_DIR es configuración del despliegue, no entrada de usuario
 		log.Printf("Frontend servido desde %s", webDir)
 	}
 
 	serverAddr := fmt.Sprintf(":%s", cfg.Port)
 	log.Printf("Servidor API de la Plataforma MOOC iniciado en %s", serverAddr)
-	if err := http.ListenAndServe(serverAddr, r); err != nil {
+	srv := &http.Server{
+		Addr:              serverAddr,
+		Handler:           r,
+		ReadHeaderTimeout: 10 * time.Second,
+		ReadTimeout:       60 * time.Second,
+		IdleTimeout:       120 * time.Second,
+	}
+	if err := srv.ListenAndServe(); err != nil {
 		log.Fatalf("Error al iniciar el servidor HTTP: %v", err)
 	}
 }

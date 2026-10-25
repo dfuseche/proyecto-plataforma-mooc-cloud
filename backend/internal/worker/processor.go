@@ -78,6 +78,7 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 
 	var cmd *exec.Cmd
 	if strings.ToLower(payload.MediaType) == "audio" {
+		// #nosec G204 -- ffmpeg se invoca sin shell; las rutas son archivos temporales creados por el worker
 		cmd = exec.CommandContext(ctx, "ffmpeg",
 			"-i", localOriginalPath,
 			"-c:a", "aac",
@@ -92,6 +93,7 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 		// Video: escalera multi-calidad (1080p/720p/480p/360p) sin upscaling.
 		// Se inspecciona el original para generar solo los escalones que no
 		// superan su altura y para saber si trae pista de audio.
+		// #nosec G204 -- ffprobe se invoca sin shell; la ruta es un archivo temporal creado por el worker
 		probeOut, probeErr := exec.CommandContext(ctx, "ffprobe",
 			"-v", "error",
 			"-show_entries", "stream=codec_type,height",
@@ -108,6 +110,7 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 
 		ladder := ladderForHeight(probe.Height)
 		log.Printf("[WORKER] Original de %dp (audio=%t): generando %d rendition(s) HLS", probe.Height, probe.HasAudio, len(ladder))
+		// #nosec G204 -- ffmpeg se invoca sin shell; los argumentos los construye buildVideoHLSArgs con rutas temporales
 		cmd = exec.CommandContext(ctx, "ffmpeg", buildVideoHLSArgs(localOriginalPath, tmpDir, ladder, probe.HasAudio)...)
 	}
 

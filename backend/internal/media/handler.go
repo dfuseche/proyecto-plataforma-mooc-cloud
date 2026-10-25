@@ -188,6 +188,7 @@ func (h *HTTPHandler) CompleteUpload(w http.ResponseWriter, r *http.Request) {
 	if h.asynqClient != nil && (res.Type == domain.ResourceTypeVideo || res.Type == domain.ResourceTypeAudio) {
 		task, err := worker.NewMediaTranscodeHLSTask(res.ID, req.ObjectKey, string(res.Type))
 		if err != nil {
+			// #nosec G706 -- el identificador del recurso es un UUID
 			log.Printf("[MEDIA] No se pudo construir la tarea de transcodificación para %s: %v", res.ID, err)
 			respondError(w, http.StatusInternalServerError, "No se pudo preparar el procesamiento del recurso")
 			return
@@ -199,10 +200,12 @@ func (h *HTTPHandler) CompleteUpload(w http.ResponseWriter, r *http.Request) {
 			// de que la transcodificación nunca se había disparado. Ahora lo
 			// registramos, lo reflejamos en el estado del recurso y se lo
 			// devolvemos al llamador para que pueda reintentar.
+			// #nosec G706 -- el identificador del recurso es un UUID
 			log.Printf("[MEDIA] Fallo encolando transcodificación HLS para %s: %v", res.ID, err)
 
 			res.ProcessingStatus = domain.ProcessingFailed
 			if updErr := h.courseRepo.UpdateResource(r.Context(), res); updErr != nil {
+				// #nosec G706 -- el identificador del recurso es un UUID
 				log.Printf("[MEDIA] Además falló marcando %s como failed: %v", res.ID, updErr)
 			}
 
@@ -242,6 +245,7 @@ func (h *HTTPHandler) enqueueTranscodeTask(ctx context.Context, task *asynq.Task
 
 	info, err := h.asynqInspector.GetTaskInfo(asynqDefaultQueue, taskID)
 	if err != nil {
+		// #nosec G706 -- el identificador de tarea es un UUID generado por el servidor
 		log.Printf("[MEDIA] No se pudo inspeccionar la tarea %s tras conflicto de Task ID: %v", taskID, err)
 		return nil
 	}
@@ -369,6 +373,7 @@ func (h *HTTPHandler) GetSignedManifest(w http.ResponseWriter, r *http.Request) 
 	// El contenido trae URLs firmadas con expiración propia; no debe cachearse.
 	w.Header().Set("Cache-Control", "no-store")
 	w.WriteHeader(http.StatusOK)
+	// #nosec G705 -- manifiesto HLS (application/vnd.apple.mpegurl) generado por el servidor; no es HTML
 	_, _ = w.Write(body)
 }
 

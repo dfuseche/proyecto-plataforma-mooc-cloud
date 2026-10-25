@@ -47,6 +47,7 @@ func Idempotency(rdb *redis.Client) func(http.Handler) http.Handler {
 				w.Header().Set("Content-Type", "application/json")
 				w.Header().Set("X-Cache-Lookup", "HIT-IDEMPOTENT")
 				w.WriteHeader(http.StatusOK)
+				// #nosec G705 -- respuesta JSON (Content-Type application/json) reproducida desde Redis; no se interpreta como HTML
 				_, _ = w.Write([]byte(cachedVal))
 				return
 			}
