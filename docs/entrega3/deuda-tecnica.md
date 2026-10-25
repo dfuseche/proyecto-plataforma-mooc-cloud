@@ -1,7 +1,7 @@
 # Deuda técnica: diagnóstico y línea base (Entrega 3)
 
-> Borrador. Las secciones marcadas **PENDIENTE** se completan con el análisis de SonarQube del
-> commit final de la entrega.
+> Medición final de SonarQube registrada sobre el commit `fa3673c`. Queda por confirmar solo el perfil
+> de reglas y por asignar responsables en la sección 5.
 
 ## 1. Alcance y método
 
@@ -19,30 +19,32 @@
 |---|---|---|---|
 | Duplicación de código | **1,1 %** | ≤ 20 % | Cumple con amplio margen. |
 | Mantenibilidad (rating) | **A** (valor 1,0 en la escala 1 = A … 5 = E) | A, B o C | Cumple. |
-| Deuda técnica estimada | **60 min** (1 h) | Registrar | Tiempo estimado por SonarQube para resolver los *code smells*; no incluye deuda arquitectónica ni operativa. |
+| Deuda técnica estimada | **0 min** | Registrar | Tiempo que estima SonarQube para resolver sus *code smells*; no incluye la deuda arquitectónica ni operativa del inventario de la sección 4. |
 
-Hallazgos del código total (rama `main`), antes y después de las correcciones de la sección 3:
+Hallazgos del código total (rama `main`) en los tres análisis de este ejercicio:
 
-| Indicador | Primer análisis (`99f5b38`) | Tras las correcciones (`37605ca`) |
-|---|---|---|
-| Líneas de código | 7.067 | 7.077 |
-| Bugs | 7 | **0** |
-| Vulnerabilidades | 9 | **0** |
-| *Security hotspots* | 0 | 0 |
-| *Code smells* | 3 | 3 (60 min de deuda) |
-| Duplicación | 1,1 % | 1,1 % |
-| Mantenibilidad | A | A |
+| Indicador | Primero (`99f5b38`) | Intermedio (`37605ca`) | **Final (`fa3673c`)** |
+|---|---|---|---|
+| Líneas de código | 7.067 | 7.077 | **7.096** |
+| Bugs | 7 | 0 | **0** |
+| Vulnerabilidades | 9 | 0 | **0** |
+| *Security hotspots* | 0 | 0 | **0** |
+| *Code smells* | 3 | 3 | **0** |
+| Deuda técnica | 60 min | 60 min | **0 min** |
+| Duplicación | 1,1 % | 1,1 % | **1,1 %** |
+| Mantenibilidad | A | A | **A** |
 
 - **Fecha de los análisis:** 25 de octubre de 2026.
-- **Commit de la medición final:** `37605ca41840427afef23c8922acd31140137a2d`.
-- **Herramienta:** SonarQube Cloud, análisis ejecutado en el CI (paso *SonarQube scan*).
+- **Commit de la medición final:** `fa3673c558d00b64742c50b417cdb783971e1fff`.
+- **Herramienta:** SonarQube Cloud, análisis ejecutado en el CI (paso *SonarQube scan*); las cifras
+  salen del paso *Verify Entrega 3 thresholds*.
 - **Perfil de reglas:** **PENDIENTE** de confirmar (se espera "Sonar way").
 - **Reporte:** <https://sonarcloud.io/summary/overall?id=dfuseche_proyecto-plataforma-mooc-cloud&branch=main>
-- Los tres *code smells* abiertos son la regla `typescript:S8786` (expresiones regulares con retroceso
-  super-lineal) en `frontend/src/components/Markdown.tsx`; ver C-13.
-- La puerta de calidad por defecto de SonarQube aparece como fallida por la cobertura del código nuevo
+- La puerta de calidad por defecto de SonarQube marcó fallo por la cobertura del código nuevo
   (23,5 % frente a 80 %); la cobertura no es un criterio de la Entrega 3, que evalúa duplicación,
   mantenibilidad y deuda sobre el código total.
+- Una lectura anterior del paso de umbrales tomó las mediciones del análisis previo (el paso no esperaba
+  al análisis del commit en curso); se corrigió en `ci.yml` y la medición final es la del commit `fa3673c`.
 
 ## 3. Correcciones realizadas durante este ejercicio
 
@@ -60,7 +62,7 @@ Hallazgos del código total (rama `main`), antes y después de las correcciones 
 | C-10 | SonarQube `go:S5332` y deuda D-06: CORS aceptaba cualquier origen `http(s)://*` con credenciales. La SPA comparte origen con la API, así que CORS queda desactivado salvo que se definan orígenes en `CORS_ALLOWED_ORIGINS`. | `cmd/api/main.go` |
 | C-11 | SonarQube `go:S2077` ×2 (SQL formateado en `ListUsers`): revisado, solo se concatenan condiciones fijas con marcadores `$n`; los valores viajan como argumentos. Se documentó con `NOSONAR` y justificación. | `internal/user/repository.go` |
 | C-12 | gosec (14 hallazgos, G114, G204, G304, G703, G705, G706): servidor HTTP con timeouts, lectura de archivos sin entrada de usuario en la SPA y excepciones `#nosec` justificadas donde el dato no es controlable por el usuario. | CI, artefacto `gosec-sarif-report`; `cmd/api/main.go`, `internal/web/spa.go` |
-| C-13 | SonarQube `typescript:S8786` ×3: las expresiones regulares del renderizador de Markdown tenían retroceso super-lineal con texto sin cerrar. Se acotaron los cuantificadores, se eliminó una regex de enlaces y se quitó la ambigüedad en la de títulos. Pendiente de confirmar en el siguiente análisis. | `frontend/src/components/Markdown.tsx` |
+| C-13 | SonarQube `typescript:S8786` ×3: las expresiones regulares del renderizador de Markdown tenían retroceso super-lineal con texto sin cerrar. Se acotaron los cuantificadores, se eliminó una regex de enlaces y se quitó la ambigüedad en la de títulos. Confirmado en el análisis de `fa3673c` (0 *code smells*). | `frontend/src/components/Markdown.tsx` |
 
 (El commit de cada una se registra al cerrar la entrega.)
 
@@ -83,8 +85,21 @@ Hallazgos del código total (rama `main`), antes y después de las correcciones 
 
 ## 5. Priorización y plan de tratamiento
 
-**PENDIENTE:** completar con los hallazgos de SonarQube (bugs, vulnerabilidades, *security
-hotspots* y *code smells* más relevantes), asignar responsable y entrega objetivo a cada elemento
-y ordenar por impacto, urgencia y esfuerzo. Orden propuesto con lo conocido hoy:
-D-04 y D-03 (integridad del progreso e insignias) → D-05, D-07
-→ D-09, D-10, D-12 → resto. D-02 queda aceptada hasta contar con un servicio de correo.
+SonarQube no deja hallazgos abiertos en el commit final (0 bugs, 0 vulnerabilidades, 0 *code smells*),
+así que el plan se apoya en el inventario de la sección 4. Se ordena por impacto y esfuerzo; el
+responsable y la fecha concretos los fija el equipo al cerrar la entrega.
+
+| Orden | Id | Acción propuesta | Esfuerzo estimado | Cuándo | Responsable |
+|---|---|---|---|---|---|
+| 1 | D-04 | Validar el avance contra la duración real del recurso | Medio | Siguiente iteración | Por asignar |
+| 2 | D-03 | Generar y subir las imágenes de insignias; usar una URL base pública | Medio | Siguiente iteración | Por asignar |
+| 3 | D-05 | Completar `openapi.yaml` con las 55 operaciones | Medio | Siguiente iteración | Por asignar |
+| 4 | D-07 | Extender el límite de tasa a toda la API | Bajo | Siguiente iteración | Por asignar |
+| 5 | D-09 | Filtrar publicados en SQL | Bajo | Siguiente iteración | Por asignar |
+| 6 | D-10 | Pruebas del frontend (Vitest y Testing Library) | Alto | Siguiente iteración | Por asignar |
+| 7 | D-13 | Actualizar `docs/CD.md` al despliegue por MIG | Bajo | Antes de la entrega | Equipo (compañero a cargo de CD) |
+| 8 | D-14 | Limpiar datos de prueba de k6 en la base y el bucket | Bajo | Antes de la sustentación | Por asignar |
+| 9 | D-08 | Ejecutar `gofmt` sobre los archivos pendientes | Bajo | Siguiente iteración | Por asignar |
+| – | D-02 | Aceptada hasta contar con un servicio de correo | Alto | Cuando exista el servicio | Por asignar |
+| – | D-11 | Aceptada: requiere dominio propio para un certificado válido | Medio | Cuando exista dominio | Por asignar |
+| – | D-12 | Aceptada: alta disponibilidad de Redis y Cloud SQL fuera del alcance | Alto | Fuera de esta entrega | Por asignar |
