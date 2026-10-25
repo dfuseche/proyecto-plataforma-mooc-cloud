@@ -4,7 +4,8 @@ import type { ReactNode } from 'react'
 // negrita, cursiva, código en línea y enlaces http(s).
 function inline(text: string, key: string): ReactNode[] {
   const out: ReactNode[] = []
-  const re = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g
+  // Cuantificadores acotados: evitan retroceso super-lineal con texto sin cerrar.
+  const re = /(\*\*[^*]{1,1000}\*\*|\*[^*]{1,1000}\*|`[^`]{1,1000}`|\[[^\]]{1,500}\]\(https?:\/\/[^)\s]{1,2000}\))/g
   let last = 0
   let m: RegExpExecArray | null
   let i = 0
@@ -15,7 +16,9 @@ function inline(text: string, key: string): ReactNode[] {
     if (t.startsWith('**')) out.push(<strong key={k}>{t.slice(2, -2)}</strong>)
     else if (t.startsWith('`')) out.push(<code key={k}>{t.slice(1, -1)}</code>)
     else if (t.startsWith('[')) {
-      const [, label, href] = /\[([^\]]+)\]\(([^)]+)\)/.exec(t)!
+      const sep = t.indexOf('](')
+      const label = t.slice(1, sep)
+      const href = t.slice(sep + 2, -1)
       out.push(<a key={k} href={href} target="_blank" rel="noreferrer noopener">{label}</a>)
     } else out.push(<em key={k}>{t.slice(1, -1)}</em>)
     last = m.index + t.length
@@ -30,7 +33,7 @@ export default function Markdown({ source }: { source: string }) {
     <div className="prose">
       {blocks.map((b, i) => {
         const lines = b.split('\n')
-        const h = /^(#{1,3})\s+(.*)$/.exec(lines[0])
+        const h = /^(#{1,3})\s+(\S.*)$/.exec(lines[0])
         if (h && lines.length === 1) {
           const level = h[1].length + 1
           const Tag = (`h${level}` as 'h2' | 'h3' | 'h4')

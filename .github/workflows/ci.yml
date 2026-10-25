@@ -293,12 +293,17 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           set -euo pipefail
-          for i in $(seq 1 12); do
-            RESP=$(curl -sf -H "Authorization: Bearer ${SONAR_TOKEN}" \
-              "${SONAR_HOST_URL}/api/measures/component?component=${SONAR_PROJECT_KEY}&metricKeys=duplicated_lines_density,sqale_rating,sqale_index,ncloc,bugs,vulnerabilities,code_smells,security_hotspots&branch=${GITHUB_REF_NAME}" || true)
-            if echo "$RESP" | jq -e '.component.measures | length > 0' >/dev/null 2>&1; then break; fi
-            echo "Esperando el procesamiento del análisis ($i/12)..."; sleep 10
+          # Esperar a que SonarQube termine de procesar el análisis de ESTE commit; si no,
+          # se leerían las mediciones del análisis anterior (que ya existen).
+          for i in $(seq 1 30); do
+            REV=$(curl -sf -H "Authorization: Bearer ${SONAR_TOKEN}" \
+              "${SONAR_HOST_URL}/api/project_analyses/search?project=${SONAR_PROJECT_KEY}&branch=${GITHUB_REF_NAME}&ps=1" \
+              | jq -r '.analyses[0].revision // empty' 2>/dev/null || true)
+            if [ "$REV" = "${GITHUB_SHA}" ]; then break; fi
+            echo "Esperando el procesamiento del análisis de ${GITHUB_SHA:0:7} ($i/30)..."; sleep 10
           done
+          RESP=$(curl -sf -H "Authorization: Bearer ${SONAR_TOKEN}" \
+            "${SONAR_HOST_URL}/api/measures/component?component=${SONAR_PROJECT_KEY}&metricKeys=duplicated_lines_density,sqale_rating,sqale_index,ncloc,bugs,vulnerabilities,code_smells,security_hotspots&branch=${GITHUB_REF_NAME}")
           echo "$RESP" | jq '.component.measures'
           m() { echo "$RESP" | jq -r --arg k "$1" '.component.measures[] | select(.metric==$k) | .value'; }
           DUP=$(m duplicated_lines_density); RATING=$(m sqale_rating); DEBT=$(m sqale_index)

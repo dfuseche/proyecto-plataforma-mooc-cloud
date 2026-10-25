@@ -21,23 +21,28 @@
 | Mantenibilidad (rating) | **A** (valor 1,0 en la escala 1 = A … 5 = E) | A, B o C | Cumple. |
 | Deuda técnica estimada | **60 min** (1 h) | Registrar | Tiempo estimado por SonarQube para resolver los *code smells*; no incluye deuda arquitectónica ni operativa. |
 
-Otros indicadores del código total (rama `main`, 7.067 líneas de código):
+Hallazgos del código total (rama `main`), antes y después de las correcciones de la sección 3:
 
-| Indicador | Valor |
-|---|---|
-| Bugs | 7 (corregidos tras el análisis, ver C-07) |
-| Vulnerabilidades | 9 según el panel (8 en el listado de issues; ver C-08 a C-11) |
-| *Security hotspots* | 0 |
-| *Code smells* | 3 |
+| Indicador | Primer análisis (`99f5b38`) | Tras las correcciones (`37605ca`) |
+|---|---|---|
+| Líneas de código | 7.067 | 7.077 |
+| Bugs | 7 | **0** |
+| Vulnerabilidades | 9 | **0** |
+| *Security hotspots* | 0 | 0 |
+| *Code smells* | 3 | 3 (60 min de deuda) |
+| Duplicación | 1,1 % | 1,1 % |
+| Mantenibilidad | A | A |
 
-- **Fecha del análisis:** 25 de octubre de 2026.
-- **Commit evaluado:** `99f5b38689be86bb512ac68c69e9fae4bcd14966`.
+- **Fecha de los análisis:** 25 de octubre de 2026.
+- **Commit de la medición final:** `37605ca41840427afef23c8922acd31140137a2d`.
 - **Herramienta:** SonarQube Cloud, análisis ejecutado en el CI (paso *SonarQube scan*).
 - **Perfil de reglas:** **PENDIENTE** de confirmar (se espera "Sonar way").
 - **Reporte:** <https://sonarcloud.io/summary/overall?id=dfuseche_proyecto-plataforma-mooc-cloud&branch=main>
-- Los valores salen del paso *Verify Entrega 3 thresholds* del CI. La puerta de calidad por defecto de
-  SonarQube aparece como fallida por la cobertura del código nuevo (23,5 % frente a 80 %); la cobertura
-  no es un criterio de la Entrega 3, que evalúa duplicación, mantenibilidad y deuda sobre el código total.
+- Los tres *code smells* abiertos son la regla `typescript:S8786` (expresiones regulares con retroceso
+  super-lineal) en `frontend/src/components/Markdown.tsx`; ver C-13.
+- La puerta de calidad por defecto de SonarQube aparece como fallida por la cobertura del código nuevo
+  (23,5 % frente a 80 %); la cobertura no es un criterio de la Entrega 3, que evalúa duplicación,
+  mantenibilidad y deuda sobre el código total.
 
 ## 3. Correcciones realizadas durante este ejercicio
 
@@ -55,6 +60,7 @@ Otros indicadores del código total (rama `main`, 7.067 líneas de código):
 | C-10 | SonarQube `go:S5332` y deuda D-06: CORS aceptaba cualquier origen `http(s)://*` con credenciales. La SPA comparte origen con la API, así que CORS queda desactivado salvo que se definan orígenes en `CORS_ALLOWED_ORIGINS`. | `cmd/api/main.go` |
 | C-11 | SonarQube `go:S2077` ×2 (SQL formateado en `ListUsers`): revisado, solo se concatenan condiciones fijas con marcadores `$n`; los valores viajan como argumentos. Se documentó con `NOSONAR` y justificación. | `internal/user/repository.go` |
 | C-12 | gosec (14 hallazgos, G114, G204, G304, G703, G705, G706): servidor HTTP con timeouts, lectura de archivos sin entrada de usuario en la SPA y excepciones `#nosec` justificadas donde el dato no es controlable por el usuario. | CI, artefacto `gosec-sarif-report`; `cmd/api/main.go`, `internal/web/spa.go` |
+| C-13 | SonarQube `typescript:S8786` ×3: las expresiones regulares del renderizador de Markdown tenían retroceso super-lineal con texto sin cerrar. Se acotaron los cuantificadores, se eliminó una regex de enlaces y se quitó la ambigüedad en la de títulos. Pendiente de confirmar en el siguiente análisis. | `frontend/src/components/Markdown.tsx` |
 
 (El commit de cada una se registra al cerrar la entrega.)
 
