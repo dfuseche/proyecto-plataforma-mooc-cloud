@@ -61,7 +61,7 @@ export default function TeacherDashboard() {
             </div>
             <Field label="Puntaje mínimo para aprobar (0 a 100)" name="passing" type="number" value={passing} onChange={setPassing} />
             {error && <ErrorNote message={error} />}
-            <button className="btn" disabled={busy}>{busy ? 'Creando…' : 'Crear curso'}</button>
+            <button type="submit" className="btn" disabled={busy}>{busy ? 'Creando…' : 'Crear curso'}</button>
           </form>
         </section>
       </div>

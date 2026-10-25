@@ -57,7 +57,7 @@ export default function MediaPlayer({ resource, onHeartbeat }: Props) {
         if (!cancelled) setError(e instanceof Error ? e.message : 'No se pudo cargar el contenido.')
       }
     }
-    start()
+    void start()
     return () => { cancelled = true; hls?.destroy() }
   }, [resource.id, waiting, failed])
 

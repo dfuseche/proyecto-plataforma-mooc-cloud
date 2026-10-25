@@ -33,7 +33,7 @@ export function Login() {
         <Field label="Correo electrónico" name="email" type="email" value={email} onChange={setEmail} autoComplete="email" />
         <Field label="Contraseña" name="password" type="password" value={password} onChange={setPassword} autoComplete="current-password" />
         {error && <ErrorNote message={error} />}
-        <button className="btn" disabled={busy}>{busy ? 'Entrando…' : 'Entrar'}</button>
+        <button type="submit" className="btn" disabled={busy}>{busy ? 'Entrando…' : 'Entrar'}</button>
       </form>
       <p>¿Aún no tienes cuenta? <Link to="/registro">Crea una</Link>.</p>
     </div>
@@ -69,7 +69,7 @@ export function Register() {
         <Field label="Contraseña" name="password" type="password" value={password} onChange={setPassword}
           autoComplete="new-password" minLength={8} hint="Mínimo 8 caracteres." />
         {error && <ErrorNote message={error} />}
-        <button className="btn" disabled={busy}>{busy ? 'Creando…' : 'Crear cuenta'}</button>
+        <button type="submit" className="btn" disabled={busy}>{busy ? 'Creando…' : 'Crear cuenta'}</button>
       </form>
       <p>¿Ya tienes cuenta? <Link to="/entrar">Entra aquí</Link>.</p>
     </div>

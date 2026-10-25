@@ -35,7 +35,7 @@ export default function AdminTeachers() {
         <Field label="Contraseña temporal" name="teacher-password" type="password" value={password} onChange={setPassword}
           autoComplete="new-password" minLength={8} hint="Mínimo 8 caracteres." />
         {error && <ErrorNote message={error} />}
-        <button className="btn" disabled={busy}>{busy ? 'Creando…' : 'Crear docente'}</button>
+        <button type="submit" className="btn" disabled={busy}>{busy ? 'Creando…' : 'Crear docente'}</button>
       </form>
       {created.length > 0 && (
         <section aria-live="polite">

@@ -226,14 +226,19 @@ func main() {
 	r.Use(authMw.Authenticate)
 	r.Use(authMw.AccessPolicy)
 
-	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"https://*", "http://*"},
-		AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
-		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token", "Idempotency-Key"},
-		ExposedHeaders:   []string{"Link", "ETag"},
-		AllowCredentials: true,
-		MaxAge:           300,
-	}))
+	// La SPA se sirve desde el mismo origen que la API, así que CORS solo se
+	// habilita para los orígenes que se listen en CORS_ALLOWED_ORIGINS
+	// (separados por comas); sin esa variable no se aceptan peticiones de otros orígenes.
+	if origins := splitCSV(os.Getenv("CORS_ALLOWED_ORIGINS")); len(origins) > 0 {
+		r.Use(cors.Handler(cors.Options{
+			AllowedOrigins:   origins,
+			AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
+			AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token", "Idempotency-Key"},
+			ExposedHeaders:   []string{"Link", "ETag"},
+			AllowCredentials: true,
+			MaxAge:           300,
+		}))
+	}
 
 	registerDocsRoutes(r)
 
@@ -288,4 +293,15 @@ func main() {
 	if err := srv.ListenAndServe(); err != nil {
 		log.Fatalf("Error al iniciar el servidor HTTP: %v", err)
 	}
+}
+
+// splitCSV separa una lista "a,b,c" ignorando espacios y entradas vacías.
+func splitCSV(s string) []string {
+	var out []string
+	for _, p := range strings.Split(s, ",") {
+		if p = strings.TrimSpace(p); p != "" {
+			out = append(out, p)
+		}
+	}
+	return out
 }

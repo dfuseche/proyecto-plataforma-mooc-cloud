@@ -4,7 +4,7 @@ FROM node:22-alpine AS web
 WORKDIR /web
 
 COPY frontend/package.json frontend/package-lock.json ./
-RUN npm ci --no-audit --no-fund
+RUN npm ci --no-audit --no-fund --ignore-scripts
 
 COPY frontend/ ./
 # Versión visible en el pie de la SPA (commit que generó la imagen).
@@ -40,6 +40,10 @@ COPY --from=builder /app/migrations /app/migrations
 COPY --from=builder /app/docs /app/docs
 # La API sirve la SPA desde WEB_DIR (por defecto /app/web).
 COPY --from=web /web/dist /app/web
+
+# El proceso no necesita privilegios: se ejecuta con un usuario sin shell ni root.
+RUN addgroup -S app && adduser -S -G app -u 10001 app
+USER app
 
 EXPOSE 8080
 

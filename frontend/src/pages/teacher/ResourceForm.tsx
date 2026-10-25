@@ -101,7 +101,7 @@ export default function ResourceForm({ unitId, position, onDone }: { unitId: str
       <label className="check"><input type="checkbox" checked={mandatory} onChange={(e) => setMandatory(e.target.checked)} /> Obligatorio para completar el curso</label>
       {pct !== null && <div className="progress" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label="Subida del archivo"><span style={{ width: `${pct}%` }} /></div>}
       {error && <ErrorNote message={error} />}
-      <button className="btn" disabled={busy}>{busy ? (pct !== null ? `Subiendo… ${pct}%` : 'Guardando…') : type === 'quiz' ? 'Crear y definir preguntas' : 'Añadir recurso'}</button>
+      <button type="submit" className="btn" disabled={busy}>{busy ? (pct !== null ? `Subiendo… ${pct}%` : 'Guardando…') : type === 'quiz' ? 'Crear y definir preguntas' : 'Añadir recurso'}</button>
     </form>
   )
 }

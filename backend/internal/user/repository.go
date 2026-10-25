@@ -237,7 +237,7 @@ func (r *PostgresRepository) ListUsers(ctx context.Context, role *domain.Role, s
 
 	countQuery := fmt.Sprintf("SELECT COUNT(*) FROM users %s", whereClause)
 	var total int
-	if err := r.db.QueryRowContext(ctx, countQuery, args...).Scan(&total); err != nil {
+	if err := r.db.QueryRowContext(ctx, countQuery, args...).Scan(&total); err != nil { // NOSONAR go:S2077 -- countQuery solo concatena condiciones fijas con marcadores $n; los valores van como argumentos
 		return nil, 0, fmt.Errorf("failed to count users: %w", err)
 	}
 
@@ -250,7 +250,7 @@ func (r *PostgresRepository) ListUsers(ctx context.Context, role *domain.Role, s
 
 	args = append(args, limit, offset)
 
-	rows, err := r.db.QueryContext(ctx, query, args...)
+	rows, err := r.db.QueryContext(ctx, query, args...) // NOSONAR go:S2077 -- query solo concatena whereClause (condiciones fijas) y la numeración de marcadores
 	if err != nil {
 		return nil, 0, fmt.Errorf("failed to query users: %w", err)
 	}

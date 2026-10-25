@@ -16,6 +16,13 @@ import (
 	"github.com/mooc-platform/backend/internal/domain"
 )
 
+// Rutas absolutas de las herramientas de medios (las instala la imagen Docker con apk),
+// para no depender de la variable PATH al lanzar los procesos.
+const (
+	ffmpegBin  = "/usr/bin/ffmpeg"
+	ffprobeBin = "/usr/bin/ffprobe"
+)
+
 type StorageProvider interface {
 	GetClient() *minio.Client
 	GetMediaBucket() string
@@ -79,7 +86,7 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 	var cmd *exec.Cmd
 	if strings.ToLower(payload.MediaType) == "audio" {
 		// #nosec G204 -- ffmpeg se invoca sin shell; las rutas son archivos temporales creados por el worker
-		cmd = exec.CommandContext(ctx, "ffmpeg",
+		cmd = exec.CommandContext(ctx, ffmpegBin,
 			"-i", localOriginalPath,
 			"-c:a", "aac",
 			"-b:a", "128k",
@@ -94,7 +101,7 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 		// Se inspecciona el original para generar solo los escalones que no
 		// superan su altura y para saber si trae pista de audio.
 		// #nosec G204 -- ffprobe se invoca sin shell; la ruta es un archivo temporal creado por el worker
-		probeOut, probeErr := exec.CommandContext(ctx, "ffprobe",
+		probeOut, probeErr := exec.CommandContext(ctx, ffprobeBin,
 			"-v", "error",
 			"-show_entries", "stream=codec_type,height",
 			"-of", "json",
@@ -111,7 +118,7 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 		ladder := ladderForHeight(probe.Height)
 		log.Printf("[WORKER] Original de %dp (audio=%t): generando %d rendition(s) HLS", probe.Height, probe.HasAudio, len(ladder))
 		// #nosec G204 -- ffmpeg se invoca sin shell; los argumentos los construye buildVideoHLSArgs con rutas temporales
-		cmd = exec.CommandContext(ctx, "ffmpeg", buildVideoHLSArgs(localOriginalPath, tmpDir, ladder, probe.HasAudio)...)
+		cmd = exec.CommandContext(ctx, ffmpegBin, buildVideoHLSArgs(localOriginalPath, tmpDir, ladder, probe.HasAudio)...)
 	}
 
 	output, err := cmd.CombinedOutput()

@@ -123,7 +123,7 @@ export default function CourseEditor() {
           <form onSubmit={addModule} className="inline-add module-add">
             <label htmlFor="m-title" className="sr-only">Título del nuevo módulo</label>
             <input id="m-title" placeholder="Título del nuevo módulo" value={moduleTitle} onChange={(e) => setModuleTitle(e.target.value)} required />
-            <button className="btn" disabled={busy}>Añadir módulo</button>
+            <button type="submit" className="btn" disabled={busy}>Añadir módulo</button>
           </form>
         </>
       )}

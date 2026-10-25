@@ -17,12 +17,27 @@
 
 | Indicador | Valor | Umbral | Interpretación |
 |---|---|---|---|
-| Duplicación de código | **PENDIENTE** | ≤ 20 % | |
-| Mantenibilidad (rating) | **PENDIENTE** | A, B o C | |
-| Deuda técnica estimada | **PENDIENTE** (minutos) | Registrar | Tiempo estimado por SonarQube para resolver los *code smells*; no incluye deuda arquitectónica ni operativa. |
+| Duplicación de código | **1,1 %** | ≤ 20 % | Cumple con amplio margen. |
+| Mantenibilidad (rating) | **A** (valor 1,0 en la escala 1 = A … 5 = E) | A, B o C | Cumple. |
+| Deuda técnica estimada | **60 min** (1 h) | Registrar | Tiempo estimado por SonarQube para resolver los *code smells*; no incluye deuda arquitectónica ni operativa. |
 
-Fecha del análisis, commit evaluado, versión de la herramienta, perfil de reglas ("Sonar way") y
-enlace al reporte: **PENDIENTE**.
+Otros indicadores del código total (rama `main`, 7.067 líneas de código):
+
+| Indicador | Valor |
+|---|---|
+| Bugs | 7 (corregidos tras el análisis, ver C-07) |
+| Vulnerabilidades | 9 según el panel (8 en el listado de issues; ver C-08 a C-11) |
+| *Security hotspots* | 0 |
+| *Code smells* | 3 |
+
+- **Fecha del análisis:** 25 de octubre de 2026.
+- **Commit evaluado:** `99f5b38689be86bb512ac68c69e9fae4bcd14966`.
+- **Herramienta:** SonarQube Cloud, análisis ejecutado en el CI (paso *SonarQube scan*).
+- **Perfil de reglas:** **PENDIENTE** de confirmar (se espera "Sonar way").
+- **Reporte:** <https://sonarcloud.io/summary/overall?id=dfuseche_proyecto-plataforma-mooc-cloud&branch=main>
+- Los valores salen del paso *Verify Entrega 3 thresholds* del CI. La puerta de calidad por defecto de
+  SonarQube aparece como fallida por la cobertura del código nuevo (23,5 % frente a 80 %); la cobertura
+  no es un criterio de la Entrega 3, que evalúa duplicación, mantenibilidad y deuda sobre el código total.
 
 ## 3. Correcciones realizadas durante este ejercicio
 
@@ -34,6 +49,12 @@ enlace al reporte: **PENDIENTE**.
 | C-04 | El heartbeat y la inscripción aceptaban `student_id` en el cuerpo. Ahora el estudiante sale de la sesión. | `internal/learning/handler.go` |
 | C-05 | `presigned-upload/download` aceptaban claves arbitrarias del bucket para cualquier profesor. Ahora solo administración. | `internal/middleware/roles.go` |
 | C-06 | El administrador sembrado tenía la contraseña fija `Admin123!` (y la escribía en el log), y crear un docente sin contraseña usaba `TeacherPass123!`. Ahora la contraseña sale de `ADMIN_PASSWORD` (sin ella no se crea administrador), no se registra en el log y la API exige contraseña de al menos 8 caracteres para docentes. | `internal/user/usecase.go`, `docker-compose.yml`, `deploy/web-server.env.example` |
+| C-07 | SonarQube, 7 *bugs*: seis botones de formulario sin atributo `type` (`Auth.tsx` ×2, `Teachers.tsx`, `Dashboard.tsx`, `CourseEditor.tsx`, `ResourceForm.tsx`, regla `typescript:S9011`) y una promesa sin tratar en `MediaPlayer.tsx` (`typescript:S9383`). Se declaró `type="submit"` y `void start()`. | Análisis SonarQube del commit `99f5b38`; `frontend/src/` |
+| C-08 | SonarQube, imagen Docker: `npm ci` ejecutaba scripts de ciclo de vida (`docker:S6505`) y el contenedor corría como `root` (`docker:S6471`). Ahora se usa `--ignore-scripts` y un usuario sin privilegios (`app`, uid 10001). | `backend/Dockerfile` |
+| C-09 | SonarQube, `go:S4036` ×3: ffmpeg y ffprobe se resolvían por la variable `PATH`. Ahora se invocan por ruta absoluta (`/usr/bin/ffmpeg`, `/usr/bin/ffprobe`). | `internal/worker/processor.go` |
+| C-10 | SonarQube `go:S5332` y deuda D-06: CORS aceptaba cualquier origen `http(s)://*` con credenciales. La SPA comparte origen con la API, así que CORS queda desactivado salvo que se definan orígenes en `CORS_ALLOWED_ORIGINS`. | `cmd/api/main.go` |
+| C-11 | SonarQube `go:S2077` ×2 (SQL formateado en `ListUsers`): revisado, solo se concatenan condiciones fijas con marcadores `$n`; los valores viajan como argumentos. Se documentó con `NOSONAR` y justificación. | `internal/user/repository.go` |
+| C-12 | gosec (14 hallazgos, G114, G204, G304, G703, G705, G706): servidor HTTP con timeouts, lectura de archivos sin entrada de usuario en la SPA y excepciones `#nosec` justificadas donde el dato no es controlable por el usuario. | CI, artefacto `gosec-sarif-report`; `cmd/api/main.go`, `internal/web/spa.go` |
 
 (El commit de cada una se registra al cerrar la entrega.)
 
@@ -45,7 +66,6 @@ enlace al reporte: **PENDIENTE**.
 | D-03 | Funcional | La imagen de las insignias apunta a `<baseURL>/media/badges/<código>.png`, que nunca se genera ni se sube, y `baseURL` es `http://localhost:<puerto>` (`internal/learning/usecase.go`, `cmd/api/main.go`). | Código fuente | URLs de insignia rotas e internas | Media |
 | D-04 | Progreso | Un recurso se marca completado si el cliente reporta ≥10 s de permanencia (`RecordHeartbeat`); no se valida contra la duración real del recurso. | Código fuente | El progreso se puede inflar con llamadas manuales | Media |
 | D-05 | API | `backend/docs/openapi.yaml` (versión 3.1.0) documenta 21 paths, mientras el código registra 55 operaciones HTTP; faltan, entre otras, quizzes, recursos, módulos y unidades. | `grep '^  /'` del YAML frente a `grep 'r.Get(\|r.Post('` del código | Contrato incompleto para clientes y pruebas | Media |
-| D-06 | Seguridad | CORS acepta cualquier origen `http(s)://*` con credenciales (`cmd/api/main.go`). La SPA comparte origen, así que no lo necesita. | Código fuente | Superficie innecesaria | Media |
 | D-07 | Seguridad | El límite de tasa solo cubre las rutas de usuario, no el resto de la API. | `cmd/api/main.go` | Abuso de endpoints costosos | Media |
 | D-08 | Código | 10 archivos Go sin formato `gofmt` (`gofmt -l`: `cmd/api/main.go`, `internal/course/handler.go`, `usecase.go`, `internal/domain/course.go`, entre otros). | `gofmt -l` | Ruido en diffs y revisiones | Baja |
 | D-09 | Rendimiento | El catálogo publicado se filtra en memoria (`?published=true` lee hasta 1000 cursos y filtra) en lugar de en SQL. | `internal/course/handler.go` | No escala con muchos cursos | Media |
@@ -60,5 +80,5 @@ enlace al reporte: **PENDIENTE**.
 **PENDIENTE:** completar con los hallazgos de SonarQube (bugs, vulnerabilidades, *security
 hotspots* y *code smells* más relevantes), asignar responsable y entrega objetivo a cada elemento
 y ordenar por impacto, urgencia y esfuerzo. Orden propuesto con lo conocido hoy:
-D-04 y D-03 (integridad del progreso e insignias) → D-05, D-06, D-07
+D-04 y D-03 (integridad del progreso e insignias) → D-05, D-07
 → D-09, D-10, D-12 → resto. D-02 queda aceptada hasta contar con un servicio de correo.
