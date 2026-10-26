@@ -91,7 +91,7 @@ const PRETRANSCODED_RESOURCE_IDS = (__ENV.PRETRANSCODED_RESOURCE_IDS || '')
 const MAX_WAIT_FOR_MANIFEST_SECONDS = Number(__ENV.MAX_WAIT_FOR_MANIFEST_SECONDS || 180);
 const SETUP_MAX_WAIT_SECONDS = Number(__ENV.SETUP_MAX_WAIT_SECONDS || 1200);
 const POLL_INTERVAL_SECONDS = Number(__ENV.POLL_INTERVAL_SECONDS || 3);
-const MAX_SEGMENTS_PER_ITERACION = Number(__ENV.MAX_SEGMENTS_PER_ITERACION || 5);
+const MAX_SEGMENTS_PER_ITERACION = Number(__ENV.MAX_SEGMENTS_PER_ITERACION || 2);
 
 // Se leen una sola vez en el contexto de inicializacion de k6 (obligatorio:
 // open() no puede llamarse dentro de una funcion de VU). open() exige
@@ -478,7 +478,10 @@ export function reproducirHLS(data) {
     .slice(0, MAX_SEGMENTS_PER_ITERACION);
 
   for (const segmentUrl of segmentUrls) {
-    const segRes = http.get(segmentUrl, { tags: { endpoint: 'segment', rendition: renditionTag } });
+    const segRes = http.get(segmentUrl, {
+      responseType: 'none',
+      tags: { endpoint: 'segment', rendition: renditionTag },
+    });
     segmentDuration.add(segRes.timings.duration);
     const segOk = check(segRes, {
       // Este es EXACTAMENTE el bug original del escenario: sin el fix del
@@ -486,7 +489,8 @@ export function reproducirHLS(data) {
       'segmento HLS responde 200': (r) => r.status === 200,
     });
     if (segOk) {
-      segmentBytes.add(segRes.body ? segRes.body.length : 0);
+      const lengthHeader = segRes.headers['Content-Length'] || segRes.headers['content-length'] || 0;
+      segmentBytes.add(Number(lengthHeader));
     } else {
       segmentDownloadFailures.add(1);
     }
