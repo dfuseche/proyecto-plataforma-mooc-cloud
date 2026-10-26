@@ -1,7 +1,7 @@
 # Deuda técnica: diagnóstico y línea base (Entrega 3)
 
-> Medición final de SonarQube registrada sobre el commit `fa3673c`. Queda por confirmar solo el perfil
-> de reglas y por asignar responsables en la sección 5.
+> Medición final de SonarQube registrada sobre el commit `fa3673c`. Queda por asignar responsables en la
+> sección 5.
 
 ## 1. Alcance y método
 
@@ -38,7 +38,10 @@ Hallazgos del código total (rama `main`) en los tres análisis de este ejercici
 - **Commit de la medición final:** `fa3673c558d00b64742c50b417cdb783971e1fff`.
 - **Herramienta:** SonarQube Cloud, análisis ejecutado en el CI (paso *SonarQube scan*); las cifras
   salen del paso *Verify Entrega 3 thresholds*.
-- **Perfil de reglas:** **PENDIENTE** de confirmar (se espera "Sonar way").
+- **Perfil de reglas:** "Sonar way core", el perfil integrado y predeterminado de SonarQube Cloud para
+  todos los lenguajes. Los usados en el último análisis son Go (52 reglas activas), TypeScript (248),
+  JavaScript (249), Docker (35), CSS (30), HTML (36), YAML (2), Shell (11), PowerShell (19) y PL/SQL (49).
+  No hay perfiles personalizados.
 - **Reporte:** <https://sonarcloud.io/summary/overall?id=dfuseche_proyecto-plataforma-mooc-cloud&branch=main>
 - La puerta de calidad por defecto de SonarQube marcó fallo por la cobertura del código nuevo
   (23,5 % frente a 80 %); la cobertura no es un criterio de la Entrega 3, que evalúa duplicación,
