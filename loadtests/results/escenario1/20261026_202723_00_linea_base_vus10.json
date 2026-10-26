@@ -1,0 +1,316 @@
+{
+    "metrics": {
+        "vus": {
+            "value": 1,
+            "min": 0,
+            "max": 10
+        },
+        "quiz_start_duration": {
+            "avg": 33.83312125000001,
+            "min": 26.703507,
+            "med": 32.986757,
+            "p(90)": 38.276953,
+            "p(95)": 40.69993675,
+            "p(99)": 42.06128399999999,
+            "max": 44.693848
+        },
+        "iteration_duration": {
+            "avg": 2030.070966044303,
+            "min": 1009.988895,
+            "med": 2018.479327,
+            "p(90)": 2816.7593485,
+            "p(95)": 2935.13448075,
+            "p(99)": 3028.5989542,
+            "max": 3054.813444
+        },
+        "iterations": {
+            "count": 1106,
+            "rate": 3.8674841050751145
+        },
+        "http_req_duration{endpoint:quiz_start}": {
+            "med": 32.986757,
+            "p(90)": 38.276953,
+            "p(95)": 40.69993675,
+            "p(99)": 42.06128399999999,
+            "max": 44.693848,
+            "avg": 33.83312125000001,
+            "min": 26.703507,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        },
+        "http_req_sending": {
+            "avg": 0.10623130143319448,
+            "min": 0.022457,
+            "med": 0.095806,
+            "p(90)": 0.171807,
+            "p(95)": 0.21814420000000004,
+            "p(99)": 0.3312268000000002,
+            "max": 0.904935
+        },
+        "vus_max": {
+            "value": 10,
+            "min": 10,
+            "max": 10
+        },
+        "http_req_duration{endpoint:heartbeat}": {
+            "min": 33.733394,
+            "med": 41.153597,
+            "p(90)": 46.765565,
+            "p(95)": 48.9301905,
+            "p(99)": 69.94247990000004,
+            "max": 106.705875,
+            "avg": 42.22314247970481,
+            "thresholds": {
+                "p(95)<400": false
+            }
+        },
+        "quiz_max_attempts_reached": {
+            "count": 96,
+            "rate": 0.33569482286366276
+        },
+        "http_req_duration{endpoint:catalog}": {
+            "min": 7.937718,
+            "med": 18.7167895,
+            "p(90)": 24.9345268,
+            "p(95)": 26.317721649999996,
+            "p(99)": 32.656529169999985,
+            "max": 53.979619,
+            "avg": 17.13822340059791,
+            "thresholds": {
+                "p(95)<300": false
+            }
+        },
+        "checks": {
+            "passes": 2142,
+            "fails": 0,
+            "value": 1
+        },
+        "data_received": {
+            "count": 5599597,
+            "rate": 19580.788781488514
+        },
+        "enroll_duration": {
+            "min": 16.565203,
+            "med": 20.308465,
+            "p(90)": 23.827594,
+            "p(95)": 24.670395499999998,
+            "p(99)": 33.45374330000013,
+            "max": 73.157299,
+            "avg": 21.02244918450183
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 2163,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_blocked": {
+            "p(99)": 0.0016562400000000271,
+            "max": 11.937718,
+            "avg": 0.04139990337494214,
+            "min": 0.000266,
+            "med": 0.000574,
+            "p(90)": 0.0007598,
+            "p(95)": 0.000917
+        },
+        "heartbeat_duration": {
+            "p(95)": 48.9301905,
+            "p(99)": 69.94247990000004,
+            "max": 106.705875,
+            "avg": 42.22314247970481,
+            "min": 33.733394,
+            "med": 41.153597,
+            "p(90)": 46.765565
+        },
+        "http_req_receiving": {
+            "avg": 0.20011670827554318,
+            "min": 0.047532,
+            "med": 0.160288,
+            "p(90)": 0.320303,
+            "p(95)": 0.40594600000000003,
+            "p(99)": 0.7785570800000002,
+            "max": 2.052864
+        },
+        "data_sent": {
+            "count": 304050,
+            "rate": 1063.2084467885068
+        },
+        "http_req_duration{endpoint:quiz_submit}": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "thresholds": {
+                "p(95)<600": false
+            }
+        },
+        "http_req_tls_handshaking": {
+            "max": 10.069894,
+            "avg": 0.030199678687008784,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0
+        },
+        "http_req_waiting": {
+            "avg": 21.615272318539024,
+            "min": 7.187411,
+            "med": 20.264089,
+            "p(90)": 39.895881200000005,
+            "p(95)": 42.60024580000001,
+            "p(99)": 77.7506886200014,
+            "max": 159.733825
+        },
+        "http_req_duration": {
+            "avg": 21.921620328247837,
+            "min": 7.399943,
+            "med": 20.60852,
+            "p(90)": 40.1356044,
+            "p(95)": 42.8865125,
+            "p(99)": 78.02756178000139,
+            "max": 160.117748,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        },
+        "quiz_double_grading_detected": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count==0": false
+            }
+        },
+        "http_req_duration{endpoint:badge}": {
+            "avg": 11.162114975903616,
+            "min": 7.399943,
+            "med": 10.543946,
+            "p(90)": 13.5398145,
+            "p(95)": 15.14709125,
+            "p(99)": 20.50760145,
+            "max": 32.460596,
+            "thresholds": {
+                "p(95)<300": false
+            }
+        },
+        "http_req_duration{expected_response:true}": {
+            "min": 7.399943,
+            "med": 20.60852,
+            "p(90)": 40.1356044,
+            "p(95)": 42.8865125,
+            "p(99)": 78.02756178000139,
+            "max": 160.117748,
+            "avg": 21.921620328247837
+        },
+        "http_req_connecting": {
+            "max": 2.224643,
+            "avg": 0.008891944059177068,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0
+        },
+        "http_req_duration{endpoint:enroll}": {
+            "avg": 21.02244918450183,
+            "min": 16.565203,
+            "med": 20.308465,
+            "p(90)": 23.827594,
+            "p(95)": 24.670395499999998,
+            "p(99)": 33.45374330000013,
+            "max": 73.157299,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        },
+        "http_reqs": {
+            "count": 2163,
+            "rate": 7.563623977646901
+        }
+    },
+    "setup_data": {
+        "quizAnswers": {
+            "10000000-0000-0000-0000-000000000021": "10000000-0000-0000-0000-000000000031",
+            "10000000-0000-0000-0000-000000000022": "10000000-0000-0000-0000-000000000034",
+            "10000000-0000-0000-0000-000000000023": "10000000-0000-0000-0000-000000000037"
+        },
+        "tokens": [
+            "33020f108e8c0def068a7f19f81646c1245f3e46d51be1492290f1132761fe51",
+            "de7b0b6762a50621325a9759f130d681f7590d12782f79496585b013461622c4",
+            "9f4dae33765bcb4909f40774d3f7b5d622ca1f56cda44d6cca17f2c6c7c24d38",
+            "438bbc546d28cdb2bb722a59e45637294572f8656a4256c2ba047d0950811e1f",
+            "49adef749dc5f24838a738959a98d0c8f7b1bbeb3b416f9eeada34ebd62d0e5d",
+            "9dbbafec791b6111498ec7e9a1008f6df7ced1090b0bef31834f45f492f71bfb",
+            "06bbc19cbf63551feb555baa751ff09a8d79ce8574409f3e13a14b1b6e4c51a6",
+            "e03e617276dbb38d92f1c23f1af3336245758cccb7ea161e0cdbd6e301c8ff5d",
+            "65a1d101128d3a3d9dd9946122aa00d67699efe835e4edbf9ffba5945866bcd1",
+            "993f9e5a18269f65f6428b8910972102f6b6d1276ca0ee27b089641fd062f704",
+            "8355906fffc960636f71eaafde4f91f0ab936fb7fd02844c11d82ae42d9df26b",
+            "d3f74ab77049d04deb68eb81d495de9bd2cc55be55b4131d34932721f13e669e",
+            "a27987b551f878a5372ff85f25de82513b1b3f634ca892fb099f2f0c85b83735",
+            "f47e90cf24a02e7a85d210012fa073026a9c233a00e4789bc8b539c8a326aea1",
+            "572c5a701cee61002057e0c6a5ad3b5445355dabab756eb38ac7b8dcd6120921",
+            "fb00eb261852213ff6a7190cfb8352d17482045de07291a2e93e35a6594056ef",
+            "3f1ce668a784600196fdb24dabab0dd49ea45a5d9fbd1b2361316590a2f3bffc",
+            "97a2bdfabde51af23c33b4c1eaa0f4db586ebe9b304104e7d9d3dcb2957a3cea",
+            "4c174b5c3e7dd954eddfb50d32ded3387117a18bf936e5139d8e2b790b340e03",
+            "a82caaa1121b9398b9b6fffa1db3a12b627e740cad74334ad52f76796fb743fe"
+        ]
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "inscripcion responde 200/201/409": {
+                    "name": "inscripcion responde 200/201/409",
+                    "path": "::inscripcion responde 200/201/409",
+                    "id": "0b6a75a4261fe2639a14f70ad7514204",
+                    "passes": 271,
+                    "fails": 0
+                },
+                "heartbeat responde 200": {
+                    "fails": 0,
+                    "name": "heartbeat responde 200",
+                    "path": "::heartbeat responde 200",
+                    "id": "0264c27b959875cddef5ee53cae163e8",
+                    "passes": 271
+                },
+                "inicio de intento de quiz responde 201/409": {
+                    "name": "inicio de intento de quiz responde 201/409",
+                    "path": "::inicio de intento de quiz responde 201/409",
+                    "id": "3ee4ef7c7c5d16b3eff00fbe8d51edc9",
+                    "passes": 96,
+                    "fails": 0
+                },
+                "catalogo responde 200": {
+                    "name": "catalogo responde 200",
+                    "path": "::catalogo responde 200",
+                    "id": "9035e810067dc5e361e96e45543f0d6a",
+                    "passes": 669,
+                    "fails": 0
+                },
+                "detalle de curso responde 200": {
+                    "name": "detalle de curso responde 200",
+                    "path": "::detalle de curso responde 200",
+                    "id": "cda7680d35ffdf50c34055bb656d2cf5",
+                    "passes": 669,
+                    "fails": 0
+                },
+                "verificacion de insignia responde 200": {
+                    "name": "verificacion de insignia responde 200",
+                    "path": "::verificacion de insignia responde 200",
+                    "id": "5af4268f17ea9ce8802bc93e67d794bb",
+                    "passes": 166,
+                    "fails": 0
+                }
+            }
+    }
+}
