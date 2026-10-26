@@ -1,0 +1,292 @@
+{
+    "root_group": {
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "catalogo responde 200": {
+                    "name": "catalogo responde 200",
+                    "path": "::catalogo responde 200",
+                    "id": "9035e810067dc5e361e96e45543f0d6a",
+                    "passes": 641,
+                    "fails": 0
+                },
+                "detalle de curso responde 200": {
+                    "name": "detalle de curso responde 200",
+                    "path": "::detalle de curso responde 200",
+                    "id": "cda7680d35ffdf50c34055bb656d2cf5",
+                    "passes": 641,
+                    "fails": 0
+                },
+                "verificacion de insignia responde 200": {
+                    "name": "verificacion de insignia responde 200",
+                    "path": "::verificacion de insignia responde 200",
+                    "id": "5af4268f17ea9ce8802bc93e67d794bb",
+                    "passes": 167,
+                    "fails": 0
+                },
+                "inscripcion responde 200/201/409": {
+                    "name": "inscripcion responde 200/201/409",
+                    "path": "::inscripcion responde 200/201/409",
+                    "id": "0b6a75a4261fe2639a14f70ad7514204",
+                    "passes": 300,
+                    "fails": 0
+                },
+                "heartbeat responde 200": {
+                    "name": "heartbeat responde 200",
+                    "path": "::heartbeat responde 200",
+                    "id": "0264c27b959875cddef5ee53cae163e8",
+                    "passes": 300,
+                    "fails": 0
+                }
+            },
+        "name": ""
+    },
+    "metrics": {
+        "vus": {
+            "value": 1,
+            "min": 0,
+            "max": 10
+        },
+        "iterations": {
+            "count": 1108,
+            "rate": 3.8444714487976808
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 21.910012079265307,
+            "min": 7.704316,
+            "med": 20.468564,
+            "p(90)": 42.108909,
+            "p(95)": 45.0451772,
+            "p(99)": 96.25040275999972,
+            "max": 127.897063
+        },
+        "http_req_receiving": {
+            "avg": 0.16978123043478244,
+            "min": 0.075571,
+            "med": 0.148903,
+            "p(90)": 0.23400860000000004,
+            "p(95)": 0.28266805,
+            "p(99)": 0.4479057099999999,
+            "max": 2.293126
+        },
+        "http_req_duration{endpoint:badge}": {
+            "avg": 10.59692663473054,
+            "min": 7.991195,
+            "med": 10.18328,
+            "p(90)": 12.427513000000001,
+            "p(95)": 13.570382799999996,
+            "p(99)": 20.983904460000012,
+            "max": 24.216657,
+            "thresholds": {
+                "p(95)<300": false
+            }
+        },
+        "http_req_connecting": {
+            "avg": 0.015500537681159419,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 18.487167
+        },
+        "vus_max": {
+            "value": 10,
+            "min": 10,
+            "max": 10
+        },
+        "data_received": {
+            "count": 4444258,
+            "rate": 15420.417862897728
+        },
+        "http_req_duration{endpoint:catalog}": {
+            "avg": 17.076100039781604,
+            "min": 7.704316,
+            "med": 19.541311,
+            "p(90)": 24.0700432,
+            "p(95)": 25.380286650000002,
+            "p(99)": 47.01630710000015,
+            "max": 72.496002,
+            "thresholds": {
+                "p(95)<300": false
+            }
+        },
+        "http_req_duration{endpoint:heartbeat}": {
+            "avg": 44.10925343333333,
+            "min": 35.569018,
+            "med": 42.6411135,
+            "p(90)": 47.543385900000004,
+            "p(95)": 55.10267260000002,
+            "p(99)": 81.53893024999998,
+            "max": 127.897063,
+            "thresholds": {
+                "p(95)<400": false
+            }
+        },
+        "http_req_duration{endpoint:quiz_start}": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        },
+        "http_req_blocked": {
+            "p(90)": 0.0008011000000000001,
+            "p(95)": 0.00094455,
+            "p(99)": 0.0013319499999999975,
+            "max": 36.323213,
+            "avg": 0.05156584685990336,
+            "min": 0.000295,
+            "med": 0.0005805000000000001
+        },
+        "enroll_duration": {
+            "min": 16.641485,
+            "med": 20.4264115,
+            "p(90)": 23.525622000000006,
+            "p(95)": 25.956719550000006,
+            "p(99)": 36.76745847999999,
+            "max": 53.003514,
+            "avg": 21.14295754000001
+        },
+        "http_req_duration{endpoint:quiz_submit}": {
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "thresholds": {
+                "p(95)<600": false
+            }
+        },
+        "http_req_sending": {
+            "min": 0.020475,
+            "med": 0.094779,
+            "p(90)": 0.1559434,
+            "p(95)": 0.18912115,
+            "p(99)": 0.28662852,
+            "max": 0.393696,
+            "avg": 0.10113157391304353
+        },
+        "checks": {
+            "fails": 0,
+            "passes": 2049,
+            "value": 1
+        },
+        "http_req_waiting": {
+            "p(99)": 95.89094732999976,
+            "max": 127.563344,
+            "avg": 21.632329581642463,
+            "min": 7.5137,
+            "med": 20.2024725,
+            "p(90)": 41.8252849,
+            "p(95)": 44.736670499999995
+        },
+        "quiz_double_grading_detected": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count==0": false
+            }
+        },
+        "iteration_duration": {
+            "p(99)": 3006.2099955500003,
+            "max": 3042.900198,
+            "avg": 2028.2938303023438,
+            "min": 1026.588007,
+            "med": 2032.6241854999998,
+            "p(90)": 2850.7594904999996,
+            "p(95)": 2930.02073935
+        },
+        "heartbeat_duration": {
+            "avg": 44.10925343333333,
+            "min": 35.569018,
+            "med": 42.6411135,
+            "p(90)": 47.543385900000004,
+            "p(95)": 55.10267260000002,
+            "p(99)": 81.53893024999998,
+            "max": 127.897063
+        },
+        "http_req_duration{endpoint:enroll}": {
+            "med": 20.4264115,
+            "p(90)": 23.525622000000006,
+            "p(95)": 25.956719550000006,
+            "p(99)": 36.76745847999999,
+            "max": 53.003514,
+            "avg": 21.14295754000001,
+            "min": 16.641485,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        },
+        "http_req_failed": {
+            "passes": 1,
+            "fails": 2069,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0.0004830917874396135
+        },
+        "http_reqs": {
+            "count": 2070,
+            "rate": 7.182360919685198
+        },
+        "http_req_tls_handshaking": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 17.629297,
+            "avg": 0.03423749710144927,
+            "min": 0,
+            "med": 0
+        },
+        "data_sent": {
+            "count": 293639,
+            "rate": 1018.8508589833052
+        },
+        "http_req_duration": {
+            "max": 127.897063,
+            "avg": 21.903242385990307,
+            "min": 7.704316,
+            "med": 20.459697,
+            "p(90)": 42.1061805,
+            "p(95)": 45.0436676,
+            "p(99)": 96.20672257999976,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        }
+    },
+    "setup_data": {
+        "quizAnswers": {},
+        "tokens": [
+                "95a2420cd0d4c39c0be2ac42bc1f82cad16c7694be25cfa150f95cf0730c40b1",
+                "952ce022880405e7f6c13b0574019b008997da79ceb2a0e7a40641e4bde60c8e",
+                "0f674f32c221977a2faeebe16401e3a1e6aefdce0d77345277c3fe77d0b23d4f",
+                "335920bc19177fd390fd9732d224b3d7448c1bc1a9b97a31b2c6ad4e772bc06b",
+                "86fc576daf32bdecb18ff1be03f1dbf412147c39eade8da5a9c3283a9e423c80",
+                "a64692c41a9d87870fd4462167fc71de21af78688ef94dc0e9f6907034c91ca7",
+                "b3654386ea0f498153529e9daae4bbe4aa670df7c0691c702b7f54df28447c0f",
+                "5bf5deceeed734d8927df8d2a9ee07b5fe090a06d186fc26106858b9d7f636da",
+                "7777f24ecf4e13c2e1989ef82295e5419058cf8b9053206543229d985b39d368",
+                "b4b70de6c0702ce6aefad65052f25ffa72b0dff51bbd86c2bfaef722c089d34e",
+                "5464a298d4f1661e1d85e2e53c6c4fc6c724e3a2af059f07d7a3beb4ec779aa7",
+                "9a91583460216026b78a6a2b9cacc8951ffc0bd07d20cf6398294192ff0936d4",
+                "4470e419e5b532fb6d53eaedc815a361084da95a6999b439902e4dec49906c88",
+                "54df87ec7a5546d8d42bc171e6acaf529aecccb79e856d8f383832965f7bd056",
+                "1a23d7a698b39a810f438cf17a62f12bddf036a842980d6b71972548b91040e5",
+                "c89226437408f76cacd87a245fecf3b7bd1d7afc1944fbdf9998bf55cf44c78d",
+                "12a0a0078e09c961112ef99b537ef3651bfc1cf4c43573aa66c3b00c2e4da0a9",
+                "30d97f0026b57e52e5cdda2efd8d4303b39147e52d1ac2d10e21bd0527b71b36",
+                "7462acd86420c48101109175e2d8f62376a12f8ec4079021495f819532c61208",
+                "7a3b4b114191d9c7cb87c1e263311a2d3dd286ce992223edcf3e952cf253197a"
+            ]
+    }
+}
