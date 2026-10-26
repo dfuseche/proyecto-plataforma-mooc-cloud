@@ -115,7 +115,7 @@ for ((idx=0; idx<TOTAL; idx++)); do
     -e POOL_SIZE="${pool_size}" \
     -e LEVEL_RUN=true \
     --summary-export="${json_out}" \
-    "${SCRIPT_DIR}/load-test.js" 2>&1 | tee "${log_out}"
+    "${SCRIPT_DIR}/load-test.js" 2>&1 | tee "${log_out}" || true
 
   echo "Resultado JSON: ${json_out}"
   echo "Dashboard HTML: ${html_out}"
