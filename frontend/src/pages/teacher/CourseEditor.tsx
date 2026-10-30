@@ -26,6 +26,7 @@ export default function CourseEditor() {
   const [error, setError] = useState<string | null>(null)
   const [issues, setIssues] = useState<string[]>([])
   const [published, setPublished] = useState(false)
+  const [confirmId, setConfirmId] = useState<string | null>(null)
 
   const modules = draft.data?.modules ?? []
   const processing = modules.some((m) => m.units?.some((u) => u.resources?.some((r) => r.processing_status === 'processing' && (r.type === 'video' || r.type === 'audio'))))
@@ -65,6 +66,7 @@ export default function CourseEditor() {
     await api(`/courses/versions/${draft.data!.id}/publish`, { method: 'POST' })
     setPublished(true)
   })
+  const removeResource = (id: string) => void run(() => api(`/courses/resources/${id}`, { method: 'DELETE' }))
   const createDraft = () => void run(() => api(`/courses/${courseId}/create-draft`, { method: 'POST' }))
 
   if (course.loading || draft.loading) return <div className="page"><Loading /></div>
@@ -103,7 +105,21 @@ export default function CourseEditor() {
                   <h4>{u.title}</h4>
                   <ul className="rows">
                     {u.resources?.map((r) => (
-                      <li key={r.id}><span>{r.title}</span><span className="tag">{TYPE_NAME[r.type] ?? r.type}{(r.type === 'video' || r.type === 'audio') ? ` · ${STATUS[r.processing_status] ?? r.processing_status}` : ''}</span></li>
+                      <li key={r.id}>
+                        <span>{r.title}</span>
+                        <span className="row-actions">
+                          <span className="tag">{TYPE_NAME[r.type] ?? r.type}{(r.type === 'video' || r.type === 'audio') ? ` · ${STATUS[r.processing_status] ?? r.processing_status}` : ''}</span>
+                          {confirmId === r.id ? (
+                            <>
+                              <span role="alert">¿Eliminar este recurso?</span>
+                              <button type="button" className="btn btn-danger-solid" disabled={busy} onClick={() => { setConfirmId(null); removeResource(r.id) }}>Sí, eliminar</button>
+                              <button type="button" className="btn btn-quiet" onClick={() => setConfirmId(null)}>Cancelar</button>
+                            </>
+                          ) : (
+                            <button type="button" className="btn btn-danger" disabled={busy} aria-label={`Eliminar recurso ${r.title}`} onClick={() => setConfirmId(r.id)}>Eliminar</button>
+                          )}
+                        </span>
+                      </li>
                     ))}
                   </ul>
                   {openUnit === u.id ? (

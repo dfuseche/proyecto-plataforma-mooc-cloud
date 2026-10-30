@@ -173,6 +173,11 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline-offs
 .rows li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: .6rem .9rem; margin-bottom: .5rem; }
 .rows li > a { flex: 1; color: var(--ink); text-decoration: none; padding: 0; }
 .rows li:hover { border-color: var(--action); }
+.row-actions { display: flex; align-items: center; justify-content: flex-end; gap: .6rem; flex-wrap: wrap; }
+.btn-danger { background: transparent; border-color: var(--danger); color: var(--danger); }
+.btn-danger:hover { background: var(--danger-soft); border-color: var(--danger); color: var(--danger); }
+.btn-danger-solid { background: var(--danger); border-color: var(--danger); color: #fff; }
+.btn-danger-solid:hover { background: #8c1d18; border-color: #8c1d18; color: #fff; }
 .tag { font-size: .8rem; padding: .15rem .6rem; border-radius: 99px; background: #e6eaf1; color: var(--ink-2); white-space: nowrap; }
 .tag-ok { background: var(--ok-soft); color: #14603f; }
 .module { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; margin-bottom: 1.2rem; }

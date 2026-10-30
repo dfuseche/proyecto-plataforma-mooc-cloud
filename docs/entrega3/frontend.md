@@ -22,6 +22,7 @@ La versión desplegada (commit de la imagen) aparece en el pie de página y se i
 | Profesor | Consultar sus cursos | `/docente` | `GET /courses` (filtrado por propietario) | (A) |
 | Profesor | Crear curso y estructura (módulos, unidades) | `/docente`, `/docente/cursos/:id` | `POST /courses`, `.../modules`, `.../units` | (A) |
 | Profesor | Agregar recursos, subir archivos y ver su procesamiento | `/docente/cursos/:id` | `POST .../resources`, `PUT <URL prefirmada>`, `POST /media/resources/{id}/complete-upload` | (A) |
+| Profesor | Eliminar un recurso del borrador (con confirmación) | `/docente/cursos/:id` | `DELETE /courses/resources/{id}` | (A) |
 | Profesor | Crear un quiz básico | `/docente/cursos/:id` | `POST /courses/resources/{id}/quiz` | (A) |
 | Profesor | Publicar y ver el resultado | `/docente/cursos/:id` | `POST /courses/versions/{id}/publish` (muestra la lista de errores si falla) | (A) |
 | Profesor | Editar un curso ya publicado | `/docente/cursos/:id` | `POST /courses/{id}/create-draft` | (A) |
