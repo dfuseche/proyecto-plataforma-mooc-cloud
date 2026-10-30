@@ -34,7 +34,7 @@ export default function Learn() {
   const idx = Math.max(0, flat.findIndex((f) => f.resource.id === resourceId))
   const current = flat[idx]
 
-  if (tree.loading || mine.loading) return <div className="page"><Loading /></div>
+  if ((tree.loading && !tree.data) || (mine.loading && !mine.data)) return <div className="page"><Loading /></div>
   if (tree.error) return <div className="page"><ErrorNote message={tree.error} /></div>
   if (mine.data && !enrollment) return <Navigate to={`/cursos/${courseId}`} replace />
   if (!current) return <div className="page"><p>Este curso todavía no tiene contenido visible.</p></div>
