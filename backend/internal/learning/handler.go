@@ -29,6 +29,7 @@ func (h *HTTPHandler) RegisterRoutes(r chi.Router) {
 		r.Post("/attempts/{attemptId}/submit", h.SubmitQuizAttempt)
 		r.Post("/heartbeat", h.RecordHeartbeat)
 		r.Get("/enrollments", h.ListMyEnrollments)
+		r.Get("/courses/{courseId}/progress", h.GetCourseProgress)
 		r.Get("/resources/{resourceId}/quiz", h.GetQuizForResource)
 	})
 
@@ -372,6 +373,32 @@ func (h *HTTPHandler) ListMyEnrollments(w http.ResponseWriter, r *http.Request) 
 
 	items, err := h.useCase.ListStudentEnrollments(r.Context(), authUser.ID)
 	if err != nil {
+		respondError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	respondJSON(w, http.StatusOK, items)
+}
+
+// GetCourseProgress devuelve el estado de avance por recurso del estudiante
+// autenticado en un curso en el que está inscrito.
+func (h *HTTPHandler) GetCourseProgress(w http.ResponseWriter, r *http.Request) {
+	authUser := middleware.GetUserFromContext(r.Context())
+	if authUser == nil {
+		respondError(w, http.StatusUnauthorized, "Se requiere estudiante autenticado")
+		return
+	}
+	courseID, err := uuid.Parse(chi.URLParam(r, "courseId"))
+	if err != nil {
+		respondError(w, http.StatusBadRequest, "ID de curso inválido")
+		return
+	}
+
+	items, err := h.useCase.GetCourseProgress(r.Context(), authUser.ID, courseID)
+	if err != nil {
+		if errors.Is(err, domain.ErrNotEnrolled) {
+			respondError(w, http.StatusForbidden, err.Error())
+			return
+		}
 		respondError(w, http.StatusInternalServerError, err.Error())
 		return
 	}

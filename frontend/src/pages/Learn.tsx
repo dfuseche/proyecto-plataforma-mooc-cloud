@@ -20,6 +20,8 @@ export default function Learn() {
   const navigate = useNavigate()
   const tree = useAsync(() => api<CourseVersion>(`/courses/${courseId}`), [courseId])
   const mine = useAsync(() => api<Enrollment[]>('/learning/enrollments'), [courseId])
+  const done = useAsync(() => api<{ resource_stable_id: string; status: string }[]>(`/learning/courses/${courseId}/progress`), [courseId])
+  const doneIds = useMemo(() => new Set((done.data ?? []).filter((p) => p.status === 'completed').map((p) => p.resource_stable_id)), [done.data])
   const [progress, setProgress] = useState<number | null>(null)
 
   const flat = useMemo(() => {
@@ -62,7 +64,11 @@ export default function Learn() {
                       {u.resources?.filter((r) => r.is_visible).map((r) => (
                         <li key={r.id}>
                           <Link to={`/aprender/${courseId}/${r.id}`} aria-current={r.id === current.resource.id ? 'page' : undefined}>
-                            <span>{r.title}</span><small>{TYPE_LABEL[r.type] ?? r.type}</small>
+                            <span>{r.title}</span>
+                            <small>
+                              {doneIds.has(r.stable_id) && <span className="done">✓ Completado · </span>}
+                              {TYPE_LABEL[r.type] ?? r.type}
+                            </small>
                           </Link>
                         </li>
                       ))}
@@ -78,10 +84,14 @@ export default function Learn() {
       <article className="stage">
         <p className="crumb">{current.module} · {current.unit}</p>
         <h1>{current.resource.title}</h1>
-        <ResourceBody key={current.resource.id} courseId={courseId} resource={current.resource} onProgress={(p) => { setProgress(p); mine.reload() }} />
+        <ResourceBody key={current.resource.id} courseId={courseId} resource={current.resource} onProgress={(p) => { setProgress(p); mine.reload(); done.reload() }} />
         <div className="pager">
           <button className="btn btn-quiet" disabled={!prev} onClick={() => go(prev)}>Anterior</button>
-          <button className="btn" disabled={!next} onClick={() => go(next)}>Siguiente</button>
+          {next ? (
+            <button className="btn" onClick={() => go(next)}>Siguiente</button>
+          ) : (
+            <button className="btn" disabled={pct < 100} title={pct < 100 ? 'Completa todos los recursos obligatorios para finalizar' : undefined} onClick={() => navigate('/mis-cursos')}>Finalizar curso</button>
+          )}
         </div>
       </article>
     </div>

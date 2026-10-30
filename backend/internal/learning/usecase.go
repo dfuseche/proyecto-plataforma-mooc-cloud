@@ -304,6 +304,28 @@ type HeartbeatInput struct {
 	LastPositionSeconds int       `json:"last_position_seconds"`
 }
 
+// ResourceProgressItem es la vista mínima del avance en un recurso.
+type ResourceProgressItem struct {
+	ResourceStableID uuid.UUID             `json:"resource_stable_id"`
+	Status           domain.ProgressStatus `json:"status"`
+}
+
+// GetCourseProgress lista el avance por recurso de un estudiante inscrito.
+func (uc *UseCase) GetCourseProgress(ctx context.Context, studentID, courseID uuid.UUID) ([]ResourceProgressItem, error) {
+	if _, err := uc.repo.GetEnrollment(ctx, studentID, courseID); err != nil {
+		return nil, domain.ErrNotEnrolled
+	}
+	list, err := uc.repo.GetStudentCourseProgress(ctx, studentID, courseID)
+	if err != nil {
+		return nil, err
+	}
+	out := make([]ResourceProgressItem, 0, len(list))
+	for _, p := range list {
+		out = append(out, ResourceProgressItem{ResourceStableID: p.ResourceStableID, Status: p.Status})
+	}
+	return out, nil
+}
+
 func (uc *UseCase) RecordHeartbeat(ctx context.Context, input HeartbeatInput) (*domain.Enrollment, error) {
 	if input.DwellTimeSeconds < 0 || input.LastPositionSeconds < 0 {
 		return nil, errors.New("los valores de tiempo de permanencia y posición deben ser no negativos")
