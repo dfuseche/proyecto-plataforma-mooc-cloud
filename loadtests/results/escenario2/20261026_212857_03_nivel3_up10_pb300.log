@@ -1,0 +1,1223 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /home/df_useche/mooc-platform-2/loadtests/k6/media-load-test.js
+ web dashboard: http://0.0.0.0:5665
+        output: -
+
+     scenarios: (100.00%) 2 scenarios, 310 max VUs, 3m35s max duration (incl. graceful stop):
+              * subida_multimedia: 10 looping VUs for 3m0s (exec: subirVideo, gracefulStop: 30s)
+              * consumo_hls: 300 looping VUs for 3m0s (exec: reproducirHLS, startTime: 5s, gracefulStop: 30s)
+
+
+Init                [  17% ] 052/310 VUs initialized
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Init                [  33% ] 102/310 VUs initialized
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Init                [  51% ] 157/310 VUs initialized
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Init                [  70% ] 216/310 VUs initialized
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Init                [  89% ] 276/310 VUs initialized
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-26T21:48:52Z" level=info msg="Preparando pool de 3 video(s) para el escenario de reproduccion..." source=console
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-26T21:50:14Z" level=info msg="Setup: video 1/3 listo (perfil ligero, 93e9f223-3129-4c78-8b74-ec0388b9c077)." source=console
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-26T21:51:23Z" level=info msg="Setup: video 2/3 listo (perfil medio, 128cd22c-4d18-43b6-bbd4-f3fef2a9993d)." source=console
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-26T21:52:57Z" level=info msg="Setup: video 3/3 listo (perfil pesado, 09d2f037-8e20-4458-a7ca-76e0d20d9534)." source=console
+time="2026-10-26T21:52:57Z" level=info msg="Setup listo: 3/3 video(s) en el pool de reproduccion." source=console
+
+running (4m05.5s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   0% ] 10 VUs   0m00.1s/3m0s
+consumo_hls       • [   0% ] waiting  4.9s
+
+running (4m06.5s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   1% ] 10 VUs   0m01.1s/3m0s
+consumo_hls       • [   0% ] waiting  3.9s
+
+running (4m07.5s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   1% ] 10 VUs   0m02.1s/3m0s
+consumo_hls       • [   0% ] waiting  2.9s
+
+running (4m08.5s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   2% ] 10 VUs   0m03.1s/3m0s
+consumo_hls       • [   0% ] waiting  1.9s
+
+running (4m09.5s), 010/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   2% ] 10 VUs   0m04.1s/3m0s
+consumo_hls       • [   0% ] waiting  0.9s
+
+running (4m10.5s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   3% ] 10 VUs   0m05.1s/3m0s
+consumo_hls         [   0% ] 300 VUs  0m00.1s/3m0s
+
+running (4m11.5s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   3% ] 10 VUs   0m06.1s/3m0s
+consumo_hls         [   1% ] 300 VUs  0m01.1s/3m0s
+
+running (4m12.7s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   4% ] 10 VUs   0m07.3s/3m0s
+consumo_hls         [   1% ] 300 VUs  0m02.3s/3m0s
+
+running (4m13.6s), 310/310 VUs, 0 complete and 0 interrupted iterations
+subida_multimedia   [   5% ] 10 VUs   0m08.2s/3m0s
+consumo_hls         [   2% ] 300 VUs  0m03.2s/3m0s
+
+running (4m14.6s), 310/310 VUs, 2 complete and 0 interrupted iterations
+subida_multimedia   [   5% ] 10 VUs   0m09.2s/3m0s
+consumo_hls         [   2% ] 300 VUs  0m04.2s/3m0s
+
+running (4m15.6s), 310/310 VUs, 9 complete and 0 interrupted iterations
+subida_multimedia   [   6% ] 10 VUs   0m10.2s/3m0s
+consumo_hls         [   3% ] 300 VUs  0m05.2s/3m0s
+
+running (4m16.6s), 310/310 VUs, 14 complete and 0 interrupted iterations
+subida_multimedia   [   6% ] 10 VUs   0m11.2s/3m0s
+consumo_hls         [   3% ] 300 VUs  0m06.2s/3m0s
+
+running (4m17.6s), 310/310 VUs, 21 complete and 0 interrupted iterations
+subida_multimedia   [   7% ] 10 VUs   0m12.2s/3m0s
+consumo_hls         [   4% ] 300 VUs  0m07.2s/3m0s
+
+running (4m18.6s), 310/310 VUs, 35 complete and 0 interrupted iterations
+subida_multimedia   [   7% ] 10 VUs   0m13.2s/3m0s
+consumo_hls         [   5% ] 300 VUs  0m08.2s/3m0s
+
+running (4m19.7s), 310/310 VUs, 52 complete and 0 interrupted iterations
+subida_multimedia   [   8% ] 10 VUs   0m14.2s/3m0s
+consumo_hls         [   5% ] 300 VUs  0m09.2s/3m0s
+
+running (4m20.5s), 310/310 VUs, 72 complete and 0 interrupted iterations
+subida_multimedia   [   8% ] 10 VUs   0m15.1s/3m0s
+consumo_hls         [   6% ] 300 VUs  0m10.1s/3m0s
+
+running (4m21.8s), 310/310 VUs, 97 complete and 0 interrupted iterations
+subida_multimedia   [   9% ] 10 VUs   0m16.4s/3m0s
+consumo_hls         [   6% ] 300 VUs  0m11.4s/3m0s
+
+running (4m22.5s), 310/310 VUs, 116 complete and 0 interrupted iterations
+subida_multimedia   [   9% ] 10 VUs   0m17.1s/3m0s
+consumo_hls         [   7% ] 300 VUs  0m12.1s/3m0s
+
+running (4m23.7s), 310/310 VUs, 143 complete and 0 interrupted iterations
+subida_multimedia   [  10% ] 10 VUs   0m18.3s/3m0s
+consumo_hls         [   7% ] 300 VUs  0m13.3s/3m0s
+
+running (4m24.7s), 310/310 VUs, 164 complete and 0 interrupted iterations
+subida_multimedia   [  11% ] 10 VUs   0m19.2s/3m0s
+consumo_hls         [   8% ] 300 VUs  0m14.2s/3m0s
+
+running (4m25.8s), 310/310 VUs, 192 complete and 0 interrupted iterations
+subida_multimedia   [  11% ] 10 VUs   0m20.4s/3m0s
+consumo_hls         [   9% ] 300 VUs  0m15.4s/3m0s
+
+running (4m26.8s), 310/310 VUs, 205 complete and 0 interrupted iterations
+subida_multimedia   [  12% ] 10 VUs   0m21.4s/3m0s
+consumo_hls         [   9% ] 300 VUs  0m16.4s/3m0s
+
+running (4m27.7s), 310/310 VUs, 226 complete and 0 interrupted iterations
+subida_multimedia   [  12% ] 10 VUs   0m22.3s/3m0s
+consumo_hls         [  10% ] 300 VUs  0m17.3s/3m0s
+
+running (4m28.8s), 310/310 VUs, 246 complete and 0 interrupted iterations
+subida_multimedia   [  13% ] 10 VUs   0m23.4s/3m0s
+consumo_hls         [  10% ] 300 VUs  0m18.4s/3m0s
+
+running (4m29.7s), 310/310 VUs, 260 complete and 0 interrupted iterations
+subida_multimedia   [  13% ] 10 VUs   0m24.3s/3m0s
+consumo_hls         [  11% ] 300 VUs  0m19.3s/3m0s
+
+running (4m30.6s), 310/310 VUs, 273 complete and 0 interrupted iterations
+subida_multimedia   [  14% ] 10 VUs   0m25.2s/3m0s
+consumo_hls         [  11% ] 300 VUs  0m20.2s/3m0s
+
+running (4m31.6s), 310/310 VUs, 284 complete and 0 interrupted iterations
+subida_multimedia   [  15% ] 10 VUs   0m26.2s/3m0s
+consumo_hls         [  12% ] 300 VUs  0m21.2s/3m0s
+
+running (4m32.6s), 310/310 VUs, 297 complete and 0 interrupted iterations
+subida_multimedia   [  15% ] 10 VUs   0m27.2s/3m0s
+consumo_hls         [  12% ] 300 VUs  0m22.2s/3m0s
+
+running (4m33.8s), 310/310 VUs, 329 complete and 0 interrupted iterations
+subida_multimedia   [  16% ] 10 VUs   0m28.4s/3m0s
+consumo_hls         [  13% ] 300 VUs  0m23.4s/3m0s
+
+running (4m34.6s), 310/310 VUs, 345 complete and 0 interrupted iterations
+subida_multimedia   [  16% ] 10 VUs   0m29.2s/3m0s
+consumo_hls         [  13% ] 300 VUs  0m24.2s/3m0s
+
+running (4m35.6s), 310/310 VUs, 371 complete and 0 interrupted iterations
+subida_multimedia   [  17% ] 10 VUs   0m30.2s/3m0s
+consumo_hls         [  14% ] 300 VUs  0m25.2s/3m0s
+
+running (4m36.6s), 310/310 VUs, 400 complete and 0 interrupted iterations
+subida_multimedia   [  17% ] 10 VUs   0m31.2s/3m0s
+consumo_hls         [  15% ] 300 VUs  0m26.2s/3m0s
+
+running (4m37.6s), 310/310 VUs, 428 complete and 0 interrupted iterations
+subida_multimedia   [  18% ] 10 VUs   0m32.2s/3m0s
+consumo_hls         [  15% ] 300 VUs  0m27.2s/3m0s
+
+running (4m38.9s), 310/310 VUs, 464 complete and 0 interrupted iterations
+subida_multimedia   [  19% ] 10 VUs   0m33.4s/3m0s
+consumo_hls         [  16% ] 300 VUs  0m28.4s/3m0s
+
+running (4m39.5s), 310/310 VUs, 481 complete and 0 interrupted iterations
+subida_multimedia   [  19% ] 10 VUs   0m34.1s/3m0s
+consumo_hls         [  16% ] 300 VUs  0m29.1s/3m0s
+
+running (4m40.6s), 310/310 VUs, 509 complete and 0 interrupted iterations
+subida_multimedia   [  20% ] 10 VUs   0m35.2s/3m0s
+consumo_hls         [  17% ] 300 VUs  0m30.2s/3m0s
+
+running (4m41.7s), 310/310 VUs, 542 complete and 0 interrupted iterations
+subida_multimedia   [  20% ] 10 VUs   0m36.3s/3m0s
+consumo_hls         [  17% ] 300 VUs  0m31.3s/3m0s
+
+running (4m42.5s), 310/310 VUs, 577 complete and 0 interrupted iterations
+subida_multimedia   [  21% ] 10 VUs   0m37.1s/3m0s
+consumo_hls         [  18% ] 300 VUs  0m32.1s/3m0s
+
+running (4m43.8s), 310/310 VUs, 613 complete and 0 interrupted iterations
+subida_multimedia   [  21% ] 10 VUs   0m38.4s/3m0s
+consumo_hls         [  19% ] 300 VUs  0m33.4s/3m0s
+
+running (4m44.7s), 310/310 VUs, 639 complete and 0 interrupted iterations
+subida_multimedia   [  22% ] 10 VUs   0m39.3s/3m0s
+consumo_hls         [  19% ] 300 VUs  0m34.3s/3m0s
+
+running (4m45.6s), 310/310 VUs, 664 complete and 0 interrupted iterations
+subida_multimedia   [  22% ] 10 VUs   0m40.2s/3m0s
+consumo_hls         [  20% ] 300 VUs  0m35.2s/3m0s
+
+running (4m46.6s), 310/310 VUs, 683 complete and 0 interrupted iterations
+subida_multimedia   [  23% ] 10 VUs   0m41.2s/3m0s
+consumo_hls         [  20% ] 300 VUs  0m36.2s/3m0s
+
+running (4m47.5s), 310/310 VUs, 708 complete and 0 interrupted iterations
+subida_multimedia   [  23% ] 10 VUs   0m42.1s/3m0s
+consumo_hls         [  21% ] 300 VUs  0m37.1s/3m0s
+
+running (4m48.7s), 310/310 VUs, 736 complete and 0 interrupted iterations
+subida_multimedia   [  24% ] 10 VUs   0m43.3s/3m0s
+consumo_hls         [  21% ] 300 VUs  0m38.3s/3m0s
+
+running (4m49.5s), 310/310 VUs, 757 complete and 0 interrupted iterations
+subida_multimedia   [  24% ] 10 VUs   0m44.1s/3m0s
+consumo_hls         [  22% ] 300 VUs  0m39.1s/3m0s
+
+running (4m50.6s), 310/310 VUs, 778 complete and 0 interrupted iterations
+subida_multimedia   [  25% ] 10 VUs   0m45.2s/3m0s
+consumo_hls         [  22% ] 300 VUs  0m40.2s/3m0s
+
+running (4m51.7s), 310/310 VUs, 794 complete and 0 interrupted iterations
+subida_multimedia   [  26% ] 10 VUs   0m46.3s/3m0s
+consumo_hls         [  23% ] 300 VUs  0m41.3s/3m0s
+
+running (4m52.7s), 310/310 VUs, 822 complete and 0 interrupted iterations
+subida_multimedia   [  26% ] 10 VUs   0m47.3s/3m0s
+consumo_hls         [  24% ] 300 VUs  0m42.3s/3m0s
+
+running (4m53.7s), 310/310 VUs, 843 complete and 0 interrupted iterations
+subida_multimedia   [  27% ] 10 VUs   0m48.3s/3m0s
+consumo_hls         [  24% ] 300 VUs  0m43.3s/3m0s
+
+running (4m54.6s), 310/310 VUs, 860 complete and 0 interrupted iterations
+subida_multimedia   [  27% ] 10 VUs   0m49.2s/3m0s
+consumo_hls         [  25% ] 300 VUs  0m44.2s/3m0s
+time="2026-10-26T22:00:05Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/media/resources/128cd22c-4d18-43b6-bbd4-f3fef2a9993d/stream-url\": request timeout"

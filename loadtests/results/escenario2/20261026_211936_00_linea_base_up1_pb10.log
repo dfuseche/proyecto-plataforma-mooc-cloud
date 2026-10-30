@@ -1,0 +1,145 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /home/df_useche/mooc-platform-2/loadtests/k6/media-load-test.js
+ web dashboard: http://0.0.0.0:5665
+        output: -
+
+     scenarios: (100.00%) 2 scenarios, 11 max VUs, 2m35s max duration (incl. graceful stop):
+              * subida_multimedia: 1 looping VUs for 2m0s (exec: subirVideo, gracefulStop: 30s)
+              * consumo_hls: 10 looping VUs for 2m0s (exec: reproducirHLS, startTime: 5s, gracefulStop: 30s)
+
+time="2026-10-26T21:19:36Z" level=info msg="Preparando pool de 3 video(s) para el escenario de reproduccion..." source=console
+time="2026-10-26T21:19:36Z" level=info msg="Setup: no se pudo crear/subir el video 1/3, se omite." source=console
+time="2026-10-26T21:19:36Z" level=info msg="Setup: no se pudo crear/subir el video 2/3, se omite." source=console
+time="2026-10-26T21:19:36Z" level=info msg="Setup: no se pudo crear/subir el video 3/3, se omite." source=console
+time="2026-10-26T21:19:36Z" level=warning msg="The test run was short, report generation was skipped (not enough data)"
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{endpoint:complete_upload}
+    ✓ 'p(95)<800' p(95)=0s
+
+    http_req_duration{endpoint:create_resource}
+    ✓ 'p(95)<800' p(95)=8.35ms
+
+    http_req_duration{endpoint:manifest}
+    ✓ 'p(95)<600' p(95)=0s
+
+    http_req_duration{endpoint:resume}
+    ✓ 'p(95)<400' p(95)=0s
+
+    http_req_duration{endpoint:segment,rendition:1080p}
+    ✓ 'p(95)<3000' p(95)=0s
+
+    http_req_duration{endpoint:segment,rendition:360p}
+    ✓ 'p(95)<1000' p(95)=0s
+
+    http_req_duration{endpoint:segment,rendition:480p}
+    ✓ 'p(95)<1000' p(95)=0s
+
+    http_req_duration{endpoint:segment,rendition:720p}
+    ✓ 'p(95)<2000' p(95)=0s
+
+    http_req_duration{endpoint:segment}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{endpoint:stream_url}
+    ✓ 'p(95)<500' p(95)=0s
+
+    http_req_duration{endpoint:upload_put,profile:ligero}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{endpoint:upload_put,profile:medio}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{endpoint:upload_put,profile:pesado}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{endpoint:upload_put}
+    ✓ 'p(95)<15000' p(95)=0s
+
+    http_req_duration{endpoint:variant_playlist}
+    ✓ 'p(95)<600' p(95)=0s
+
+    http_req_failed
+    ✗ 'rate<0.02' rate=100.00%
+
+    media_processing_duration
+    ✓ 'p(95)<45000' p(95)=0s
+
+      {profile:ligero}
+      ✓ 'max>=0' max=0s
+
+      {profile:medio}
+      ✓ 'max>=0' max=0s
+
+      {profile:pesado}
+      ✓ 'max>=0' max=0s
+
+    media_processing_timeouts
+    ✓ 'count==0' count=0
+
+    media_segment_download_failures
+    ✓ 'count==0' count=0
+
+    media_unexpected_ladder
+    ✓ 'count==0' count=0
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 3       39.784614/s
+    checks_succeeded...: 0.00%   0 out of 3
+    checks_failed......: 100.00% 3 out of 3
+
+    ✗ creacion de recurso responde 201
+      ↳  0% — ✓ 0 / ✗ 3
+
+    CUSTOM
+    media_processing_duration..................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { profile:ligero }.......................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { profile:medio }........................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { profile:pesado }.......................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+    media_processing_timeouts..................: 0       0/s
+    media_segment_download_failures............: 0       0/s
+    media_unexpected_ladder....................: 0       0/s
+
+    HTTP
+    http_req_duration..........................: avg=8.27ms min=8.16ms med=8.29ms p(90)=8.35ms p(95)=8.35ms p(99)=8.36ms max=8.36ms
+      { endpoint:complete_upload }.............: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:create_resource }.............: avg=8.27ms min=8.16ms med=8.29ms p(90)=8.35ms p(95)=8.35ms p(99)=8.36ms max=8.36ms
+      { endpoint:manifest }....................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:resume }......................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:segment,rendition:1080p }.....: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:segment,rendition:360p }......: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:segment,rendition:480p }......: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:segment,rendition:720p }......: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:segment }.....................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:stream_url }..................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:upload_put,profile:ligero }...: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:upload_put,profile:medio }....: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:upload_put,profile:pesado }...: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:upload_put }..................: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+      { endpoint:variant_playlist }............: avg=0s     min=0s     med=0s     p(90)=0s     p(95)=0s     p(99)=0s     max=0s    
+    http_req_failed............................: 100.00% 3 out of 3
+    http_reqs..................................: 3       39.784614/s
+
+    NETWORK
+    data_received..............................: 3.5 kB  47 kB/s
+    data_sent..................................: 2.6 kB  34 kB/s
+
+
+
+
+Run                 [ 100% ] setup()
+subida_multimedia   [   0% ]
+consumo_hls         [   0% ]
+time="2026-10-26T21:19:36Z" level=error msg="GoError: No se pudo dejar listo ningun video para el escenario de reproduccion. Revisa que el worker este sano (Redis/DB alcanzables) antes de reintentar, o pasa PRETRANSCODED_RESOURCE_IDS con recursos ya procesados de una corrida anterior.\n\tat go.k6.io/k6/v2/internal/js/modules/k6.(*K6).Fail-fm (native)\n\tat setup (file:///home/df_useche/mooc-platform-2/loadtests/k6/media-load-test.js:330:9(149))\n" hint="script exception" source=stacktrace

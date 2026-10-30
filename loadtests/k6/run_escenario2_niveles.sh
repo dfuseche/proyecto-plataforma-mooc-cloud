@@ -119,7 +119,7 @@ for ((idx=0; idx<TOTAL; idx++)); do
     -e PLAYBACK_DURATION="${dur}" \
     -e PLAYBACK_POOL_SIZE=3 \
     --summary-export="${json_out}" \
-    "${SCRIPT_DIR}/media-load-test.js" 2>&1 | tee "${log_out}"
+    "${SCRIPT_DIR}/media-load-test.js" 2>&1 | tee "${log_out}" || true
 
   fin_utc="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
   echo "${tag},${inicio_utc},${fin_utc}" >> "${VENTANAS_CSV}"

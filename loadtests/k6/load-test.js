@@ -155,6 +155,9 @@ export function setup() {
   // en vez de hardcodear IDs de opciones en el script.
   const quizAnswers = {};
   const snapshotRes = http.get(`${BASE_URL}/api/v1/learning/quizzes/${QUIZ_ID}/snapshot`, {
+    headers: {
+      Authorization: `Bearer ${tokens[0]}`,
+    },
     tags: { endpoint: 'quiz_snapshot_setup' },
   });
   if (snapshotRes.status === 200) {

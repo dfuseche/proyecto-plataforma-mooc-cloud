@@ -1,0 +1,2450 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /home/df_useche/mooc-platform-2/loadtests/k6/load-test.js
+ web dashboard: http://0.0.0.0:5665
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 400 max VUs, 5m0s max duration (incl. graceful stop):
+              * trafico_mixto: Up to 400 looping VUs for 4m30s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+
+Run             [ 100% ] setup()
+trafico_mixto   [   0% ]
+time="2026-10-26T20:51:42Z" level=info msg="Setup listo: 300/300 usuarios autenticados." source=console
+
+running (3m51.9s), 002/400 VUs, 0 complete and 0 interrupted iterations
+trafico_mixto   [   0% ] 002/400 VUs  0m00.4s/4m30.0s
+
+running (3m52.9s), 009/400 VUs, 0 complete and 0 interrupted iterations
+trafico_mixto   [   1% ] 009/400 VUs  0m01.4s/4m30.0s
+
+running (3m53.9s), 016/400 VUs, 1 complete and 0 interrupted iterations
+trafico_mixto   [   1% ] 016/400 VUs  0m02.4s/4m30.0s
+
+running (3m54.9s), 022/400 VUs, 8 complete and 0 interrupted iterations
+trafico_mixto   [   1% ] 022/400 VUs  0m03.4s/4m30.0s
+
+running (3m55.9s), 029/400 VUs, 19 complete and 0 interrupted iterations
+trafico_mixto   [   2% ] 029/400 VUs  0m04.4s/4m30.0s
+
+running (3m56.9s), 036/400 VUs, 33 complete and 0 interrupted iterations
+trafico_mixto   [   2% ] 036/400 VUs  0m05.4s/4m30.0s
+
+running (3m57.9s), 042/400 VUs, 49 complete and 0 interrupted iterations
+trafico_mixto   [   2% ] 042/400 VUs  0m06.4s/4m30.0s
+
+running (3m58.9s), 049/400 VUs, 69 complete and 0 interrupted iterations
+trafico_mixto   [   3% ] 049/400 VUs  0m07.4s/4m30.0s
+
+running (3m59.9s), 056/400 VUs, 89 complete and 0 interrupted iterations
+trafico_mixto   [   3% ] 056/400 VUs  0m08.4s/4m30.0s
+
+running (4m00.9s), 062/400 VUs, 118 complete and 0 interrupted iterations
+trafico_mixto   [   3% ] 062/400 VUs  0m09.4s/4m30.0s
+
+running (4m01.9s), 069/400 VUs, 146 complete and 0 interrupted iterations
+trafico_mixto   [   4% ] 069/400 VUs  0m10.4s/4m30.0s
+
+running (4m02.9s), 076/400 VUs, 175 complete and 0 interrupted iterations
+trafico_mixto   [   4% ] 076/400 VUs  0m11.4s/4m30.0s
+
+running (4m03.9s), 082/400 VUs, 215 complete and 0 interrupted iterations
+trafico_mixto   [   5% ] 082/400 VUs  0m12.4s/4m30.0s
+
+running (4m04.9s), 089/400 VUs, 255 complete and 0 interrupted iterations
+trafico_mixto   [   5% ] 089/400 VUs  0m13.4s/4m30.0s
+
+running (4m05.9s), 096/400 VUs, 294 complete and 0 interrupted iterations
+trafico_mixto   [   5% ] 096/400 VUs  0m14.4s/4m30.0s
+
+running (4m06.9s), 102/400 VUs, 343 complete and 0 interrupted iterations
+trafico_mixto   [   6% ] 102/400 VUs  0m15.4s/4m30.0s
+
+running (4m07.9s), 109/400 VUs, 393 complete and 0 interrupted iterations
+trafico_mixto   [   6% ] 109/400 VUs  0m16.4s/4m30.0s
+
+running (4m08.9s), 116/400 VUs, 441 complete and 0 interrupted iterations
+trafico_mixto   [   6% ] 116/400 VUs  0m17.4s/4m30.0s
+
+running (4m09.9s), 122/400 VUs, 502 complete and 0 interrupted iterations
+trafico_mixto   [   7% ] 122/400 VUs  0m18.4s/4m30.0s
+
+running (4m10.9s), 129/400 VUs, 555 complete and 0 interrupted iterations
+trafico_mixto   [   7% ] 129/400 VUs  0m19.4s/4m30.0s
+
+running (4m11.9s), 136/400 VUs, 616 complete and 0 interrupted iterations
+trafico_mixto   [   8% ] 136/400 VUs  0m20.4s/4m30.0s
+
+running (4m12.9s), 142/400 VUs, 674 complete and 0 interrupted iterations
+trafico_mixto   [   8% ] 142/400 VUs  0m21.4s/4m30.0s
+
+running (4m13.9s), 149/400 VUs, 744 complete and 0 interrupted iterations
+trafico_mixto   [   8% ] 149/400 VUs  0m22.4s/4m30.0s
+
+running (4m14.9s), 156/400 VUs, 812 complete and 0 interrupted iterations
+trafico_mixto   [   9% ] 156/400 VUs  0m23.4s/4m30.0s
+
+running (4m15.9s), 162/400 VUs, 881 complete and 0 interrupted iterations
+trafico_mixto   [   9% ] 162/400 VUs  0m24.4s/4m30.0s
+
+running (4m16.9s), 169/400 VUs, 961 complete and 0 interrupted iterations
+trafico_mixto   [   9% ] 169/400 VUs  0m25.4s/4m30.0s
+
+running (4m17.9s), 176/400 VUs, 1038 complete and 0 interrupted iterations
+trafico_mixto   [  10% ] 176/400 VUs  0m26.4s/4m30.0s
+
+running (4m18.9s), 182/400 VUs, 1117 complete and 0 interrupted iterations
+trafico_mixto   [  10% ] 182/400 VUs  0m27.4s/4m30.0s
+
+running (4m19.9s), 189/400 VUs, 1200 complete and 0 interrupted iterations
+trafico_mixto   [  11% ] 189/400 VUs  0m28.4s/4m30.0s
+
+running (4m20.9s), 196/400 VUs, 1298 complete and 0 interrupted iterations
+trafico_mixto   [  11% ] 196/400 VUs  0m29.4s/4m30.0s
+
+running (4m21.9s), 202/400 VUs, 1370 complete and 0 interrupted iterations
+trafico_mixto   [  11% ] 202/400 VUs  0m30.4s/4m30.0s
+
+running (4m22.9s), 209/400 VUs, 1479 complete and 0 interrupted iterations
+trafico_mixto   [  12% ] 209/400 VUs  0m31.4s/4m30.0s
+
+running (4m23.9s), 216/400 VUs, 1574 complete and 0 interrupted iterations
+trafico_mixto   [  12% ] 216/400 VUs  0m32.4s/4m30.0s
+
+running (4m24.9s), 222/400 VUs, 1664 complete and 0 interrupted iterations
+trafico_mixto   [  12% ] 222/400 VUs  0m33.4s/4m30.0s
+
+running (4m25.9s), 229/400 VUs, 1771 complete and 0 interrupted iterations
+trafico_mixto   [  13% ] 229/400 VUs  0m34.4s/4m30.0s
+
+running (4m26.9s), 236/400 VUs, 1870 complete and 0 interrupted iterations
+trafico_mixto   [  13% ] 236/400 VUs  0m35.4s/4m30.0s
+
+running (4m27.9s), 242/400 VUs, 1990 complete and 0 interrupted iterations
+trafico_mixto   [  13% ] 242/400 VUs  0m36.4s/4m30.0s
+
+running (4m28.9s), 249/400 VUs, 2094 complete and 0 interrupted iterations
+trafico_mixto   [  14% ] 249/400 VUs  0m37.4s/4m30.0s
+
+running (4m29.9s), 256/400 VUs, 2204 complete and 0 interrupted iterations
+trafico_mixto   [  14% ] 256/400 VUs  0m38.4s/4m30.0s
+
+running (4m30.9s), 262/400 VUs, 2335 complete and 0 interrupted iterations
+trafico_mixto   [  15% ] 262/400 VUs  0m39.4s/4m30.0s
+
+running (4m31.9s), 269/400 VUs, 2451 complete and 0 interrupted iterations
+trafico_mixto   [  15% ] 269/400 VUs  0m40.4s/4m30.0s
+
+running (4m32.9s), 276/400 VUs, 2576 complete and 0 interrupted iterations
+trafico_mixto   [  15% ] 276/400 VUs  0m41.4s/4m30.0s
+
+running (4m33.9s), 282/400 VUs, 2714 complete and 0 interrupted iterations
+trafico_mixto   [  16% ] 282/400 VUs  0m42.4s/4m30.0s
+
+running (4m34.9s), 289/400 VUs, 2842 complete and 0 interrupted iterations
+trafico_mixto   [  16% ] 289/400 VUs  0m43.4s/4m30.0s
+
+running (4m35.9s), 296/400 VUs, 2978 complete and 0 interrupted iterations
+trafico_mixto   [  16% ] 296/400 VUs  0m44.4s/4m30.0s
+
+running (4m36.9s), 302/400 VUs, 3110 complete and 0 interrupted iterations
+trafico_mixto   [  17% ] 302/400 VUs  0m45.4s/4m30.0s
+
+running (4m37.9s), 309/400 VUs, 3259 complete and 0 interrupted iterations
+trafico_mixto   [  17% ] 309/400 VUs  0m46.4s/4m30.0s
+
+running (4m38.9s), 316/400 VUs, 3405 complete and 0 interrupted iterations
+trafico_mixto   [  18% ] 316/400 VUs  0m47.4s/4m30.0s
+
+running (4m39.9s), 322/400 VUs, 3556 complete and 0 interrupted iterations
+trafico_mixto   [  18% ] 322/400 VUs  0m48.4s/4m30.0s
+
+running (4m40.9s), 329/400 VUs, 3708 complete and 0 interrupted iterations
+trafico_mixto   [  18% ] 329/400 VUs  0m49.4s/4m30.0s
+
+running (4m41.9s), 336/400 VUs, 3856 complete and 0 interrupted iterations
+trafico_mixto   [  19% ] 336/400 VUs  0m50.4s/4m30.0s
+
+running (4m42.9s), 342/400 VUs, 4012 complete and 0 interrupted iterations
+trafico_mixto   [  19% ] 342/400 VUs  0m51.4s/4m30.0s
+
+running (4m43.9s), 349/400 VUs, 4174 complete and 0 interrupted iterations
+trafico_mixto   [  19% ] 349/400 VUs  0m52.4s/4m30.0s
+
+running (4m44.9s), 356/400 VUs, 4337 complete and 0 interrupted iterations
+trafico_mixto   [  20% ] 356/400 VUs  0m53.4s/4m30.0s
+
+running (4m45.9s), 362/400 VUs, 4428 complete and 0 interrupted iterations
+trafico_mixto   [  20% ] 362/400 VUs  0m54.4s/4m30.0s
+
+running (4m46.9s), 369/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  21% ] 369/400 VUs  0m55.4s/4m30.0s
+
+running (4m47.9s), 376/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  21% ] 376/400 VUs  0m56.4s/4m30.0s
+
+running (4m48.9s), 382/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  21% ] 382/400 VUs  0m57.4s/4m30.0s
+
+running (4m49.9s), 389/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  22% ] 389/400 VUs  0m58.4s/4m30.0s
+
+running (4m50.9s), 396/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  22% ] 396/400 VUs  0m59.4s/4m30.0s
+
+running (4m51.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  22% ] 400/400 VUs  1m00.4s/4m30.0s
+
+running (4m52.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  23% ] 400/400 VUs  1m01.4s/4m30.0s
+
+running (4m53.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  23% ] 400/400 VUs  1m02.4s/4m30.0s
+
+running (4m54.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  23% ] 400/400 VUs  1m03.4s/4m30.0s
+
+running (4m55.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  24% ] 400/400 VUs  1m04.4s/4m30.0s
+
+running (4m56.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  24% ] 400/400 VUs  1m05.4s/4m30.0s
+
+running (4m57.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  25% ] 400/400 VUs  1m06.4s/4m30.0s
+
+running (4m58.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  25% ] 400/400 VUs  1m07.4s/4m30.0s
+
+running (4m59.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  25% ] 400/400 VUs  1m08.4s/4m30.0s
+
+running (5m00.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  26% ] 400/400 VUs  1m09.4s/4m30.0s
+
+running (5m01.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  26% ] 400/400 VUs  1m10.4s/4m30.0s
+
+running (5m02.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  26% ] 400/400 VUs  1m11.4s/4m30.0s
+
+running (5m03.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  27% ] 400/400 VUs  1m12.4s/4m30.0s
+
+running (5m04.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  27% ] 400/400 VUs  1m13.4s/4m30.0s
+
+running (5m05.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  28% ] 400/400 VUs  1m14.4s/4m30.0s
+
+running (5m06.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  28% ] 400/400 VUs  1m15.4s/4m30.0s
+
+running (5m07.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  28% ] 400/400 VUs  1m16.4s/4m30.0s
+
+running (5m08.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  29% ] 400/400 VUs  1m17.4s/4m30.0s
+
+running (5m09.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  29% ] 400/400 VUs  1m18.4s/4m30.0s
+
+running (5m10.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  29% ] 400/400 VUs  1m19.4s/4m30.0s
+
+running (5m11.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  30% ] 400/400 VUs  1m20.4s/4m30.0s
+
+running (5m12.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  30% ] 400/400 VUs  1m21.4s/4m30.0s
+
+running (5m13.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  31% ] 400/400 VUs  1m22.4s/4m30.0s
+
+running (5m14.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  31% ] 400/400 VUs  1m23.4s/4m30.0s
+
+running (5m15.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  31% ] 400/400 VUs  1m24.4s/4m30.0s
+
+running (5m16.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  32% ] 400/400 VUs  1m25.4s/4m30.0s
+
+running (5m17.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  32% ] 400/400 VUs  1m26.4s/4m30.0s
+
+running (5m18.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  32% ] 400/400 VUs  1m27.4s/4m30.0s
+
+running (5m19.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  33% ] 400/400 VUs  1m28.4s/4m30.0s
+
+running (5m20.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  33% ] 400/400 VUs  1m29.4s/4m30.0s
+
+running (5m21.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  33% ] 400/400 VUs  1m30.4s/4m30.0s
+
+running (5m22.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  34% ] 400/400 VUs  1m31.4s/4m30.0s
+
+running (5m23.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  34% ] 400/400 VUs  1m32.4s/4m30.0s
+
+running (5m24.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  35% ] 400/400 VUs  1m33.4s/4m30.0s
+
+running (5m25.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  35% ] 400/400 VUs  1m34.4s/4m30.0s
+
+running (5m26.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  35% ] 400/400 VUs  1m35.4s/4m30.0s
+
+running (5m27.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  36% ] 400/400 VUs  1m36.4s/4m30.0s
+
+running (5m28.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  36% ] 400/400 VUs  1m37.4s/4m30.0s
+
+running (5m29.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  36% ] 400/400 VUs  1m38.4s/4m30.0s
+
+running (5m30.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  37% ] 400/400 VUs  1m39.4s/4m30.0s
+
+running (5m31.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  37% ] 400/400 VUs  1m40.4s/4m30.0s
+
+running (5m32.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  38% ] 400/400 VUs  1m41.4s/4m30.0s
+
+running (5m33.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  38% ] 400/400 VUs  1m42.4s/4m30.0s
+
+running (5m34.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  38% ] 400/400 VUs  1m43.4s/4m30.0s
+
+running (5m35.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  39% ] 400/400 VUs  1m44.4s/4m30.0s
+
+running (5m36.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  39% ] 400/400 VUs  1m45.4s/4m30.0s
+
+running (5m37.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  39% ] 400/400 VUs  1m46.4s/4m30.0s
+
+running (5m38.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  40% ] 400/400 VUs  1m47.4s/4m30.0s
+
+running (5m39.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  40% ] 400/400 VUs  1m48.4s/4m30.0s
+
+running (5m40.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  41% ] 400/400 VUs  1m49.4s/4m30.0s
+
+running (5m41.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  41% ] 400/400 VUs  1m50.4s/4m30.0s
+
+running (5m42.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  41% ] 400/400 VUs  1m51.4s/4m30.0s
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+
+running (5m43.9s), 400/400 VUs, 4460 complete and 0 interrupted iterations
+trafico_mixto   [  42% ] 400/400 VUs  1m52.4s/4m30.0s
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (5m44.9s), 400/400 VUs, 4472 complete and 0 interrupted iterations
+trafico_mixto   [  42% ] 400/400 VUs  1m53.4s/4m30.0s
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (5m45.9s), 400/400 VUs, 4518 complete and 0 interrupted iterations
+trafico_mixto   [  42% ] 400/400 VUs  1m54.4s/4m30.0s
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:53:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (5m46.9s), 400/400 VUs, 4544 complete and 0 interrupted iterations
+trafico_mixto   [  43% ] 400/400 VUs  1m55.4s/4m30.0s
+time="2026-10-26T20:53:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+
+running (5m47.9s), 400/400 VUs, 4549 complete and 0 interrupted iterations
+trafico_mixto   [  43% ] 400/400 VUs  1m56.4s/4m30.0s
+time="2026-10-26T20:53:39Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:39Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+
+running (5m48.9s), 400/400 VUs, 4549 complete and 0 interrupted iterations
+trafico_mixto   [  43% ] 400/400 VUs  1m57.4s/4m30.0s
+time="2026-10-26T20:53:39Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+
+running (5m49.9s), 400/400 VUs, 4549 complete and 0 interrupted iterations
+trafico_mixto   [  44% ] 400/400 VUs  1m58.4s/4m30.0s
+time="2026-10-26T20:53:40Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:41Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:53:41Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (5m50.9s), 400/400 VUs, 4549 complete and 0 interrupted iterations
+trafico_mixto   [  44% ] 400/400 VUs  1m59.4s/4m30.0s
+time="2026-10-26T20:53:41Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:42Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:42Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:53:42Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (5m51.9s), 400/400 VUs, 4549 complete and 0 interrupted iterations
+trafico_mixto   [  45% ] 400/400 VUs  2m00.4s/4m30.0s
+
+running (5m52.9s), 400/400 VUs, 4549 complete and 0 interrupted iterations
+trafico_mixto   [  45% ] 400/400 VUs  2m01.4s/4m30.0s
+
+running (5m53.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  45% ] 400/400 VUs  2m02.4s/4m30.0s
+
+running (5m54.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  46% ] 400/400 VUs  2m03.4s/4m30.0s
+
+running (5m55.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  46% ] 400/400 VUs  2m04.4s/4m30.0s
+
+running (5m56.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  46% ] 400/400 VUs  2m05.4s/4m30.0s
+
+running (5m57.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  47% ] 400/400 VUs  2m06.4s/4m30.0s
+
+running (5m58.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  47% ] 400/400 VUs  2m07.4s/4m30.0s
+
+running (5m59.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  48% ] 400/400 VUs  2m08.4s/4m30.0s
+
+running (6m00.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  48% ] 400/400 VUs  2m09.4s/4m30.0s
+
+running (6m01.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  48% ] 400/400 VUs  2m10.4s/4m30.0s
+
+running (6m02.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  49% ] 400/400 VUs  2m11.4s/4m30.0s
+
+running (6m03.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  49% ] 400/400 VUs  2m12.4s/4m30.0s
+
+running (6m04.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  49% ] 400/400 VUs  2m13.4s/4m30.0s
+
+running (6m05.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  50% ] 400/400 VUs  2m14.4s/4m30.0s
+
+running (6m06.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  50% ] 400/400 VUs  2m15.4s/4m30.0s
+
+running (6m07.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  51% ] 400/400 VUs  2m16.4s/4m30.0s
+
+running (6m08.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  51% ] 400/400 VUs  2m17.4s/4m30.0s
+
+running (6m09.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  51% ] 400/400 VUs  2m18.4s/4m30.0s
+
+running (6m10.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  52% ] 400/400 VUs  2m19.4s/4m30.0s
+
+running (6m11.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  52% ] 400/400 VUs  2m20.4s/4m30.0s
+
+running (6m12.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  52% ] 400/400 VUs  2m21.4s/4m30.0s
+
+running (6m13.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  53% ] 400/400 VUs  2m22.4s/4m30.0s
+
+running (6m14.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  53% ] 400/400 VUs  2m23.4s/4m30.0s
+
+running (6m15.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  53% ] 400/400 VUs  2m24.4s/4m30.0s
+
+running (6m16.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  54% ] 400/400 VUs  2m25.4s/4m30.0s
+
+running (6m17.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  54% ] 400/400 VUs  2m26.4s/4m30.0s
+
+running (6m18.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  55% ] 400/400 VUs  2m27.4s/4m30.0s
+
+running (6m19.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  55% ] 400/400 VUs  2m28.4s/4m30.0s
+
+running (6m20.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  55% ] 400/400 VUs  2m29.4s/4m30.0s
+
+running (6m21.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  56% ] 400/400 VUs  2m30.4s/4m30.0s
+
+running (6m22.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  56% ] 400/400 VUs  2m31.4s/4m30.0s
+
+running (6m23.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  56% ] 400/400 VUs  2m32.4s/4m30.0s
+
+running (6m24.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  57% ] 400/400 VUs  2m33.4s/4m30.0s
+
+running (6m25.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  57% ] 400/400 VUs  2m34.4s/4m30.0s
+
+running (6m26.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  58% ] 400/400 VUs  2m35.4s/4m30.0s
+
+running (6m27.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  58% ] 400/400 VUs  2m36.4s/4m30.0s
+
+running (6m28.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  58% ] 400/400 VUs  2m37.4s/4m30.0s
+
+running (6m29.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  59% ] 400/400 VUs  2m38.4s/4m30.0s
+
+running (6m30.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  59% ] 400/400 VUs  2m39.4s/4m30.0s
+
+running (6m31.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  59% ] 400/400 VUs  2m40.4s/4m30.0s
+
+running (6m32.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  60% ] 400/400 VUs  2m41.4s/4m30.0s
+
+running (6m33.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  60% ] 400/400 VUs  2m42.4s/4m30.0s
+
+running (6m34.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  61% ] 400/400 VUs  2m43.4s/4m30.0s
+
+running (6m35.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  61% ] 400/400 VUs  2m44.4s/4m30.0s
+
+running (6m36.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  61% ] 400/400 VUs  2m45.4s/4m30.0s
+
+running (6m37.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  62% ] 400/400 VUs  2m46.4s/4m30.0s
+
+running (6m38.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  62% ] 400/400 VUs  2m47.4s/4m30.0s
+
+running (6m39.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  62% ] 400/400 VUs  2m48.4s/4m30.0s
+
+running (6m40.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  63% ] 400/400 VUs  2m49.4s/4m30.0s
+
+running (6m41.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  63% ] 400/400 VUs  2m50.4s/4m30.0s
+
+running (6m42.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  63% ] 400/400 VUs  2m51.4s/4m30.0s
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+
+running (6m43.9s), 400/400 VUs, 4550 complete and 0 interrupted iterations
+trafico_mixto   [  64% ] 400/400 VUs  2m52.4s/4m30.0s
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+
+running (6m44.9s), 400/400 VUs, 4577 complete and 0 interrupted iterations
+trafico_mixto   [  64% ] 400/400 VUs  2m53.4s/4m30.0s
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:54:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+
+running (6m45.9s), 400/400 VUs, 4699 complete and 0 interrupted iterations
+trafico_mixto   [  65% ] 400/400 VUs  2m54.4s/4m30.0s
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (6m46.9s), 400/400 VUs, 4805 complete and 0 interrupted iterations
+trafico_mixto   [  65% ] 400/400 VUs  2m55.4s/4m30.0s
+time="2026-10-26T20:54:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:54:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:54:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (6m47.9s), 400/400 VUs, 4835 complete and 0 interrupted iterations
+trafico_mixto   [  65% ] 400/400 VUs  2m56.4s/4m30.0s
+time="2026-10-26T20:54:39Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:39Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+
+running (6m48.9s), 400/400 VUs, 4852 complete and 0 interrupted iterations
+trafico_mixto   [  66% ] 400/400 VUs  2m57.4s/4m30.0s
+
+running (6m49.9s), 400/400 VUs, 4856 complete and 0 interrupted iterations
+trafico_mixto   [  66% ] 400/400 VUs  2m58.4s/4m30.0s
+time="2026-10-26T20:54:40Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:41Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+
+running (6m50.9s), 400/400 VUs, 4857 complete and 0 interrupted iterations
+trafico_mixto   [  66% ] 400/400 VUs  2m59.4s/4m30.0s
+time="2026-10-26T20:54:41Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:42Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:42Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:54:42Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+
+running (6m51.9s), 400/400 VUs, 4859 complete and 0 interrupted iterations
+trafico_mixto   [  67% ] 400/400 VUs  3m00.4s/4m30.0s
+
+running (6m52.9s), 400/400 VUs, 4862 complete and 0 interrupted iterations
+trafico_mixto   [  67% ] 400/400 VUs  3m01.4s/4m30.0s
+
+running (6m53.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  68% ] 400/400 VUs  3m02.4s/4m30.0s
+
+running (6m54.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  68% ] 400/400 VUs  3m03.4s/4m30.0s
+
+running (6m55.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  68% ] 400/400 VUs  3m04.4s/4m30.0s
+
+running (6m56.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  69% ] 400/400 VUs  3m05.4s/4m30.0s
+
+running (6m57.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  69% ] 400/400 VUs  3m06.4s/4m30.0s
+
+running (6m58.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  69% ] 400/400 VUs  3m07.4s/4m30.0s
+
+running (6m59.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  70% ] 400/400 VUs  3m08.4s/4m30.0s
+
+running (7m00.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  70% ] 400/400 VUs  3m09.4s/4m30.0s
+
+running (7m01.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  71% ] 400/400 VUs  3m10.4s/4m30.0s
+
+running (7m02.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  71% ] 400/400 VUs  3m11.4s/4m30.0s
+
+running (7m03.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  71% ] 400/400 VUs  3m12.4s/4m30.0s
+
+running (7m04.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  72% ] 400/400 VUs  3m13.4s/4m30.0s
+
+running (7m05.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  72% ] 400/400 VUs  3m14.4s/4m30.0s
+
+running (7m06.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  72% ] 400/400 VUs  3m15.4s/4m30.0s
+
+running (7m07.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  73% ] 400/400 VUs  3m16.4s/4m30.0s
+
+running (7m08.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  73% ] 400/400 VUs  3m17.4s/4m30.0s
+
+running (7m09.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  73% ] 400/400 VUs  3m18.4s/4m30.0s
+
+running (7m10.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  74% ] 400/400 VUs  3m19.4s/4m30.0s
+
+running (7m11.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  74% ] 400/400 VUs  3m20.4s/4m30.0s
+
+running (7m12.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  75% ] 400/400 VUs  3m21.4s/4m30.0s
+
+running (7m13.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  75% ] 400/400 VUs  3m22.4s/4m30.0s
+
+running (7m14.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  75% ] 400/400 VUs  3m23.4s/4m30.0s
+
+running (7m15.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  76% ] 400/400 VUs  3m24.4s/4m30.0s
+
+running (7m16.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  76% ] 400/400 VUs  3m25.4s/4m30.0s
+
+running (7m17.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  76% ] 400/400 VUs  3m26.4s/4m30.0s
+
+running (7m18.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  77% ] 400/400 VUs  3m27.4s/4m30.0s
+
+running (7m19.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  77% ] 400/400 VUs  3m28.4s/4m30.0s
+
+running (7m20.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  78% ] 400/400 VUs  3m29.4s/4m30.0s
+
+running (7m21.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  78% ] 400/400 VUs  3m30.4s/4m30.0s
+
+running (7m22.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  78% ] 400/400 VUs  3m31.4s/4m30.0s
+
+running (7m23.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  79% ] 400/400 VUs  3m32.4s/4m30.0s
+
+running (7m24.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  79% ] 400/400 VUs  3m33.4s/4m30.0s
+
+running (7m25.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  79% ] 400/400 VUs  3m34.4s/4m30.0s
+
+running (7m26.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  80% ] 400/400 VUs  3m35.4s/4m30.0s
+
+running (7m27.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  80% ] 400/400 VUs  3m36.4s/4m30.0s
+
+running (7m28.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  81% ] 400/400 VUs  3m37.4s/4m30.0s
+
+running (7m29.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  81% ] 400/400 VUs  3m38.4s/4m30.0s
+
+running (7m30.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  81% ] 400/400 VUs  3m39.4s/4m30.0s
+
+running (7m31.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  82% ] 400/400 VUs  3m40.4s/4m30.0s
+
+running (7m32.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  82% ] 400/400 VUs  3m41.4s/4m30.0s
+
+running (7m33.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  82% ] 400/400 VUs  3m42.4s/4m30.0s
+
+running (7m34.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  83% ] 400/400 VUs  3m43.4s/4m30.0s
+
+running (7m35.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  83% ] 400/400 VUs  3m44.4s/4m30.0s
+
+running (7m36.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  83% ] 400/400 VUs  3m45.4s/4m30.0s
+
+running (7m37.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  84% ] 400/400 VUs  3m46.4s/4m30.0s
+
+running (7m38.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  84% ] 400/400 VUs  3m47.4s/4m30.0s
+
+running (7m39.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  85% ] 400/400 VUs  3m48.4s/4m30.0s
+
+running (7m40.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  85% ] 400/400 VUs  3m49.4s/4m30.0s
+
+running (7m41.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  85% ] 400/400 VUs  3m50.4s/4m30.0s
+
+running (7m42.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  86% ] 400/400 VUs  3m51.4s/4m30.0s
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+
+running (7m43.9s), 400/400 VUs, 4864 complete and 0 interrupted iterations
+trafico_mixto   [  86% ] 400/400 VUs  3m52.4s/4m30.0s
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:34Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (7m44.9s), 400/400 VUs, 4866 complete and 0 interrupted iterations
+trafico_mixto   [  86% ] 400/400 VUs  3m53.4s/4m30.0s
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (7m45.9s), 400/400 VUs, 4902 complete and 0 interrupted iterations
+trafico_mixto   [  87% ] 400/400 VUs  3m54.4s/4m30.0s
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:36Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/quizzes/10000000-0000-0000-0000-000000000007/start-attempt\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (7m46.9s), 400/400 VUs, 4955 complete and 0 interrupted iterations
+trafico_mixto   [  87% ] 400/400 VUs  3m55.4s/4m30.0s
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:37Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:38Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (7m47.9s), 400/400 VUs, 4987 complete and 0 interrupted iterations
+trafico_mixto   [  88% ] 400/400 VUs  3m56.4s/4m30.0s
+time="2026-10-26T20:55:39Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:39Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:39Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses\": request timeout"
+time="2026-10-26T20:55:39Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+time="2026-10-26T20:55:39Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/badges/verify/10000000-0000-0000-0000-000000000199\": request timeout"
+time="2026-10-26T20:55:39Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (7m48.9s), 400/400 VUs, 5017 complete and 0 interrupted iterations
+trafico_mixto   [  88% ] 400/400 VUs  3m57.4s/4m30.0s
+time="2026-10-26T20:55:40Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (7m49.9s), 400/400 VUs, 5030 complete and 0 interrupted iterations
+trafico_mixto   [  88% ] 400/400 VUs  3m58.4s/4m30.0s
+
+running (7m50.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  89% ] 400/400 VUs  3m59.4s/4m30.0s
+
+running (7m51.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  89% ] 400/400 VUs  4m00.4s/4m30.0s
+time="2026-10-26T20:55:43Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (7m52.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  89% ] 400/400 VUs  4m01.4s/4m30.0s
+time="2026-10-26T20:55:43Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/enrollments\": request timeout"
+
+running (7m53.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  90% ] 400/400 VUs  4m02.4s/4m30.0s
+
+running (7m54.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  90% ] 400/400 VUs  4m03.4s/4m30.0s
+
+running (7m55.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  91% ] 400/400 VUs  4m04.4s/4m30.0s
+
+running (7m56.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  91% ] 400/400 VUs  4m05.4s/4m30.0s
+
+running (7m57.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  91% ] 400/400 VUs  4m06.4s/4m30.0s
+
+running (7m58.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  92% ] 400/400 VUs  4m07.4s/4m30.0s
+
+running (7m59.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  92% ] 400/400 VUs  4m08.4s/4m30.0s
+
+running (8m00.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  92% ] 400/400 VUs  4m09.4s/4m30.0s
+
+running (8m01.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  93% ] 400/400 VUs  4m10.4s/4m30.0s
+
+running (8m02.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  93% ] 400/400 VUs  4m11.4s/4m30.0s
+
+running (8m03.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  93% ] 400/400 VUs  4m12.4s/4m30.0s
+
+running (8m04.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  94% ] 400/400 VUs  4m13.4s/4m30.0s
+
+running (8m05.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  94% ] 400/400 VUs  4m14.4s/4m30.0s
+
+running (8m06.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  95% ] 400/400 VUs  4m15.4s/4m30.0s
+
+running (8m07.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  95% ] 400/400 VUs  4m16.4s/4m30.0s
+
+running (8m08.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  95% ] 400/400 VUs  4m17.4s/4m30.0s
+
+running (8m09.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  96% ] 400/400 VUs  4m18.4s/4m30.0s
+
+running (8m10.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  96% ] 400/400 VUs  4m19.4s/4m30.0s
+
+running (8m11.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  96% ] 400/400 VUs  4m20.4s/4m30.0s
+
+running (8m12.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  97% ] 400/400 VUs  4m21.4s/4m30.0s
+
+running (8m13.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  97% ] 400/400 VUs  4m22.4s/4m30.0s
+
+running (8m14.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  98% ] 400/400 VUs  4m23.4s/4m30.0s
+
+running (8m15.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  98% ] 400/400 VUs  4m24.4s/4m30.0s
+
+running (8m16.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  98% ] 400/400 VUs  4m25.4s/4m30.0s
+
+running (8m17.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  99% ] 400/400 VUs  4m26.4s/4m30.0s
+
+running (8m18.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  99% ] 400/400 VUs  4m27.4s/4m30.0s
+
+running (8m19.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [  99% ] 400/400 VUs  4m28.4s/4m30.0s
+
+running (8m20.9s), 400/400 VUs, 5033 complete and 0 interrupted iterations
+trafico_mixto   [ 100% ] 400/400 VUs  4m29.4s/4m30.0s
+
+running (8m21.9s), 395/400 VUs, 5033 complete and 5 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m22.9s), 382/400 VUs, 5033 complete and 18 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m23.9s), 365/400 VUs, 5036 complete and 32 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m24.9s), 350/400 VUs, 5038 complete and 45 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m25.9s), 337/400 VUs, 5038 complete and 58 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m26.9s), 321/400 VUs, 5040 complete and 72 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m27.9s), 308/400 VUs, 5040 complete and 85 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m28.9s), 295/400 VUs, 5040 complete and 98 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m29.9s), 281/400 VUs, 5040 complete and 112 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m30.9s), 268/400 VUs, 5040 complete and 125 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m31.9s), 255/400 VUs, 5040 complete and 138 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m32.9s), 241/400 VUs, 5040 complete and 152 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m33.9s), 228/400 VUs, 5040 complete and 165 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m34.9s), 215/400 VUs, 5040 complete and 178 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m35.9s), 201/400 VUs, 5040 complete and 192 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m36.9s), 188/400 VUs, 5041 complete and 204 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m37.9s), 176/400 VUs, 5041 complete and 216 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m38.9s), 162/400 VUs, 5041 complete and 230 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m39.9s), 149/400 VUs, 5041 complete and 243 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m40.9s), 137/400 VUs, 5041 complete and 255 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m41.9s), 124/400 VUs, 5041 complete and 268 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m42.9s), 111/400 VUs, 5041 complete and 281 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+
+running (8m43.9s), 098/400 VUs, 5041 complete and 294 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:34Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:35Z" level=warning msg="Request Failed" error="Get \"https://34.49.211.71/api/v1/courses/10000000-0000-0000-0000-000000000001\": request timeout"
+time="2026-10-26T20:56:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:56:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+time="2026-10-26T20:56:35Z" level=warning msg="Request Failed" error="Post \"https://34.49.211.71/api/v1/learning/heartbeat\": request timeout"
+
+running (8m44.9s), 084/400 VUs, 5041 complete and 308 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m45.9s), 060/400 VUs, 5052 complete and 321 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m46.9s), 021/400 VUs, 5083 complete and 329 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+running (8m47.9s), 001/400 VUs, 5098 complete and 334 interrupted iterations
+trafico_mixto ↓ [ 100% ] 400/400 VUs  4m30s
+
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✗ 'p(95)<500' p(95)=1m0s
+
+      {endpoint:badge}
+      ✗ 'p(95)<300' p(95)=58.96s
+
+      {endpoint:catalog}
+      ✗ 'p(95)<300' p(95)=1m0s
+
+      {endpoint:enroll}
+      ✗ 'p(95)<500' p(95)=1m0s
+
+      {endpoint:heartbeat}
+      ✗ 'p(95)<400' p(95)=1m0s
+
+      {endpoint:quiz_start}
+      ✗ 'p(95)<500' p(95)=1m0s
+
+      {endpoint:quiz_submit}
+      ✓ 'p(95)<600' p(95)=0s
+
+    http_req_failed
+    ✗ 'rate<0.01' rate=7.34%
+
+    quiz_double_grading_detected
+    ✓ 'count==0' count=0
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 10078  19.091044/s
+    checks_succeeded...: 92.43% 9316 out of 10078
+    checks_failed......: 7.56%  762 out of 10078
+
+    ✗ catalogo responde 200
+      ↳  97% — ✓ 3184 / ✗ 67
+    ✗ detalle de curso responde 200
+      ↳  89% — ✓ 2771 / ✗ 334
+    ✗ inscripcion responde 200/201/409
+      ↳  86% — ✓ 1139 / ✗ 175
+    ✗ heartbeat responde 200
+      ↳  88% — ✓ 1104 / ✗ 137
+    ✗ inicio de intento de quiz responde 201/409
+      ↳  91% — ✓ 344 / ✗ 34
+    ✗ verificacion de insignia responde 200
+      ↳  98% — ✓ 774 / ✗ 15
+
+    CUSTOM
+    badge_verify_failures..........: 15     0.028415/s
+    enroll_duration................: avg=9.8s   min=14.73ms med=45.19ms  p(90)=1m0s     p(95)=1m0s   p(99)=1m0s   max=1m0s  
+    heartbeat_duration.............: avg=7.4s   min=30.19ms med=115.49ms p(90)=1m0s     p(95)=1m0s   p(99)=1m0s   max=1m0s  
+    quiz_double_grading_detected...: 0      0/s
+    quiz_max_attempts_reached......: 344    0.651649/s
+    quiz_start_duration............: avg=5.78s  min=28.55ms med=70.06ms  p(90)=374.19ms p(95)=1m0s   p(99)=1m0s   max=1m0s  
+
+    HTTP
+    http_req_duration..............: avg=7.57s  min=6.17ms  med=49.02ms  p(90)=58.39s   p(95)=1m0s   p(99)=1m0s   max=1m0s  
+      { endpoint:badge }...........: avg=8.03s  min=7.04ms  med=15.81ms  p(90)=57.7s    p(95)=58.96s p(99)=1m0s   max=1m0s  
+      { endpoint:catalog }.........: avg=7.55s  min=6.17ms  med=37.46ms  p(90)=58.08s   p(95)=1m0s   p(99)=1m0s   max=1m0s  
+      { endpoint:enroll }..........: avg=9.8s   min=14.73ms med=45.19ms  p(90)=1m0s     p(95)=1m0s   p(99)=1m0s   max=1m0s  
+      { endpoint:heartbeat }.......: avg=7.4s   min=30.19ms med=115.49ms p(90)=1m0s     p(95)=1m0s   p(99)=1m0s   max=1m0s  
+      { endpoint:quiz_start }......: avg=5.78s  min=28.55ms med=70.06ms  p(90)=374.19ms p(95)=1m0s   p(99)=1m0s   max=1m0s  
+      { endpoint:quiz_submit }.....: avg=0s     min=0s      med=0s       p(90)=0s       p(95)=0s     p(99)=0s     max=0s    
+      { expected_response:true }...: avg=3.42s  min=6.17ms  med=42.92ms  p(90)=184.88ms p(95)=55.76s p(99)=59.37s max=59.99s
+    http_req_failed................: 7.34%  762 out of 10379
+    http_reqs......................: 10379  19.661237/s
+
+    EXECUTION
+    iteration_duration.............: avg=14.44s min=1.01s   med=2.24s    p(90)=1m1s     p(95)=2m0s   p(99)=2m2s   max=3m2s  
+    iterations.....................: 5099   9.659182/s
+    vus............................: 1      min=0            max=400
+    vus_max........................: 400    min=400          max=400
+
+    NETWORK
+    data_received..................: 25 MB  48 kB/s
+    data_sent......................: 2.2 MB 4.1 kB/s
+
+
+
+
+running (8m47.9s), 000/400 VUs, 5099 complete and 334 interrupted iterations
+trafico_mixto ✓ [ 100% ] 000/400 VUs  4m30s
+time="2026-10-26T20:56:38Z" level=error msg="thresholds on metrics 'http_req_duration, http_req_duration{endpoint:badge}, http_req_duration{endpoint:catalog}, http_req_duration{endpoint:enroll}, http_req_duration{endpoint:heartbeat}, http_req_duration{endpoint:quiz_start}, http_req_failed' have been crossed"

@@ -91,7 +91,7 @@ const PRETRANSCODED_RESOURCE_IDS = (__ENV.PRETRANSCODED_RESOURCE_IDS || '')
 const MAX_WAIT_FOR_MANIFEST_SECONDS = Number(__ENV.MAX_WAIT_FOR_MANIFEST_SECONDS || 180);
 const SETUP_MAX_WAIT_SECONDS = Number(__ENV.SETUP_MAX_WAIT_SECONDS || 1200);
 const POLL_INTERVAL_SECONDS = Number(__ENV.POLL_INTERVAL_SECONDS || 3);
-const MAX_SEGMENTS_PER_ITERACION = Number(__ENV.MAX_SEGMENTS_PER_ITERACION || 5);
+const MAX_SEGMENTS_PER_ITERACION = Number(__ENV.MAX_SEGMENTS_PER_ITERACION || 2);
 
 // Se leen una sola vez en el contexto de inicializacion de k6 (obligatorio:
 // open() no puede llamarse dentro de una funcion de VU). open() exige
@@ -195,7 +195,44 @@ export const options = {
   setupTimeout: '70m',
 };
 
-function crearYSubirVideo(tagPrefix, profile) {
+const TEACHER_EMAIL = __ENV.TEACHER_EMAIL || 'loadtest-teacher@mooc.test';
+const TEACHER_PASSWORD = __ENV.TEACHER_PASSWORD || 'LoadTest123!';
+
+function getTeacherToken() {
+  const loginRes = http.post(
+    `${BASE_URL}/api/v1/auth/login`,
+    JSON.stringify({ email: TEACHER_EMAIL, password: TEACHER_PASSWORD }),
+    { headers: { 'Content-Type': 'application/json' }, tags: { endpoint: 'teacher_login' } }
+  );
+
+  if (loginRes.status === 200) {
+    const body = loginRes.json();
+    const token = body && body.data && body.data.session && body.data.session.token;
+    if (token) return token;
+  }
+
+  // Fallback a admin si el usuario profesor falla
+  const adminRes = http.post(
+    `${BASE_URL}/api/v1/auth/login`,
+    JSON.stringify({ email: 'admin@mooc.com', password: 'Admin123!' }),
+    { headers: { 'Content-Type': 'application/json' }, tags: { endpoint: 'admin_login' } }
+  );
+  if (adminRes.status === 200) {
+    const body = adminRes.json();
+    const token = body && body.data && body.data.session && body.data.session.token;
+    if (token) return token;
+  }
+
+  console.log(`Advertencia: Falló autenticación docente/admin (status: ${loginRes.status}, body: ${loginRes.body}).`);
+  return null;
+}
+
+function crearYSubirVideo(tagPrefix, profile, token) {
+  const authHeaders = { 'Content-Type': 'application/json' };
+  if (token) {
+    authHeaders['Authorization'] = `Bearer ${token}`;
+  }
+
   const createRes = http.post(
     `${BASE_URL}/api/v1/courses/units/${UNIT_ID}/resources`,
     JSON.stringify({
@@ -206,18 +243,24 @@ function crearYSubirVideo(tagPrefix, profile) {
       is_downloadable: false,
       position: 900 + Math.floor(Math.random() * 100),
     }),
-    { headers: { 'Content-Type': 'application/json' }, tags: { endpoint: 'create_resource' } }
+    { headers: authHeaders, tags: { endpoint: 'create_resource' } }
   );
   const created = check(createRes, {
     'creacion de recurso responde 201': (r) => r.status === 201,
   });
-  if (!created) return null;
+  if (!created) {
+    console.log(`Fallo al crear recurso (status ${createRes.status}): ${createRes.body}`);
+    return null;
+  }
 
   const body = createRes.json();
   const resourceId = body && body.data && body.data.id;
   const objectKey = body && body.data && body.data.object_key;
   const uploadUrl = body && body.data && body.data.presigned_upload_url;
-  if (!resourceId || !objectKey || !uploadUrl) return null;
+  if (!resourceId || !objectKey || !uploadUrl) {
+    console.log(`Fallo al leer presigned_upload_url del recurso: ${createRes.body}`);
+    return null;
+  }
 
   const putRes = http.put(uploadUrl, profile.bytes, {
     headers: { 'Content-Type': 'video/mp4' },
@@ -227,12 +270,15 @@ function crearYSubirVideo(tagPrefix, profile) {
   const uploaded = check(putRes, {
     'subida directa a almacenamiento responde 2xx': (r) => r.status >= 200 && r.status < 300,
   });
-  if (!uploaded) return null;
+  if (!uploaded) {
+    console.log(`Fallo en PUT al bucket S3/GCS (status ${putRes.status}): ${putRes.body}`);
+    return null;
+  }
 
   const completeRes = http.post(
     `${BASE_URL}/api/v1/media/resources/${resourceId}/complete-upload`,
     JSON.stringify({ object_key: objectKey }),
-    { headers: { 'Content-Type': 'application/json' }, tags: { endpoint: 'complete_upload' } }
+    { headers: authHeaders, tags: { endpoint: 'complete_upload' } }
   );
   check(completeRes, {
     // 502 es una respuesta HONESTA de que el encolado a asynq fallo (ver
@@ -241,9 +287,13 @@ function crearYSubirVideo(tagPrefix, profile) {
   });
   if (completeRes.status === 502) {
     enqueueRejected.add(1);
+    console.log(`complete-upload respondió 502 (cola Asynq/Redis no disponible o rechazada)`);
     return null;
   }
-  if (completeRes.status !== 200) return null;
+  if (completeRes.status !== 200) {
+    console.log(`complete-upload falló (status ${completeRes.status}): ${completeRes.body}`);
+    return null;
+  }
 
   return resourceId;
 }
@@ -280,10 +330,11 @@ function esperarManifiesto(resourceId, profile, enSetup) {
 
 // Escenario "subida_multimedia": flujo completo de un profesor subiendo un
 // video nuevo y esperando a que quede listo para reproducirse.
-export function subirVideo() {
+export function subirVideo(data) {
+  const token = data && data.token;
   // Rota los 3 perfiles entre VUs e iteraciones para que todos se ejerciten.
   const profile = PROFILES[(__VU + __ITER) % PROFILES.length];
-  const resourceId = crearYSubirVideo('Carga HLS k6', profile);
+  const resourceId = crearYSubirVideo('Carga HLS k6', profile, token);
   if (!resourceId) {
     sleep(1);
     return;
@@ -299,12 +350,14 @@ export function subirVideo() {
 // escenario de reproduccion, para no depender de que subida_multimedia
 // alcance a terminar alguno a tiempo. ---
 export function setup() {
+  const teacherToken = getTeacherToken();
+
   if (PRETRANSCODED_RESOURCE_IDS.length > 0) {
     console.log(
       `Usando ${PRETRANSCODED_RESOURCE_IDS.length} resource_id ya transcodificados ` +
       '(PRETRANSCODED_RESOURCE_IDS), sin subir nada nuevo en el setup.'
     );
-    return { pool: PRETRANSCODED_RESOURCE_IDS.map((id) => ({ id, profile: null })) };
+    return { pool: PRETRANSCODED_RESOURCE_IDS.map((id) => ({ id, profile: null })), token: teacherToken };
   }
 
   console.log(`Preparando pool de ${PLAYBACK_POOL_SIZE} video(s) para el escenario de reproduccion...`);
@@ -312,7 +365,7 @@ export function setup() {
   for (let i = 0; i < PLAYBACK_POOL_SIZE; i++) {
     // Un video de cada perfil, en orden, para que el pool cubra los 3.
     const profile = PROFILES[i % PROFILES.length];
-    const resourceId = crearYSubirVideo('Pool HLS k6 setup', profile);
+    const resourceId = crearYSubirVideo('Pool HLS k6 setup', profile, teacherToken);
     if (!resourceId) {
       console.log(`Setup: no se pudo crear/subir el video ${i + 1}/${PLAYBACK_POOL_SIZE}, se omite.`);
       continue;
@@ -335,7 +388,7 @@ export function setup() {
   }
 
   console.log(`Setup listo: ${pool.length}/${PLAYBACK_POOL_SIZE} video(s) en el pool de reproduccion.`);
-  return { pool };
+  return { pool, token: teacherToken };
 }
 
 // Escenario "consumo_hls": un estudiante pide el stream, baja el
@@ -425,7 +478,10 @@ export function reproducirHLS(data) {
     .slice(0, MAX_SEGMENTS_PER_ITERACION);
 
   for (const segmentUrl of segmentUrls) {
-    const segRes = http.get(segmentUrl, { tags: { endpoint: 'segment', rendition: renditionTag } });
+    const segRes = http.get(segmentUrl, {
+      responseType: 'none',
+      tags: { endpoint: 'segment', rendition: renditionTag },
+    });
     segmentDuration.add(segRes.timings.duration);
     const segOk = check(segRes, {
       // Este es EXACTAMENTE el bug original del escenario: sin el fix del
@@ -433,7 +489,8 @@ export function reproducirHLS(data) {
       'segmento HLS responde 200': (r) => r.status === 200,
     });
     if (segOk) {
-      segmentBytes.add(segRes.body ? segRes.body.length : 0);
+      const lengthHeader = segRes.headers['Content-Length'] || segRes.headers['content-length'] || 0;
+      segmentBytes.add(Number(lengthHeader));
     } else {
       segmentDownloadFailures.add(1);
     }

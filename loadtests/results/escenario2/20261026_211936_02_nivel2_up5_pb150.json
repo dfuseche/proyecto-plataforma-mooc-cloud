@@ -1,0 +1,374 @@
+{
+    "metrics": {
+        "data_sent": {
+            "count": 2550,
+            "rate": 38390.78303241207
+        },
+        "http_req_duration{endpoint:segment,rendition:1080p}": {
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "thresholds": {
+                "p(95)<3000": false
+            }
+        },
+        "http_req_duration{endpoint:upload_put,profile:ligero}": {
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "http_req_waiting": {
+            "p(95)": 10.255645,
+            "p(99)": 10.4143698,
+            "max": 10.454051,
+            "avg": 8.832690666666666,
+            "min": 7.57403,
+            "med": 8.469991,
+            "p(90)": 10.057239
+        },
+        "http_req_duration{endpoint:complete_upload}": {
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "thresholds": {
+                "p(95)<800": false
+            }
+        },
+        "http_req_failed": {
+            "passes": 3,
+            "fails": 0,
+            "thresholds": {
+                "rate<0.02": true
+            },
+            "value": 1
+        },
+        "http_req_duration{endpoint:upload_put,profile:medio}": {
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "checks": {
+            "passes": 0,
+            "fails": 3,
+            "value": 0
+        },
+        "media_processing_timeouts": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count==0": false
+            }
+        },
+        "http_req_duration{endpoint:segment,rendition:480p}": {
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "thresholds": {
+                "p(95)<1000": false
+            }
+        },
+        "http_req_duration{endpoint:variant_playlist}": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "thresholds": {
+                "p(95)<600": false
+            }
+        },
+        "http_req_duration": {
+            "med": 8.719959,
+            "p(90)": 10.4550166,
+            "p(95)": 10.6718988,
+            "p(99)": 10.84540456,
+            "max": 10.888781,
+            "avg": 9.152989666666667,
+            "min": 7.850229
+        },
+        "http_req_duration{endpoint:create_resource}": {
+            "avg": 9.152989666666667,
+            "min": 7.850229,
+            "med": 8.719959,
+            "p(90)": 10.4550166,
+            "p(95)": 10.6718988,
+            "p(99)": 10.84540456,
+            "max": 10.888781,
+            "thresholds": {
+                "p(95)<800": false
+            }
+        },
+        "http_req_duration{endpoint:upload_put,profile:pesado}": {
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "media_processing_duration{profile:ligero}": {
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "media_processing_duration{profile:medio}": {
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "media_segment_download_failures": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count==0": false
+            }
+        },
+        "http_req_duration{endpoint:resume}": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "thresholds": {
+                "p(95)<400": false
+            }
+        },
+        "media_processing_duration{profile:pesado}": {
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "http_req_duration{endpoint:segment,rendition:360p}": {
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "thresholds": {
+                "p(95)<1000": false
+            }
+        },
+        "data_received": {
+            "rate": 36478.771485307625,
+            "count": 2423
+        },
+        "http_req_blocked": {
+            "avg": 3.1757070000000005,
+            "min": 0.000501,
+            "med": 0.000749,
+            "p(90)": 7.6208466,
+            "p(95)": 8.5733588,
+            "p(99)": 9.335368560000001,
+            "max": 9.525871
+        },
+        "vus_max": {
+            "value": 154,
+            "min": 53,
+            "max": 154
+        },
+        "media_processing_duration": {
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "thresholds": {
+                "p(95)<45000": false
+            }
+        },
+        "http_req_duration{endpoint:stream_url}": {
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        },
+        "vus": {
+            "min": 0,
+            "max": 0,
+            "value": 0
+        },
+        "http_req_connecting": {
+            "avg": 0.8316206666666667,
+            "min": 0,
+            "med": 0,
+            "p(90)": 1.9958896,
+            "p(95)": 2.2453757999999997,
+            "p(99)": 2.44496476,
+            "max": 2.494862
+        },
+        "http_req_duration{endpoint:segment,rendition:720p}": {
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "thresholds": {
+                "p(95)<2000": false
+            }
+        },
+        "http_req_tls_handshaking": {
+            "max": 6.79927,
+            "avg": 2.2664233333333335,
+            "min": 0,
+            "med": 0,
+            "p(90)": 5.4394160000000005,
+            "p(95)": 6.119343,
+            "p(99)": 6.6632846
+        },
+        "http_reqs": {
+            "count": 3,
+            "rate": 45.165627096955376
+        },
+        "http_req_duration{endpoint:upload_put}": {
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "thresholds": {
+                "p(95)<15000": false
+            }
+        },
+        "http_req_duration{endpoint:segment}": {
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "http_req_duration{endpoint:manifest}": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "thresholds": {
+                "p(95)<600": false
+            }
+        },
+        "media_unexpected_ladder": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count==0": false
+            }
+        },
+        "http_req_receiving": {
+            "p(99)": 0.27243822,
+            "max": 0.274608,
+            "avg": 0.18748266666666666,
+            "min": 0.121721,
+            "med": 0.166119,
+            "p(90)": 0.25291020000000003,
+            "p(95)": 0.2637591
+        },
+        "http_req_sending": {
+            "avg": 0.13281633333333334,
+            "min": 0.11008,
+            "med": 0.128247,
+            "p(90)": 0.153747,
+            "p(95)": 0.15693449999999998,
+            "p(99)": 0.15948449999999997,
+            "max": 0.160122
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {
+            "setup": {
+                "groups": {},
+                "checks": {
+                        "creacion de recurso responde 201": {
+                            "name": "creacion de recurso responde 201",
+                            "path": "::setup::creacion de recurso responde 201",
+                            "id": "5d92efd6d1611a0ecc93d5921e9c3581",
+                            "passes": 0,
+                            "fails": 3
+                        }
+                    },
+                "name": "setup",
+                "path": "::setup",
+                "id": "5c0f8025f7e0b6654089e5b00e950f1a"
+            }
+        },
+        "checks": {}
+    }
+}
