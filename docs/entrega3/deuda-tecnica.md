@@ -94,15 +94,15 @@ responsable y la fecha concretos los fija el equipo al cerrar la entrega.
 
 | Orden | Id | Acción propuesta | Esfuerzo estimado | Cuándo | Responsable |
 |---|---|---|---|---|---|
-| 1 | D-04 | Validar el avance contra la duración real del recurso | Medio | Siguiente iteración | Por asignar |
-| 2 | D-03 | Generar y subir las imágenes de insignias; usar una URL base pública | Medio | Siguiente iteración | Por asignar |
-| 3 | D-05 | Completar `openapi.yaml` con las 55 operaciones | Medio | Siguiente iteración | Por asignar |
-| 4 | D-07 | Extender el límite de tasa a toda la API | Bajo | Siguiente iteración | Por asignar |
-| 5 | D-09 | Filtrar publicados en SQL | Bajo | Siguiente iteración | Por asignar |
-| 6 | D-10 | Pruebas del frontend (Vitest y Testing Library) | Alto | Siguiente iteración | Por asignar |
+| 1 | D-04 | Validar el avance contra la duración real del recurso | Medio | Siguiente iteración | Daniel |
+| 2 | D-03 | Generar y subir las imágenes de insignias; usar una URL base pública | Medio | Siguiente iteración | Julian |
+| 3 | D-05 | Completar `openapi.yaml` con las 55 operaciones | Medio | Siguiente iteración | Carlos |
+| 4 | D-07 | Extender el límite de tasa a toda la API | Bajo | Siguiente iteración | Daniel |
+| 5 | D-09 | Filtrar publicados en SQL | Bajo | Siguiente iteración | Julian |
+| 6 | D-10 | Pruebas del frontend (Vitest y Testing Library) | Alto | Siguiente iteración | Sergio |
 | 7 | D-13 | Actualizar `docs/CD.md` al despliegue por MIG | Bajo | Antes de la entrega | Equipo (compañero a cargo de CD) |
-| 8 | D-14 | Limpiar datos de prueba de k6 en la base y el bucket | Bajo | Antes de la sustentación | Por asignar |
-| 9 | D-08 | Ejecutar `gofmt` sobre los archivos pendientes | Bajo | Siguiente iteración | Por asignar |
-| – | D-02 | Aceptada hasta contar con un servicio de correo | Alto | Cuando exista el servicio | Por asignar |
-| – | D-11 | Aceptada: requiere dominio propio para un certificado válido | Medio | Cuando exista dominio | Por asignar |
-| – | D-12 | Aceptada: alta disponibilidad de Redis y Cloud SQL fuera del alcance | Alto | Fuera de esta entrega | Por asignar |
+| 8 | D-14 | Limpiar datos de prueba de k6 en la base y el bucket | Bajo | Antes de la sustentación | Carlos |
+| 9 | D-08 | Ejecutar `gofmt` sobre los archivos pendientes | Bajo | Siguiente iteración | Sergio |
+| – | D-02 | Aceptada hasta contar con un servicio de correo | Alto | Cuando exista el servicio | Julian |
+| – | D-11 | Aceptada: requiere dominio propio para un certificado válido | Medio | Cuando exista dominio | Carlos |
+| – | D-12 | Aceptada: alta disponibilidad de Redis y Cloud SQL fuera del alcance | Alto | Fuera de esta entrega | Daniel |
