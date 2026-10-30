@@ -9,8 +9,12 @@ import (
 // mediaHosts son los orígenes de almacenamiento a los que el navegador puede
 // llegar directamente (URLs prefirmadas de subida y descarga, segmentos HLS).
 // Se pueden ampliar con CSP_MEDIA_HOSTS (separados por espacios).
+//
+// Cloud Storage entrega las URLs prefirmadas en estilo "virtual host"
+// (https://<bucket>.storage.googleapis.com/...), por eso se permite también
+// el comodín de subdominios además del dominio base.
 func mediaHosts() string {
-	hosts := "https://storage.googleapis.com"
+	hosts := "https://storage.googleapis.com https://*.storage.googleapis.com"
 	if extra := strings.TrimSpace(os.Getenv("CSP_MEDIA_HOSTS")); extra != "" {
 		hosts += " " + extra
 	}
