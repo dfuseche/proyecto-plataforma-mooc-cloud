@@ -16,7 +16,7 @@ Este repositorio contiene el código fuente, la infraestructura, las pruebas de 
 ## 🗂️ Documentación de la Entrega 2
 
 - 🏛️ **[Informe de Arquitectura Cloud](docs/entrega2/ARCHITECTURE_CLOUD.md)**: red, subredes, firewall y servicios.
-- 📊 **[Pruebas de carga de la Entrega 2](capacity-planning/pruebas_de_carga_entrega2.md)** y 🧪 **[scripts k6](capacity-planning/scripts/)**.
+- 📊 **[Pruebas de carga de la Entrega 2](capacity-planning/pruebas_de_carga_entrega2.md)** y 🧪 **[scripts k6 y resultados](loadtests/)**.
 - 🛠️ **[Plantillas de despliegue](deploy/)**: `.env.example` y composiciones para el servidor web y el worker.
 
 ---
