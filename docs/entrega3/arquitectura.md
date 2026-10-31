@@ -8,7 +8,8 @@
 
 La Entrega 2 desplegaba dos VMs fijas (`web-server` y `worker-server`). En la Entrega 3 la API y
 los workers corren en dos **grupos de instancias administrados (MIG)** independientes, detrás de un
-**balanceador HTTPS externo**, y cada grupo escala solo según la carga de CPU.
+**balanceador HTTPS externo**, y cada grupo escala solo con su propia señal: la API por CPU y los
+workers por el número de trabajos en la cola.
 
 ```mermaid
 flowchart LR
@@ -37,6 +38,8 @@ flowchart LR
 | API | MIG `mooc-api-mig`, `us-central1-a` | Backend Go (chi) que además sirve la SPA de React. Sin estado local |
 | Workers | MIG `mooc-worker-mig`, `us-central1-a` | Procesan en segundo plano la transcodificación HLS (FFmpeg) desde la cola Asynq |
 | Cola y caché | VM con Redis 7 fuera de los MIG | Cola de tareas, idempotencia y límite de tasa |
+| Métricas de la cola | Contenedor `mooc-queue-metrics` en la VM de Redis (`backend/cmd/queue-metrics`) | Publica cada 15 s en Cloud Monitoring el estado de la cola; `custom.googleapis.com/mooc/asynq/backlog` es la señal de autoscaling de los workers |
+| Logs | Cloud Logging (driver `gcplogs` de Docker) | Logs de los contenedores de cada instancia; se conservan después de que el autoscaler borra la VM |
 | Base de datos | Cloud SQL PostgreSQL `mooc-db-instance`, red VPC privada | Persistencia transaccional |
 | Objetos | Cloud Storage `mooc-media-equipo-3` | Videos originales, renditions HLS y materiales. Subida y descarga directas con URLs prefirmadas |
 | Secretos | Secret Manager | Contenido del `.env` de cada rol |
@@ -47,14 +50,22 @@ flowchart LR
 | Parámetro | API | Worker |
 |---|---|---|
 | Mínimo / máximo de instancias | 1 / 3 | 1 / 3 |
-| Métrica | CPU media 60 % (`target-cpu = 0.6`) | CPU media 60 % |
-| Enfriamiento | 120 s | **[Confirmar]** |
+| Métrica | CPU media 60 % (`target-cpu = 0.6`) | Trabajos en la cola (pendientes + activos), 2 por VM: `custom.googleapis.com/mooc/asynq/backlog`, métrica por grupo con `single-instance-assignment = 2` |
+| Inicialización | 120 s | 180 s |
+| Reducción | Estabilización de 10 min (GCE) y como máximo 1 VM cada 300 s | Igual |
 | Health check | `GET /health`, puerto 8080, cada 15 s | **[Confirmar]** |
+
+Las políticas se aplican con `Set-ApiAutoscaling` y `Set-WorkerAutoscaling` (`scripts/gcp/config.ps1`),
+que usan `encender.ps1` y `aplicar-autoscaling.ps1`. Detalle y justificación de los valores:
+[`guia-escenario3-autoscaling.md`](guia-escenario3-autoscaling.md), sección 2 (C2).
 
 - **Por qué dos grupos:** las transcodificaciones de video consumen mucha CPU. Separarlas evita que
   afecten la latencia de la API (en las pruebas la API se mantuvo bajo 90 ms con 10 subidas concurrentes).
 - **Por qué es posible escalar:** ninguna instancia guarda estado propio. La persistencia está en
   PostgreSQL, los archivos en Cloud Storage y las colas, la idempotencia y el límite de tasa en Redis.
+- **Por qué la cola para los workers:** la CPU de un worker no refleja cuántos trabajos esperan (con 2
+  transcodificaciones ya está al 100 %), y una cola sin pendientes puede tener trabajos en curso. Contar
+  pendientes + activos pide más workers cuando hay espera y no retira consumidores mientras procesan.
 - **Encendido y apagado:** `scripts/gcp/encender.ps1` y `apagar.ps1` activan o desactivan el
   autoescalado de ambos MIG (1 a 3) y encienden o apagan Cloud SQL, para controlar el costo.
 
@@ -67,7 +78,11 @@ Todas las instancias se crean desde una plantilla con el mismo `startup-script`
 2. Instala Docker si hace falta y obtiene un token de la cuenta de servicio de la VM.
 3. Descarga el `.env` desde Secret Manager (sin credenciales en disco ni en el repositorio).
 4. Descarga la imagen de Artifact Registry y arranca el contenedor: la API en los puertos 80 y 8080,
-   el worker con `/app/worker`.
+   el worker con `/app/worker`. Los dos reciben `INSTANCE_NAME` (la API lo devuelve en `X-Served-By`,
+   junto con la versión en `X-App-Version`) y envían sus logs a Cloud Logging con el driver `gcplogs`.
+
+La plantilla guarda una copia del script: para aplicar un cambio de `startup.sh` se crean plantillas
+nuevas con `scripts/gcp/actualizar-plantillas.ps1`.
 
 ## 5. Flujos principales
 

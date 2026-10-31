@@ -12,6 +12,15 @@ const (
 	TypeAntimalwareScan   = "media:antimalware_scan"
 )
 
+// QueuePriorities son las colas que consume el worker y su prioridad relativa
+// (cmd/worker). El exportador de métricas (cmd/queue-metrics) suma estas
+// mismas colas para calcular el backlog que usa el autoscaling de workers.
+var QueuePriorities = map[string]int{
+	"critical": 6,
+	"default":  3,
+	"low":      1,
+}
+
 type MediaTranscodeHLSPayload struct {
 	ResourceID  uuid.UUID `json:"resource_id"`
 	OriginalKey string    `json:"original_key"`

@@ -1,4 +1,5 @@
-# Enciende el proyecto en GCP: Cloud SQL, VM de Redis y autoescalado (1-3) de los MIGs de API y worker.
+# Enciende el proyecto en GCP: Cloud SQL, VM de Redis y autoescalado (1-3) de los MIGs de API y worker
+# (API por CPU, workers por la cola: ver Set-ApiAutoscaling y Set-WorkerAutoscaling en config.ps1).
 # Uso (PowerShell, desde la raiz del repo):  .\scripts\gcp\encender.ps1
 # Primero se enciende la base de datos porque es lo que mas tarda; mientras tanto arranca Redis.
 # Los MIGs arrancan cuando la base ya esta lista (la API aplica migraciones al iniciar y se cae si no hay base).
@@ -35,14 +36,14 @@ while ($true) {
 Write-Ok 'Base de datos lista.'
 $fases['Base de datos y Redis'] = (Get-Date) - $inicio
 
-Write-Step "3/4 Activando el autoescalado ($MinReplicas-$MaxReplicas, CPU $TargetCpu) y esperando a que los MIGs queden estables"
+Write-Step "3/4 Activando el autoescalado ($MinReplicas-$MaxReplicas) y esperando a que los MIGs queden estables"
 $t = Get-Date
-foreach ($mig in @($ApiMig, $WorkerMig)) {
-    Invoke-G @('compute', 'instance-groups', 'managed', 'set-autoscaling', $mig, "--project=$Project", "--zone=$script:Zone",
-        "--min-num-replicas=$MinReplicas", "--max-num-replicas=$MaxReplicas",
-        "--target-cpu-utilization=$TargetCpu", "--cool-down-period=$CoolDown", '--mode=on')
-    Write-Ok "$mig configurado."
-}
+# Cada grupo con su senal: la API por CPU y los workers por la cola (el
+# exportador de la VM de Redis arranca solo con ella y publica la metrica).
+Set-ApiAutoscaling
+Write-Ok "$ApiMig configurado (CPU $TargetCpu)."
+Set-WorkerAutoscaling
+Write-Ok "$WorkerMig configurado (cola: $WorkerJobsPerVm trabajos por VM)."
 foreach ($mig in @($ApiMig, $WorkerMig)) {
     Invoke-G @('compute', 'instance-groups', 'managed', 'wait-until', $mig, '--stable', "--project=$Project", "--zone=$script:Zone", '--timeout=900')
     Write-Ok "$mig estable (transcurrido $(Format-Dur ((Get-Date) - $inicio)))."

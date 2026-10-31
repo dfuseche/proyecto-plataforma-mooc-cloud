@@ -26,6 +26,7 @@ COPY backend/ .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o /app/api ./cmd/api
 RUN CGO_ENABLED=0 GOOS=linux go build -o /app/worker ./cmd/worker
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/queue-metrics ./cmd/queue-metrics
 
 # Stage 2: Run
 FROM alpine:3.19
@@ -34,8 +35,14 @@ WORKDIR /app
 
 RUN apk add --no-cache ca-certificates ffmpeg curl
 
+# Commit con el que se construyó la imagen: la API lo devuelve en X-App-Version.
+ARG APP_VERSION=dev
+ENV APP_VERSION=$APP_VERSION
+
 COPY --from=builder /app/api /app/api
 COPY --from=builder /app/worker /app/worker
+# Exportador de métricas de la cola (corre en la VM de Redis, ver deploy/scripts/queue-metrics.sh).
+COPY --from=builder /app/queue-metrics /app/queue-metrics
 COPY --from=builder /app/migrations /app/migrations
 COPY --from=builder /app/docs /app/docs
 # La API sirve la SPA desde WEB_DIR (por defecto /app/web).

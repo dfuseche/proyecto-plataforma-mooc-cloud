@@ -12,11 +12,24 @@ $WorkerMig   = 'mooc-worker-mig'
 $RedisVm = ''
 $Zone    = ''
 
-# Autoescalado de los dos MIGs
+# Autoescalado: cada MIG con su propia senal (Set-ApiAutoscaling / Set-WorkerAutoscaling)
 $MinReplicas = 1
 $MaxReplicas = 3
+
+# API: CPU media del grupo
 $TargetCpu   = 0.6
 $CoolDown    = 120
+
+# Workers: trabajos en la cola Asynq (pendientes + activos) que publica el
+# exportador de la VM de Redis (backend/cmd/queue-metrics). El autoscaler pide
+# ceil(backlog / WorkerJobsPerVm) VMs: 0-2 -> 1, 3-4 -> 2, 5 o mas -> 3.
+$WorkerBacklogMetric = 'custom.googleapis.com/mooc/asynq/backlog'
+$WorkerJobsPerVm     = 2      # = WORKER_CONCURRENCY de cada worker (e2-highcpu-2)
+$WorkerCoolDown      = 180
+
+# Reduccion escalonada en ambos grupos: como maximo 1 VM menos cada 5 minutos
+$ScaleInMaxReplicas = 1
+$ScaleInWindowSec   = 300
 
 function Write-Step([string]$Text) { Write-Host ""; Write-Host "==> $Text" -ForegroundColor Cyan }
 function Write-Ok([string]$Text)   { Write-Host "    $Text" -ForegroundColor Green }
@@ -76,4 +89,79 @@ function Get-SqlPendingOps {
 function Get-LbIp {
     $ip = Get-G @('compute', 'forwarding-rules', 'list', '--global', "--project=$Project", '--format=value(IPAddress)')
     return (($ip -split "`r?`n" | Where-Object { $_ } | Select-Object -First 1))
+}
+
+# --- Politicas de autoescalado ------------------------------------------------
+
+function Set-ApiAutoscaling {
+    Invoke-G @('compute', 'instance-groups', 'managed', 'set-autoscaling', $ApiMig, "--project=$Project", "--zone=$script:Zone",
+        "--min-num-replicas=$MinReplicas", "--max-num-replicas=$MaxReplicas",
+        "--target-cpu-utilization=$TargetCpu", "--cool-down-period=$CoolDown",
+        "--scale-in-control=max-scaled-in-replicas=$ScaleInMaxReplicas,time-window=$ScaleInWindowSec", '--mode=on')
+}
+
+# Metrica por grupo (recurso "global"): describe la cola entera, no una VM.
+function Set-WorkerAutoscaling {
+    Invoke-G @('compute', 'instance-groups', 'managed', 'set-autoscaling', $WorkerMig, "--project=$Project", "--zone=$script:Zone",
+        "--min-num-replicas=$MinReplicas", "--max-num-replicas=$MaxReplicas",
+        "--cool-down-period=$WorkerCoolDown",
+        "--update-stackdriver-metric=$WorkerBacklogMetric",
+        '--stackdriver-metric-filter=resource.type = global',
+        "--stackdriver-metric-single-instance-assignment=$WorkerJobsPerVm",
+        "--scale-in-control=max-scaled-in-replicas=$ScaleInMaxReplicas,time-window=$ScaleInWindowSec", '--mode=on')
+}
+
+# --- Acceso a la API REST de Compute (para lo que gcloud no expone) -----------
+
+function Get-AccessToken {
+    if (-not $script:AccessToken) {
+        $script:AccessToken = Get-G @('auth', 'print-access-token')
+        if (-not $script:AccessToken) { throw 'No pude obtener un token de gcloud. Ejecuta: gcloud auth login' }
+    }
+    return $script:AccessToken
+}
+
+function Get-GcpJson([string]$Url) {
+    return Invoke-RestMethod -Uri $Url -Headers @{ Authorization = "Bearer $(Get-AccessToken)" }
+}
+
+# URL completa de la plantilla de instancia que usa un MIG.
+function Get-MigTemplateUrl([string]$Mig) {
+    $url = Get-G @('compute', 'instance-groups', 'managed', 'describe', $Mig, "--project=$Project", "--zone=$script:Zone",
+        '--format=value(instanceTemplate)')
+    if (-not $url) { throw "No pude leer la plantilla del MIG $Mig." }
+    return $url
+}
+
+function Get-MetadataValue($Properties, [string]$Key) {
+    $item = @($Properties.metadata.items) | Where-Object { $_.key -eq $Key } | Select-Object -First 1
+    if ($item) { return $item.value }
+    return $null
+}
+
+# Autoscaler del MIG (politica efectiva, tamano recomendado y avisos), o $null si no tiene.
+function Get-MigAutoscaler([string]$Mig) {
+    $url = Get-G @('compute', 'instance-groups', 'managed', 'describe', $Mig, "--project=$Project", "--zone=$script:Zone",
+        '--format=value(status.autoscaler)')
+    if (-not $url) { return $null }
+    return Get-GcpJson $url
+}
+
+function Format-AutoscalingPolicy($Autoscaler) {
+    if (-not $Autoscaler) { return 'sin autoescalado' }
+    $p = $Autoscaler.autoscalingPolicy
+    $senales = @()
+    if ($p.cpuUtilization -and $p.cpuUtilization.utilizationTarget) { $senales += "CPU $($p.cpuUtilization.utilizationTarget)" }
+    if ($p.loadBalancingUtilization) { $senales += "balanceador $($p.loadBalancingUtilization.utilizationTarget)" }
+    foreach ($m in @($p.customMetricUtilizations)) {
+        if (-not $m) { continue }
+        if ($m.singleInstanceAssignment) { $senales += "$($m.metric) ($($m.singleInstanceAssignment) por VM)" }
+        else { $senales += "$($m.metric) (objetivo $($m.utilizationTarget))" }
+    }
+    $reduccion = ''
+    if ($p.scaleInControl -and $p.scaleInControl.maxScaledInReplicas) {
+        $reduccion = " reduccion<=$($p.scaleInControl.maxScaledInReplicas.fixed)/$($p.scaleInControl.timeWindowSec)s"
+    }
+    return ("modo={0} min={1} max={2} inicializacion={3}s{4} senal: {5}" -f
+        $p.mode, $p.minNumReplicas, $p.maxNumReplicas, $p.coolDownPeriodSec, $reduccion, ($senales -join ' + '))
 }
