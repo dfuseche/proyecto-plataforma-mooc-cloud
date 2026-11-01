@@ -176,3 +176,82 @@ No prueba: el enunciado pide carga "multipart directa y reanudable"; la
 API actual solo ofrece un PUT firmado de un solo tiro
 (`GeneratePresignedUpload`), sin soporte de multipart/resumable upload
 todavía — el script prueba lo que existe hoy, no lo simula.
+
+## 7. Escenario 3 (ciclo de autoscaling, Entrega 3)
+
+Dos scripts, uno por grupo de instancias. Los dos usan un executor de
+llegadas (`ramping-arrival-rate`): la demanda se fija por unidad de tiempo y
+no baja cuando sube la latencia, así que provoca la creación automática de
+instancias. Procedimiento completo, criterios y capturas en
+[`docs/entrega3/guia-escenario3-autoscaling.md`](../docs/entrega3/guia-escenario3-autoscaling.md)
+(secciones 5 a 7). Se corren desde la VM generadora, contra el balanceador.
+
+**3A, API (`k6/autoscaling-api.js`).** Reutiliza el tráfico de
+`load-test.js`. Fases: `base` 5 min a `LOW_RATE` → `subida` 2 min →
+`sostenido` 15 min a `HIGH_RATE` → `bajada` 1 min → `enfriamiento` 22 min.
+
+```
+# Calibración (autoscaler de la API en modo off): escalones de 2 min
+k6 run --insecure-skip-tls-verify -e BASE_URL=https://34.49.211.71 -e MODO=calibracion \
+  -e STEP_RATES=5,10,20,30,40,50 --summary-export=calibracion.json loadtests/k6/autoscaling-api.js
+
+# Ciclo oficial
+k6 run --insecure-skip-tls-verify -e BASE_URL=https://34.49.211.71 \
+  -e LOW_RATE=3 -e HIGH_RATE=<calibrado> -e POOL_SIZE=300 -e QUIZ_ATTEMPT_FRACTION=0.05 \
+  --summary-export=summary.json --console-output=k6_console.log loadtests/k6/autoscaling-api.js
+```
+
+Variables: `MODO` (`ciclo` | `calibracion`), `LOW_RATE` (default 3 it/s),
+`HIGH_RATE` (obligatoria en el ciclo), `STEP_RATES`, `STEP_MINUTES` (default 2),
+`SONDA_RATE` (default 2 req/s), `PRE_VUS`, `MAX_VUS`, y las de `load-test.js`
+(`POOL_SIZE`, `COURSE_ID`, `QUIZ_ATTEMPT_FRACTION`…). Para un humo corto se
+acortan las fases con `BASE_MIN`, `SUBIDA_MIN`, `SOSTENIDO_MIN`, `BAJADA_MIN`
+y `ENFRIAMIENTO_MIN` (minutos). `QUIZ_ATTEMPT_FRACTION` se pasa siempre:
+sin ella `load-test.js` usa 0.3 y los intentos del pool se agotan en minutos.
+
+**3B, workers (`k6/autoscaling-workers.js`).** Cada iteración es un
+trabajo: crea el recurso, sube el video directo al bucket, llama a
+`complete-upload` y espera el manifiesto. Fases: `base` 5 min a `LOW_RATE` →
+`subida` 1 min → `sostenido` 12 min a `HIGH_RATE` → `corte` 25 min sin
+llegadas (la cola drena). Los títulos empiezan con `Autoscaling 3B`, que es
+el filtro de la reconciliación.
+
+```
+# Calibración de la capacidad de 1 worker (autoscaler de workers en modo off)
+k6 run --insecure-skip-tls-verify -e BASE_URL=https://34.49.211.71 -e MODO=rafaga -e N=6 \
+  -e PROFILE=pesado -e POLL_INTERVAL_SECONDS=10 -e MAX_WAIT_FOR_MANIFEST_SECONDS=1800 \
+  --console-output=calibracion_console.log loadtests/k6/autoscaling-workers.js
+
+# Ciclo oficial (tasas por 10 min)
+k6 run --insecure-skip-tls-verify -e BASE_URL=https://34.49.211.71 \
+  -e PROFILE=pesado -e TIME_UNIT=10m -e LOW_RATE=<calibrado> -e HIGH_RATE=<calibrado> \
+  -e POLL_INTERVAL_SECONDS=10 -e MAX_WAIT_FOR_MANIFEST_SECONDS=1800 \
+  --summary-export=summary.json --console-output=k6_console.log loadtests/k6/autoscaling-workers.js
+
+# 3B-R: un solo trabajo para retirar a mano el worker que lo procesa
+k6 run --insecure-skip-tls-verify -e BASE_URL=https://34.49.211.71 -e MODO=rafaga -e N=1 \
+  -e POLL_INTERVAL_SECONDS=10 -e MAX_WAIT_FOR_MANIFEST_SECONDS=1800 loadtests/k6/autoscaling-workers.js
+```
+
+Variables: `MODO` (`ciclo` | `rafaga`), `PROFILE` (default `pesado`),
+`TIME_UNIT` (default `1m`), `LOW_RATE` (default 1), `HIGH_RATE` (obligatoria
+en el ciclo), `N` (default 6), `BASE_MIN`, `SUBIDA_MIN`, `SOSTENIDO_MIN`,
+`DRENAJE_MIN`, `PRE_VUS`, `MAX_VUS`, y las de `media-load-test.js`
+(`UNIT_ID`, `TEACHER_EMAIL`…). `POLL_INTERVAL_SECONDS` y
+`MAX_WAIT_FOR_MANIFEST_SECONDS` son obligatorias: con los defaults de
+`media-load-test.js` (3 s y 180 s) el polling sube la CPU de la API y los
+trabajos en cola se darían por perdidos.
+
+**Salida para la línea de tiempo** (en el archivo de `--console-output`):
+
+| Línea | Script | Significado |
+|---|---|---|
+| `FASE,<iso>,<fase>` | ambos | Inicio de cada fase; `subida` marca T0 y `bajada`/`corte` marcan T6 |
+| `SONDA,<iso>,<fase>,<status>,<X-Served-By>,<X-App-Version>,<ms>` | 3A | 2 por segundo: qué réplica atendió y con qué versión |
+| `JOB,<iso>,<resource_id>,aceptado` | 3B | `complete-upload` respondió 200: el trabajo quedó en la cola |
+| `JOB,<iso>,<resource_id>,disponible\|timeout` | 3B | El manifiesto quedó listo o se agotó la espera |
+| `JOB,<iso>,,rechazado` | 3B | No se pudo crear, subir o encolar el trabajo |
+
+El `--summary-export` trae latencia, throughput y errores por fase (3A) y el
+tiempo hasta `available` según la fase de llegada (3B), gracias a umbrales
+"vacíos" (`max>=0`) etiquetados con `fase`.

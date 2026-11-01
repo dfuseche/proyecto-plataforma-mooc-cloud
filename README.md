@@ -13,6 +13,19 @@ Este repositorio contiene el código fuente, la infraestructura, las pruebas de 
 - 🚚 **[Despliegue continuo](docs/CD.md)**: construcción de la imagen, publicación y actualización de los grupos de instancias.
 - ⚙️ **[Operación: escalamiento y recuperación](docs/OPERACIONES.md)**: escalado con Compose y procedimiento de backup/restauración (RPO/RTO).
 
+## 🌐 Acceso al entorno en GCP
+
+| Servicio | URL |
+|---|---|
+| Frontend | <https://34.49.211.71> |
+| API (balanceador HTTPS) | <https://34.49.211.71/api/v1> |
+| Verificación de salud | <https://34.49.211.71/health> |
+
+- El certificado es autofirmado (no hay dominio propio): el navegador pide aceptar la advertencia.
+- El frontend y la API comparten el balanceador; el pie de página y la cabecera `X-App-Version` muestran el commit desplegado.
+- Para controlar costos el entorno se apaga entre sesiones: `scripts/gcp/encender.ps1` lo enciende y `scripts/gcp/apagar.ps1` lo apaga.
+- Las credenciales de prueba para el equipo docente se entregan por el canal privado del curso.
+
 ## 🗂️ Documentación de la Entrega 2
 
 - 🏛️ **[Informe de Arquitectura Cloud](docs/entrega2/ARCHITECTURE_CLOUD.md)**: red, subredes, firewall y servicios.
@@ -63,9 +76,9 @@ La suite E2E se reconstruye con el primer comando; sin él se ejecuta la imagen 
 
 ## 🛠️ Arquitectura resumida
 
-- **API y workers**: dos grupos de instancias independientes (1 a 3 instancias cada uno) con autoescalado por CPU.
+- **API y workers**: dos grupos de instancias independientes (1 a 3 instancias cada uno) con autoescalado propio: la API por CPU (60 %) y los workers por los trabajos en la cola (2 por instancia).
 - **Balanceador**: Application Load Balancer HTTPS externo con verificación de salud sobre la API.
-- **Cola**: Redis fuera de los grupos elásticos.
+- **Cola**: Redis fuera de los grupos elásticos; un exportador publica en Cloud Monitoring los trabajos pendientes y activos.
 - **Datos**: Cloud SQL for PostgreSQL 16 y Google Cloud Storage para los medios.
 - **Frontend**: aplicación de una sola página servida por la API, versionada con el hash del commit (visible en el pie de página).
 - Detalle y diagramas en [`docs/entrega3/arquitectura.md`](docs/entrega3/arquitectura.md).

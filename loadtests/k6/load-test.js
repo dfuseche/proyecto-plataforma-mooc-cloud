@@ -23,7 +23,7 @@ import http from 'k6/http';
 import { check, sleep, fail } from 'k6';
 import { Counter, Trend } from 'k6/metrics';
 
-const BASE_URL = __ENV.BASE_URL;
+export const BASE_URL = __ENV.BASE_URL;
 if (!BASE_URL) {
   fail('Define BASE_URL, ej: k6 run -e BASE_URL=https://api.tu-dominio.com loadtests/k6/load-test.js');
 }
@@ -31,7 +31,7 @@ if (!BASE_URL) {
 const POOL_SIZE = Number(__ENV.POOL_SIZE || 300);
 const MAX_VUS = Number(__ENV.MAX_VUS || 2000);
 const PASSWORD = 'LoadTest123!';
-const COURSE_ID = __ENV.COURSE_ID || '10000000-0000-0000-0000-000000000001';
+export const COURSE_ID = __ENV.COURSE_ID || '10000000-0000-0000-0000-000000000001';
 const RESOURCE_STABLE_ID = __ENV.RESOURCE_STABLE_ID || '10000000-0000-0000-0000-000000000015';
 const BADGE_CODE = __ENV.BADGE_CODE || '10000000-0000-0000-0000-000000000199';
 const QUIZ_ID = __ENV.QUIZ_ID || '10000000-0000-0000-0000-000000000007';

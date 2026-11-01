@@ -61,7 +61,8 @@ de los trabajos: `TaskID` igual al ID del recurso, `MaxRetry(3)` y claves HLS de
 **Prioridad:** P0 = sin esto 3A/3B no producen evidencia válida; P1 = necesario para la integridad y el
 rigor que se evalúan; P2 = opcional.
 
-**Estado:** C1, C2, C3, C4 y C5 están implementados. Cómo desplegarlos y comprobarlos en GCP:
+**Estado:** C1 a C5, C9, C12, C13 y C16 están implementados; de C14 faltan el análisis
+(`analizar_escenario3.py`). Cómo desplegarlos y comprobarlos en GCP:
 [`prueba-cambios-autoscaling.md`](prueba-cambios-autoscaling.md). El resto sigue pendiente.
 
 ### C1 (P0, implementado) Exportador de métricas de la cola — [`backend/cmd/queue-metrics/main.go`](../../backend/cmd/queue-metrics/main.go)
@@ -176,7 +177,7 @@ Así la comprobación de idempotencia ("si existe `master.m3u8`, ya terminó") e
 - Estas líneas, extraídas de Cloud Logging, separan la espera en cola del procesamiento. El tiempo hasta
   `available` lo mide k6 (`media_processing_duration`).
 
-### C9 (P1) Migraciones con lock
+### C9 (P1, implementado) Migraciones con lock
 
 En `runMigrations` (`cmd/api/main.go`), tomar una conexión dedicada (`db.Conn`), ejecutar
 `SELECT pg_advisory_lock(<constante>)`, aplicar las migraciones y liberar el lock con `pg_advisory_unlock`.
@@ -197,7 +198,7 @@ Antes de cada sesión de pruebas, actualizar el metadato `mooc-image` de las pla
 `…/mooc/backend:<sha>` en lugar de `:latest`, o no hacer *push* a `main` durante las corridas (el CD
 desplegaría en medio de la prueba). `X-App-Version` (C4) prueba que todas las réplicas ejecutaron la misma versión.
 
-### C12 (P0) `loadtests/k6/autoscaling-api.js` (3A)
+### C12 (P0, implementado) `loadtests/k6/autoscaling-api.js` (3A)
 
 - Reutiliza el tráfico del Escenario 1: `import iteracion, { setup } from './load-test.js'`. k6 ignora el
   `options` del módulo importado y conserva los `responseCallback` de los 409 esperados.
@@ -224,7 +225,7 @@ desplegaría en medio de la prueba). `X-App-Version` (C4) prueba que todas las r
 - `QUIZ_ATTEMPT_FRACTION=0.05`: con 300 usuarios × 3 intentos hay 900 intentos. A 30 it/s × 25 % × 5 %
   ≈ 0,4 quiz/s duran unos 38 min; con 0,3 se agotarían en 7 min y el resto solo mediría 409 esperados.
 
-### C13 (P0) `loadtests/k6/autoscaling-workers.js` (3B)
+### C13 (P0, implementado) `loadtests/k6/autoscaling-workers.js` (3B)
 
 - En [`media-load-test.js`](../../loadtests/k6/media-load-test.js), exportar `crearYSubirVideo`,
   `esperarManifiesto`, `getTeacherToken` y `profileByName` (solo agregar `export`) para reutilizarlas.
@@ -247,7 +248,7 @@ desplegaría en medio de la prueba). `X-App-Version` (C4) prueba que todas las r
 - `gracefulStop: '30m'` para no cortar trabajos en espera al terminar el escenario.
 - Modo `MODO=rafaga N=6` (calibración y 3B-R): sube N trabajos de una vez y espera a que terminen.
 
-### C14 (P0) Línea de tiempo y análisis
+### C14 (P0, parcial: falta `analizar_escenario3.py`) Línea de tiempo y análisis
 
 - `loadtests/monitoring/timeline_autoscaling.sh`: cada 15 s agrega a un CSV, por grupo,
   `ts, grupo, target_size, recommended_size, autoscaler_status, instancias (nombre:estado:acción)` y, para la
@@ -267,7 +268,7 @@ Instalar Ops Agent en `startup.sh` solo si falta (`add-google-cloud-ops-agent-re
 Suma cerca de 1 min al primer arranque; medirlo y reflejarlo en el periodo de inicialización. La alternativa
 (P2) es una imagen de VM propia con Docker y Ops Agent preinstalados, que además acorta el arranque.
 
-### C16 (P2) Panel de Cloud Monitoring versionado
+### C16 (P2, implementado: panel «MOOC Escenario 3 - Autoscaling») Panel de Cloud Monitoring versionado
 
 `loadtests/monitoring/dashboard_escenario3.json` (`gcloud monitoring dashboards create --config-from-file=…`)
 con: CPU por instancia de cada grupo, tamaño de los grupos, `backlog`/`pending`/`active`,

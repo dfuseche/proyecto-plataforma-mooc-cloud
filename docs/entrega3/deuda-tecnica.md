@@ -1,7 +1,7 @@
 # Deuda técnica: diagnóstico y línea base (Entrega 3)
 
-> Medición final de SonarQube registrada sobre el commit `fa3673c`. Queda por asignar responsables en la
-> sección 5.
+> Última medición de SonarQube: commit `055ccc4` (1 de noviembre de 2026). La línea base definitiva es el
+> análisis del commit del tag `entrega-3`; esta sección se actualiza con él.
 
 ## 1. Alcance y método
 
@@ -21,21 +21,22 @@
 | Mantenibilidad (rating) | **A** (valor 1,0 en la escala 1 = A … 5 = E) | A, B o C | Cumple. |
 | Deuda técnica estimada | **0 min** | Registrar | Tiempo que estima SonarQube para resolver sus *code smells*; no incluye la deuda arquitectónica ni operativa del inventario de la sección 4. |
 
-Hallazgos del código total (rama `main`) en los tres análisis de este ejercicio:
+Hallazgos del código total (rama `main`) en los análisis de este ejercicio:
 
-| Indicador | Primero (`99f5b38`) | Intermedio (`37605ca`) | **Final (`fa3673c`)** |
-|---|---|---|---|
-| Líneas de código | 7.067 | 7.077 | **7.096** |
-| Bugs | 7 | 0 | **0** |
-| Vulnerabilidades | 9 | 0 | **0** |
-| *Security hotspots* | 0 | 0 | **0** |
-| *Code smells* | 3 | 3 | **0** |
-| Deuda técnica | 60 min | 60 min | **0 min** |
-| Duplicación | 1,1 % | 1,1 % | **1,1 %** |
-| Mantenibilidad | A | A | **A** |
+| Indicador | Primero (`99f5b38`) | Intermedio (`37605ca`) | Fin de las correcciones (`fa3673c`) | **Último (`055ccc4`)** |
+|---|---|---|---|---|
+| Líneas de código | 7.067 | 7.077 | 7.096 | **7.526** |
+| Bugs | 7 | 0 | 0 | **0** |
+| Vulnerabilidades | 9 | 0 | 0 | **0** |
+| *Security hotspots* | 0 | 0 | 0 | **0** |
+| *Code smells* | 3 | 3 | 0 | **0** |
+| Deuda técnica | 60 min | 60 min | 0 min | **0 min** |
+| Duplicación | 1,1 % | 1,1 % | 1,1 % | **1,1 %** |
+| Mantenibilidad | A | A | A | **A** |
 
-- **Fecha de los análisis:** 25 de octubre de 2026.
-- **Commit de la medición final:** `fa3673c558d00b64742c50b417cdb783971e1fff`.
+- **Fecha de los análisis:** 25 de octubre de 2026 (los tres primeros) y 1 de noviembre de 2026 (`055ccc4`,
+  después de fusionar los cambios del Escenario 3: exportador de la cola, `X-Served-By` y logs en Cloud Logging).
+- **Commit de la última medición:** `055ccc48f0aa17304ce1c2c3916a470f1e0db6b3`.
 - **Herramienta:** SonarQube Cloud, análisis ejecutado en el CI (paso *SonarQube scan*); las cifras
   salen del paso *Verify Entrega 3 thresholds*.
 - **Perfil de reglas:** "Sonar way core", el perfil integrado y predeterminado de SonarQube Cloud para
@@ -43,11 +44,12 @@ Hallazgos del código total (rama `main`) en los tres análisis de este ejercici
   JavaScript (249), Docker (35), CSS (30), HTML (36), YAML (2), Shell (11), PowerShell (19) y PL/SQL (49).
   No hay perfiles personalizados.
 - **Reporte:** <https://sonarcloud.io/summary/overall?id=dfuseche_proyecto-plataforma-mooc-cloud&branch=main>
-- La puerta de calidad por defecto de SonarQube marcó fallo por la cobertura del código nuevo
-  (23,5 % frente a 80 %); la cobertura no es un criterio de la Entrega 3, que evalúa duplicación,
-  mantenibilidad y deuda sobre el código total.
+- La puerta de calidad por defecto de SonarQube marca fallo por la cobertura del código nuevo
+  (43,3 % frente a 80 % en `055ccc4`; 23,5 % en `fa3673c`); la cobertura no es un criterio de la
+  Entrega 3, que evalúa duplicación, mantenibilidad y deuda sobre el código total.
 - Una lectura anterior del paso de umbrales tomó las mediciones del análisis previo (el paso no esperaba
-  al análisis del commit en curso); se corrigió en `ci.yml` y la medición final es la del commit `fa3673c`.
+  al análisis del commit en curso); se corrigió en `ci.yml` y desde `fa3673c` cada medición corresponde
+  al commit analizado.
 
 ## 3. Correcciones realizadas durante este ejercicio
 
