@@ -208,11 +208,17 @@ func main() {
 	rateLimiter := internalMw.NewRateLimiter(rdb, 100, 1*time.Minute)
 	metrics := internalMw.NewMetrics()
 
+	instanceName := internalMw.InstanceName()
+	appVersion := internalMw.AppVersion()
+	// #nosec G706 -- INSTANCE_NAME y APP_VERSION son configuración del despliegue, no entrada de usuario
+	log.Printf("Instancia %s, versión %s", instanceName, appVersion)
+
 	// Router Chi
 	r := chi.NewRouter()
 
 	// Middlewares globales
 	r.Use(internalMw.SecurityHeaders)
+	r.Use(internalMw.ServedBy(instanceName, appVersion))
 	r.Use(middleware.RequestID)
 	r.Use(middleware.RealIP)
 	r.Use(middleware.Logger)

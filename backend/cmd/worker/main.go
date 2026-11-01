@@ -45,11 +45,7 @@ func main() {
 		asynq.RedisClientOpt{Addr: cfg.RedisAddr},
 		asynq.Config{
 			Concurrency: cfg.WorkerConcurrency,
-			Queues: map[string]int{
-				"critical": 6,
-				"default":  3,
-				"low":      1,
-			},
+			Queues:      worker.QueuePriorities,
 			ErrorHandler: asynq.ErrorHandlerFunc(func(ctx context.Context, task *asynq.Task, err error) {
 				retried, _ := asynq.GetRetryCount(ctx)
 				maxRetry, _ := asynq.GetMaxRetry(ctx)

@@ -8,9 +8,12 @@
 #   mooc-secret  nombre del secreto de Secret Manager con el contenido del .env
 #   mooc-image   imagen completa en Artifact Registry (con tag)
 #
-# La VM usa su cuenta de servicio (roles: artifactregistry.reader y
-# secretmanager.secretAccessor sobre su propio secreto). No hay credenciales
-# en el disco de la imagen ni en el repositorio.
+# La VM usa su cuenta de servicio (roles: artifactregistry.reader,
+# logging.logWriter y secretmanager.secretAccessor sobre su propio secreto).
+# No hay credenciales en el disco de la imagen ni en el repositorio.
+#
+# La plantilla guarda una COPIA de este script: un cambio aqui solo llega a
+# los MIG al crear una plantilla nueva (scripts/gcp/actualizar-plantillas.ps1).
 set -euo pipefail
 
 MD=http://metadata.google.internal/computeMetadata/v1
@@ -20,6 +23,7 @@ ROLE=$(md instance/attributes/mooc-role)
 SECRET=$(md instance/attributes/mooc-secret)
 IMAGE=$(md instance/attributes/mooc-image)
 PROJECT=$(md project/project-id)
+INSTANCE_NAME=$(md instance/name)
 REGISTRY=${IMAGE%%/*}
 
 # Docker (solo la primera vez en una imagen base limpia)
@@ -47,15 +51,32 @@ curl -sf -H "Authorization: Bearer $TOKEN" \
 
 docker pull "$IMAGE"
 
+# Arranca el contenedor con sus logs en Cloud Logging (driver gcplogs): asi
+# sobreviven cuando el autoscaler borra la VM y sirven de evidencia de que
+# cada instancia atendio peticiones o proceso trabajos. Si el driver no puede
+# autenticarse (falta roles/logging.logWriter), `docker run` falla; en ese
+# caso se arranca con el driver por defecto para no dejar la VM sin servicio.
+# INSTANCE_NAME es el nombre de la VM: la API lo devuelve en X-Served-By.
+start_container() {
+  local name=$1
+  shift
+  docker rm -f "$name" 2>/dev/null || true
+  if ! docker run -d --name "$name" --restart=always --log-driver=gcplogs \
+      -e INSTANCE_NAME="$INSTANCE_NAME" "$@"; then
+    echo "gcplogs no disponible: $name arranca con el driver de logs por defecto" >&2
+    docker rm -f "$name" 2>/dev/null || true
+    docker run -d --name "$name" --restart=always \
+      -e INSTANCE_NAME="$INSTANCE_NAME" "$@"
+  fi
+}
+
 case "$ROLE" in
   api)
-    docker rm -f mooc-api-server 2>/dev/null || true
-    docker run -d --name mooc-api-server --restart=always \
+    start_container mooc-api-server \
       -p 80:8080 -p 8080:8080 --env-file /opt/mooc/app.env "$IMAGE"
     ;;
   worker)
-    docker rm -f mooc-worker-server 2>/dev/null || true
-    docker run -d --name mooc-worker-server --restart=always \
+    start_container mooc-worker-server \
       --env-file /opt/mooc/app.env "$IMAGE" /app/worker
     ;;
   *)
