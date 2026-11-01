@@ -2,7 +2,8 @@
 
 > Borrador armado a partir de lo ya documentado en el repo (`capacity-planning/pruebas_de_carga_entrega3.md`,
 > `deploy/startup/startup.sh`, `.github/workflows/deploy.yml`, `scripts/gcp/`, `docs/OPERACIONES.md`).
-> Los puntos marcados **[Confirmar]** los debe verificar quien configuró esa parte en GCP.
+> La red, los health checks, el autohealing y el balanceo se verificaron en GCP el 1 de noviembre de 2026
+> con `gcloud` (configuración efectiva, no la de las plantillas del repo).
 
 ## 1. Visión general
 
@@ -34,7 +35,7 @@ flowchart LR
 
 | Componente | Recurso en GCP | Función |
 |---|---|---|
-| Balanceador | External HTTPS Application Load Balancer, backend service `mooc-api-backend-service`, certificado autofirmado | Punto de entrada único. Reparte el tráfico entre las instancias sanas de la API |
+| Balanceador | External HTTPS Application Load Balancer, backend service `mooc-api-backend-service` (HTTP al puerto 80 de las instancias, modo `UTILIZATION` con máximo 0,8, sin afinidad de sesión, drenaje de conexiones de 30 s), certificado autofirmado | Punto de entrada único. Reparte el tráfico entre las instancias sanas de la API |
 | API | MIG `mooc-api-mig`, `us-central1-a` | Backend Go (chi) que además sirve la SPA de React. Sin estado local |
 | Workers | MIG `mooc-worker-mig`, `us-central1-a` | Procesan en segundo plano la transcodificación HLS (FFmpeg) desde la cola Asynq |
 | Cola y caché | VM con Redis 7 fuera de los MIG | Cola de tareas, idempotencia y límite de tasa |
@@ -53,7 +54,7 @@ flowchart LR
 | Métrica | CPU media 60 % (`target-cpu = 0.6`) | Trabajos en la cola (pendientes + activos), 2 por VM: `custom.googleapis.com/mooc/asynq/backlog`, métrica por grupo con `single-instance-assignment = 2` |
 | Inicialización | 120 s | 180 s |
 | Reducción | Estabilización de 10 min (GCE) y como máximo 1 VM cada 300 s | Igual |
-| Health check | `GET /health`, puerto 8080, cada 15 s | **[Confirmar]** |
+| Health check | `GET /health` por HTTP en el puerto 80, cada 10 s, timeout de 5 s; sana tras 2 respuestas correctas y fuera tras 3 fallos. Lo usan el balanceador (`mooc-api-health-check`) y el autohealing del grupo (`mooc-api-hc`, espera inicial de 300 s) | Sin health check ni autohealing: el worker no recibe tráfico y su disponibilidad se observa en la cola y en sus logs |
 
 Las políticas se aplican con `Set-ApiAutoscaling` y `Set-WorkerAutoscaling` (`scripts/gcp/config.ps1`),
 que usan `encender.ps1` y `aplicar-autoscaling.ps1`. Detalle y justificación de los valores:
@@ -84,6 +85,10 @@ Todas las instancias se crean desde una plantilla con el mismo `startup-script`
 La plantilla guarda una copia del script: para aplicar un cambio de `startup.sh` se crean plantillas
 nuevas con `scripts/gcp/actualizar-plantillas.ps1`.
 
+Al arrancar, la API aplica las migraciones bajo un *advisory lock* de PostgreSQL (`runMigrations` en
+`backend/cmd/api/main.go`): si varias réplicas arrancan a la vez, una aplica el SQL y las demás esperan.
+Una instancia está lista cuando `/health` responde 200, lo que ocurre después de las migraciones.
+
 ## 5. Flujos principales
 
 - **Peticiones de la API:** navegador → balanceador → una instancia sana de la API → PostgreSQL / Redis.
@@ -96,8 +101,13 @@ nuevas con `scripts/gcp/actualizar-plantillas.ps1`.
 
 ## 6. Seguridad y red
 
-- **[Confirmar]** Solo el balanceador tiene entrada desde Internet. Redis y Cloud SQL usan IP privada
-  y solo reciben tráfico interno de la VPC (reglas de firewall exactas por confirmar).
+- Reglas de firewall de `mooc-vpc` (las reglas `default-*` pertenecen a la red `default` y no aplican):
+  - Desde Internet solo entran los rangos del balanceador y de los health checks de Google
+    (`130.211.0.0/22`, `35.191.0.0/16`, tcp 80 y 8080) y SSH por IAP (`35.235.240.0/20`, tcp 22).
+  - Redis (tcp 6379) solo acepta tráfico de las subredes pública (`10.0.1.0/24`) y privada (`10.0.2.0/24`).
+  - Cloud SQL solo tiene IP privada (`10.0.3.3`, sin IPv4 pública) en `mooc-vpc`.
+- Las VMs de la API están en `mooc-public-subnet` y tienen IP externa, pero ninguna regla permite tráfico
+  directo desde Internet hacia ellas. Los workers y Redis están en la subred privada, sin IP externa.
 - Los contenedores corren como usuario no root (`backend/Dockerfile`).
 - El servidor aplica cabeceras de seguridad (CSP restringida a los hosts de Cloud Storage), roles por
   ruta (`AccessPolicy`) y verificación de propiedad de cursos.

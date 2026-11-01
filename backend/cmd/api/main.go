@@ -29,6 +29,11 @@ import (
 	"github.com/mooc-platform/backend/internal/web"
 )
 
+// migrationLockID identifica el advisory lock de PostgreSQL que serializa las
+// migraciones: con autoscaling varias réplicas de la API arrancan a la vez y
+// solo una aplica el SQL mientras las demás esperan.
+const migrationLockID int64 = 442620263
+
 func runMigrations(db *sql.DB) error {
 	migrationDirs := []string{"./migrations", "/app/migrations"}
 	var targetDir string
@@ -58,6 +63,29 @@ func runMigrations(db *sql.DB) error {
 
 	sort.Strings(upFiles)
 
+	// El advisory lock pertenece a la sesión de PostgreSQL: se toma, se usa y se
+	// libera sobre la misma conexión, no sobre el pool.
+	ctx := context.Background()
+	conn, err := db.Conn(ctx)
+	if err != nil {
+		return fmt.Errorf("failed to get connection for migrations: %w", err)
+	}
+	defer func() {
+		if cerr := conn.Close(); cerr != nil {
+			log.Printf("[MIGRATIONS] Advertencia: error al cerrar la conexión de migraciones: %v", cerr)
+		}
+	}()
+
+	log.Println("[MIGRATIONS] Esperando el lock de migraciones...")
+	if _, err := conn.ExecContext(ctx, "SELECT pg_advisory_lock($1)", migrationLockID); err != nil {
+		return fmt.Errorf("failed to acquire migration lock: %w", err)
+	}
+	defer func() {
+		if _, uerr := conn.ExecContext(ctx, "SELECT pg_advisory_unlock($1)", migrationLockID); uerr != nil {
+			log.Printf("[MIGRATIONS] Advertencia: no se pudo liberar el lock de migraciones: %v", uerr)
+		}
+	}()
+
 	for _, file := range upFiles {
 		log.Printf("[MIGRATIONS] Ejecutando migración SQL: %s", filepath.Base(file))
 		// #nosec G304 -- la ruta sale de filepath.Glob sobre el directorio fijo de migraciones, no de entrada de usuario
@@ -66,7 +94,7 @@ func runMigrations(db *sql.DB) error {
 			return fmt.Errorf("failed to read migration file %s: %w", file, err)
 		}
 
-		if _, err := db.Exec(string(content)); err != nil {
+		if _, err := conn.ExecContext(ctx, string(content)); err != nil {
 			return fmt.Errorf("failed to execute migration %s: %w", file, err)
 		}
 	}

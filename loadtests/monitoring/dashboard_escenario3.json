@@ -1,0 +1,269 @@
+{
+  "displayName": "MOOC Escenario 3 - Autoscaling",
+  "mosaicLayout": {
+    "columns": 48,
+    "tiles": [
+      {
+        "xPos": 0, "yPos": 0, "width": 24, "height": 16,
+        "widget": {
+          "title": "Instancias por grupo (mooc-api-mig y mooc-worker-mig)",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"compute.googleapis.com/instance_group/size\" resource.type=\"instance_group\" (resource.label.\"instance_group_name\"=\"mooc-api-mig\" OR resource.label.\"instance_group_name\"=\"mooc-worker-mig\")",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MAX" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "${resource.labels.instance_group_name}"
+              }
+            ],
+            "yAxis": { "label": "instancias", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 24, "yPos": 0, "width": 24, "height": 16,
+        "widget": {
+          "title": "Cola: backlog (senal de los workers), pending y active",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/mooc/asynq/backlog\" resource.type=\"global\"",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MEAN" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "backlog"
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/mooc/asynq/pending\" resource.type=\"global\"",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MEAN" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "pending"
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/mooc/asynq/active\" resource.type=\"global\"",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MEAN" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "active"
+              }
+            ],
+            "yAxis": { "label": "trabajos", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 0, "yPos": 16, "width": 24, "height": 16,
+        "widget": {
+          "title": "API: CPU por instancia (objetivo 60 %)",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\" metric.label.\"instance_name\"=starts_with(\"mooc-api-mig\")",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MEAN" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "${metric.labels.instance_name}"
+              }
+            ],
+            "thresholds": [ { "value": 0.6, "label": "objetivo del autoscaler" } ],
+            "yAxis": { "label": "utilizacion (0-1)", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 24, "yPos": 16, "width": 24, "height": 16,
+        "widget": {
+          "title": "Workers: CPU por instancia",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\" metric.label.\"instance_name\"=starts_with(\"mooc-worker-mig\")",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MEAN" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "${metric.labels.instance_name}"
+              }
+            ],
+            "yAxis": { "label": "utilizacion (0-1)", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 0, "yPos": 32, "width": 24, "height": 16,
+        "widget": {
+          "title": "Balanceador: peticiones/s por clase de respuesta",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"loadbalancing.googleapis.com/https/request_count\" resource.type=\"https_lb_rule\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [ "metric.label.\"response_code_class\"" ]
+                    }
+                  }
+                },
+                "plotType": "STACKED_BAR",
+                "legendTemplate": "${metric.labels.response_code_class}xx"
+              }
+            ],
+            "yAxis": { "label": "peticiones/s", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 24, "yPos": 32, "width": 24, "height": 16,
+        "widget": {
+          "title": "Balanceador: latencia total p50 y p95 (ms)",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"loadbalancing.googleapis.com/https/total_latencies\" resource.type=\"https_lb_rule\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_DELTA",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_50"
+                    }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "p50"
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"loadbalancing.googleapis.com/https/total_latencies\" resource.type=\"https_lb_rule\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_DELTA",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_95"
+                    }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "p95"
+              }
+            ],
+            "yAxis": { "label": "ms", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 0, "yPos": 48, "width": 24, "height": 16,
+        "widget": {
+          "title": "Cola: antiguedad del trabajo pendiente mas viejo (s)",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/mooc/asynq/oldest_pending_age_seconds\" resource.type=\"global\"",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MAX" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "oldest_pending_age_seconds"
+              }
+            ],
+            "yAxis": { "label": "s", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 24, "yPos": 48, "width": 24, "height": 16,
+        "widget": {
+          "title": "Cloud SQL: CPU",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"cloudsql.googleapis.com/database/cpu/utilization\" resource.type=\"cloudsql_database\"",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MEAN" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "mooc-db-instance"
+              }
+            ],
+            "thresholds": [ { "value": 0.8, "label": "limite de calibracion (80 %)" } ],
+            "yAxis": { "label": "utilizacion (0-1)", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 0, "yPos": 64, "width": 24, "height": 16,
+        "widget": {
+          "title": "Cloud SQL: conexiones (num_backends)",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"cloudsql.googleapis.com/database/postgresql/num_backends\" resource.type=\"cloudsql_database\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [ "resource.label.\"database_id\"" ]
+                    }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "conexiones"
+              }
+            ],
+            "yAxis": { "label": "conexiones", "scale": "LINEAR" }
+          }
+        }
+      },
+      {
+        "xPos": 24, "yPos": 64, "width": 24, "height": 16,
+        "widget": {
+          "title": "Generador de carga: CPU (debe quedar bajo 70 %)",
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\" metric.label.\"instance_name\"=\"mooc-load-generator\"",
+                    "aggregation": { "alignmentPeriod": "60s", "perSeriesAligner": "ALIGN_MEAN" }
+                  }
+                },
+                "plotType": "LINE",
+                "legendTemplate": "mooc-load-generator"
+              }
+            ],
+            "thresholds": [ { "value": 0.7, "label": "limite del generador" } ],
+            "yAxis": { "label": "utilizacion (0-1)", "scale": "LINEAR" }
+          }
+        }
+      }
+    ]
+  }
+}

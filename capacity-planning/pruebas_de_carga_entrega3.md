@@ -178,7 +178,7 @@ El flujo en [`loadtests/k6/media-load-test.js`](../loadtests/k6/media-load-test.
 2. **Cola de Transcodificación Asíncrona bajo 10 Subidas Simultáneas:**
    * Cada transcodificación HLS a 4 calidades (1080p/720p/480p/360p) requiere entre 65 y 140 segundos de CPU intensivo.
    * Con 10 VUs subiendo videos en paralelo, la cola en Redis acumula trabajos, lo que genera timeouts de procesamiento (`media_processing_timeouts = 6-7`) en Nivel 3.
-   * **Propuesta técnica:** Ajustar el autoscaling de los workers para que escale anticipadamente no solo por CPU promedio sino por longitud de cola en Redis (`asynq_queue_size`), aumentando el número máximo de réplicas en el MIG de workers.
+   * **Tratamiento aplicado:** en estas corridas (26 de octubre) el grupo de workers todavía escalaba por CPU. Después se cambió su señal a la cola: `custom.googleapis.com/mooc/asynq/backlog` (pendientes + activos, 2 trabajos por VM), publicada por un exportador en la VM de Redis (ver [`docs/entrega3/arquitectura.md`](../docs/entrega3/arquitectura.md), sección 3). Su efecto se mide en el Escenario 3B; si con 3 workers la cola sigue creciendo, el siguiente paso es subir el máximo del grupo.
 
 ---
 

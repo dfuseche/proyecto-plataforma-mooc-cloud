@@ -88,7 +88,7 @@ const PRETRANSCODED_RESOURCE_IDS = (__ENV.PRETRANSCODED_RESOURCE_IDS || '')
   .map((id) => id.trim())
   .filter((id) => id.length > 0);
 
-const MAX_WAIT_FOR_MANIFEST_SECONDS = Number(__ENV.MAX_WAIT_FOR_MANIFEST_SECONDS || 180);
+export const MAX_WAIT_FOR_MANIFEST_SECONDS = Number(__ENV.MAX_WAIT_FOR_MANIFEST_SECONDS || 180);
 const SETUP_MAX_WAIT_SECONDS = Number(__ENV.SETUP_MAX_WAIT_SECONDS || 1200);
 const POLL_INTERVAL_SECONDS = Number(__ENV.POLL_INTERVAL_SECONDS || 3);
 const MAX_SEGMENTS_PER_ITERACION = Number(__ENV.MAX_SEGMENTS_PER_ITERACION || 2);
@@ -104,7 +104,7 @@ const PROFILES = [
   { name: 'pesado', bytes: open('../assets/perfil_pesado_1080p_20s.mp4', 'b'), expectedRenditions: 4 },
 ];
 
-function profileByName(name) {
+export function profileByName(name) {
   return PROFILES.find((p) => p.name === name);
 }
 
@@ -198,7 +198,7 @@ export const options = {
 const TEACHER_EMAIL = __ENV.TEACHER_EMAIL || 'loadtest-teacher@mooc.test';
 const TEACHER_PASSWORD = __ENV.TEACHER_PASSWORD || 'LoadTest123!';
 
-function getTeacherToken() {
+export function getTeacherToken() {
   const loginRes = http.post(
     `${BASE_URL}/api/v1/auth/login`,
     JSON.stringify({ email: TEACHER_EMAIL, password: TEACHER_PASSWORD }),
@@ -227,7 +227,7 @@ function getTeacherToken() {
   return null;
 }
 
-function crearYSubirVideo(tagPrefix, profile, token) {
+export function crearYSubirVideo(tagPrefix, profile, token) {
   const authHeaders = { 'Content-Type': 'application/json' };
   if (token) {
     authHeaders['Authorization'] = `Bearer ${token}`;
@@ -305,7 +305,7 @@ function crearYSubirVideo(tagPrefix, profile, token) {
 // media_processing_duration / media_processing_timeouts: en el setup el
 // worker puede estar drenando la cola del nivel anterior, y ese tiempo no es
 // una medicion del nivel que se esta probando.
-function esperarManifiesto(resourceId, profile, enSetup) {
+export function esperarManifiesto(resourceId, profile, enSetup) {
   const start = Date.now();
   const maxWait = enSetup ? SETUP_MAX_WAIT_SECONDS : MAX_WAIT_FOR_MANIFEST_SECONDS;
   const deadline = start + maxWait * 1000;
