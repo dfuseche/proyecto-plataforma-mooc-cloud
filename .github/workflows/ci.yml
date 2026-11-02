@@ -16,7 +16,7 @@ jobs:
         image: postgres:15-alpine
         env:
           POSTGRES_USER: mooc_user
-          POSTGRES_PASSWORD: j0zrN``N\l+1)d4U
+          POSTGRES_PASSWORD: j0j0zrN``Nl+1
           POSTGRES_DB: mooc_db
         ports:
           - 5432:5432
@@ -58,7 +58,7 @@ jobs:
 
       - name: Run Go Unit & Integration Tests
         env:
-          DATABASE_URL: postgres://mooc_user:j0zrN``N\l+1)d4U@localhost:5432/mooc_db?sslmode=disable
+          DATABASE_URL: postgres://mooc_user:j0j0zrN``Nl+1@localhost:5432/mooc_db?sslmode=disable
           REDIS_ADDR: localhost:6379
         run: |
           cd backend
