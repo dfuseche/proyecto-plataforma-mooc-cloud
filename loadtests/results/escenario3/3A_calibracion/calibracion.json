@@ -1,0 +1,301 @@
+{
+    "metrics": {
+        "data_sent": {
+            "count": 16895,
+            "rate": 234.08200813971104
+        },
+        "http_req_failed{scenario:trafico,fase:escalon_40}": {
+            "passes": 0,
+            "fails": 0,
+            "thresholds": {
+                "rate>=0": false
+            },
+            "value": 0
+        },
+        "vus_max": {
+            "value": 155,
+            "min": 155,
+            "max": 155
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0.8748477777777778,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 8.660992999999955,
+            "max": 78.7363
+        },
+        "data_received": {
+            "count": 21585,
+            "rate": 299.0624531338066
+        },
+        "http_req_duration{scenario:trafico,fase:escalon_20}": {
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "http_req_duration": {
+            "p(95)": 137.13917999999998,
+            "p(99)": 143.87739200000001,
+            "max": 145.6549,
+            "avg": 133.0507077777778,
+            "min": 127.8697,
+            "med": 132.46665000000002,
+            "p(90)": 136.3167
+        },
+        "http_req_duration{scenario:trafico,fase:escalon_10}": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "http_req_waiting": {
+            "p(90)": 136.12521,
+            "p(95)": 137.13917999999998,
+            "p(99)": 143.23062900000002,
+            "max": 145.6549,
+            "avg": 132.78228111111116,
+            "min": 126.909,
+            "med": 132.1423
+        },
+        "http_reqs{scenario:trafico,fase:escalon_30}": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_req_duration{scenario:trafico,fase:escalon_30}": {
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "iterations{scenario:trafico,fase:escalon_20}": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_reqs": {
+            "count": 90,
+            "rate": 1.2469594988205974
+        },
+        "iterations{scenario:trafico,fase:escalon_10}": {
+            "rate": 0,
+            "count": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_reqs{scenario:trafico,fase:escalon_20}": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_req_receiving": {
+            "p(95)": 0.8591599999999999,
+            "p(99)": 1.2231219999999998,
+            "max": 1.606,
+            "avg": 0.17504,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0.6851200000000001
+        },
+        "http_req_failed{scenario:trafico,fase:escalon_20}": {
+            "passes": 0,
+            "fails": 0,
+            "thresholds": {
+                "rate>=0": false
+            },
+            "value": 0
+        },
+        "http_req_failed{scenario:trafico,fase:escalon_10}": {
+            "passes": 0,
+            "fails": 0,
+            "thresholds": {
+                "rate>=0": false
+            },
+            "value": 0
+        },
+        "iterations{scenario:trafico,fase:escalon_30}": {
+            "rate": 0,
+            "count": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_req_duration{scenario:trafico,fase:escalon_50}": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "http_req_duration{scenario:sonda_instancias}": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "http_req_sending": {
+            "avg": 0.09338666666666666,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0.4000100000000001,
+            "p(95)": 0.5270849999999999,
+            "p(99)": 0.7328709999999999,
+            "max": 0.7828
+        },
+        "iterations{scenario:trafico,fase:escalon_40}": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_req_connecting": {
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 8.390953999999958,
+            "max": 76.2814,
+            "avg": 0.8475711111111112
+        },
+        "quiz_double_grading_detected": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count==0": false
+            }
+        },
+        "http_req_duration{scenario:trafico,fase:escalon_40}": {
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "vus": {
+            "value": 0,
+            "min": 0,
+            "max": 0
+        },
+        "http_req_failed{scenario:trafico,fase:escalon_30}": {
+            "passes": 0,
+            "fails": 0,
+            "thresholds": {
+                "rate>=0": false
+            },
+            "value": 0
+        },
+        "http_reqs{scenario:trafico,fase:escalon_40}": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_req_failed{scenario:trafico,fase:escalon_50}": {
+            "passes": 0,
+            "fails": 0,
+            "thresholds": {
+                "rate>=0": false
+            },
+            "value": 0
+        },
+        "iterations{scenario:trafico,fase:escalon_50}": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "iterations": {
+            "count": 0,
+            "rate": 0
+        },
+        "dropped_iterations": {
+            "rate": 0,
+            "count": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_req_blocked": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 17.627724999999916,
+            "max": 155.62,
+            "avg": 1.735472222222222,
+            "min": 0,
+            "med": 0
+        },
+        "http_reqs{scenario:trafico,fase:escalon_10}": {
+            "rate": 0,
+            "count": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        },
+        "http_req_failed": {
+            "passes": 90,
+            "fails": 0,
+            "value": 1
+        },
+        "http_reqs{scenario:trafico,fase:escalon_50}": {
+            "count": 0,
+            "rate": 0,
+            "thresholds": {
+                "count>=0": false
+            }
+        }
+    },
+    "root_group": {
+        "groups": {},
+        "checks": {},
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

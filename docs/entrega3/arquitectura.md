@@ -68,7 +68,8 @@ que usan `encender.ps1` y `aplicar-autoscaling.ps1`. Detalle y justificación de
   transcodificaciones ya está al 100 %), y una cola sin pendientes puede tener trabajos en curso. Contar
   pendientes + activos pide más workers cuando hay espera y no retira consumidores mientras procesan.
 - **Encendido y apagado:** `scripts/gcp/encender.ps1` y `apagar.ps1` activan o desactivan el
-  autoescalado de ambos MIG (1 a 3) y encienden o apagan Cloud SQL, para controlar el costo.
+  autoescalado de ambos MIG (1 a 3) y encienden o apagan Cloud SQL, la VM de Redis y la VM generadora de
+  carga, para controlar el costo (`encender.ps1 -SinGenerador` deja apagado el generador).
 
 ## 4. Aprovisionamiento de cada instancia
 

@@ -12,6 +12,9 @@ $WorkerMig   = 'mooc-worker-mig'
 $RedisVm = ''
 $Zone    = ''
 
+# VM generadora de carga (k6), en la misma zona. encender.ps1 la enciende y apagar.ps1 la detiene.
+$LoadGenVm = 'mooc-load-generator'
+
 # Autoescalado: cada MIG con su propia senal (Set-ApiAutoscaling / Set-WorkerAutoscaling)
 $MinReplicas = 1
 $MaxReplicas = 3
