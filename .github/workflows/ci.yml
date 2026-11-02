@@ -16,7 +16,7 @@ jobs:
         image: postgres:15-alpine
         env:
           POSTGRES_USER: mooc_user
-          POSTGRES_PASSWORD: j0j0zrN``Nl+1
+          POSTGRES_PASSWORD: j0zrNNl+1
           POSTGRES_DB: mooc_db
         ports:
           - 5432:5432
