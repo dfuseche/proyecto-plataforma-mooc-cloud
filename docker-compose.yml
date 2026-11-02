@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: mooc_db
       POSTGRES_USER: mooc_user
-      POSTGRES_PASSWORD: j0j0zrN``Nl+1
+      POSTGRES_PASSWORD: j0zrNNl+1
     ports:
       - "5433:5432"
     volumes:
