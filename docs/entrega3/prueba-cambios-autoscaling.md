@@ -269,7 +269,7 @@ la [guía completa](guia-escenario3-autoscaling.md)). Anota la CPU que alcanzó 
 
 ## 9. Al terminar
 
-1. Apaga: `.\scripts\gcp\apagar.ps1` y `gcloud compute instances stop mooc-load-generator --zone=us-central1-a`.
+1. Apaga: `.\scripts\gcp\apagar.ps1` (también detiene `mooc-load-generator`).
    El exportador vuelve a arrancar solo cuando `encender.ps1` enciende la VM de Redis.
 2. Haz commit de las capturas.
 3. Avisa al equipo (sobre todo a A) de:

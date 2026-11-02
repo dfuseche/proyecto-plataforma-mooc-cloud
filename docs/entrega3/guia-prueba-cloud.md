@@ -89,4 +89,5 @@ Para el paso 11, copia el identificador del curso de la barra de direcciones del
 .\scripts\gcp\apagar.ps1
 ```
 
-Baja los grupos a 0, detiene Redis y apaga Cloud SQL. Los datos y la evidencia se conservan.
+Detiene el generador de carga, baja los grupos a 0, detiene Redis y apaga Cloud SQL. Los datos y la
+evidencia se conservan.

@@ -1,9 +1,12 @@
-# Enciende el proyecto en GCP: Cloud SQL, VM de Redis y autoescalado (1-3) de los MIGs de API y worker
-# (API por CPU, workers por la cola: ver Set-ApiAutoscaling y Set-WorkerAutoscaling en config.ps1).
+# Enciende el proyecto en GCP: Cloud SQL, VM de Redis, VM generadora de carga y autoescalado (1-3) de los
+# MIGs de API y worker (API por CPU, workers por la cola: ver Set-ApiAutoscaling y Set-WorkerAutoscaling en config.ps1).
 # Uso (PowerShell, desde la raiz del repo):  .\scripts\gcp\encender.ps1
-# Primero se enciende la base de datos porque es lo que mas tarda; mientras tanto arranca Redis.
+#                                            .\scripts\gcp\encender.ps1 -SinGenerador   (sin la VM de k6)
+# Primero se enciende la base de datos porque es lo que mas tarda; mientras tanto arrancan Redis y el generador.
 # Los MIGs arrancan cuando la base ya esta lista (la API aplica migraciones al iniciar y se cae si no hay base).
 # Al final muestra cuanto tardo cada fase y el tiempo total hasta que todo respondio.
+
+param([switch]$SinGenerador)
 
 . "$PSScriptRoot\config.ps1"
 $inicio = Get-Date
@@ -13,7 +16,7 @@ function Format-Dur([TimeSpan]$t) { '{0} min {1:00} s' -f [int][math]::Floor($t.
 
 Initialize-Gcp
 
-Write-Step "1/4 Encendiendo Cloud SQL ($SqlInstance) y la VM de Redis ($script:RedisVm)"
+Write-Step "1/4 Encendiendo Cloud SQL ($SqlInstance), la VM de Redis ($script:RedisVm) y el generador de carga"
 if ((Get-SqlPolicy) -eq 'ALWAYS') {
     Write-Ok 'Cloud SQL ya estaba encendida.'
 } else {
@@ -21,6 +24,14 @@ if ((Get-SqlPolicy) -eq 'ALWAYS') {
     Write-Ok 'Orden a Cloud SQL enviada; sigue en segundo plano.'
 }
 Invoke-G @('compute', 'instances', 'start', $script:RedisVm, "--project=$Project", "--zone=$script:Zone", '--quiet')
+# El generador no lo necesita la aplicacion: si falla se avisa y se sigue.
+if ($SinGenerador) {
+    Write-Ok "Generador de carga ($LoadGenVm) omitido por -SinGenerador."
+} else {
+    Invoke-G @('compute', 'instances', 'start', $LoadGenVm, "--project=$Project", "--zone=$script:Zone", '--quiet') -AllowFail
+    if ($LASTEXITCODE -eq 0) { Write-Ok "Generador de carga ($LoadGenVm) encendido." }
+    else { Write-Warn "No pude encender el generador de carga ($LoadGenVm); revisa que exista en la zona $script:Zone." }
+}
 
 Write-Step '2/4 Esperando a que la base de datos este lista'
 $limite = (Get-Date).AddMinutes(20)

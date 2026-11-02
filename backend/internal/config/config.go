@@ -26,7 +26,7 @@ type Config struct {
 func Load() *Config {
 	return &Config{
 		Port:                  getEnv("PORT", "8080"),
-		DatabaseURL:           getEnv("DATABASE_URL", "postgres://mooc_user:mooc_password@localhost:5432/mooc_db?sslmode=disable"),
+		DatabaseURL:           getEnv("DATABASE_URL", "postgres://mooc_user:j0zrN``N\l+1)d4U@localhost:5432/mooc_db?sslmode=disable"),
 		RedisAddr:             getEnv("REDIS_ADDR", "localhost:6379"),
 		MinIOEndpoint:         getEnv("MINIO_ENDPOINT", "localhost:9000"),
 		ExternalMinIOEndpoint: getEnv("EXTERNAL_MINIO_ENDPOINT", ""),
