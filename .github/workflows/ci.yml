@@ -58,7 +58,7 @@ jobs:
 
       - name: Run Go Unit & Integration Tests
         env:
-          DATABASE_URL: postgres://mooc_user:j0j0zrN``Nl+1@localhost:5432/mooc_db?sslmode=disable
+          DATABASE_URL: postgres://mooc_user:j0zrNNl+1@localhost:5432/mooc_db?sslmode=disable
           REDIS_ADDR: localhost:6379
         run: |
           cd backend

@@ -4,6 +4,8 @@
 > `deploy/startup/startup.sh`, `.github/workflows/deploy.yml`, `scripts/gcp/`, `docs/OPERACIONES.md`).
 > La red, los health checks, el autohealing y el balanceo se verificaron en GCP el 1 de noviembre de 2026
 > con `gcloud` (configuración efectiva, no la de las plantillas del repo).
+> Versión extendida con diagramas, inventario, recuperación (RPO/RTO) y costos:
+> [`arquitectura_gcp.pdf`](arquitectura_gcp.pdf).
 
 ## 1. Visión general
 
@@ -35,7 +37,7 @@ flowchart LR
 
 | Componente | Recurso en GCP | Función |
 |---|---|---|
-| Balanceador | External HTTPS Application Load Balancer, backend service `mooc-api-backend-service` (HTTP al puerto 80 de las instancias, modo `UTILIZATION` con máximo 0,8, sin afinidad de sesión, drenaje de conexiones de 30 s), certificado autofirmado | Punto de entrada único. Reparte el tráfico entre las instancias sanas de la API |
+| Balanceador | External Application Load Balancer con IP 34.49.211.71. HTTPS (443, certificado autofirmado `mooc-lb-cert`) → URL map `mooc-api-urlmap` → backend service `mooc-api-backend` (timeout 60 s, drenaje de conexiones de 0 s). HTTP (80) → `mooc-api-url-map` → `mooc-api-backend-service` (timeout 30 s, drenaje 30 s). Los dos llegan al puerto 80 del grupo de la API, en modo `UTILIZATION` con máximo 0,8 y sin afinidad de sesión | Punto de entrada único. Reparte el tráfico entre las instancias sanas de la API |
 | API | MIG `mooc-api-mig`, `us-central1-a` | Backend Go (chi) que además sirve la SPA de React. Sin estado local |
 | Workers | MIG `mooc-worker-mig`, `us-central1-a` | Procesan en segundo plano la transcodificación HLS (FFmpeg) desde la cola Asynq |
 | Cola y caché | VM con Redis 7 fuera de los MIG | Cola de tareas, idempotencia y límite de tasa |
@@ -54,7 +56,7 @@ flowchart LR
 | Métrica | CPU media 60 % (`target-cpu = 0.6`) | Trabajos en la cola (pendientes + activos), 2 por VM: `custom.googleapis.com/mooc/asynq/backlog`, métrica por grupo con `single-instance-assignment = 2` |
 | Inicialización | 120 s | 180 s |
 | Reducción | Estabilización de 10 min (GCE) y como máximo 1 VM cada 300 s | Igual |
-| Health check | `GET /health` por HTTP en el puerto 80, cada 10 s, timeout de 5 s; sana tras 2 respuestas correctas y fuera tras 3 fallos. Lo usan el balanceador (`mooc-api-health-check`) y el autohealing del grupo (`mooc-api-hc`, espera inicial de 300 s) | Sin health check ni autohealing: el worker no recibe tráfico y su disponibilidad se observa en la cola y en sus logs |
+| Health check | `GET /health` por HTTP en el puerto 80, cada 10 s, timeout de 5 s; sana tras 2 respuestas correctas y fuera tras 3 fallos. `mooc-api-hc` lo usan el backend HTTPS y el autohealing del grupo (espera inicial de 300 s); `mooc-api-health-check`, con los mismos valores, el backend HTTP | Sin health check ni autohealing: el worker no recibe tráfico y su disponibilidad se observa en la cola y en sus logs |
 
 Las políticas se aplican con `Set-ApiAutoscaling` y `Set-WorkerAutoscaling` (`scripts/gcp/config.ps1`),
 que usan `encender.ps1` y `aplicar-autoscaling.ps1`. Detalle y justificación de los valores:
