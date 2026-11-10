@@ -108,6 +108,21 @@ if (-not $SkipBuild) {
     Write-Success "Imágenes de Backend y Worker publicadas exitosamente en Artifact Registry."
 }
 
+Write-Step "6.1. Verificando Secretos en Secret Manager"
+$dbSecretExists = gcloud secrets list --filter="name:mooc-db-url" --format="value(name)"
+if (-not $dbSecretExists) {
+    Write-Info "Creando secreto mooc-db-url..."
+    $dbUrl = "postgres://mooc_user:j0zrNNl+1@/mooc_db?host=/cloudsql/$Project:$Region:$SqlInstance&sslmode=disable"
+    $dbUrl | gcloud secrets create mooc-db-url --data-file=-
+}
+
+$jwtSecretExists = gcloud secrets list --filter="name:mooc-jwt-secret" --format="value(name)"
+if (-not $jwtSecretExists) {
+    Write-Info "Creando secreto mooc-jwt-secret..."
+    "super-secret-key-change-in-production" | gcloud secrets create mooc-jwt-secret --data-file=-
+}
+Write-Success "Secretos listos en Secret Manager."
+
 # 7. Desplegar Worker en Cloud Run (Invocación Privada)
 Write-Step "7. Desplegando Servicio Cloud Run: mooc-worker"
 gcloud run deploy mooc-worker `
@@ -122,7 +137,8 @@ gcloud run deploy mooc-worker `
     --memory=2Gi `
     --timeout=600s `
     --add-cloudsql-instances="$Project:$Region:$SqlInstance" `
-    --set-secrets="DATABASE_URL=mooc-db-url:latest,JWT_SECRET=mooc-jwt-secret:latest" `
+    --set-secrets="DATABASE_URL=mooc-db-url:latest" `
+    --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" `
     --set-env-vars="S3_REGION=$Region,S3_MEDIA_BUCKET=$MediaBucket,MINIO_ENDPOINT=storage.googleapis.com,MINIO_SECURE=true" `
     --quiet
 
@@ -174,7 +190,8 @@ gcloud run deploy mooc-backend `
     --memory=1Gi `
     --timeout=60s `
     --add-cloudsql-instances="$Project:$Region:$SqlInstance" `
-    --set-secrets="DATABASE_URL=mooc-db-url:latest,JWT_SECRET=mooc-jwt-secret:latest" `
+    --set-secrets="DATABASE_URL=mooc-db-url:latest" `
+    --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" `
     --set-env-vars="GCP_PROJECT=$Project,PUBSUB_TOPIC=$TopicName,S3_REGION=$Region,S3_MEDIA_BUCKET=$MediaBucket,MINIO_ENDPOINT=storage.googleapis.com,MINIO_SECURE=true" `
     --quiet
 

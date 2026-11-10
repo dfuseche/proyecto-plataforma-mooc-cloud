@@ -106,6 +106,23 @@ echo "[OK] Imágenes de Backend y Worker publicadas exitosamente en Artifact Reg
 
 echo ""
 echo "========================================================"
+echo ">>> 6.1. Verificando Secretos en Secret Manager"
+echo "========================================================"
+if ! gcloud secrets describe mooc-db-url >/dev/null 2>&1; then
+    echo "[INFO] Creando secreto mooc-db-url..."
+    echo -n "postgres://mooc_user:j0zrNNl+1@/mooc_db?host=/cloudsql/$PROJECT:$REGION:$SQL_INSTANCE&sslmode=disable" | \
+        gcloud secrets create mooc-db-url --data-file=-
+fi
+
+if ! gcloud secrets describe mooc-jwt-secret >/dev/null 2>&1; then
+    echo "[INFO] Creando secreto mooc-jwt-secret..."
+    echo -n "super-secret-key-change-in-production" | \
+        gcloud secrets create mooc-jwt-secret --data-file=-
+fi
+echo "[OK] Secretos listos en Secret Manager."
+
+echo ""
+echo "========================================================"
 echo ">>> 7. Desplegando Servicio Cloud Run: mooc-worker"
 echo "========================================================"
 gcloud run deploy mooc-worker \
@@ -120,7 +137,8 @@ gcloud run deploy mooc-worker \
     --memory=2Gi \
     --timeout=600s \
     --add-cloudsql-instances="$PROJECT:$REGION:$SQL_INSTANCE" \
-    --set-secrets="DATABASE_URL=mooc-db-url:latest,JWT_SECRET=mooc-jwt-secret:latest" \
+    --set-secrets="DATABASE_URL=mooc-db-url:latest" \
+    --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" \
     --set-env-vars="S3_REGION=$REGION,S3_MEDIA_BUCKET=$MEDIA_BUCKET,MINIO_ENDPOINT=storage.googleapis.com,MINIO_SECURE=true" \
     --quiet
 
@@ -176,7 +194,8 @@ gcloud run deploy mooc-backend \
     --memory=1Gi \
     --timeout=60s \
     --add-cloudsql-instances="$PROJECT:$REGION:$SQL_INSTANCE" \
-    --set-secrets="DATABASE_URL=mooc-db-url:latest,JWT_SECRET=mooc-jwt-secret:latest" \
+    --set-secrets="DATABASE_URL=mooc-db-url:latest" \
+    --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" \
     --set-env-vars="GCP_PROJECT=$PROJECT,PUBSUB_TOPIC=$TOPIC_NAME,S3_REGION=$REGION,S3_MEDIA_BUCKET=$MEDIA_BUCKET,MINIO_ENDPOINT=storage.googleapis.com,MINIO_SECURE=true" \
     --quiet
 
