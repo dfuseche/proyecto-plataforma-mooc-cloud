@@ -76,6 +76,10 @@ gcloud projects add-iam-policy-binding "$PROJECT" --member="serviceAccount:$WORK
 gcloud projects add-iam-policy-binding "$PROJECT" --member="serviceAccount:$WORKER_EMAIL" --role="roles/storage.objectAdmin" --condition=None --quiet >/dev/null
 gcloud projects add-iam-policy-binding "$PROJECT" --member="serviceAccount:$WORKER_EMAIL" --role="roles/secretmanager.secretAccessor" --condition=None --quiet >/dev/null
 
+# Permisos para que Cloud Build publique en Artifact Registry
+gcloud projects add-iam-policy-binding "$PROJECT" --member="serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com" --role="roles/artifactregistry.writer" --condition=None --quiet >/dev/null 2>&1 || true
+gcloud projects add-iam-policy-binding "$PROJECT" --member="serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com" --role="roles/artifactregistry.writer" --condition=None --quiet >/dev/null 2>&1 || true
+
 echo "[OK] Cuentas de servicio y permisos IAM configurados."
 
 echo ""
