@@ -25,15 +25,17 @@ import (
 // que caen en la cola por defecto de asynq).
 const asynqDefaultQueue = "default"
 
+type TaskPublisher interface {
+	Publish(ctx context.Context, payload interface{}, attributes map[string]string) (string, error)
+}
+
 type HTTPHandler struct {
-	storage      *StorageService
-	courseRepo   domain.CourseRepository
-	learningRepo domain.LearningRepository
-	asynqClient  *asynq.Client
-	// asynqInspector es opcional: si es nil, seguimos pudiendo encolar,
-	// simplemente perdemos la capacidad de destrabar una tarea que quedó
-	// archivada con el mismo Task ID (ver enqueueTranscodeTask).
+	storage        *StorageService
+	courseRepo     domain.CourseRepository
+	learningRepo   domain.LearningRepository
+	asynqClient    *asynq.Client
 	asynqInspector *asynq.Inspector
+	taskPublisher  TaskPublisher
 }
 
 func NewHTTPHandler(storage *StorageService, courseRepo domain.CourseRepository, learningRepo domain.LearningRepository, asynqClient *asynq.Client, asynqInspector *asynq.Inspector) *HTTPHandler {
@@ -44,6 +46,10 @@ func NewHTTPHandler(storage *StorageService, courseRepo domain.CourseRepository,
 		asynqClient:    asynqClient,
 		asynqInspector: asynqInspector,
 	}
+}
+
+func (h *HTTPHandler) SetTaskPublisher(publisher TaskPublisher) {
+	h.taskPublisher = publisher
 }
 
 func (h *HTTPHandler) RegisterRoutes(r chi.Router) {
@@ -184,33 +190,53 @@ func (h *HTTPHandler) CompleteUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// 3. Encolar tarea asíncrona en Asynq
-	if h.asynqClient != nil && (res.Type == domain.ResourceTypeVideo || res.Type == domain.ResourceTypeAudio) {
-		task, err := worker.NewMediaTranscodeHLSTask(res.ID, req.ObjectKey, string(res.Type))
-		if err != nil {
-			// #nosec G706 -- el identificador del recurso es un UUID
-			log.Printf("[MEDIA] No se pudo construir la tarea de transcodificación para %s: %v", res.ID, err)
-			respondError(w, http.StatusInternalServerError, "No se pudo preparar el procesamiento del recurso")
-			return
+	// 3. Encolar / publicar tarea asíncrona
+	if res.Type == domain.ResourceTypeVideo || res.Type == domain.ResourceTypeAudio {
+		payload := worker.MediaTranscodeHLSPayload{
+			ResourceID:  res.ID,
+			OriginalKey: req.ObjectKey,
+			MediaType:   string(res.Type),
 		}
 
-		if err := h.enqueueTranscodeTask(r.Context(), task, res.ID.String()); err != nil {
-			// Antes este error se descartaba en silencio (_, _ = ...Enqueue(task)):
-			// el recurso quedaba en "processing" para siempre y nadie se enteraba
-			// de que la transcodificación nunca se había disparado. Ahora lo
-			// registramos, lo reflejamos en el estado del recurso y se lo
-			// devolvemos al llamador para que pueda reintentar.
-			// #nosec G706 -- el identificador del recurso es un UUID
-			log.Printf("[MEDIA] Fallo encolando transcodificación HLS para %s: %v", res.ID, err)
-
-			res.ProcessingStatus = domain.ProcessingFailed
-			if updErr := h.courseRepo.UpdateResource(r.Context(), res); updErr != nil {
+		if h.taskPublisher != nil {
+			attrs := map[string]string{
+				"resource_id": res.ID.String(),
+				"media_type":  string(res.Type),
+				"event":       "media_transcode_hls",
+			}
+			msgID, err := h.taskPublisher.Publish(r.Context(), payload, attrs)
+			if err != nil {
+				log.Printf("[MEDIA-PUBSUB] Error publicando tarea para %s: %v", res.ID, err)
+				res.ProcessingStatus = domain.ProcessingFailed
+				if updErr := h.courseRepo.UpdateResource(r.Context(), res); updErr != nil {
+					log.Printf("[MEDIA-PUBSUB] Además falló marcando %s como failed: %v", res.ID, updErr)
+				}
+				respondError(w, http.StatusBadGateway, "El archivo se subió, pero no se pudo publicar el procesamiento en Pub/Sub. Reintentá el complete-upload.")
+				return
+			}
+			log.Printf("[MEDIA-PUBSUB] Tarea para recurso %s publicada con éxito en Cloud Pub/Sub. MessageID: %s", res.ID, msgID)
+		} else if h.asynqClient != nil {
+			task, err := worker.NewMediaTranscodeHLSTask(res.ID, req.ObjectKey, string(res.Type))
+			if err != nil {
 				// #nosec G706 -- el identificador del recurso es un UUID
-				log.Printf("[MEDIA] Además falló marcando %s como failed: %v", res.ID, updErr)
+				log.Printf("[MEDIA] No se pudo construir la tarea de transcodificación para %s: %v", res.ID, err)
+				respondError(w, http.StatusInternalServerError, "No se pudo preparar el procesamiento del recurso")
+				return
 			}
 
-			respondError(w, http.StatusBadGateway, "El archivo se subió, pero no se pudo encolar el procesamiento. Reintentá el complete-upload.")
-			return
+			if err := h.enqueueTranscodeTask(r.Context(), task, res.ID.String()); err != nil {
+				// #nosec G706 -- el identificador del recurso es un UUID
+				log.Printf("[MEDIA] Fallo encolando transcodificación HLS para %s: %v", res.ID, err)
+
+				res.ProcessingStatus = domain.ProcessingFailed
+				if updErr := h.courseRepo.UpdateResource(r.Context(), res); updErr != nil {
+					// #nosec G706 -- el identificador del recurso es un UUID
+					log.Printf("[MEDIA] Además falló marcando %s como failed: %v", res.ID, updErr)
+				}
+
+				respondError(w, http.StatusBadGateway, "El archivo se subió, pero no se pudo encolar el procesamiento. Reintentá el complete-upload.")
+				return
+			}
 		}
 	}
 

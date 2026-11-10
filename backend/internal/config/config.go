@@ -21,6 +21,9 @@ type Config struct {
 	MailpitPort           int
 	JWTSecret             string
 	WorkerConcurrency     int
+	GCPProjectID          string
+	PubSubTopicID         string
+	CORSAllowedOrigins    string
 }
 
 func Load() *Config {
@@ -39,11 +42,11 @@ func Load() *Config {
 		MailpitHost:           getEnv("MAILPIT_HOST", "localhost"),
 		MailpitPort:           getEnvAsInt("MAILPIT_PORT", 1025),
 		JWTSecret:             getEnv("JWT_SECRET", "super-secret-key-change-in-production"),
-		// Tareas asynq que el worker procesa en paralelo. Cada transcodificacion
-		// HLS multi-calidad (ffmpeg) satura por si sola los 2 vCPU de la VM: con 5
-		// en paralelo (valor anterior) la VM llego a carga 12 y se congelo bajo la
-		// prueba de carga del Escenario 2. Default = 1 por vCPU.
-		WorkerConcurrency: getEnvAsInt("WORKER_CONCURRENCY", 2),
+		// Tareas asynq o worker concurrency en paralelo
+		WorkerConcurrency:     getEnvAsInt("WORKER_CONCURRENCY", 2),
+		GCPProjectID:          getEnv("GCP_PROJECT", getEnv("GOOGLE_CLOUD_PROJECT", "proyecto-plataforma-mooc")),
+		PubSubTopicID:         getEnv("PUBSUB_TOPIC", getEnv("TOPIC_ID", "mooc-tasks-topic")),
+		CORSAllowedOrigins:    getEnv("CORS_ALLOWED_ORIGINS", ""),
 	}
 }
 

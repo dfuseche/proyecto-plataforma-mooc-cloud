@@ -25,6 +25,7 @@ import (
 	"github.com/mooc-platform/backend/internal/learning"
 	"github.com/mooc-platform/backend/internal/media"
 	internalMw "github.com/mooc-platform/backend/internal/middleware"
+	"github.com/mooc-platform/backend/internal/pubsub"
 	"github.com/mooc-platform/backend/internal/user"
 	"github.com/mooc-platform/backend/internal/web"
 )
@@ -232,6 +233,18 @@ func main() {
 
 	mediaHandler := media.NewHTTPHandler(storageService, courseRepo, learningRepo, asynqClient, asynqInspector)
 
+	// Inicializar publicador de tareas Cloud Pub/Sub si está configurado
+	if cfg.PubSubTopicID != "" {
+		pubsubPub, err := pubsub.NewPublisher(context.Background(), cfg.GCPProjectID, cfg.PubSubTopicID)
+		if err != nil {
+			log.Printf("[WARNING] No se pudo inicializar publicador de Cloud Pub/Sub (topic=%s, project=%s): %v", cfg.PubSubTopicID, cfg.GCPProjectID, err)
+		} else {
+			defer pubsubPub.Close()
+			mediaHandler.SetTaskPublisher(pubsubPub)
+			log.Printf("[PUBSUB] Publicador Cloud Pub/Sub vinculado a mediaHandler (topic=%s)", cfg.PubSubTopicID)
+		}
+	}
+
 	authMw := internalMw.NewAuthMiddleware(userRepo)
 	rateLimiter := internalMw.NewRateLimiter(rdb, 100, 1*time.Minute)
 	metrics := internalMw.NewMetrics()
@@ -263,7 +276,11 @@ func main() {
 	// La SPA se sirve desde el mismo origen que la API, así que CORS solo se
 	// habilita para los orígenes que se listen en CORS_ALLOWED_ORIGINS
 	// (separados por comas); sin esa variable no se aceptan peticiones de otros orígenes.
-	if origins := splitCSV(os.Getenv("CORS_ALLOWED_ORIGINS")); len(origins) > 0 {
+	corsOrigins := os.Getenv("CORS_ALLOWED_ORIGINS")
+	if corsOrigins == "" {
+		corsOrigins = cfg.CORSAllowedOrigins
+	}
+	if origins := splitCSV(corsOrigins); len(origins) > 0 {
 		r.Use(cors.Handler(cors.Options{
 			AllowedOrigins:   origins,
 			AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
@@ -272,6 +289,7 @@ func main() {
 			AllowCredentials: true,
 			MaxAge:           300,
 		}))
+		log.Printf("[CORS] Orígenes permitidos: %v", origins)
 	}
 
 	registerDocsRoutes(r)

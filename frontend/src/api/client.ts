@@ -1,5 +1,6 @@
 // Cliente HTTP mínimo para el envelope {success, data, error, details}.
 const TOKEN_KEY = 'mooc.token'
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '')
 
 export class ApiError extends Error {
   status: number
@@ -29,7 +30,7 @@ export async function api<T>(path: string, init: { method?: string; body?: unkno
 
   let res: Response
   try {
-    res = await fetch(`/api/v1${path}`, {
+    res = await fetch(`${API_BASE}/api/v1${path}`, {
       method: init.method ?? 'GET',
       headers,
       body: init.body !== undefined ? JSON.stringify(init.body) : undefined,
