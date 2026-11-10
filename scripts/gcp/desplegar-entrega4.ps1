@@ -40,6 +40,7 @@ gcloud services enable `
     pubsub.googleapis.com `
     artifactregistry.googleapis.com `
     secretmanager.googleapis.com `
+    cloudbuild.googleapis.com `
     sqladmin.googleapis.com
 Write-Success "APIs habilitadas."
 
@@ -101,20 +102,10 @@ $WorkerImage   = "$RepoUrl/mooc-worker:latest"
 $FrontendImage = "$RepoUrl/mooc-frontend:latest"
 
 if (-not $SkipBuild) {
-    Write-Step "6. Construyendo y publicando imágenes de contenedor en Artifact Registry"
-    
-    # Configurar autenticación de Docker con Artifact Registry
-    gcloud auth configure-docker "$Region-docker.pkg.dev" --quiet
-    
-    # Backend
-    Write-Info "Compilando imagen de Backend..."
-    docker build -t $BackendImage -f backend/Dockerfile.backend backend/
-    docker push $BackendImage
-
-    # Worker
-    Write-Info "Compilando imagen de Worker..."
-    docker build -t $WorkerImage -f backend/Dockerfile.worker backend/
-    docker push $WorkerImage
+    Write-Step "6. Construyendo y publicando imágenes de contenedor con Google Cloud Build"
+    Write-Info "Enviando construcción de Backend y Worker a Cloud Build..."
+    gcloud builds submit --config=cloudbuild.yaml --substitutions=_REPO_URL="$RepoUrl" .
+    Write-Success "Imágenes de Backend y Worker publicadas exitosamente en Artifact Registry."
 }
 
 # 7. Desplegar Worker en Cloud Run (Invocación Privada)
@@ -193,12 +184,8 @@ Write-Success "Backend desplegado en: $BackendUrl"
 # 11. Compilar y Desplegar Frontend
 Write-Step "11. Compilando y desplegando Servicio Cloud Run: mooc-frontend"
 if (-not $SkipBuild) {
-    Write-Info "Construyendo Frontend inyectando VITE_API_URL=$BackendUrl..."
-    docker build `
-        --build-arg VITE_API_URL=$BackendUrl `
-        -t $FrontendImage `
-        -f frontend/Dockerfile frontend/
-    docker push $FrontendImage
+    Write-Info "Construyendo Frontend con Cloud Build inyectando VITE_API_URL=$BackendUrl..."
+    gcloud builds submit --config=cloudbuild-frontend.yaml --substitutions=_REPO_URL="$RepoUrl",_BACKEND_URL="$BackendUrl" .
 }
 
 gcloud run deploy mooc-frontend `

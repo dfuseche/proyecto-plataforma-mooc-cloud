@@ -28,6 +28,7 @@ gcloud services enable \
     pubsub.googleapis.com \
     artifactregistry.googleapis.com \
     secretmanager.googleapis.com \
+    cloudbuild.googleapis.com \
     sqladmin.googleapis.com
 echo "[OK] APIs habilitadas."
 
@@ -92,17 +93,12 @@ FRONTEND_IMAGE="$REPO_URL/mooc-frontend:latest"
 
 echo ""
 echo "========================================================"
-echo ">>> 6. Construyendo y publicando imágenes de Backend y Worker"
+echo ">>> 6. Construyendo imágenes con Google Cloud Build"
 echo "========================================================"
-gcloud auth configure-docker "$REGION-docker.pkg.dev" --quiet
-
-echo "[INFO] Compilando imagen de Backend..."
-docker build -t "$BACKEND_IMAGE" -f backend/Dockerfile.backend backend/
-docker push "$BACKEND_IMAGE"
-
-echo "[INFO] Compilando imagen de Worker..."
-docker build -t "$WORKER_IMAGE" -f backend/Dockerfile.worker backend/
-docker push "$WORKER_IMAGE"
+# Usamos Cloud Build en la nube para evitar problemas de conexión o proxies con el daemon local de Docker
+echo "[INFO] Enviando construcción de Backend y Worker a Cloud Build..."
+gcloud builds submit --config=cloudbuild.yaml --substitutions=_REPO_URL="$REPO_URL" .
+echo "[OK] Imágenes de Backend y Worker publicadas exitosamente en Artifact Registry."
 
 echo ""
 echo "========================================================"
@@ -187,12 +183,8 @@ echo ""
 echo "========================================================"
 echo ">>> 11. Compilando y desplegando Servicio Cloud Run: mooc-frontend"
 echo "========================================================"
-echo "[INFO] Construyendo Frontend inyectando VITE_API_URL=$BACKEND_URL..."
-docker build \
-    --build-arg VITE_API_URL="$BACKEND_URL" \
-    -t "$FRONTEND_IMAGE" \
-    -f frontend/Dockerfile frontend/
-docker push "$FRONTEND_IMAGE"
+echo "[INFO] Construyendo Frontend con Cloud Build inyectando VITE_API_URL=$BACKEND_URL..."
+gcloud builds submit --config=cloudbuild-frontend.yaml --substitutions=_REPO_URL="$REPO_URL",_BACKEND_URL="$BACKEND_URL" .
 
 gcloud run deploy mooc-frontend \
     --image="$FRONTEND_IMAGE" \
