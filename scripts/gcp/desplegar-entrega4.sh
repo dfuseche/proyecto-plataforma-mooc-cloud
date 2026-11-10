@@ -34,6 +34,21 @@ echo "[OK] APIs habilitadas."
 
 echo ""
 echo "========================================================"
+echo ">>> 2.1. Verificando estado de Cloud SQL: $SQL_INSTANCE"
+echo "========================================================"
+SQL_POLICY=$(gcloud sql instances describe "$SQL_INSTANCE" --format="value(settings.activationPolicy)" 2>/dev/null || echo "ALWAYS")
+if [ "$SQL_POLICY" != "ALWAYS" ]; then
+    echo "[INFO] Cloud SQL ($SQL_INSTANCE) está apagada (activationPolicy=$SQL_POLICY). Encendiendo..."
+    gcloud sql instances patch "$SQL_INSTANCE" --activation-policy=ALWAYS --quiet
+    echo "[INFO] Esperando a que Cloud SQL esté en estado RUNNABLE..."
+    while [ "$(gcloud sql instances describe "$SQL_INSTANCE" --format="value(state)" 2>/dev/null)" != "RUNNABLE" ]; do
+        sleep 5
+    done
+fi
+echo "[OK] Cloud SQL activa y lista para recibir conexiones."
+
+echo ""
+echo "========================================================"
 echo ">>> 3. Verificando repositorio en Artifact Registry"
 echo "========================================================"
 if ! gcloud artifacts repositories describe "$REPO_NAME" --location="$REGION" >/dev/null 2>&1; then
