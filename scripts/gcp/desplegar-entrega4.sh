@@ -134,6 +134,44 @@ if ! gcloud secrets describe mooc-jwt-secret >/dev/null 2>&1; then
     echo -n "super-secret-key-change-in-production" | \
         gcloud secrets create mooc-jwt-secret --data-file=-
 fi
+
+# Credenciales de interoperabilidad HMAC de Cloud Storage para S3 (minio-go)
+if ! gcloud secrets describe mooc-storage-access-key >/dev/null 2>&1 || ! gcloud secrets describe mooc-storage-secret-key >/dev/null 2>&1; then
+    echo "[INFO] Generando credenciales HMAC de Cloud Storage para interoperabilidad S3..."
+    HMAC_OUT=$(gcloud storage hmac create "$BACKEND_EMAIL" --format="json" 2>&1 || true)
+
+    HMAC_ACCESS=$(echo "$HMAC_OUT" | python3 -c '
+import sys, json, re
+try:
+    d = json.load(sys.stdin)
+    print(d.get("metadata", {}).get("accessId", "") or d.get("accessId", ""))
+except Exception:
+    m = re.search(r"accessId[\"\s:]+([^\"\s,\}]+)", sys.stdin.read())
+    print(m.group(1) if m else "")
+' 2>/dev/null || true)
+
+    HMAC_SECRET=$(echo "$HMAC_OUT" | python3 -c '
+import sys, json, re
+try:
+    d = json.load(sys.stdin)
+    print(d.get("secret", ""))
+except Exception:
+    m = re.search(r"secret[\"\s:]+([^\"\s,\}]+)", sys.stdin.read())
+    print(m.group(1) if m else "")
+' 2>/dev/null || true)
+
+    if [ -n "$HMAC_ACCESS" ] && [ -n "$HMAC_SECRET" ]; then
+        if ! gcloud secrets describe mooc-storage-access-key >/dev/null 2>&1; then
+            echo -n "$HMAC_ACCESS" | gcloud secrets create mooc-storage-access-key --data-file=-
+        fi
+        if ! gcloud secrets describe mooc-storage-secret-key >/dev/null 2>&1; then
+            echo -n "$HMAC_SECRET" | gcloud secrets create mooc-storage-secret-key --data-file=-
+        fi
+        echo "[OK] Credenciales HMAC guardadas en Secret Manager."
+    else
+        echo "[WARNING] No se pudo generar la clave HMAC automáticamente. Salida: $HMAC_OUT"
+    fi
+fi
 echo "[OK] Secretos listos en Secret Manager."
 
 echo ""
@@ -154,6 +192,8 @@ gcloud run deploy mooc-worker \
     --add-cloudsql-instances="$PROJECT:$REGION:$SQL_INSTANCE" \
     --set-secrets="DATABASE_URL=mooc-db-url:latest" \
     --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" \
+    --set-secrets="MINIO_ACCESS_KEY=mooc-storage-access-key:latest" \
+    --set-secrets="MINIO_SECRET_KEY=mooc-storage-secret-key:latest" \
     --set-env-vars="S3_REGION=$REGION,S3_MEDIA_BUCKET=$MEDIA_BUCKET,MINIO_ENDPOINT=storage.googleapis.com,MINIO_SECURE=true" \
     --quiet
 
@@ -211,6 +251,8 @@ gcloud run deploy mooc-backend \
     --add-cloudsql-instances="$PROJECT:$REGION:$SQL_INSTANCE" \
     --set-secrets="DATABASE_URL=mooc-db-url:latest" \
     --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" \
+    --set-secrets="MINIO_ACCESS_KEY=mooc-storage-access-key:latest" \
+    --set-secrets="MINIO_SECRET_KEY=mooc-storage-secret-key:latest" \
     --set-env-vars="GCP_PROJECT=$PROJECT,PUBSUB_TOPIC=$TOPIC_NAME,S3_REGION=$REGION,S3_MEDIA_BUCKET=$MEDIA_BUCKET,MINIO_ENDPOINT=storage.googleapis.com,MINIO_SECURE=true" \
     --quiet
 
@@ -248,6 +290,32 @@ gcloud run services update mooc-backend \
     --update-env-vars="CORS_ALLOWED_ORIGINS=$FRONTEND_URL" \
     --quiet
 echo "[OK] CORS configurado para origen: $FRONTEND_URL"
+
+echo ""
+echo "========================================================"
+echo ">>> 13. Configurando CORS en Google Cloud Storage: $MEDIA_BUCKET"
+echo "========================================================"
+cat <<EOF > /tmp/gcs-cors.json
+[
+  {
+    "origin": ["$FRONTEND_URL", "http://localhost:5173", "http://localhost:8080", "*"],
+    "method": ["GET", "HEAD", "PUT", "POST", "OPTIONS"],
+    "responseHeader": [
+      "Content-Type",
+      "Content-Length",
+      "Range",
+      "Access-Control-Allow-Origin",
+      "ETag",
+      "x-goog-resumable"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]
+EOF
+
+gcloud storage buckets update "gs://$MEDIA_BUCKET" --cors-file=/tmp/gcs-cors.json --quiet 2>/dev/null || \
+gsutil cors set /tmp/gcs-cors.json "gs://$MEDIA_BUCKET" || true
+echo "[OK] CORS configurado en bucket gs://$MEDIA_BUCKET."
 
 echo ""
 echo "========================================================"

@@ -121,6 +121,31 @@ if (-not $jwtSecretExists) {
     Write-Info "Creando secreto mooc-jwt-secret..."
     "super-secret-key-change-in-production" | gcloud secrets create mooc-jwt-secret --data-file=-
 }
+
+# Credenciales de interoperabilidad HMAC de Cloud Storage para S3 (minio-go)
+$accessKeyExists = gcloud secrets list --filter="name:mooc-storage-access-key" --format="value(name)"
+$secretKeyExists = gcloud secrets list --filter="name:mooc-storage-secret-key" --format="value(name)"
+if (-not $accessKeyExists -or -not $secretKeyExists) {
+    Write-Info "Generando credenciales HMAC de Cloud Storage para interoperabilidad S3..."
+    try {
+        $hmacJson = gcloud storage hmac create $BackendEmail --format="json" 2>$null | ConvertFrom-Json
+        $hmacAccess = $hmacJson.metadata.accessId
+        if (-not $hmacAccess) { $hmacAccess = $hmacJson.accessId }
+        $hmacSecret = $hmacJson.secret
+
+        if ($hmacAccess -and $hmacSecret) {
+            if (-not $accessKeyExists) {
+                $hmacAccess | gcloud secrets create mooc-storage-access-key --data-file=-
+            }
+            if (-not $secretKeyExists) {
+                $hmacSecret | gcloud secrets create mooc-storage-secret-key --data-file=-
+            }
+            Write-Success "Credenciales HMAC guardadas en Secret Manager."
+        }
+    } catch {
+        Write-Info "No se pudo generar la clave HMAC automáticamente o ya existe."
+    }
+}
 Write-Success "Secretos listos en Secret Manager."
 
 # 7. Desplegar Worker en Cloud Run (Invocación Privada)
@@ -139,6 +164,8 @@ gcloud run deploy mooc-worker `
     --add-cloudsql-instances="$Project:$Region:$SqlInstance" `
     --set-secrets="DATABASE_URL=mooc-db-url:latest" `
     --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" `
+    --set-secrets="MINIO_ACCESS_KEY=mooc-storage-access-key:latest" `
+    --set-secrets="MINIO_SECRET_KEY=mooc-storage-secret-key:latest" `
     --set-env-vars="S3_REGION=$Region,S3_MEDIA_BUCKET=$MediaBucket,MINIO_ENDPOINT=storage.googleapis.com,MINIO_SECURE=true" `
     --quiet
 
@@ -192,6 +219,8 @@ gcloud run deploy mooc-backend `
     --add-cloudsql-instances="$Project:$Region:$SqlInstance" `
     --set-secrets="DATABASE_URL=mooc-db-url:latest" `
     --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" `
+    --set-secrets="MINIO_ACCESS_KEY=mooc-storage-access-key:latest" `
+    --set-secrets="MINIO_SECRET_KEY=mooc-storage-secret-key:latest" `
     --set-env-vars="GCP_PROJECT=$Project,PUBSUB_TOPIC=$TopicName,S3_REGION=$Region,S3_MEDIA_BUCKET=$MediaBucket,MINIO_ENDPOINT=storage.googleapis.com,MINIO_SECURE=true" `
     --quiet
 
@@ -227,6 +256,34 @@ gcloud run services update mooc-backend `
     --update-env-vars="CORS_ALLOWED_ORIGINS=$FrontendUrl" `
     --quiet
 Write-Success "CORS configurado para origen: $FrontendUrl"
+
+# 13. Configurar CORS en Cloud Storage Bucket
+Write-Step "13. Configurando CORS en Google Cloud Storage: $MediaBucket"
+$corsJson = @"
+[
+  {
+    "origin": ["$FrontendUrl", "http://localhost:5173", "http://localhost:8080", "*"],
+    "method": ["GET", "HEAD", "PUT", "POST", "OPTIONS"],
+    "responseHeader": [
+      "Content-Type",
+      "Content-Length",
+      "Range",
+      "Access-Control-Allow-Origin",
+      "ETag",
+      "x-goog-resumable"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]
+"@
+$corsPath = Join-Path $env:TEMP "gcs-cors.json"
+$corsJson | Set-Content -Path $corsPath -Encoding ascii
+try {
+    gcloud storage buckets update "gs://$MediaBucket" --cors-file=$corsPath --quiet
+} catch {
+    gsutil cors set $corsPath "gs://$MediaBucket"
+}
+Write-Success "CORS configurado en bucket gs://$MediaBucket"
 
 # Resumen Final
 Write-Host "`n========================================================" -ForegroundColor Green
