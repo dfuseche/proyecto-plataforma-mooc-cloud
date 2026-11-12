@@ -8,9 +8,9 @@ Este documento reúne las evidencias exigidas por la rúbrica de la Entrega 4: U
 
 | Servicio | URL Pública / Endpoint | Tipo de Acceso | Límite Máximo de Instancias |
 | :--- | :--- | :--- | :--- |
-| **Frontend** | `https://mooc-frontend-<hash>-uc.a.run.app` | Público (`--allow-unauthenticated`) | **3 instancias** |
-| **Backend (API)** | `https://mooc-backend-<hash>-uc.a.run.app/api/v1` | Público (`--allow-unauthenticated`) | **3 instancias** |
-| **Worker** | `https://mooc-worker-<hash>-uc.a.run.app/pubsub/transcode` | **Privado** (Solo invocable vía OIDC por Pub/Sub) | **3 instancias** |
+| **Frontend** | `https://mooc-frontend-y3bzdi6bfa-uc.a.run.app` | Público (`--allow-unauthenticated`) | **3 instancias** |
+| **Backend (API)** | `https://mooc-backend-y3bzdi6bfa-uc.a.run.app/api/v1` | Público (`--allow-unauthenticated`) | **3 instancias** |
+| **Worker** | `https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode` | **Privado** (Solo invocable vía OIDC por Pub/Sub) | **3 instancias** |
 
 ### Verificación del límite de instancias en Cloud Run:
 Comando para inspeccionar la configuración de instancias de cada servicio:
