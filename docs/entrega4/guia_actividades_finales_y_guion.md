@@ -20,7 +20,7 @@ Toda la infraestructura y el software ya se encuentran **completamente desplegad
 | **Gestión de Claves** | Secret Manager | `mooc-db-url`, `mooc-jwt-secret`, `mooc-storage-*` | ✅ Sin credenciales en texto plano |
 
 > **Credenciales de prueba en la plataforma:**
-> - **Administrador:** `admin@mooc.com` / `admin1234`
+> - **Administrador:** `admin@mooc.com` / `Admin123!`
 > - **Docente de prueba:** Puedes usar una cuenta docente existente o crear una desde la consola de Admin.
 
 ---
@@ -28,7 +28,7 @@ Toda la infraestructura y el software ya se encuentran **completamente desplegad
 ## 📋 Resumen de lo que Falta por Hacer (4 Actividades)
 
 ```
-[ ] Actividad 1: Ejecutar pruebas de carga y capturar gráficas de autoescalado (máximo 3 instancias).
+[x] Actividad 1: Ejecutar pruebas de carga y capturar gráficas de autoescalado (máximo 3 instancias).
 [ ] Actividad 2: Extraer logs reales de Cloud Logging y actualizar evidencias.md.
 [ ] Actividad 3: Grabar el video de sustentación siguiendo el guión narrativo (<= 20 min).
 [ ] Actividad 4: Subir el video, hacer merge a main y apagar Cloud SQL para ahorrar costos.

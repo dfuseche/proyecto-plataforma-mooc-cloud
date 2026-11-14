@@ -72,23 +72,50 @@ Para verificar que el sistema tolera reentregas de Pub/Sub sin duplicar trabajo 
 ## 4. Verificación del Autoescalado con Carga Controlada
 
 ### 4.1 Escalamiento del Backend (API)
-- **Carga aplicada**: 150 usuarios concurrentes enviando solicitudes hacia el catálogo (`GET /api/v1/courses`) durante 3 minutos mediante `hey`:
+- **Carga aplicada**: 150 conexiones concurrentes contra el catálogo (`GET /api/v1/courses`) durante 3 minutos con `hey`, desde Google Cloud Shell (14-nov-2026, 01:41:55 → 01:45:06 UTC; 13-nov 8:41 p.m. COT):
   ```bash
-  hey -z 3m -c 150 "$BACKEND_URL/api/v1/courses"
+  bash scripts/gcp/prueba-carga-backend.sh   # ejecuta: hey -z 3m -c 150 "$BACKEND_URL/api/v1/courses"
   ```
-- **Comportamiento observado**:
-  - La cantidad de instancias activas de `mooc-backend` escala rápidamente: de `0` (o `1`) a `2` réplicas, alcanzando un pico de **exactamente 3 instancias**.
-  - Durante el período de saturación, Cloud Run mantiene el techo en 3 instancias respetando el límite máximo establecido (`max-instances = 3`).
+- **Resultado de `hey`**:
+
+  | Métrica | Valor |
+  | :--- | :--- |
+  | Respuestas exitosas | **90.191 × HTTP 200** |
+  | Throughput | **471,3 req/s** |
+  | Latencia media / mediana | 0,296 s / 0,134 s |
+  | Latencia p90 / p95 / p99 | 0,579 s / 0,832 s / 2,208 s |
+  | Errores | 19 timeouts del cliente (> 20 s), 0,02 % del total |
+
+- **Comportamiento observado** (Cloud Run → `mooc-backend` → Métricas → *Cantidad de instancias de contenedor*):
+  - Las instancias activas de `mooc-backend` suben hasta **3**, el tope configurado (`max-instances = 3`, `concurrency = 80`).
+  - En la gráfica, el tooltip de las 8:43 p.m. COT muestra **active = 3, idle = 0**.
+  - El escalamiento de 0 a 3 ocurre dentro del primer minuto de la prueba, por eso el primer punto de la serie (muestreo por minuto) ya aparece en 3.
+  - Al terminar la carga, las activas bajan de forma gradual (3 → 2 → 1 → 0) y pasan a inactivas (*idle*: 0 → 1 → 2 → 3). Cloud Run las mantiene calientes unos minutos antes de apagarlas. La suma de activas e inactivas nunca pasa de 3.
+  - Los 19 timeouts coinciden con el arranque en frío de las instancias nuevas. Ninguna petición devolvió un código de error HTTP.
+
+  ![Autoescalado backend](evidencias/01-autoescalado-backend-max3.png)
 
 ### 4.2 Escalamiento del Worker (Mensajes Pub/Sub)
-- **Carga aplicada**: Se publican 6 tareas de video simultáneas en el topic `mooc-tasks-topic`:
+- **Carga aplicada**: Se crean 6 recursos de video reales que comparten un video de prueba de 90 s a 720p. Luego se llama en paralelo a `complete-upload`, y el backend publica 6 tareas en `mooc-tasks-topic`:
   ```bash
-  for i in {1..6}; do
-    gcloud pubsub topics publish mooc-tasks-topic --message="{\"resource_id\":\"$(uuidgen)\",\"original_key\":\"test.mp4\",\"media_type\":\"video\"}"
-  done
+  bash scripts/gcp/prueba-carga-worker.sh
   ```
 - **Comportamiento observado**:
   - Al estar configurado el worker con concurrencia 1 (`--concurrency=1`), cada solicitud entrante de Pub/Sub requiere una instancia independiente.
-  - El servicio `mooc-worker` escala de `0` a `1`, `2` y se frena en **3 instancias activas simultáneas**.
-  - Los mensajes restantes quedan en cola en Cloud Pub/Sub y son procesados secuencialmente a medida que las 3 instancias iniciales van liberándose y confirmando sus ACKs.
-  - La gráfica de *Active Instances* en Cloud Run Metrics muestra una meseta plana en **3**, demostrando el estricto cumplimiento del requerimiento.
+  - Prueba ejecutada el 14-nov-2026 hacia las 01:56 UTC (13-nov 8:56 p.m. COT). El servicio `mooc-worker` escala de `0` a `2` y luego a **3 instancias activas simultáneas**. Se queda en esa meseta de 3 durante unos 2 minutos (de 8:57 a 8:58 p.m. COT) y nunca sube a 4, aunque hay 6 tareas pendientes.
+  - Los 3 mensajes que no caben esperan en la cola de Cloud Pub/Sub. Se procesan cuando las primeras instancias terminan su transcodificación y responden HTTP 200 (ACK).
+  - Seguimiento del script en Cloud Logging (`[WORKER-TASK-SUCCESS]`). Se ven dos tandas, como corresponde a 6 tareas con 3 instancias:
+
+    | Hora (UTC) | Tareas completadas |
+    | :--- | :--- |
+    | 01:54:59 | 6 tareas publicadas en paralelo |
+    | 01:56:09 | 1/6 |
+    | 01:56:30 | 3/6 (fin de la primera tanda) |
+    | 01:57:34 | 5/6 |
+    | 01:57:56 | **6/6**, 0 errores y 0 reintentos |
+
+  - En la gráfica, el tooltip de las 8:57 p.m. COT muestra **active = 3, idle = 0**.
+  - Recursos de video usados en la prueba: `e9e8bf02-1ea0-4d51-97cd-363db64befda`, `91257603-6ca2-432c-84c3-328641b82049`, `030f26b6-9e13-4545-a758-1376b8d2e0a5`, `28484084-c511-40d2-b31d-65c3a2421812`, `1dffd37e-625c-4005-9874-53547517e3e4`, `a23b50ab-24fa-4912-ad92-0d7ca64aa4c2`.
+  - Al vaciarse la cola, las activas bajan 3 → 1 → 0 y pasan a inactivas (*idle*, hasta 3) antes de apagarse. La suma de activas e inactivas nunca pasa de 3.
+
+  ![Autoescalado worker](evidencias/02-autoescalado-worker-max3.png)
