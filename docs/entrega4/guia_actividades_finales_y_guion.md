@@ -44,21 +44,11 @@ La rúbrica exige demostrar que tanto el **Backend** como el **Worker** escalan 
 
 El backend está configurado con concurrencia de 80 peticiones por instancia y un máximo de 3 instancias. Para forzar el escalamiento, generaremos 150 conexiones concurrentes durante 3 minutos.
 
-1. Abre **Google Cloud Shell** y ejecuta:
+1. Abre **Google Cloud Shell**, clona o actualiza el repositorio en la rama `feature/entrega-4-cloud-run-pubsub` y ejecuta:
    ```bash
-   # Instalar hey si no está disponible (o usar curl en bucle)
-   if ! command -v hey &> /dev/null; then
-     echo "Descargando hey..."
-     wget -q https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 -O /tmp/hey
-     chmod +x /tmp/hey
-     sudo mv /tmp/hey /usr/local/bin/hey
-   fi
-
-   BACKEND_URL="https://mooc-backend-y3bzdi6bfa-uc.a.run.app"
-
-   echo "Lanzando carga concurrente hacia el Backend (3 minutos)..."
-   hey -z 3m -c 150 "$BACKEND_URL/api/v1/courses"
+   bash scripts/gcp/prueba-carga-backend.sh
    ```
+   El script enciende Cloud SQL si está apagada, instala `hey`, comprueba que `GET /api/v1/courses` responde 200 y lanza `hey -z 3m -c 150`. El resumen de `hey` queda en `/tmp/hey-backend-resultado.txt` y sirve como evidencia adicional.
 
 2. **Captura de Pantalla Requerida:**
    - Mientras corre la prueba, entra a la consola web de Google Cloud -> **Cloud Run** -> Clic en **`mooc-backend`** -> Pestaña **Métricas**.
@@ -72,19 +62,17 @@ El backend está configurado con concurrencia de 80 peticiones por instancia y u
 
 El worker procesa video con concurrencia 1 (`--concurrency=1`). Cada mensaje de Pub/Sub que llega exige una instancia completa. Al enviar 6 tareas en ráfaga, Cloud Run intentará atenderlas en paralelo, pero se frenará en **exactamente 3 instancias**, dejando las otras 3 en cola en Pub/Sub.
 
-1. En **Google Cloud Shell**, ejecuta el siguiente script para publicar 6 mensajes en ráfaga:
+1. En **Google Cloud Shell**, ejecuta:
    ```bash
-   PROJECT="proyecto-plataforma-mooc"
-   TOPIC="mooc-tasks-topic"
-
-   echo "Publicando ráfaga de 6 tareas de video en Cloud Pub/Sub..."
-   for i in {1..6}; do
-     TASK_ID=$(python3 -c "import uuid; print(uuid.uuid4())")
-     gcloud pubsub topics publish "$TOPIC" \
-       --message="{\"resource_id\":\"$TASK_ID\",\"original_key\":\"test-load-$i.mp4\",\"media_type\":\"video\"}"
-     echo "-> Mensaje $i publicado (Task: $TASK_ID)"
-   done
+   bash scripts/gcp/prueba-carga-worker.sh
+   # o con un video propio: VIDEO_FILE=mi-video.mp4 bash scripts/gcp/prueba-carga-worker.sh
    ```
+   El script pide la contraseña del admin, genera un video de prueba de 90 s con ffmpeg (o usa `VIDEO_FILE`) y lo sube al bucket. Luego crea un curso de prueba con 6 recursos de video **reales** y llama en paralelo a `complete-upload`. Así el backend publica los 6 mensajes en Pub/Sub por el flujo normal. Por último, sigue en Cloud Logging cuántas tareas terminaron.
+
+   > ⚠️ **No publiques mensajes inventados directo al topic** (con `resource_id` aleatorio y un `original_key` que no existe). El worker falla en milisegundos (HTTP 500), así que no alcanza a escalar. Además, la suscripción no tiene dead-letter, y Pub/Sub reintenta esos mensajes durante 7 días. Si alguien ya lo hizo, descarta los mensajes pendientes con:
+   > ```bash
+   > gcloud pubsub subscriptions seek mooc-worker-push-sub --time=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+   > ```
 
 2. **Captura de Pantalla Requerida:**
    - Entra a **Cloud Run** -> Clic en **`mooc-worker`** -> Pestaña **Métricas**.
