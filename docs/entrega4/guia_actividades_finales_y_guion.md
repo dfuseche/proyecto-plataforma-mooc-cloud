@@ -29,7 +29,7 @@ Toda la infraestructura y el software ya se encuentran **completamente desplegad
 
 ```
 [x] Actividad 1: Ejecutar pruebas de carga y capturar gráficas de autoescalado (máximo 3 instancias).
-[ ] Actividad 2: Extraer logs reales de Cloud Logging y actualizar evidencias.md.
+[x] Actividad 2: Extraer logs reales de Cloud Logging y actualizar evidencias.md.
 [ ] Actividad 3: Grabar el video de sustentación siguiendo el guión narrativo (<= 20 min).
 [ ] Actividad 4: Subir el video, hacer merge a main y apagar Cloud SQL para ahorrar costos.
 ```
@@ -82,6 +82,8 @@ El worker procesa video con concurrencia 1 (`--concurrency=1`). Cada mensaje de 
 ---
 
 # 📝 ACTIVIDAD 2: Extracción de Logs de Evidencia e Idempotencia
+
+**Prueba ejecutada y documentada el 14 de noviembre de 2026 (COT):** subida desde el frontend, estados «Procesando» y «Listo», trazabilidad e idempotencia por republicación de la misma tarea. Los resultados están en [evidencias.md](evidencias.md). Las capturas de logs usan el formato acordado de informe con datos reales extraídos por API; este formato es distinto de la captura literal de la consola solicitada en el paso 2.2, cuyo requisito se conserva abajo. Cloud SQL volvió a quedar apagado al finalizar; el cierre está registrado con las evidencias.
 
 ### 2.1 Subida de Video Real y Flujo End-to-End
 
