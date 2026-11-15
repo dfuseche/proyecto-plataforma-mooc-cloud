@@ -1,0 +1,518 @@
+{
+  "http_status": 200,
+  "filter": "resource.type=\"cloud_run_revision\" AND (resource.labels.service_name=\"mooc-backend\" OR resource.labels.service_name=\"mooc-worker\") AND log_id(\"run.googleapis.com/requests\") AND timestamp >= \"2026-11-14T01:54:55Z\" AND timestamp <= \"2026-11-14T01:58:10Z\" AND (httpRequest.requestUrl:\"complete-upload\" OR httpRequest.requestUrl:\"/pubsub/transcode\")",
+  "truncated": false,
+  "entries": [
+    {
+      "timestamp": "2026-11-14T01:54:59.952369Z",
+      "insertId": "6af7bf74000302fb007e1439",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "configuration_name": "mooc-backend",
+          "revision_name": "mooc-backend-00006-wx5",
+          "location": "us-central1",
+          "project_id": "proyecto-plataforma-mooc",
+          "service_name": "mooc-backend"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app/api/v1/media/resources/030f26b6-9e13-4545-a758-1376b8d2e0a5/complete-upload",
+        "status": 200,
+        "latency": "0.242661179s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/5a0cb9a60b28215f81d06618295df65a",
+      "spanId": "fce4ab549711942f",
+      "labels": {
+        "instanceId": "00e8a408bdd73ca747893a13288732fa0c023e09591d9e0defbb4708004ddd6832214ef2a9f14f77039bb918e5af5076b1715e63b7ebb021bc882826502ef124efead0f83b77c68a64acfa3db1871a89d2d4f1d03ff4d636"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:54:59.966124Z",
+      "insertId": "6af7bf740003030c6a821d7a",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "project_id": "proyecto-plataforma-mooc",
+          "location": "us-central1",
+          "service_name": "mooc-backend",
+          "revision_name": "mooc-backend-00006-wx5",
+          "configuration_name": "mooc-backend"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app/api/v1/media/resources/91257603-6ca2-432c-84c3-328641b82049/complete-upload",
+        "status": 200,
+        "latency": "0.229490371s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/2ed7d14dd998627e08626edd8e5c4820",
+      "spanId": "32f5ee4519c9259e",
+      "labels": {
+        "instanceId": "00e8a408bdd73ca747893a13288732fa0c023e09591d9e0defbb4708004ddd6832214ef2a9f14f77039bb918e5af5076b1715e63b7ebb021bc882826502ef124efead0f83b77c68a64acfa3db1871a89d2d4f1d03ff4d636"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:54:59.971294Z",
+      "insertId": "6af7bf740003030122f8b32e",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "location": "us-central1",
+          "service_name": "mooc-backend",
+          "project_id": "proyecto-plataforma-mooc",
+          "configuration_name": "mooc-backend",
+          "revision_name": "mooc-backend-00006-wx5"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app/api/v1/media/resources/e9e8bf02-1ea0-4d51-97cd-363db64befda/complete-upload",
+        "status": 200,
+        "latency": "0.224424044s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/24e1f964988097e3d90eb433eb90dfaf",
+      "spanId": "02d3853008318818",
+      "labels": {
+        "instanceId": "00e8a408bdd73ca747893a13288732fa0c023e09591d9e0defbb4708004ddd6832214ef2a9f14f77039bb918e5af5076b1715e63b7ebb021bc882826502ef124efead0f83b77c68a64acfa3db1871a89d2d4f1d03ff4d636"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:55:00.935290Z",
+      "insertId": "6af7bfb50004d24dc7930ae0",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "configuration_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x",
+          "location": "us-central1",
+          "service_name": "mooc-worker"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 200,
+        "latency": "64.049865387s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/0fb2b218d1b45f82b29bb1e7bc5cd658",
+      "spanId": "4660f9a2b82ed964",
+      "labels": {
+        "instanceId": "00e8a408bd457cb0599048ed373c1b787ab8240ee4bacc22f4cda898bd2cac7f903f298b9ba522319d981edc75c8189be24a3bffaa1ad889ae85feee53329485e8ab1a1fc093a80d2cbdd1daa51fc2952d152be69721351a68"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:55:00.936035Z",
+      "insertId": "6af7bfae000852c8539be2f1",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "location": "us-central1",
+          "service_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x",
+          "project_id": "proyecto-plataforma-mooc",
+          "configuration_name": "mooc-worker"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 200,
+        "latency": "57.278667528s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/703cc0e0bceb2dde3cbfafd5767e63a2",
+      "spanId": "9ecb3332333ffd63",
+      "labels": {
+        "instanceId": "00e8a408bdc12e9116b048dae5a2d43391f45394d2a4847148106d066cff78975cfa8f3736d25302f3344e53ba05173474efd5ab863189dbc55f615db780a9c5eaf1a4da83d88699356f47fb83c6d7f61bd68e6e165a18c74043c53cc371"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:55:00.943505Z",
+      "insertId": "6af7bfb9000126b218d7f6b3",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "project_id": "proyecto-plataforma-mooc",
+          "location": "us-central1",
+          "configuration_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x",
+          "service_name": "mooc-worker"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 200,
+        "latency": "67.880683548s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/d80c4f1ce2b2069a56d9a1cbbe2ed238",
+      "spanId": "47e29ceff0cfc621",
+      "labels": {
+        "instanceId": "00e8a408bd241dc17c549fe071a2f0221b8d775144ae2428f74b020b46199e30ea19178d55b5a4f1bc2ccfee56aaede1b01ad6143f4f46866f63f39cc5afaed7c7168c35d9fd84bdf5a9a844e82cc9377bf544788b48f28fe5"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:55:04.957802Z",
+      "insertId": "6af7bf790001be589b7d9151",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "project_id": "proyecto-plataforma-mooc",
+          "location": "us-central1",
+          "configuration_name": "mooc-backend",
+          "revision_name": "mooc-backend-00006-wx5",
+          "service_name": "mooc-backend"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app/api/v1/media/resources/1dffd37e-625c-4005-9874-53547517e3e4/complete-upload",
+        "status": 200,
+        "latency": "0.154803051s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/12b4e42bd487eacd939289cafd058f11",
+      "spanId": "39a0b4059ac5e11b",
+      "labels": {
+        "instanceId": "00e8a408bdd73ca747893a13288732fa0c023e09591d9e0defbb4708004ddd6832214ef2a9f14f77039bb918e5af5076b1715e63b7ebb021bc882826502ef124efead0f83b77c68a64acfa3db1871a89d2d4f1d03ff4d636"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:55:04.977107Z",
+      "insertId": "6af7bf790001773d01dca2b0",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "service_name": "mooc-backend",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-backend-00006-wx5",
+          "configuration_name": "mooc-backend",
+          "location": "us-central1"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app/api/v1/media/resources/a23b50ab-24fa-4912-ad92-0d7ca64aa4c2/complete-upload",
+        "status": 200,
+        "latency": "0.117167593s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/1489b301a00afff92e5d823e32cd4e79",
+      "spanId": "db5678d58508970f",
+      "labels": {
+        "instanceId": "00e8a408bdd73ca747893a13288732fa0c023e09591d9e0defbb4708004ddd6832214ef2a9f14f77039bb918e5af5076b1715e63b7ebb021bc882826502ef124efead0f83b77c68a64acfa3db1871a89d2d4f1d03ff4d636"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:55:04.979552Z",
+      "insertId": "6af7bf790001bdae58f56ba0",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "configuration_name": "mooc-backend",
+          "location": "us-central1",
+          "project_id": "proyecto-plataforma-mooc",
+          "service_name": "mooc-backend",
+          "revision_name": "mooc-backend-00006-wx5"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app/api/v1/media/resources/28484084-c511-40d2-b31d-65c3a2421812/complete-upload",
+        "status": 200,
+        "latency": "0.133101203s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/aacd260aa0e7be3b82a8edb827051909",
+      "spanId": "3f4d987d3a3fb555",
+      "labels": {
+        "instanceId": "00e8a408bdd73ca747893a13288732fa0c023e09591d9e0defbb4708004ddd6832214ef2a9f14f77039bb918e5af5076b1715e63b7ebb021bc882826502ef124efead0f83b77c68a64acfa3db1871a89d2d4f1d03ff4d636"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:55:05.207563Z",
+      "insertId": "6af7bf83000e54f469c4b493",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "revision_name": "mooc-worker-00006-l4x",
+          "project_id": "proyecto-plataforma-mooc",
+          "service_name": "mooc-worker",
+          "location": "us-central1",
+          "configuration_name": "mooc-worker"
+        }
+      },
+      "severity": "ERROR",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 500,
+        "latency": "0s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/f35cb2246b5ca07349de60f20ed14fc1",
+      "spanId": "c56dae67d44d100e"
+    },
+    {
+      "timestamp": "2026-11-14T01:55:05.732895Z",
+      "insertId": "6af7bf840001dd321f2f47c2",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "service_name": "mooc-worker",
+          "location": "us-central1",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x",
+          "configuration_name": "mooc-worker"
+        }
+      },
+      "severity": "ERROR",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 500,
+        "latency": "0s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/e3eb56b2c1c3c7317749598fdd62c2c1",
+      "spanId": "62dbddc2293cfa96"
+    },
+    {
+      "timestamp": "2026-11-14T01:55:05.741480Z",
+      "insertId": "6af7bf83000b7b17295aaa6b",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x",
+          "configuration_name": "mooc-worker",
+          "location": "us-central1"
+        }
+      },
+      "severity": "ERROR",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 500,
+        "latency": "0s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/f83b33696e10bdc18824bf87ec974946",
+      "spanId": "c7bdc7a638dcad23"
+    },
+    {
+      "timestamp": "2026-11-14T01:55:27.351893Z",
+      "insertId": "6af7bf990005ab4d4753c645",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "configuration_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "service_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x",
+          "location": "us-central1"
+        }
+      },
+      "severity": "ERROR",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 500,
+        "latency": "0s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/6277d199428f1ca6c5e674de26890932",
+      "spanId": "f9196b317f8a043d"
+    },
+    {
+      "timestamp": "2026-11-14T01:55:29.357678Z",
+      "insertId": "6af7bf9b000cd29bc747ca93",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "revision_name": "mooc-worker-00006-l4x",
+          "service_name": "mooc-worker",
+          "location": "us-central1",
+          "project_id": "proyecto-plataforma-mooc",
+          "configuration_name": "mooc-worker"
+        }
+      },
+      "severity": "ERROR",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 500,
+        "latency": "0s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/4b187262751cdea9fbb97b5fbffcb775",
+      "spanId": "89ffbe18bc6ec0e2"
+    },
+    {
+      "timestamp": "2026-11-14T01:55:30.353171Z",
+      "insertId": "6af7bf9d00037930ef0bcc3e",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "project_id": "proyecto-plataforma-mooc",
+          "location": "us-central1",
+          "configuration_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x",
+          "service_name": "mooc-worker"
+        }
+      },
+      "severity": "ERROR",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 500,
+        "latency": "0s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/37f76fd118afdb9c66d3c2622dc72a13",
+      "spanId": "ae10c2a4af58cf43"
+    },
+    {
+      "timestamp": "2026-11-14T01:55:51.055976Z",
+      "insertId": "6af7bfb1000124193924ff1e",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "revision_name": "mooc-worker-00006-l4x",
+          "configuration_name": "mooc-worker",
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "location": "us-central1"
+        }
+      },
+      "severity": "ERROR",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 500,
+        "latency": "0s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/b99c4f287c5b54354d6072954cf876bf",
+      "spanId": "7cd3d472328045ba"
+    },
+    {
+      "timestamp": "2026-11-14T01:55:57.057661Z",
+      "insertId": "6af7bfff0004b6e4420a131c",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "project_id": "proyecto-plataforma-mooc",
+          "location": "us-central1",
+          "revision_name": "mooc-worker-00006-l4x",
+          "service_name": "mooc-worker",
+          "configuration_name": "mooc-worker"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 200,
+        "latency": "73.992370053s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/e4a50b7d31cd131ba33e1d440e2ba27d",
+      "spanId": "a86551cb6d4dc3b3",
+      "labels": {
+        "instanceId": "00e8a408bd457cb0599048ed373c1b787ab8240ee4bacc22f4cda898bd2cac7f903f298b9ba522319d981edc75c8189be24a3bffaa1ad889ae85feee53329485e8ab1a1fc093a80d2cbdd1daa51fc2952d152be69721351a68"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:55:57.064121Z",
+      "insertId": "6af7bfed0008ae3507f48365",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "service_name": "mooc-worker",
+          "location": "us-central1",
+          "configuration_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x",
+          "project_id": "proyecto-plataforma-mooc"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 200,
+        "latency": "63.022824098s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/4e33d9015543f270c9add4780853f06e",
+      "spanId": "7e53591059ef0abf",
+      "labels": {
+        "instanceId": "00e8a408bdc12e9116b048dae5a2d43391f45394d2a4847148106d066cff78975cfa8f3736d25302f3344e53ba05173474efd5ab863189dbc55f615db780a9c5eaf1a4da83d88699356f47fb83c6d7f61bd68e6e165a18c74043c53cc371"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T01:56:20.670422Z",
+      "insertId": "6af7c00d00048a4621fc362a",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "project_id": "proyecto-plataforma-mooc",
+          "configuration_name": "mooc-worker",
+          "service_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x",
+          "location": "us-central1"
+        }
+      },
+      "severity": "INFO",
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 200,
+        "latency": "72.616747534s",
+        "protocol": "HTTP/1.1"
+      },
+      "trace": "projects/proyecto-plataforma-mooc/traces/49eb88248a8c8883490451bf21e85301",
+      "spanId": "623139e90abfebb0",
+      "labels": {
+        "instanceId": "00e8a408bd241dc17c549fe071a2f0221b8d775144ae2428f74b020b46199e30ea19178d55b5a4f1bc2ccfee56aaede1b01ad6143f4f46866f63f39cc5afaed7c7168c35d9fd84bdf5a9a844e82cc9377bf544788b48f28fe5"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+# Stage 1: Build de la API Go
+FROM golang:1.26-alpine AS builder
+
+WORKDIR /app
+
+RUN apk add --no-cache git gcc musl-dev
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /app/api ./cmd/api
+
+# Stage 2: Runtime ligero
+FROM alpine:3.19
+
+WORKDIR /app
+
+RUN apk add --no-cache ca-certificates curl
+
+ARG APP_VERSION=entrega-4
+ENV APP_VERSION=$APP_VERSION
+
+COPY --from=builder /app/api /app/api
+COPY --from=builder /app/migrations /app/migrations
+COPY --from=builder /app/docs /app/docs
+
+# Usuario sin privilegios
+RUN addgroup -S app && adduser -S -G app -u 10001 app
+USER app
+
+EXPOSE 8080
+
+CMD ["/app/api"]

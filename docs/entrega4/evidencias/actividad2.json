@@ -1,0 +1,585 @@
+{
+  "project": "proyecto-plataforma-mooc",
+  "source": "Google Cloud Logging API + Pub/Sub API + Cloud Storage API + Playwright headless, ejecución real",
+  "extracted_at": "2026-11-15T00:00:07.842341+00:00",
+  "logging_filter": "resource.type=\"cloud_run_revision\" AND (resource.labels.service_name=\"mooc-backend\" OR resource.labels.service_name=\"mooc-worker\") AND timestamp >= \"2026-11-14T23:49:00.173075+00:00\"",
+  "logging_truncated": false,
+  "resource_id": "e5415216-a7cb-4d5d-a1a7-22b65d4577a6",
+  "course_id": "9ca05e46-b1fe-4b7d-8830-938baf2415c4",
+  "teacher_id": "98ea49e6-9e8c-4c68-b51c-b1994c3df4ea",
+  "original_message_id": "23383212000452232",
+  "republished_message_id": "23469191242281181",
+  "payload": {
+    "resource_id": "e5415216-a7cb-4d5d-a1a7-22b65d4577a6",
+    "original_key": "resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/raw",
+    "media_type": "video"
+  },
+  "video": {
+    "filename": "video-prueba-20s.mp4",
+    "duration_seconds": 20.69,
+    "streams": [
+      "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3170 kb/s, 50 fps, 50 tbr, 12800 tbn, start 0.020000 (default)",
+      "Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 2 kb/s (default)"
+    ],
+    "bytes": 8196193,
+    "sha256": "bfe2554a182d08c3cda294033b2656c2ded9416269e1608c5be1c947e56705c7"
+  },
+  "frontend": {
+    "url": "https://mooc-frontend-y3bzdi6bfa-uc.a.run.app",
+    "upload_completed": true,
+    "processing_seen": true,
+    "ready_seen": true,
+    "events": [
+      {
+        "at": "2026-11-14T23:56:46.328Z",
+        "name": "resource_created",
+        "http_status": 201
+      },
+      {
+        "at": "2026-11-14T23:56:59.022Z",
+        "name": "upload_completed",
+        "http_status": 200
+      },
+      {
+        "at": "2026-11-14T23:56:59.318Z",
+        "name": "frontend_processing_seen"
+      },
+      {
+        "at": "2026-11-14T23:57:11.660Z",
+        "name": "frontend_ready_seen"
+      },
+      {
+        "at": "2026-11-15T00:04:46.859Z",
+        "name": "logout",
+        "role": "admin",
+        "http_status": 200
+      },
+      {
+        "at": "2026-11-15T00:04:49.542Z",
+        "name": "logout",
+        "role": "teacher",
+        "http_status": 200
+      }
+    ],
+    "screenshots": [
+      {
+        "at": "2026-11-14T23:56:59.368Z",
+        "file": "02-video-procesando.png",
+        "url": "/docente/cursos/9ca05e46-b1fe-4b7d-8830-938baf2415c4"
+      },
+      {
+        "at": "2026-11-14T23:57:11.695Z",
+        "file": "03-video-listo.png",
+        "url": "/docente/cursos/9ca05e46-b1fe-4b7d-8830-938baf2415c4"
+      },
+      {
+        "at": "2026-11-14T23:58:44.586Z",
+        "file": "03-video-listo.png",
+        "url": "/docente/cursos/9ca05e46-b1fe-4b7d-8830-938baf2415c4"
+      }
+    ],
+    "network": [
+      {
+        "at": "2026-11-14T23:56:46.316Z",
+        "method": "POST",
+        "path": "/api/v1/courses/units/298e728d-7b5e-46ef-a310-e046a6bfa0c1/resources",
+        "status": 201
+      },
+      {
+        "at": "2026-11-14T23:56:58.512Z",
+        "method": "PUT",
+        "origin": "https://mooc-media-equipo-3.storage.googleapis.com",
+        "path": "/resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/raw",
+        "status": 200
+      },
+      {
+        "at": "2026-11-14T23:56:59.009Z",
+        "method": "POST",
+        "path": "/api/v1/media/resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/complete-upload",
+        "status": 200
+      }
+    ]
+  },
+  "application_logs": [
+    {
+      "timestamp": "2026-11-14T23:56:59.006706Z",
+      "insertId": "6af8f54b00001a32726a1bfe",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "location": "us-central1",
+          "configuration_name": "mooc-backend",
+          "project_id": "proyecto-plataforma-mooc",
+          "service_name": "mooc-backend",
+          "revision_name": "mooc-backend-00006-wx5"
+        }
+      },
+      "textPayload": "2026/11/14 23:56:59 [PUBSUB-PUBLISH] Mensaje publicado exitosamente en topic mooc-tasks-topic. Server MessageID: 23383212000452232",
+      "labels": {
+        "instanceId": "00e8a408bda320450de03ed0e97d869f3379fc4fb411a171324c58a9b8a080e482fdc9884512d1ce25033ca08aae92e1ed3bb680669cd192698aa02b9cff2de2b77ba95252901a8774d80a520b95e8209bbaf84e7ec4fc4c"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:56:59.006713Z",
+      "insertId": "6af8f54b00001a394e77f6d7",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "service_name": "mooc-backend",
+          "location": "us-central1",
+          "configuration_name": "mooc-backend",
+          "revision_name": "mooc-backend-00006-wx5",
+          "project_id": "proyecto-plataforma-mooc"
+        }
+      },
+      "textPayload": "2026/11/14 23:56:59 [MEDIA-PUBSUB] Tarea para recurso e5415216-a7cb-4d5d-a1a7-22b65d4577a6 publicada con éxito en Cloud Pub/Sub. MessageID: 23383212000452232",
+      "labels": {
+        "instanceId": "00e8a408bda320450de03ed0e97d869f3379fc4fb411a171324c58a9b8a080e482fdc9884512d1ce25033ca08aae92e1ed3bb680669cd192698aa02b9cff2de2b77ba95252901a8774d80a520b95e8209bbaf84e7ec4fc4c"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:57:00.712221Z",
+      "insertId": "6af8f54c000ade1def605888",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "location": "us-central1",
+          "configuration_name": "mooc-worker",
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x"
+        }
+      },
+      "textPayload": "2026/11/14 23:57:00 [WORKER-PUSH-RECEIVED] Mensaje recibido de Pub/Sub (MessageID: 23383212000452232, Subscription: projects/proyecto-plataforma-mooc/subscriptions/mooc-worker-push-sub)",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:57:00.712240Z",
+      "insertId": "6af8f54c000ade305b1b82fa",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x",
+          "configuration_name": "mooc-worker",
+          "location": "us-central1"
+        }
+      },
+      "textPayload": "2026/11/14 23:57:00 [WORKER-TASK-START] Iniciando tarea para recurso=e5415216-a7cb-4d5d-a1a7-22b65d4577a6, key=resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/raw, media_type=video (MessageID: 23383212000452232)",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:57:00.712246Z",
+      "insertId": "6af8f54c000ade36b1638457",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "configuration_name": "mooc-worker",
+          "location": "us-central1",
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x"
+        }
+      },
+      "textPayload": "2026/11/14 23:57:00 [WORKER] Iniciando transcodificación HLS para el recurso e5415216-a7cb-4d5d-a1a7-22b65d4577a6 (Key: resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/raw)",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:57:10.965746Z",
+      "insertId": "6af8f556000ebc72e12d6d8d",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "configuration_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x",
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "location": "us-central1"
+        }
+      },
+      "textPayload": "2026/11/14 23:57:10 [WORKER-SUCCESS] Transcodificación HLS completada para e5415216-a7cb-4d5d-a1a7-22b65d4577a6. Playlist: hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/master.m3u8",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:57:10.973888Z",
+      "insertId": "6af8f556000edc40d7a56bf1",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "location": "us-central1",
+          "configuration_name": "mooc-worker",
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x"
+        }
+      },
+      "textPayload": "2026/11/14 23:57:10 [WORKER-TASK-SUCCESS] Transcodificación completada y confirmada con ACK (MessageID: 23383212000452232, recurso: e5415216-a7cb-4d5d-a1a7-22b65d4577a6)",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:59:19.577836Z",
+      "insertId": "6af8f5d70008d12c9b932548",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "revision_name": "mooc-worker-00006-l4x",
+          "configuration_name": "mooc-worker",
+          "location": "us-central1",
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc"
+        }
+      },
+      "textPayload": "2026/11/14 23:59:19 [WORKER-PUSH-RECEIVED] Mensaje recibido de Pub/Sub (MessageID: 23469191242281181, Subscription: projects/proyecto-plataforma-mooc/subscriptions/mooc-worker-push-sub)",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:59:19.577866Z",
+      "insertId": "6af8f5d70008d14aa6a8df94",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x",
+          "service_name": "mooc-worker",
+          "location": "us-central1",
+          "configuration_name": "mooc-worker"
+        }
+      },
+      "textPayload": "2026/11/14 23:59:19 [WORKER-TASK-START] Iniciando tarea para recurso=e5415216-a7cb-4d5d-a1a7-22b65d4577a6, key=resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/raw, media_type=video (MessageID: 23469191242281181)",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:59:19.577872Z",
+      "insertId": "6af8f5d70008d150faa0916f",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "service_name": "mooc-worker",
+          "location": "us-central1",
+          "configuration_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x"
+        }
+      },
+      "textPayload": "2026/11/14 23:59:19 [WORKER] Iniciando transcodificación HLS para el recurso e5415216-a7cb-4d5d-a1a7-22b65d4577a6 (Key: resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/raw)",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:59:19.581414Z",
+      "insertId": "6af8f5d70008df266810ee8e",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "location": "us-central1",
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "configuration_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x"
+        }
+      },
+      "textPayload": "2026/11/14 23:59:19 [WORKER-IDEMPOTENCY] Recurso e5415216-a7cb-4d5d-a1a7-22b65d4577a6 ya se encuentra completado en DB (hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/master.m3u8). Omitiendo transcodificación.",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:59:19.581423Z",
+      "insertId": "6af8f5d70008df2f72afa6f7",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Fstderr",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "location": "us-central1",
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-worker-00006-l4x",
+          "configuration_name": "mooc-worker",
+          "service_name": "mooc-worker"
+        }
+      },
+      "textPayload": "2026/11/14 23:59:19 [WORKER-TASK-SUCCESS] Transcodificación completada y confirmada con ACK (MessageID: 23469191242281181, recurso: e5415216-a7cb-4d5d-a1a7-22b65d4577a6)",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      }
+    }
+  ],
+  "http_logs": [
+    {
+      "timestamp": "2026-11-14T23:56:58.830714Z",
+      "insertId": "6af8f54b00001dc74cf3f672",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "project_id": "proyecto-plataforma-mooc",
+          "revision_name": "mooc-backend-00006-wx5",
+          "location": "us-central1",
+          "configuration_name": "mooc-backend",
+          "service_name": "mooc-backend"
+        }
+      },
+      "severity": "INFO",
+      "trace": "projects/proyecto-plataforma-mooc/traces/2dea8692e139e918a927bf4ed83e1f57",
+      "spanId": "05ec92ab42d5068f",
+      "labels": {
+        "instanceId": "00e8a408bda320450de03ed0e97d869f3379fc4fb411a171324c58a9b8a080e482fdc9884512d1ce25033ca08aae92e1ed3bb680669cd192698aa02b9cff2de2b77ba95252901a8774d80a520b95e8209bbaf84e7ec4fc4c"
+      },
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app/api/v1/media/resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/complete-upload",
+        "status": 200,
+        "latency": "0.174246789s",
+        "protocol": "HTTP/1.1"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:56:59.672920Z",
+      "insertId": "6af8f556000f06161953ec23",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "service_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc",
+          "location": "us-central1",
+          "configuration_name": "mooc-worker",
+          "revision_name": "mooc-worker-00006-l4x"
+        }
+      },
+      "severity": "INFO",
+      "trace": "projects/proyecto-plataforma-mooc/traces/ed84018285f19574570518670f868eed",
+      "spanId": "229b045121408408",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      },
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 200,
+        "latency": "11.080248092s",
+        "protocol": "HTTP/1.1"
+      }
+    },
+    {
+      "timestamp": "2026-11-14T23:59:19.552103Z",
+      "insertId": "6af8f5d70008e3d19f21d0f5",
+      "logName": "projects/proyecto-plataforma-mooc/logs/run.googleapis.com%2Frequests",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {
+          "revision_name": "mooc-worker-00006-l4x",
+          "service_name": "mooc-worker",
+          "location": "us-central1",
+          "configuration_name": "mooc-worker",
+          "project_id": "proyecto-plataforma-mooc"
+        }
+      },
+      "severity": "INFO",
+      "trace": "projects/proyecto-plataforma-mooc/traces/9713e71c54e475ee006843f0062ab83a",
+      "spanId": "900272d539946784",
+      "labels": {
+        "instanceId": "00e8a408bd729ab366235b53e8573f6930a2ba1c7aa2d6e70571800ef85a374c7cd200ba8e8f8ad8e089fb8ecf0d66308503b8539eb122b0cd448a537ad25a626eb4c6127b0b76339cd1920e960f3209b0df29dc5f79e1e0"
+      },
+      "httpRequest": {
+        "requestMethod": "POST",
+        "requestUrl": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app/pubsub/transcode",
+        "status": 200,
+        "latency": "0.006312568s",
+        "protocol": "HTTP/1.1"
+      }
+    }
+  ],
+  "storage_comparison": {
+    "before_at": "2026-11-14T23:59:16.306834+00:00",
+    "after_at": "2026-11-15T00:00:08.043682+00:00",
+    "object_count": 16,
+    "all_metadata_unchanged": true,
+    "compared_fields": [
+      "name",
+      "generation",
+      "metageneration",
+      "size",
+      "md5Hash",
+      "crc32c",
+      "updated"
+    ],
+    "objects": [
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/360p.m3u8",
+        "generation": "1794700629812312",
+        "metageneration": "1",
+        "size": "233",
+        "md5Hash": "96fcSwOdnXTViSaloUu01w==",
+        "crc32c": "i/mXIg==",
+        "updated": "2026-11-14T23:57:09.817Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/360p_000.ts",
+        "generation": "1794700629888641",
+        "metageneration": "1",
+        "size": "64296",
+        "md5Hash": "B82nbQLrl/aIrKTBHaatnw==",
+        "crc32c": "v1ovWg==",
+        "updated": "2026-11-14T23:57:09.893Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/360p_001.ts",
+        "generation": "1794700629955407",
+        "metageneration": "1",
+        "size": "63544",
+        "md5Hash": "7vHW/ZSEpNF6gOYbf4I6oA==",
+        "crc32c": "PtzgqA==",
+        "updated": "2026-11-14T23:57:09.963Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/360p_002.ts",
+        "generation": "1794700630037646",
+        "metageneration": "1",
+        "size": "63544",
+        "md5Hash": "Gag3BszJnYMQiIIr3TgbSg==",
+        "crc32c": "8ZGfVw==",
+        "updated": "2026-11-14T23:57:10.043Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/360p_003.ts",
+        "generation": "1794700630115328",
+        "metageneration": "1",
+        "size": "28012",
+        "md5Hash": "QMD96JNDea1RxqtxFj0upA==",
+        "crc32c": "aFwoog==",
+        "updated": "2026-11-14T23:57:10.121Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/480p.m3u8",
+        "generation": "1794700630190369",
+        "metageneration": "1",
+        "size": "233",
+        "md5Hash": "rxH/0qPdb0B+4+MOSzwt8Q==",
+        "crc32c": "763Feg==",
+        "updated": "2026-11-14T23:57:10.197Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/480p_000.ts",
+        "generation": "1794700630287374",
+        "metageneration": "1",
+        "size": "64672",
+        "md5Hash": "Fw2ORFP3loJHobJ+wCRbkw==",
+        "crc32c": "ePrj8A==",
+        "updated": "2026-11-14T23:57:10.293Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/480p_001.ts",
+        "generation": "1794700630366147",
+        "metageneration": "1",
+        "size": "63920",
+        "md5Hash": "X80wfeOwkz0kiRAmXrTJcA==",
+        "crc32c": "Ew/7BA==",
+        "updated": "2026-11-14T23:57:10.372Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/480p_002.ts",
+        "generation": "1794700630436026",
+        "metageneration": "1",
+        "size": "63920",
+        "md5Hash": "+baD+lAfWioVk5wcGf3e+A==",
+        "crc32c": "Ls2Ryg==",
+        "updated": "2026-11-14T23:57:10.447Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/480p_003.ts",
+        "generation": "1794700630516501",
+        "metageneration": "1",
+        "size": "28200",
+        "md5Hash": "nwLlDWFgKebHNsf/YX1Ilw==",
+        "crc32c": "GJhe7g==",
+        "updated": "2026-11-14T23:57:10.521Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/720p.m3u8",
+        "generation": "1794700630588057",
+        "metageneration": "1",
+        "size": "233",
+        "md5Hash": "MeUioo+JPozAtIZg4NFSEg==",
+        "crc32c": "KyhU6w==",
+        "updated": "2026-11-14T23:57:10.593Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/720p_000.ts",
+        "generation": "1794700630652697",
+        "metageneration": "1",
+        "size": "64672",
+        "md5Hash": "QvSJYyqGQdbNxRdEkz2vOA==",
+        "crc32c": "MXVsLw==",
+        "updated": "2026-11-14T23:57:10.659Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/720p_001.ts",
+        "generation": "1794700630731352",
+        "metageneration": "1",
+        "size": "63920",
+        "md5Hash": "eSTvppD6NkDKEH/uaxTLow==",
+        "crc32c": "sAoaxQ==",
+        "updated": "2026-11-14T23:57:10.736Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/720p_002.ts",
+        "generation": "1794700630807452",
+        "metageneration": "1",
+        "size": "63920",
+        "md5Hash": "X2iLcz8yoRKJkRwjJGqATw==",
+        "crc32c": "hD2OHA==",
+        "updated": "2026-11-14T23:57:10.813Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/720p_003.ts",
+        "generation": "1794700630884215",
+        "metageneration": "1",
+        "size": "28200",
+        "md5Hash": "zgewb4cUR/hL1jZEVbmGBQ==",
+        "crc32c": "cq00HQ==",
+        "updated": "2026-11-14T23:57:10.890Z"
+      },
+      {
+        "name": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/master.m3u8",
+        "generation": "1794700630953131",
+        "metageneration": "1",
+        "size": "317",
+        "md5Hash": "63ptiv8a1vOchhkxmofa+w==",
+        "crc32c": "91qDmA==",
+        "updated": "2026-11-14T23:57:10.959Z"
+      }
+    ]
+  },
+  "limitations": [
+    "Republicación de payload con nuevo MessageID: prueba secuencial de idempotencia por recurso, no reentrega automática del mismo mensaje ni concurrencia.",
+    "HTTP worker correlacionado por instancia y ventana temporal; logs de aplicación no incluyen trace.",
+    "Capturas de logs son informes locales de datos API, no consola GCP."
+  ]
+}

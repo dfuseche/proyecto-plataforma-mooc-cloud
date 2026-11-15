@@ -1,0 +1,66 @@
+{
+  "source": {
+    "filename": "Black screen 20 seconds, no sounds, blank for 20 seconds YouTube video, HD.mp4",
+    "duration_seconds": 20.69,
+    "streams": [
+      "Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 20 kb/s, 50 fps, 50 tbr, 12800 tbn, start 0.020000 (default)",
+      "Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 127 kb/s (default)"
+    ],
+    "bytes": 398159,
+    "sha256": "0ec393e98f820d5bc3b95e0eea5875d7850390fa545d9a23be5c684e25add5e8"
+  },
+  "prepared": {
+    "filename": "video-prueba-20s.mp4",
+    "duration_seconds": 20.69,
+    "streams": [
+      "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 3170 kb/s, 50 fps, 50 tbr, 12800 tbn, start 0.020000 (default)",
+      "Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 2 kb/s (default)"
+    ],
+    "bytes": 8196193,
+    "sha256": "bfe2554a182d08c3cda294033b2656c2ded9416269e1608c5be1c947e56705c7"
+  },
+  "method": "Recodificación H.264 a 3.2 Mbit/s CBR; relleno de bitrate generado por libx264 dentro del flujo de video. Sin bytes agregados manualmente ni cambios en el original.",
+  "command": [
+    "/private/tmp/mooc-e4-gcp/lib/python3.13/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v9.0",
+    "-hide_banner",
+    "-nostdin",
+    "-n",
+    "-i",
+    "/Users/jumafe/Downloads/Black screen 20 seconds, no sounds, blank for 20 seconds YouTube video, HD.mp4",
+    "-map",
+    "0:v:0",
+    "-map",
+    "0:a?",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "fast",
+    "-b:v",
+    "3200k",
+    "-minrate",
+    "3200k",
+    "-maxrate",
+    "3200k",
+    "-bufsize",
+    "6400k",
+    "-x264-params",
+    "nal-hrd=cbr:force-cfr=1:filler=1",
+    "-pix_fmt",
+    "yuv420p",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "128k",
+    "-movflags",
+    "+faststart",
+    "/private/tmp/mooc-e4-private/video-prueba-20s.mp4"
+  ],
+  "validation": {
+    "full_decode_exit_code": 0,
+    "decode_error_output": "",
+    "source_unchanged": true,
+    "ssim": [
+      "[Parsed_ssim_0 @ 0x600001e508f0] SSIM Y:1.000000 (inf) U:1.000000 (inf) V:1.000000 (inf) All:1.000000 (inf)"
+    ]
+  }
+}

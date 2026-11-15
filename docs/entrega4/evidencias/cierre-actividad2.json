@@ -1,0 +1,114 @@
+{
+  "verified_at": "2026-11-15T00:09:37.007249+00:00",
+  "project": "proyecto-plataforma-mooc",
+  "sql": {
+    "name": "mooc-db-instance",
+    "initial_activation_policy": "NEVER",
+    "final_activation_policy": "NEVER",
+    "operations": {
+      "start": {
+        "name": "71e8c8dc-1618-4a53-a586-8f1900000032",
+        "status": "DONE",
+        "startTime": "2026-11-14T23:49:01.203Z",
+        "endTime": "2026-11-14T23:54:54.279Z"
+      },
+      "stop": {
+        "name": "3b6f0c62-4857-4617-907e-b2ce00000032",
+        "status": "DONE",
+        "startTime": "2026-11-15T00:06:30.436Z",
+        "endTime": "2026-11-15T00:07:13.317Z"
+      }
+    },
+    "settings_equal_except_settingsVersion": true
+  },
+  "cloud_run_before": {
+    "mooc-frontend": {
+      "configuration_sha256": "37247f6982b654ba593cc8f46b95c8a11c533872f8d31215b4fd9b1a0234ba60",
+      "uri": "https://mooc-frontend-y3bzdi6bfa-uc.a.run.app",
+      "generation": "1",
+      "revision": "projects/proyecto-plataforma-mooc/locations/us-central1/services/mooc-frontend/revisions/mooc-frontend-00001-n5q",
+      "concurrency": 80,
+      "scaling": {
+        "maxInstanceCount": 3
+      }
+    },
+    "mooc-backend": {
+      "configuration_sha256": "9ee59a6b8b64b82f956608c86349626e3520514763f7866461d2a6f0ccfb501a",
+      "uri": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app",
+      "generation": "6",
+      "revision": "projects/proyecto-plataforma-mooc/locations/us-central1/services/mooc-backend/revisions/mooc-backend-00006-wx5",
+      "concurrency": 80,
+      "scaling": {
+        "maxInstanceCount": 3
+      }
+    },
+    "mooc-worker": {
+      "configuration_sha256": "8918e48c34655ec81574c45b92c7043a6abb8777ecd0db8f19232a4b353cd519",
+      "uri": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app",
+      "generation": "6",
+      "revision": "projects/proyecto-plataforma-mooc/locations/us-central1/services/mooc-worker/revisions/mooc-worker-00006-l4x",
+      "concurrency": 1,
+      "scaling": {
+        "maxInstanceCount": 3
+      }
+    }
+  },
+  "cloud_run_after": {
+    "mooc-frontend": {
+      "configuration_sha256": "37247f6982b654ba593cc8f46b95c8a11c533872f8d31215b4fd9b1a0234ba60",
+      "uri": "https://mooc-frontend-y3bzdi6bfa-uc.a.run.app",
+      "generation": "1",
+      "revision": "projects/proyecto-plataforma-mooc/locations/us-central1/services/mooc-frontend/revisions/mooc-frontend-00001-n5q",
+      "concurrency": 80,
+      "scaling": {
+        "maxInstanceCount": 3
+      }
+    },
+    "mooc-backend": {
+      "configuration_sha256": "9ee59a6b8b64b82f956608c86349626e3520514763f7866461d2a6f0ccfb501a",
+      "uri": "https://mooc-backend-y3bzdi6bfa-uc.a.run.app",
+      "generation": "6",
+      "revision": "projects/proyecto-plataforma-mooc/locations/us-central1/services/mooc-backend/revisions/mooc-backend-00006-wx5",
+      "concurrency": 80,
+      "scaling": {
+        "maxInstanceCount": 3
+      }
+    },
+    "mooc-worker": {
+      "configuration_sha256": "8918e48c34655ec81574c45b92c7043a6abb8777ecd0db8f19232a4b353cd519",
+      "uri": "https://mooc-worker-y3bzdi6bfa-uc.a.run.app",
+      "generation": "6",
+      "revision": "projects/proyecto-plataforma-mooc/locations/us-central1/services/mooc-worker/revisions/mooc-worker-00006-l4x",
+      "concurrency": 1,
+      "scaling": {
+        "maxInstanceCount": 3
+      }
+    }
+  },
+  "cloud_run_unchanged": true,
+  "pubsub_subscription_unchanged": true,
+  "sessions_closed": [
+    {
+      "at": "2026-11-15T00:04:46.859Z",
+      "name": "logout",
+      "role": "admin",
+      "http_status": 200
+    },
+    {
+      "at": "2026-11-15T00:04:49.542Z",
+      "name": "logout",
+      "role": "teacher",
+      "http_status": 200
+    }
+  ],
+  "retained_test_data": {
+    "teacher_id": "98ea49e6-9e8c-4c68-b51c-b1994c3df4ea",
+    "course_id": "9ca05e46-b1fe-4b7d-8830-938baf2415c4",
+    "course_status": "draft",
+    "resource_id": "e5415216-a7cb-4d5d-a1a7-22b65d4577a6",
+    "original_key": "resources/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/raw",
+    "hls_prefix": "hls/e5415216-a7cb-4d5d-a1a7-22b65d4577a6/",
+    "note": "Datos específicos de la prueba conservados para revisión; no se publicó el curso."
+  },
+  "scope": "Se modificó temporalmente activationPolicy, se crearon datos de prueba desde frontend y se republicó una tarea. No hubo despliegues ni cambios de código, redes, VM o configuración permanente. El permiso Publisher concedido por el usuario permanece."
+}
