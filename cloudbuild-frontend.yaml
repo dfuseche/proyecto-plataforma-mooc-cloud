@@ -1,0 +1,18 @@
+steps:
+  # Compilar imagen del Frontend inyectando la URL pública del Backend
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'VITE_API_URL=$_BACKEND_URL'
+      - '-t'
+      - '$_REPO_URL/mooc-frontend:latest'
+      - '-f'
+      - 'frontend/Dockerfile'
+      - 'frontend/'
+
+images:
+  - '$_REPO_URL/mooc-frontend:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

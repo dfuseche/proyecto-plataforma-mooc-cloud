@@ -45,19 +45,31 @@ func (p *Processor) HandleMediaTranscodeHLS(ctx context.Context, t *asynq.Task) 
 	if err := json.Unmarshal(t.Payload(), &payload); err != nil {
 		return fmt.Errorf("invalid payload: %w", err)
 	}
+	return p.ProcessMediaTranscode(ctx, payload)
+}
 
+// ProcessMediaTranscode ejecuta la transcodificación HLS con garantía de idempotencia.
+// Puede ser invocado directamente por el worker HTTP de Cloud Run o por el servidor Asynq.
+func (p *Processor) ProcessMediaTranscode(ctx context.Context, payload MediaTranscodeHLSPayload) error {
 	log.Printf("[WORKER] Iniciando transcodificación HLS para el recurso %s (Key: %s)", payload.ResourceID, payload.OriginalKey)
 
-	// Verificación de idempotencia: si la playlist HLS ya existe en S3, reutilizar y marcar completado
+	// Verificación de idempotencia 1: Si el recurso ya figura como completed en base de datos
+	res, err := p.courseRepo.GetResourceByID(ctx, payload.ResourceID)
+	if err == nil && res.ProcessingStatus == domain.ProcessingCompleted && strings.HasSuffix(res.MediaURL, "master.m3u8") {
+		log.Printf("[WORKER-IDEMPOTENCY] Recurso %s ya se encuentra completado en DB (%s). Omitiendo transcodificación.", payload.ResourceID, res.MediaURL)
+		return nil
+	}
+
+	// Verificación de idempotencia 2: Si la playlist HLS ya existe en Cloud Storage
 	hlsKeyPrefix := fmt.Sprintf("hls/%s/", payload.ResourceID.String())
 	playlistKey := hlsKeyPrefix + "master.m3u8"
 
 	minioClient := p.storage.GetClient()
 	mediaBucket := p.storage.GetMediaBucket()
 
-	_, err := minioClient.StatObject(ctx, mediaBucket, playlistKey, minio.StatObjectOptions{})
+	_, err = minioClient.StatObject(ctx, mediaBucket, playlistKey, minio.StatObjectOptions{})
 	if err == nil {
-		log.Printf("[WORKER-IDEMPOTENCY] La playlist HLS %s ya existe en S3. Omitiendo transcodificación.", playlistKey)
+		log.Printf("[WORKER-IDEMPOTENCY] La playlist HLS %s ya existe en Cloud Storage. Omitiendo transcodificación.", playlistKey)
 		return p.markResourceCompleted(ctx, payload.ResourceID, playlistKey)
 	}
 

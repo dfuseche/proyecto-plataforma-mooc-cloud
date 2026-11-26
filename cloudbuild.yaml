@@ -1,0 +1,27 @@
+steps:
+  # 1. Compilar imagen del Backend
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '$_REPO_URL/mooc-backend:latest'
+      - '-f'
+      - 'backend/Dockerfile.backend'
+      - 'backend/'
+
+  # 2. Compilar imagen del Worker con FFmpeg
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '$_REPO_URL/mooc-worker:latest'
+      - '-f'
+      - 'backend/Dockerfile.worker'
+      - 'backend/'
+
+images:
+  - '$_REPO_URL/mooc-backend:latest'
+  - '$_REPO_URL/mooc-worker:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
