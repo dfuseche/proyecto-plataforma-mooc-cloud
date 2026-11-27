@@ -36,6 +36,7 @@ type HTTPHandler struct {
 	asynqClient    *asynq.Client
 	asynqInspector *asynq.Inspector
 	taskPublisher  TaskPublisher
+	scanPublisher  TaskPublisher
 }
 
 func NewHTTPHandler(storage *StorageService, courseRepo domain.CourseRepository, learningRepo domain.LearningRepository, asynqClient *asynq.Client, asynqInspector *asynq.Inspector) *HTTPHandler {
@@ -50,6 +51,39 @@ func NewHTTPHandler(storage *StorageService, courseRepo domain.CourseRepository,
 
 func (h *HTTPHandler) SetTaskPublisher(publisher TaskPublisher) {
 	h.taskPublisher = publisher
+}
+
+// SetScanPublisher configura el publicador del escaneo antimalware, que
+// procesa una Cloud Function (ya no el worker).
+func (h *HTTPHandler) SetScanPublisher(publisher TaskPublisher) {
+	h.scanPublisher = publisher
+}
+
+// AntimalwareScanPayload es el mensaje que consume la Cloud Function
+// functions/antimalware-scan. Debe mantenerse igual al de esa función.
+type AntimalwareScanPayload struct {
+	ResourceID uuid.UUID `json:"resource_id"`
+	Bucket     string    `json:"bucket"`
+	ObjectKey  string    `json:"object_key"`
+}
+
+// publishAntimalwareScan publica la solicitud de escaneo del objeto subido.
+// Es de mejor esfuerzo: un fallo se registra pero no impide cerrar la carga,
+// y como la función es idempotente se puede reenviar repitiendo complete-upload.
+func (h *HTTPHandler) publishAntimalwareScan(ctx context.Context, resourceID uuid.UUID, objectKey string) {
+	if h.scanPublisher == nil {
+		return
+	}
+	payload := AntimalwareScanPayload{ResourceID: resourceID, Bucket: h.storage.GetMediaBucket(), ObjectKey: objectKey}
+	attrs := map[string]string{"resource_id": resourceID.String(), "event": "media_antimalware_scan"}
+	msgID, err := h.scanPublisher.Publish(ctx, payload, attrs)
+	if err != nil {
+		// #nosec G706 -- el identificador del recurso es un UUID
+		log.Printf("[MEDIA-SCAN] No se pudo publicar el escaneo antimalware de %s: %v", resourceID, err)
+		return
+	}
+	// #nosec G706 -- el identificador del recurso es un UUID
+	log.Printf("[MEDIA-SCAN] Escaneo antimalware de %s publicado. MessageID: %s", resourceID, msgID)
 }
 
 func (h *HTTPHandler) RegisterRoutes(r chi.Router) {
@@ -190,7 +224,9 @@ func (h *HTTPHandler) CompleteUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// 3. Encolar / publicar tarea asíncrona
+	// 3. Solicitar el escaneo antimalware (Cloud Function) y encolar / publicar la transcodificación
+	h.publishAntimalwareScan(r.Context(), res.ID, req.ObjectKey)
+
 	if res.Type == domain.ResourceTypeVideo || res.Type == domain.ResourceTypeAudio {
 		payload := worker.MediaTranscodeHLSPayload{
 			ResourceID:  res.ID,

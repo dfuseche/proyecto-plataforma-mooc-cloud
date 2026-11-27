@@ -6,13 +6,16 @@ steps:
       - '--build-arg'
       - 'VITE_API_URL=$_BACKEND_URL'
       - '-t'
-      - '$_REPO_URL/mooc-frontend:latest'
+      - '$_REPO_URL/mooc-frontend:$_TAG'
       - '-f'
       - 'frontend/Dockerfile'
       - 'frontend/'
 
 images:
-  - '$_REPO_URL/mooc-frontend:latest'
+  - '$_REPO_URL/mooc-frontend:$_TAG'
 
 options:
   logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _TAG: latest

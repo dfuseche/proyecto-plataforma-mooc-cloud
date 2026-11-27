@@ -112,14 +112,26 @@ Write-Step "6.1. Verificando Secretos en Secret Manager"
 $dbSecretExists = gcloud secrets list --filter="name:mooc-db-url" --format="value(name)"
 if (-not $dbSecretExists) {
     Write-Info "Creando secreto mooc-db-url..."
-    $dbUrl = "postgres://mooc_user:j0zrNNl+1@/mooc_db?host=/cloudsql/$Project:$Region:$SqlInstance&sslmode=disable"
-    $dbUrl | gcloud secrets create mooc-db-url --data-file=-
+    Write-Host "    Ingresa la contrasena del usuario mooc_user de Cloud SQL (no se guarda en el repositorio):"
+    $secure = Read-Host -AsSecureString
+    $plain = [System.Net.NetworkCredential]::new("", $secure).Password
+    $enc = [System.Uri]::EscapeDataString($plain)
+    $dbUrl = "postgres://mooc_user:${enc}@/mooc_db?host=/cloudsql/${Project}:${Region}:${SqlInstance}&sslmode=disable"
+    $tmp = [System.IO.Path]::GetTempFileName()
+    [System.IO.File]::WriteAllText($tmp, $dbUrl)
+    gcloud secrets create mooc-db-url --data-file=$tmp
+    Remove-Item $tmp -Force
 }
 
 $jwtSecretExists = gcloud secrets list --filter="name:mooc-jwt-secret" --format="value(name)"
 if (-not $jwtSecretExists) {
     Write-Info "Creando secreto mooc-jwt-secret..."
-    "super-secret-key-change-in-production" | gcloud secrets create mooc-jwt-secret --data-file=-
+    $bytes = New-Object byte[] 48
+    [System.Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
+    $tmp = [System.IO.Path]::GetTempFileName()
+    [System.IO.File]::WriteAllText($tmp, [Convert]::ToBase64String($bytes))
+    gcloud secrets create mooc-jwt-secret --data-file=$tmp
+    Remove-Item $tmp -Force
 }
 
 # Credenciales de interoperabilidad HMAC de Cloud Storage para S3 (minio-go)
@@ -161,7 +173,7 @@ gcloud run deploy mooc-worker `
     --cpu=2 `
     --memory=2Gi `
     --timeout=600s `
-    --add-cloudsql-instances="$Project:$Region:$SqlInstance" `
+    --add-cloudsql-instances="${Project}:${Region}:${SqlInstance}" `
     --set-secrets="DATABASE_URL=mooc-db-url:latest" `
     --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" `
     --set-secrets="MINIO_ACCESS_KEY=mooc-storage-access-key:latest" `
@@ -216,7 +228,7 @@ gcloud run deploy mooc-backend `
     --cpu=1 `
     --memory=1Gi `
     --timeout=60s `
-    --add-cloudsql-instances="$Project:$Region:$SqlInstance" `
+    --add-cloudsql-instances="${Project}:${Region}:${SqlInstance}" `
     --set-secrets="DATABASE_URL=mooc-db-url:latest" `
     --set-secrets="JWT_SECRET=mooc-jwt-secret:latest" `
     --set-secrets="MINIO_ACCESS_KEY=mooc-storage-access-key:latest" `

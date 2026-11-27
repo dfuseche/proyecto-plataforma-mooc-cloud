@@ -245,6 +245,18 @@ func main() {
 		}
 	}
 
+	// Topic del escaneo antimalware: lo consume una Cloud Function vía Eventarc.
+	if cfg.PubSubScanTopicID != "" {
+		scanPub, err := pubsub.NewPublisher(context.Background(), cfg.GCPProjectID, cfg.PubSubScanTopicID)
+		if err != nil {
+			log.Printf("[WARNING] No se pudo inicializar el publicador del escaneo antimalware (topic=%s, project=%s): %v", cfg.PubSubScanTopicID, cfg.GCPProjectID, err)
+		} else {
+			defer scanPub.Close()
+			mediaHandler.SetScanPublisher(scanPub)
+			log.Printf("[PUBSUB] Publicador del escaneo antimalware vinculado (topic=%s)", cfg.PubSubScanTopicID)
+		}
+	}
+
 	authMw := internalMw.NewAuthMiddleware(userRepo)
 	rateLimiter := internalMw.NewRateLimiter(rdb, 100, 1*time.Minute)
 	metrics := internalMw.NewMetrics()

@@ -125,13 +125,17 @@ echo ">>> 6.1. Verificando Secretos en Secret Manager"
 echo "========================================================"
 if ! gcloud secrets describe mooc-db-url >/dev/null 2>&1; then
     echo "[INFO] Creando secreto mooc-db-url..."
-    echo -n "postgres://mooc_user:j0zrNNl+1@/mooc_db?host=/cloudsql/$PROJECT:$REGION:$SQL_INSTANCE&sslmode=disable" | \
+    read -r -s -p "Contraseña del usuario mooc_user de Cloud SQL (no se guarda en el repositorio): " DB_PASSWORD
+    echo ""
+    ENC_PASSWORD=$(python3 -c 'import sys,urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$DB_PASSWORD")
+    printf '%s' "postgres://mooc_user:${ENC_PASSWORD}@/mooc_db?host=/cloudsql/${PROJECT}:${REGION}:${SQL_INSTANCE}&sslmode=disable" | \
         gcloud secrets create mooc-db-url --data-file=-
+    unset DB_PASSWORD ENC_PASSWORD
 fi
 
 if ! gcloud secrets describe mooc-jwt-secret >/dev/null 2>&1; then
     echo "[INFO] Creando secreto mooc-jwt-secret..."
-    echo -n "super-secret-key-change-in-production" | \
+    openssl rand -base64 48 | tr -d '\n' | \
         gcloud secrets create mooc-jwt-secret --data-file=-
 fi
 

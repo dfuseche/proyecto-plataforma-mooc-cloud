@@ -4,7 +4,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - '$_REPO_URL/mooc-backend:latest'
+      - '$_REPO_URL/mooc-backend:$_TAG'
       - '-f'
       - 'backend/Dockerfile.backend'
       - 'backend/'
@@ -14,14 +14,17 @@ steps:
     args:
       - 'build'
       - '-t'
-      - '$_REPO_URL/mooc-worker:latest'
+      - '$_REPO_URL/mooc-worker:$_TAG'
       - '-f'
       - 'backend/Dockerfile.worker'
       - 'backend/'
 
 images:
-  - '$_REPO_URL/mooc-backend:latest'
-  - '$_REPO_URL/mooc-worker:latest'
+  - '$_REPO_URL/mooc-backend:$_TAG'
+  - '$_REPO_URL/mooc-worker:$_TAG'
 
 options:
   logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _TAG: latest

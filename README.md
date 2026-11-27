@@ -4,6 +4,13 @@ Este repositorio contiene el código fuente, la infraestructura, las pruebas de 
 
 ---
 
+## 📚 Documentación de la Entrega 5
+
+- ☁️ **[Análisis serverless y cambio de arquitectura](docs/entrega5/arquitectura.md)**: oportunidades, la tarea migrada a una Cloud Function y reintentos idempotentes.
+- 🧱 **[Despliegue con Terraform](infra/terraform/README.md)**: Cloud Run, Pub/Sub, función, cuentas de servicio y secretos; pasos reproducibles.
+- 🔍 **[Cloud Function de escaneo antimalware](functions/antimalware-scan/README.md)**: código y pruebas.
+- 🧾 **[Evidencias y guion del video](docs/entrega5/evidencias.md)**
+
 ## 📚 Documentación de la Entrega 3
 
 - 🏛️ **[Arquitectura elástica](docs/entrega3/arquitectura.md)**: grupos de instancias de la API y de los workers, balanceador, cola, base de datos y almacenamiento.

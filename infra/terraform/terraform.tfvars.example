@@ -1,0 +1,7 @@
+# Copia este archivo a terraform.tfvars (no se versiona) y ajusta lo que cambie.
+project_id   = "proyecto-plataforma-mooc"
+region       = "us-central1"
+name_suffix  = "-tf"
+media_bucket = "mooc-media-equipo-3"
+sql_instance = "mooc-db-instance"
+image_tag    = "latest"

@@ -23,6 +23,7 @@ type Config struct {
 	WorkerConcurrency     int
 	GCPProjectID          string
 	PubSubTopicID         string
+	PubSubScanTopicID     string
 	CORSAllowedOrigins    string
 }
 
@@ -46,6 +47,8 @@ func Load() *Config {
 		WorkerConcurrency:     getEnvAsInt("WORKER_CONCURRENCY", 2),
 		GCPProjectID:          getEnv("GCP_PROJECT", getEnv("GOOGLE_CLOUD_PROJECT", "proyecto-plataforma-mooc")),
 		PubSubTopicID:         getEnv("PUBSUB_TOPIC", getEnv("TOPIC_ID", "mooc-tasks-topic")),
+		// Topic del escaneo antimalware (Cloud Function). Vacío = desactivado.
+		PubSubScanTopicID:     getEnv("PUBSUB_SCAN_TOPIC", ""),
 		CORSAllowedOrigins:    getEnv("CORS_ALLOWED_ORIGINS", ""),
 	}
 }

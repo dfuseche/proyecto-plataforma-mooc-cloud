@@ -9,7 +9,6 @@ import (
 
 const (
 	TypeMediaTranscodeHLS = "media:transcode_hls"
-	TypeAntimalwareScan   = "media:antimalware_scan"
 )
 
 // QueuePriorities son las colas que consume el worker y su prioridad relativa
@@ -43,27 +42,5 @@ func NewMediaTranscodeHLSTask(resourceID uuid.UUID, originalKey string, mediaTyp
 		payload,
 		asynq.TaskID(resourceID.String()),
 		asynq.MaxRetry(3), // Máximo 3 reintentos antes de enviar a DLQ (Sección 6)
-	), nil
-}
-
-type AntimalwareScanPayload struct {
-	ResourceID uuid.UUID `json:"resource_id"`
-	ObjectKey  string    `json:"object_key"`
-}
-
-func NewAntimalwareScanTask(resourceID uuid.UUID, objectKey string) (*asynq.Task, error) {
-	payload, err := json.Marshal(AntimalwareScanPayload{
-		ResourceID: resourceID,
-		ObjectKey:  objectKey,
-	})
-	if err != nil {
-		return nil, err
-	}
-
-	return asynq.NewTask(
-		TypeAntimalwareScan,
-		payload,
-		asynq.TaskID("scan:"+resourceID.String()),
-		asynq.MaxRetry(3),
 	), nil
 }

@@ -1,0 +1,3 @@
+# Copia este archivo a backend.hcl (no se versiona) con el bucket de estado:
+#   terraform init -backend-config=backend.hcl
+bucket = "NOMBRE-DEL-BUCKET-DE-ESTADO"
